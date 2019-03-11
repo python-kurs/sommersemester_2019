@@ -1,0 +1,6 @@
+<div class="media-container">
+<object data="{{ site.baseurl }}/assets/pdfs/{{ include.pdf }}" width="160" height="80" type='application/pdf'>
+<p>The PDF cannot be displayed, please try another browser or contact us.</p>
+</object>
+<a href="{{ site.baseurl }}/assets/pdfs/{{ include.pdf }}" download="{{ include.pdf }}">Feel free to download this PDF to your computer.</a>
+</div>
