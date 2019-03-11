@@ -1,0 +1,512 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.13.0 by Michael Rose
+  Copyright 2013-2018 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Data Analysis | Laboratory for climate and Remote Sensing</title>
+<meta name="description" content="Handle geo-datasets, use R for data analysis and visualization, train models and estimate errors, and use GitHub for comprehensive documentation and task management.">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Laboratory for climate and Remote Sensing">
+<meta property="og:title" content="Data Analysis">
+<meta property="og:url" content="http://localhost:4000/data/mriliasmooc/lm_data/lm_2777/">
+
+
+  <meta property="og:description" content="Handle geo-datasets, use R for data analysis and visualization, train models and estimate errors, and use GitHub for comprehensive documentation and task management.">
+
+
+
+  <meta property="og:image" content="http://localhost:4000/data/mriliasmooc/lm_data/lm_2777/assets/images/title_1600_500.jpg">
+
+
+
+
+
+  <meta property="article:published_time" content="2018-02-06T13:00:00+01:00">
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/data/mriliasmooc/lm_data/lm_2777/">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/data/mriliasmooc/lm_data/lm_2777/feed.xml" type="application/atom+xml" rel="alternate" title="Laboratory for climate and Remote Sensing Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/data/mriliasmooc/lm_data/lm_2777/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--splash">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+    	<a class="site-title" href="http://localhost:4000/data/mriliasmooc/lm_data/lm_2777/" style="padding:0px"><img src="http://localhost:4000/data/mriliasmooc/lm_data/lm_2777/assets/images/logo_umr.png" style="padding-right:15px">Laboratory for climate and Remote Sensing</a>
+        <ul class="visible-links">
+          
+            
+            <li class="masthead__menu-item">
+              <a href="http://localhost:4000/data/mriliasmooc/lm_data/lm_2777/units.html" >Course units</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="http://localhost:4000/data/mriliasmooc/lm_data/lm_2777/about.html" >About</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="http://localhost:4000/data/mriliasmooc/lm_data/lm_2777/index.html" >Course home</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="https://oer.uni-marburg.de/goto.php?target=crs_326&client_id=mriliasmooc" >OER home</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="http://localhost:4000/data/mriliasmooc/lm_data/lm_2777/sitemap.html" >Sitemap</a>
+            </li>
+          
+        </ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle Menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="page__hero--overlay"
+  style="background-color: #000; background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/data/mriliasmooc/lm_data/lm_2777/assets/images/title_1600_500.jpg');"
+>
+  
+    <div class="wrapper">
+      <h1 id="page-title" class="page__title" itemprop="headline">
+        
+          Data Analysis
+
+        
+      </h1>
+      
+        <p class="page__lead">Handle geo-datasets, use R for data analysis and visualization, train models and estimate errors, and use GitHub for comprehensive documentation and task management.
+</p>
+      
+      
+      
+        <p><a href="/data/mriliasmooc/lm_data/lm_2777/units.html" class="btn btn--light-outline btn--large">Go to course units</a></p>
+      
+      
+    </div>
+  
+  
+    <span class="page__hero-caption">Photo: <a href="https://www.flickr.com/environmentalinformatics-marburg/"><strong>Environmental Informatics Marburg</strong></a>
+</span>
+  
+</div>
+
+
+
+<div id="main" role="main">
+  <article class="splash" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Data Analysis">
+    <meta itemprop="description" content="Handle geo-datasets, use R for data analysis and visualization, train models and estimate errors, and use GitHub for comprehensive documentation and task management.">
+    <meta itemprop="datePublished" content="February 06, 2018">
+    
+
+    <section class="page__content" itemprop="text">
+      
+<div class="feature__wrapper">
+
+  
+
+    
+
+    <div class="feature__item--center">
+      <div class="archive__item">
+        
+
+        <div class="archive__item-body">
+          
+
+          
+            <div class="archive__item-excerpt">
+              <p>Master level course in <a href="https://www.uni-marburg.de/fb19/studium/studiengaenge/msc-phygeo">Physical Geography</a> at Marburg University</p>
+
+            </div>
+          
+
+          
+        </div>
+      </div>
+    </div>
+  
+
+</div>
+
+<p>Data analysis is a key competence of professional geographers but it requires profound knowledge in both (statistical) analysis methods and computer sciences. While the reason for the former is obvious, the latter is a direct result of a growing data deluge, induced by technological progress on both the field of data collection and the one of data distribution.</p>
+
+<p>Data analysis requires a variety of skills related to the organizing, handling, analyzing and describing a diversity of datasets. Using R this course will not just open the door to a cosmos of data analysis functionality but also provide a domain specific and flexible (also not really ideal) tool for workflow automation.</p>
+
+<h1 id="intended-learning-outcomes">Intended learning outcomes</h1>
+<p>At the end of this course you should be able</p>
+
+<ul>
+  <li>to organize a variety of datasets and (intermediate) analysis results in structured fashion,</li>
+  <li>to document your workflow in an understandable and transparent manner, collaborate in teams and handle issues and task management using Git and GitHub as software management tool and plattform,</li>
+  <li>to implement data analysis workflows using tailored R scripts along with readily available functions from third-party R packages,</li>
+  <li>to model relationships between data variables and calculate reliable error estimates,</li>
+  <li>to critically evaluate your analysis.</li>
+</ul>
+
+<h1 id="course-features">Course features</h1>
+
+<p>The course provides a basis for the parallel <a href="https://oer.uni-marburg.de/goto.php?target=crs_327&amp;client_id=mriliasmooc" target="_blank">Geo Information Systems</a> and <a href="https://oer.uni-marburg.de/goto.php?target=crs_326&amp;client_id=mriliasmooc" target="_blank">Remote Sensing</a> courses. It is intended as a blended learning module in our study program although the provided introductions, explanations and examples might be useful for self-study, too.</p>
+
+<h1 id="syllabus">Syllabus</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Session</th>
+      <th>Topic</th>
+      <th>Content</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td><strong>Data basics</strong></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>01</td>
+      <td>First things first</td>
+      <td>Data and information, R, R Studio, R markdown, GitHub, GitHub classroom</td>
+    </tr>
+    <tr>
+      <td>02</td>
+      <td>First things second</td>
+      <td>Working environment, data sets, data types, data structures, logical operators, control structures</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong>Data exploration</strong></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>03</td>
+      <td>Look at your data</td>
+      <td>Reading and writing (tabulated) data, visual data exploitation, descriptive statistics</td>
+    </tr>
+    <tr>
+      <td>04</td>
+      <td>Clean your data</td>
+      <td>Tailoring data sets, fill values and NA, aggregating, merging or sub-setting data sets</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong>Data modelling</strong></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>05</td>
+      <td>Explain your data</td>
+      <td>Linear regression modelling, confidence intervals, sample tests, variance analysis</td>
+    </tr>
+    <tr>
+      <td>06</td>
+      <td>Predict your data</td>
+      <td>Cross-validation</td>
+    </tr>
+    <tr>
+      <td>07</td>
+      <td>Select your variables</td>
+      <td>Multiple linear models, feature selection</td>
+    </tr>
+    <tr>
+      <td>08</td>
+      <td>Predict your non-linear data</td>
+      <td>Generalized additive models</td>
+    </tr>
+    <tr>
+      <td>09</td>
+      <td>T-6 and holding</td>
+      <td>Build-in hold to finish up the explanation sessions</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Predict your temporal data</td>
+      <td>Auto-correlation, AR and ARIMA models</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Explain your temporal data</td>
+      <td>Decomposing time series</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong>Visualization</strong></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>Visualize your data</td>
+      <td>Publication quality graphics</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong>Wrap up</strong></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Wrap up</td>
+      <td>Feedback, goodbye</td>
+    </tr>
+  </tbody>
+</table>
+
+<h1 id="deliverables">Deliverables</h1>
+
+<p>The graded course certificate will be based on an individual portfolio hosted as a personal repository on GitHub. The individual portfolio items are defined in the respective course assignments along with the information if they will be marked or not.</p>
+
+<h1 id="preparation-and-prerequisites">Preparation and prerequisites</h1>
+
+<p>The courses assumes basic knowledge and skills in geo-information science.</p>
+
+<h1 id="instructor">Instructor</h1>
+
+<div itemscope="" itemtype="http://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    
+      <a href=""><h3 class="author__name" itemprop="name">Sebastian Egli, Benjamin Rösner</h3></a>
+    
+    
+      <p class="author__bio" itemprop="description">
+        Marburg University
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope="" itemtype="http://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Marburg, DE</span>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="http://www.lcrs.de" itemprop="url">
+            <i class="fas fa-fw fa-link" aria-hidden="true"></i> Website
+          </a>
+        </li>
+      
+
+      
+        <li>
+          <a href="mailto:sebastian.egli@geo.uni-marburg.de">
+            <meta itemprop="email" content="sebastian.egli@geo.uni-marburg.de" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://github.com/python-kurs" itemprop="sameAs">
+            <i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+    </section>
+  </article>
+</div>
+    </div>
+
+    
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+    
+    
+    
+      <li><a href="https://github.com/python-kurs"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    
+    <li><a href="http://localhost:4000/data/mriliasmooc/lm_data/lm_2777/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright"> <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a> &copy; 2019 LCRS
+. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a>, <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a> &amp; <a href="https://www.uni-marburg.de/fb19" rel="nofollow">Geography@Marburg University</a>.</div>
+
+
+
+      </footer>
+    </div>
+
+    
+  <script src="/data/mriliasmooc/lm_data/lm_2777/assets/js/main.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
+
+
+
+
+
+
+
+  </body>
+</html>

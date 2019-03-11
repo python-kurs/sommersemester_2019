@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>http://localhost:4000/data/mriliasmooc/lm_data/lm_2777/unit01/unit01-01_first_things_first.html</loc>
+<lastmod>2019-03-11T15:40:05+01:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/data/mriliasmooc/lm_data/lm_2777/about.html</loc>
+</url>
+<url>
+<loc>http://localhost:4000/data/mriliasmooc/lm_data/lm_2777/_pages/home.html</loc>
+</url>
+<url>
+<loc>http://localhost:4000/data/mriliasmooc/lm_data/lm_2777/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/data/mriliasmooc/lm_data/lm_2777/sitemap.html</loc>
+</url>
+<url>
+<loc>http://localhost:4000/data/mriliasmooc/lm_data/lm_2777/_pages/splash_page.html</loc>
+</url>
+<url>
+<loc>http://localhost:4000/data/mriliasmooc/lm_data/lm_2777/units.html</loc>
+</url>
+</urlset>
