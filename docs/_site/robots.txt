@@ -1,1 +1,0 @@
-Sitemap: http://localhost:4000/data/mriliasmooc/lm_data/lm_2777/sitemap.xml
