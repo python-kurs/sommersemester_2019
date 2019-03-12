@@ -1,288 +1,154 @@
-# Marburg Open Educational Resources
+# Welcome to Jekyll!
 #
-# This config file is meant for settings that affect the whole course space.
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
 #
 # For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server
-# process.
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
 
-# Site settings 
+# Site settings
 # These are used to personalize your new site. If you look in the HTML files,
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-# Adjust title etc. Depending on serving the site on GitHub or OER, different
-# url and baseurl settings have to be used.
-
-
-##### URL #####################################################################
-# Serve on OER
-#url: "https://oer.uni-marburg.de"
-#baseurl: "/data/mriliasmooc/lm_data/lm_2937"
-
-# Serve on GitHub
-url: https://python-kurs.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
-baseurl: "/sommersemester_2019/"
-
-
-##### Title ###################################################################
-title: Laboratory for climate and Remote Sensing
-name: &name "LCRS" # &name is a YAML anchor which can be *referenced later
+#######################################################################################
+# Jekyll site settings
+title: YOUR BOOK NAME
+author: Sebastian Egli, Benjamin Rösner
 email: sebastian.egli@geo.uni-marburg.de, benjamin.roesner@geo.uni-marburg.de
 description: >- # this means to ignore newlines until next item
   course course-materials geography remote-sensing marburg-open-educational-resource 
   physical-geography environmental-science nature-conservation python
 
-##### Social Sharing ##########################################################
-#twitter:
-  #username         : &twitter "EnvIn_UMR"
-
-##### Lecturer settings #######################################################
-author:
-  name             : "Sebastian Egli, Benjamin Rösner"
-  #avatar           : "/assets/images/tnauss.jpg"
-  bio              : "Marburg University"
-  location         : "Marburg, DE"
-  email            : "sebastian.egli@geo.uni-marburg.de"
-  uri              : "http://www.lcrs.de"
-  home             : "http://www.lcrs.de"
-  bitbucket        :
-  codepen          :
-  dribbble         :
-  #flickr           : "https://www.flickr.com/environmentalinformatics-marburg/"
-  #facebook         : "https://www.facebook.com/GeographieMarburg/"
-  foursquare       :
-  github           : "python-kurs"
-  gitlab           :
-  google_plus      :
-  keybase          :
-  instagram        : 
-  lastfm           :
-  linkedin         :
-  pinterest        :
-  soundcloud       :
-  stackoverflow    : 
-  steam            :
-  tumblr           :
-  #twitter          : "https://twitter.com/geographie_umr"
-  vine             :
-  weibo            :
-  xing             :
-  #youtube          : "https://www.youtube.com/channel/UCGiwSv5KYjsNXl6-nZq0SDA"
+# Serve on moer
+#url: "https://oer.uni-marburg.de"              # the base hostname & protocol for your site, e.g. http://example.com
+#baseurl: "/data/mriliasmooc/lm_data/lm_2934"  # the subpath of your site, e.g. /blog. If there is no subpath for your site, use an empty string ""
+#
+# Serve on GitHub
+url: https://python-kurs.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+baseurl: "/sommersemester_2019/"
 
 
-##### Site configuration ######################################################
-title_separator: "|"
-excerpt_separator: <!--more-->
+#######################################################################################
+# Jupyter Book settings
 
-# Build settings
-markdown: kramdown
-# theme: minima
-remote_theme: "GeoMOER/moer-jekyll-theme"
-minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
-auto_ids: true
+# Notebook content settings
+hide_cell_text: '# HIDDEN'              # When building the textbook, any cells with this text inside will be hidden in the output markdown
+hide_code_text: '# NO CODE'              # When building the textbook, any cells with this text inside will have *only* their output shown (no code)
+use_hide_code_button: true        # If True, a small button appears to the right of each cell that lets you hide its contents.
 
-# Default Settings
-collections_dir: units
+# Sidebar settings
+show_sidebar: true                # Show the sidebar. Only set to false if your only wish to host a single page.
+collapse_inactive_chapters: true  # Whether to collapse the inactive chapters in the sidebar
+textbook_logo: images/logo/logo.png               # A logo to be displayed at the top of your textbook sidebar
+textbook_logo_link: https://jupyter.org/jupyter-book/                    # A link for the logo.
+sidebar_footer_text: Powered by <a href="https://github.com/jupyter/jupyter-book">Jupyter
+  Book</a>
+number_toc_chapters: true         # Whether to add numbers to chapterse in your Table of Contents. If true, you can control this at the Chapter level in _data/toc.yml
 
-# Includes
-include:
-  - _pages
+# Search settings
+search_max_words_in_content: 100   # In the search function, use at most this many words (too many words will make search slow)
 
-# Collections
-collections:
-  examples:
-    output: true
-    permalink: /:collection/:title.html
-  unit01:
-    output: true
-    permalink: /:collection/:title.html
-  unit02:
-    output: true
-    permalink: /:collection/:title.html
-  unit03:
-    output: true
-    permalink: /:collection/:title.html
-  unit04:
-    output: true
-    permalink: /:collection/:title.html
-  unit05:
-    output: true
-    permalink: /:collection/:title.html
-  unit06:
-    output: true
-    permalink: /:collection/:title.html
-  unit07:
-    output: true
-    permalink: /:collection/:title.html
-  unit08:
-    output: true
-    permalink: /:collection/:title.html
-  unit09:
-    output: true
-    permalink: /:collection/:title.html
-  unit10:
-    output: true
-    permalink: /:collection/:title.html
-  unit11:
-    output: true
-    permalink: /:collection/:title.html
-  worksheets:
-    output: true
-    permalink: /:collection/:title.html
+#######################################################################################
+# Interact link settings
 
-# Default settings
+# General interact settings
+use_jupyterlab: false                     # If 'true', interact links will use JupyterLab as the interface
+
+# Jupyterhub link settings
+use_jupyterhub_button: false              # If 'true', display a button that will direct users to a JupyterHub (that you provide)
+jupyterhub_url: ''                     # The URL for your JupyterHub. If no URL, use ""
+jupyterhub_interact_text: Interact             # The text that interact buttons will contain.
+
+# Binder link settings
+use_binder_button: false                 # If 'true', add a binder button for interactive links
+binderhub_url: https://mybinder.org                        # The URL for your BinderHub. If no URL, use ""
+binder_repo_base: https://github.com/                     # The site on which the textbook repository is hosted
+binder_repo_org: YOUR-ORG                     # The username or organization that owns this repository
+binder_repo_name: YOUR-REPO                        # The name of the repository on the web
+binder_repo_branch: master                   # The branch on which your textbook is hosted.
+binderhub_interact_text: Interact              # The text that interact buttons will contain.
+
+# Thebelab settings
+use_thebelab_button: true                # If 'true', display a button to allow in-page running code cells with Thebelab
+thebelab_button_text: Thebelab                 # The text to display inside the Thebelab initialization button
+
+# Download settings
+use_download_button: true                # If 'true', display a button to download a zip file for the notebook
+download_button_text: Download                # The text that download buttons will contain
+
+#######################################################################################
+# Jupyter book extensions and additional features
+
+# Bibliography and citation settings. See https://github.com/inukshuk/jekyll-scholar#configuration for options
+scholar:
+  style: apa
+
+#######################################################################################
+# Option to add a Goggle analytics tracking code
+
+# Navigate to https://analytics.google.com, add a new property for your jupyter book and copy the tracking id here.
+google_analytics:
+  mytrackingcode:
+
+#######################################################################################
+# Jupyter book settings you probably don't need to change
+
+content_folder_name: content           # The folder where your raw content (notebooks/markdown files) are located
+images_url: /assets/images                   # Path to static image files
+css_url: /assets/css                      # Path to static CSS files
+js_url: /assets/js                       # Path to JS files
+custom_static_url: /assets/custom            # Path to user's custom CSS/JS files
+
+
+#######################################################################################
+# Jekyll build settings (only modify if you know what you're doing)
+
+# Site settings
 defaults:
-  # examples
-  - scope:
-      path: ""
-      type: examples
-    values:
-      category: "examples"
-      tags: "Examples"
-      layout: single
-      sidebar:
-        nav: "units" 
-  # unit01
-  - scope:
-      path: ""
-      type: unit01
-    values:
-      category: "01 First Things First"
-      tags: "Unit 01"
-      layout: single
-      sidebar:
-        nav: "units" 
-  # unit02
-  - scope:
-      path: ""
-      type: unit02
-    values:
-      category: "02 First Things Second"
-      tags: "Unit 02"
-      layout: single
-      sidebar:
-        nav: "units" 
-  # unit03
-  - scope:
-      path: ""
-      type: unit03
-    values:
-      category: "03 Look at Your Data"
-      tags: "Unit 03"
-      layout: single
-      sidebar:
-        nav: "units" 
-  # unit04
-  - scope:
-      path: ""
-      type: unit04
-    values:
-      category: "04 Clean Your Data"
-      tags: "Unit 04"
-      layout: single
-      sidebar:
-        nav: "units" 
-  # unit05
-  - scope:
-      path: ""
-      type: unit05
-    values:
-      category: "05 Describe Your Linear Data"
-      tags: "Unit 05"
-      layout: single
-      sidebar:
-        nav: "units" 
-  # unit06
-  - scope:
-      path: ""
-      type: unit06
-    values:
-      category: "06 Predict Your Linear Data"
-      tags: "Unit 06"
-      layout: single
-      sidebar:
-        nav: "units" 
-  # unit07
-  - scope:
-      path: ""
-      type: unit07
-    values:
-      category: "07 Select Your Variables"
-      tags: "Unit 07"
-      layout: single
-      sidebar:
-        nav: "units" 
-  # unit08
-  - scope:
-      path: ""
-      type: unit08
-    values:
-      category: "08 Tune Your Models"
-      tags: "Unit 08"
-      layout: single
-      sidebar:
-        nav: "units" 
-  # unit09
-  - scope:
-      path: ""
-      type: unit09
-    values:
-      category: "09 Predict Time Series"
-      tags: "Unit 09"
-      layout: single
-      sidebar:
-        nav: "units"         
-  # unit10
-  - scope:
-      path: ""
-      type: unit10
-    values:
-      category: "10 Analyse Time Series"
-      tags: "Unit 10"
-      layout: single
-      sidebar:
-        nav: "units"         
-  # unit11
-  - scope:
-      path: ""
-      type: unit11
-    values:
-      category: "11 Publication quality graphics"
-      tags: "Unit 11"
-      layout: single
-      sidebar:
-        nav: "units"         
-  # pages
-  - scope:
-      path: "_pages"
-      type: pages
-    values:
-      layout: single
-      sidebar:
-        nav: "docs"         
+- scope:
+    path: ''
+  values:
+    layout: default
+    toc: true
+    toc_label: '  On this page'
+    toc_icon: list-ul
 
-# Plugins
-plugins:
-  - jekyll-feed
-  - jekyll-sitemap
-  - jekyll-admin
-  - jekyll-paginate
-  - jekyll-gist
-  - jemoji
-  - jekyll-include-cache
-  - jekyll-algolia
+favicon_path: images/logo/favicon.ico
+
+# Markdown Processing
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+sass:
+  style: compressed
+
+collections:
+  build:
+    output: true
+    permalink: /:path.html
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
-# exclude:
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+exclude:
+- scripts/
+- Gemfile
+- Gemfile.lock
+- node_modules
+- vendor/bundle/
+- vendor/cache/
+- vendor/gems/
+- vendor/ruby/
 
+plugins:
+- jekyll-redirect-from
+- jekyll-scholar
+
+# Jupyter Book version - DO NOT CHANGE THIS. It is generated when a new book is created
+jupyter_book_version: 0.4.2
