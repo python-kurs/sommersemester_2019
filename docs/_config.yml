@@ -18,12 +18,12 @@
 
 ##### URL #####################################################################
 # Serve on OER
-url: "https://oer.uni-marburg.de"
-baseurl: "/data/mriliasmooc/lm_data/lm_2937"
+#url: "https://oer.uni-marburg.de"
+#baseurl: "/data/mriliasmooc/lm_data/lm_2937"
 
 # Serve on GitHub
-# url: https://marburg-open-courseware.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
-# baseurl: "/moer-msc-data-analysis/"
+url: https://python-kurs.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+baseurl: "/sommersemester_2019/"
 
 
 ##### Title ###################################################################
