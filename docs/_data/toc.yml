@@ -22,8 +22,12 @@
 # See the links below for an example.
 
 # Top-level page
-- title: Home
+- title: Orga
   url: /intro
+  not_numbered: true
+
+- title: Motivation
+  url: /motivation
   not_numbered: true
 
 # External link
