@@ -27,10 +27,10 @@
   not_numbered: true
 
 # External link
-- title: GitHub repository
-  url: https://github.com/jupyter/jupyter-book
-  external: true
-  not_numbered: true
+#- title: GitHub repository
+  #url: https://github.com/jupyter/jupyter-book
+  #external: true
+  #not_numbered: true
 
 # Adds a searchbar link
 - title: Search
@@ -40,20 +40,20 @@
 - divider: true
 
 # Add a header and sample content section
-- header: Python Kurs
+#- header: Python Kurs
 
 # A chapter w/ a collection of sections beneath it
-- title: Units
+- title: Syllabus
   url: /units/units
   not_numbered: true
   expand_sections: true
   sections:
-  - title: Unit 1
-    url: /units/S01E00
-    not_numbered: true
-  - title: Unit 2
-    url: /units/S01E01
-    not_numbered: true
-  - title: Unit 3
+  - title: Session 2 - Python Basics I 
     url: /units/S01E02
     not_numbered: true
+  #- title: Unit 2
+    #url: /units/S01E01
+    #not_numbered: true
+  #- title: Unit 3
+    #url: /units/S01E02
+    #not_numbered: true
