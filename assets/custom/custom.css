@@ -5,7 +5,7 @@
 
 
 
-div.info {
+div.task {
 	background: #d9edf7 url(../images/Alert_Info_32.png) 15px 15px no-repeat;
 	padding-left: 60px;
 }
@@ -20,7 +20,7 @@ div.danger {
 	padding-left: 60px;
 }
 
-div.task {
+div.info {
 	background: #f2dede url(../images/Alert_Task_32.png) 15px 15px no-repeat;
 	padding-left: 60px;
 }
