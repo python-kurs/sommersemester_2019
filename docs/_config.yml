@@ -16,12 +16,12 @@
 
 #######################################################################################
 # Jekyll site settings
-title: YOUR BOOK NAME
+title: Python for remote sensing
 author: Sebastian Egli, Benjamin Rösner
 email: sebastian.egli@geo.uni-marburg.de, benjamin.roesner@geo.uni-marburg.de
 description: >- # this means to ignore newlines until next item
   course course-materials geography remote-sensing marburg-open-educational-resource 
-  physical-geography environmental-science nature-conservation python
+  physical-geography environmental-science python
 
 # Serve on moer
 #url: "https://oer.uni-marburg.de"              # the base hostname & protocol for your site, e.g. http://example.com
