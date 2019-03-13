@@ -17,7 +17,9 @@
 
 <!-- code to color cells with warnings or info tags -->
 <!-- source: https://nbconvert.readthedocs.io/en/latest/customizing.html --> 
-{% block markdowncell %}
+{% block markdowncell scoped %}
+{% if cell['metadata'].get('tags', []) != '' %}
+{::options parse_block_html="true" /}
 {% if 'warning' in cell['metadata'].get('tags', []) %}
 <div class="alert warning">
 {{ super() }}
@@ -36,6 +38,8 @@
 </div>
 {% else %}
     {{ super() }}
+{% endif %}
+{::options parse_block_html="true" /}
 {% endif %}
 {% endblock markdowncell %}
 
