@@ -10,7 +10,7 @@ div.info {
 	padding-left: 60px;
 }
 
-div.task {
+div.warning {
 	background: #fcf8e3 url(../images/Alert_Warning_32.png) 15px 15px no-repeat;
 	padding-left: 60px;
 }
@@ -20,8 +20,8 @@ div.danger {
 	padding-left: 60px;
 }
 
-div.warning {
-	background: #f2dede url(../images/Alert_Task_32.png) 15px 15px no-repeat;
+div.task {
+	background: #fcf8e3 url(../images/Alert_Task_32.png) 15px 15px no-repeat;
 	padding-left: 60px;
 }
 
