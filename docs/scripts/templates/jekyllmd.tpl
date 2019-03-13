@@ -15,6 +15,30 @@
 {% endif %}
 {% endblock input %}
 
+<!-- code to color cells with warnings or info tags -->
+<!-- source: https://nbconvert.readthedocs.io/en/latest/customizing.html --> 
+{% block markdowncell %}
+{% if 'warning' in cell['metadata'].get('tags', []) %}
+<div class="alert warning">
+{{ super() }}
+</div>
+{% elif 'info' in cell['metadata'].get('tags', []) %}
+<div class="alert info">
+{{ super() }}
+</div>
+{% elif 'danger' in cell['metadata'].get('tags', []) %}
+<div class="alert danger">
+{{ super() }}
+</div>
+{% elif 'task' in cell['metadata'].get('tags', []) %}
+<div class="alert task">
+{{ super() }}
+</div>
+{% else %}
+    {{ super() }}
+{% endif %}
+{% endblock markdowncell %}
+
 <!-- Remove indentations for output text  -->
 {% block stream %}
 {:.output .output_stream}
