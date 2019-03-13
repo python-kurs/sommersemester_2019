@@ -58,6 +58,9 @@
   - title: Session 3 - Python Basics II
     url: /units/S01E03
     not_numbered: true
+  - title: Python Basics III
+    url: /units/S01E03
+    not_numbered: true
   - title: Session 3 - Warning cells
     url: /units/S01E04
     not_numbered: true
