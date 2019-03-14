@@ -1,3 +1,5 @@
+language: ruby
+cache: bundler
 install:
   - pip install jupyter-book
 script: 
@@ -8,7 +10,7 @@ before_deploy:
   - eval `ssh-agent -s`
 deploy:
   provider: pages
-  local-dir: ./_site
+  local-dir: ./_build
   skip_cleanup: true
   keep-history: true
   on:
