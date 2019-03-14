@@ -1,8 +1,7 @@
 dist: xenial
 language: python
-python: 3.7.1
-virtualenv:
-  system_site_packages: true
+python: 3.7
+sudo: true
 install:
   - pip install --user jupyter-book
 script: 
