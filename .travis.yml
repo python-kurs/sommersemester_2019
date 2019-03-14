@@ -1,20 +1,16 @@
 dist: xenial
 language: python
+cache: pip
 python: 3.7
 sudo: true
 install:
   - pip install jupyter-book
 script: 
   - make install &&  make book
-before_deploy:
-  - openssl aes-256-cbc -K $encrypted_9d525ff4942a_key -iv $encrypted_9d525ff4942a_iv -in deploy-key.enc -out deploy-key -d
-  - chmod 600 deploy-key
-  - eval `ssh-agent -s`
-  - ssh-add deploy-key
 deploy:
-  provider: pages
-  local-dir: ./_build
+  provider: script
   skip_cleanup: true
   keep-history: true
+  script: ./.travis_deploy.sh
   on:
     branch: master
