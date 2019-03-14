@@ -5,6 +5,7 @@ python: 3.7
 sudo: true
 install:
   - pip install jupyter-book
+  - npm install gh-pages --save-dev
 script: 
   - make install &&  make book
 deploy:
