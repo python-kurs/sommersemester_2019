@@ -1,6 +1,10 @@
 language: generic
+sudo: required
+before_install:
+  - sudo apt-get install python3
+  - sudo apt-get install python3-pip
 install:
-  - pip install --user jupyter-book
+  - pip3 install --user jupyter-book
 script: 
   - ls -al ~/.local/bin
   #- make install &&  make book
