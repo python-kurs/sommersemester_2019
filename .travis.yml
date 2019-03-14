@@ -1,17 +1,17 @@
 language: generic
-sudo: required
 install:
-  - sudo pip install jupyter-book
+  - pip install --user jupyter-book
 script: 
-  - make install &&  make book
-before_deploy:
-  - openssl aes-256-cbc -K $encrypted_9d525ff4942a_key -iv $encrypted_9d525ff4942a_iv -in deploy-key.enc -out deploy-key -d
-  - chmod 600 deploy-key
-  - eval `ssh-agent -s`
-deploy:
-  provider: pages
-  local-dir: ./_build
-  skip_cleanup: true
-  keep-history: true
-  on:
-    branch: master
+  - ls -al ~/.local/bin
+  #- make install &&  make book
+#before_deploy:
+  #- openssl aes-256-cbc -K $encrypted_9d525ff4942a_key -iv $encrypted_9d525ff4942a_iv -in deploy-key.enc -out deploy-key -d
+  #- chmod 600 deploy-key
+  #- eval `ssh-agent -s`
+#deploy:
+  #provider: pages
+  #local-dir: ./_build
+  #skip_cleanup: true
+  #keep-history: true
+  #on:
+    #branch: master
