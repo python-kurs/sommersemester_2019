@@ -4,6 +4,8 @@ before_install:
   - sudo apt-get install python3
   - sudo apt-get install python3-pip
   - sudo apt-get install python3-setuptools
+  - sudo pip3 install --upgrade pip
+  - sudo pip3 install --upgrade setuptools
 install:
   - pip3 install --user jupyter-book
 script: 
