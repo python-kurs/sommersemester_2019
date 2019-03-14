@@ -3,7 +3,7 @@ language: python
 python: 3.7
 sudo: true
 install:
-  - pip install --user jupyter-book
+  - pip install jupyter-book
 script: 
   - make install &&  make book
 before_deploy:
