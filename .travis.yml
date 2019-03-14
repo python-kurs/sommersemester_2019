@@ -1,6 +1,11 @@
 dist: xenial
 language: python
-cache: pip
+cache:
+  bundler: true
+  directories:
+    - $HOME/.cache/pip
+    - node_modules
+    -  
 python: 3.7
 sudo: true
 install:
