@@ -1,9 +1,3 @@
-env:
-  global:
-    GIT_NAME: "'Jupyter-Book autodeploy'"
-    GIT_EMAIL: benjamin.roesner@geo.uni-marburg.de
-    GH_REF: git@github.com:python-kurs/sommersemester_2019.git
-language: python
 before_script:
   pip install jupyter-book
 script: make install &&  make book
