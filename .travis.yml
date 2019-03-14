@@ -1,6 +1,6 @@
 language: generic
 install:
-  - pip install jupyter-book
+  - pip install --user jupyter-book
 script: 
   - make install &&  make book
 before_deploy:
