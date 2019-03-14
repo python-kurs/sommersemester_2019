@@ -1,13 +1,3 @@
----
-title: 'Orga'
-prev_page:
-  url: 
-  title: ''
-next_page:
-  url: /motivation
-  title: 'Motivation'
-comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
----
 ## Lecturers
 
 - Benjamin Roesner: benjamin.roesner@geo.uni-marburg.de

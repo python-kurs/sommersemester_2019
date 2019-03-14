@@ -1,13 +1,3 @@
----
-title: 'Syllabus'
-prev_page:
-  url: /motivation
-  title: 'Motivation'
-next_page:
-  url: /units/S01E01
-  title: 'Python Basics I'
-comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
----
 # Syllabus
 
 **1. Introduction & Orga** (17.04.2019)
