@@ -1,7 +1,7 @@
 language: generic
 sudo: required
 install:
-  - pip install jupyter-book
+  - sudo pip install jupyter-book
 script: 
   - make install &&  make book
 before_deploy:
