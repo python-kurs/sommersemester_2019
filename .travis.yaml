@@ -1,5 +1,3 @@
-language: ruby
-cache: bundler
 install:
   - pip install jupyter-book
 script: 
