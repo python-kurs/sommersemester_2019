@@ -5,14 +5,13 @@ cache:
   directories:
     - $HOME/.cache/pip
     - node_modules
-    -  
 python: 3.7
 sudo: true
 install:
   - pip install jupyter-book
   - npm install gh-pages --save-dev
 script: 
-  - make install &&  make book && make site
+  - make install &&  make book && make site && bundle info citeproc
 deploy:
   provider: script
   skip_cleanup: true
