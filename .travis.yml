@@ -17,6 +17,7 @@ before_install:
   - export PATH=$PATH:$PWD/geckodriver
 install:
   - pip install jupyter-book
+  - pip install selenium
   - npm install gh-pages --save-dev
 script: 
   - make install &&  make book && make site
