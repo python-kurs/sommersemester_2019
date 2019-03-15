@@ -43,7 +43,7 @@ delete_all()
 
 new_file = browser.find_element_by_id("new_file")
 #get file_location with os path join
-file_location = "oer.zip"
+file_location = "./oer.zip"
 new_file.send_keys(file_location)
 
 upload_button = browser.find_element_by_name("cmd[uploadFile]")
