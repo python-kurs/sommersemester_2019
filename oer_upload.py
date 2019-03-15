@@ -53,7 +53,7 @@ new_file.send_keys(file_location)
 upload_button = browser.find_element_by_name("cmd[uploadFile]")
 upload_button.click()
 
-sleep(180)
+sleep(60)
 
 browser.refresh()
 
