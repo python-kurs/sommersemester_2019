@@ -9,6 +9,6 @@ set -e #Exit with nonzero exit code if anything fails
 #./node_modules/.bin/gh-pages -d _site/ -b gh-pages -r git@github.com:${TRAVIS_REPO_SLUG}.git
 
 cd _site
-zip ../oer.zip assets content images units index.html intro.html motivation.html search.html
+zip -r ../oer.zip assets content images units index.html intro.html motivation.html search.html
 cd ..
 python oer_upload.py
