@@ -37,13 +37,17 @@ def delete_all():
 
     return
 
-delete_all()
+try:
+    delete_all()
+except:
+    pass
 #delete_all()
 #delete_all()
 
 new_file = browser.find_element_by_id("new_file")
 #get file_location with os path join
-file_location = "./oer.zip"
+here = os.path.dirname(os.path.abspath(__file__))
+file_location = os.path.join(here, "oer.zip")
 new_file.send_keys(file_location)
 
 upload_button = browser.find_element_by_name("cmd[uploadFile]")
