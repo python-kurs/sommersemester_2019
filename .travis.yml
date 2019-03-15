@@ -8,8 +8,16 @@ cache:
     - node_modules
 python: 3.7
 sudo: true
+addons:
+  firefox: latest
+before_install:
+  - wget https://github.com/mozilla/geckodriver/releases/download/v0.24.0/geckodriver-v0.24.0-linux64.tar.gz
+  - mkdir geckodriver
+  - tar -xzf geckodriver-v0.24.0-linux64.tar.gz -C geckodriver
+  - export PATH=$PATH:$PWD/geckodriver
 install:
   - pip install jupyter-book
+  - pip install selenium
   - npm install gh-pages --save-dev
 script: 
   - make install &&  make book && make site
