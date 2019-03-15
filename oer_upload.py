@@ -7,10 +7,10 @@ OER_SITE = "https://oer.uni-marburg.de/login.php?target=crs_1153&cmd=force_login
 MYUSERNAME = os.environ["SECRETUSERNAME"]
 MYPW = os.environ["SECRETPW"]
 
-opts = Options()
-opts.set_headless()
+#opts = Options()
+#opts.set_headless()
 
-browser = Firefox(options=opts) #executable_path = "/home/ro/Downloads/geckodriver")
+browser = Firefox()#options=opts) #executable_path = "/home/ro/Downloads/geckodriver")
 browser.get(OER_SITE)
 
 loginname = browser.find_element_by_id("username")
@@ -38,8 +38,8 @@ def delete_all():
     return
 
 delete_all()
-delete_all()
-delete_all()
+#delete_all()
+#delete_all()
 
 new_file = browser.find_element_by_id("new_file")
 #get file_location with os path join
