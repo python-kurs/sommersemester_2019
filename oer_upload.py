@@ -60,6 +60,6 @@ unzip.click()
 
 #log out
 user_dropdown = browser.find_element_by_id("userlog")
-user_dropdown.find_element_by_class_name("dropdown_toggle").click()
+user_dropdown.find_element_by_class_name("dropdown-toggle").click()
 browser.find_element_by_link_text("Abmelden").click()
 
