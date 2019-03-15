@@ -1,13 +1,18 @@
 dist: xenial
 language: python
-cache: pip
+cache:
+  directories:
+    - $HOME/.cache/pip
+    - $HOME/.cache/wheels
+    - $HOME/.rvm/gems
+    - node_modules
 python: 3.7
 sudo: true
 install:
   - pip install jupyter-book
   - npm install gh-pages --save-dev
 script: 
-  - make install &&  make book
+  - make install &&  make book && make site
 deploy:
   provider: script
   skip_cleanup: true

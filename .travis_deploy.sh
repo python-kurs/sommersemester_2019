@@ -6,4 +6,4 @@ chmod 600 deploy-key
 eval `ssh-agent -s`
 ssh-add deploy-key
 
-./node_modules/.bin/gh-pages -d _build/ -b gh-pages -r git@github.com:${TRAVIS_REPO_SLUG}.git
+./node_modules/.bin/gh-pages -d _site/ -b gh-pages -r git@github.com:${TRAVIS_REPO_SLUG}.git
