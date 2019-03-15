@@ -7,10 +7,10 @@ OER_SITE = "https://oer.uni-marburg.de/login.php?target=crs_1153&cmd=force_login
 MYUSERNAME = os.environ["SECRETUSERNAME"]
 MYPW = os.environ["SECRETPW"]
 
-#opts = Options()
-#opts.set_headless()
+opts = Options()
+opts.set_headless()
 
-browser = Firefox(executable_path = "/home/ro/Downloads/geckodriver")#options=opts)
+browser = Firefox(options=opts) #executable_path = "/home/ro/Downloads/geckodriver")
 browser.get(OER_SITE)
 
 loginname = browser.find_element_by_id("username")
@@ -43,7 +43,7 @@ delete_all()
 
 new_file = browser.find_element_by_id("new_file")
 #get file_location with os path join
-file_location = "/home/ro/dev/python_course/sommersemester_2019/site.zip"
+file_location = "oer.zip"
 new_file.send_keys(file_location)
 
 upload_button = browser.find_element_by_name("cmd[uploadFile]")
