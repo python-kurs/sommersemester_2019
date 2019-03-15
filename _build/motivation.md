@@ -80,6 +80,14 @@ Coding enables you to...
     
 > Python is an unusual case for being both one of the **most visited** tags on Stack Overflow and one of the **fastest-growing** ones. (Incidentally, it is also accelerating! Its year-over-year growth has become faster each year since 2013). Source: [StackOverflow Blog](https://stackoverflow.blog/2017/09/06/incredible-growth-python/)
 
+
+{::options parse_block_html="true" /}
+
+
+
+{::options parse_block_html="true" /}
+
+    
 Python...
 - is beginner friendly,
 - flexible,
@@ -98,8 +106,6 @@ Python...
 - is the 2nd most demanded programming skill (in the US)
 - is the 2nd best paid programming skill (> 105'000$ in the US)
 - is heavily used at large companies like Google & Facebook but also at NASA, ESA, EUMETSAT, etc.
-
-----------
 
 
 {::options parse_block_html="true" /}
@@ -155,6 +161,7 @@ Hallo Welt!
 
 {:.input_area}
 ```python
+%matplotlib inline
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -165,7 +172,7 @@ plt.show()
 
 
 {:.output .output_png}
-![png](/home/ro/dev/python_course/sommersemester_2019/_build/motivation_11_0.png)
+![png](/media/sebastian/Lacie/Promotion/Jupyter/Python-Kurs/sommersemester_2019/_build/motivation_12_0.png)
 
 
 
