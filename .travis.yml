@@ -28,3 +28,5 @@ deploy:
   script: ./.travis_deploy.sh
   on:
     branch: master
+notifications:
+  slack: lcrsmr:GE9kg9iKT82anpNyqtGmXhUT
