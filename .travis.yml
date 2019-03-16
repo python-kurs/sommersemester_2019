@@ -2,31 +2,32 @@ dist: xenial
 language: python
 cache:
   directories:
-    - $HOME/.cache/pip
-    - $HOME/.cache/wheels
-    - $HOME/.rvm/gems
-    - node_modules
+  - "$HOME/.cache/pip"
+  - "$HOME/.cache/wheels"
+  - "$HOME/.rvm/gems"
+  - node_modules
 python: 3.7
 sudo: true
 addons:
   firefox: latest
 before_install:
-  - wget https://github.com/mozilla/geckodriver/releases/download/v0.24.0/geckodriver-v0.24.0-linux64.tar.gz
-  - mkdir geckodriver
-  - tar -xzf geckodriver-v0.24.0-linux64.tar.gz -C geckodriver
-  - export PATH=$PATH:$PWD/geckodriver
+- wget https://github.com/mozilla/geckodriver/releases/download/v0.24.0/geckodriver-v0.24.0-linux64.tar.gz
+- mkdir geckodriver
+- tar -xzf geckodriver-v0.24.0-linux64.tar.gz -C geckodriver
+- export PATH=$PATH:$PWD/geckodriver
 install:
-  - pip install jupyter-book
-  - pip install selenium
-  - npm install gh-pages --save-dev
-script: 
-  - make install &&  make book && make site
+- pip install jupyter-book
+- pip install selenium
+- npm install gh-pages --save-dev
+script:
+- make install &&  make book && make site
 deploy:
   provider: script
   skip_cleanup: true
   keep-history: true
-  script: ./.travis_deploy.sh
+  script: "./.travis_deploy.sh"
   on:
     branch: master
 notifications:
-  slack: lcrsmr:GE9kg9iKT82anpNyqtGmXhUT
+  slack:
+    secure: YvaPtek3ln0SuWjo25B+pbVHtpPi7+jrvwbH26FxppgT1cpuXgaD3/v67F4uc+VsDdGL1Qbu6B6UkA4PnHec68C2PdQMGRq+KIjBoxVhIHzVscA5CsG25rxWybU0ktt9DGiSr12RTaWOmJfdv6ya2AZ/RNai5OIpf0XHXVPLs370tabkKh4iLESph/aKPEkEzSnnCXXWs7+QDosZlnUatIw0g+WKauQ/z5xJ71/hV0mI6krfVhncquUI1nLMEuUVVv6wI2y/S3i7ovAdE3rFfnDCFVQB576b7hdSXLe68Q5VlwuRBvfd0Qr9VN9sFA3Rs1lnhvDAtUR+MFHACJiCi3Bhv/LfhXZ9dxY1dZoJrSpPra6TQBvGpQb/qWqIVjnzmln2CtYU4hMtIfO3pFrMUR5f/oZNAaNcXE/lR6L19dc1/9A+jWgzoy/jHGARnTQ4zJQ8hwd8thTS6yJvtxy99VUueFJvAU7zx+3e1APInToYTnIFCkjgsn1K2mdhPTufj2BKMby/qLwMpNzq0ffacWcIycba7jNDIUh4SVex+67Joao/uJDFSXwsF7GxepvOeQNqQoq/fmihT8lWnN/L63ZEp2sGgWOdze4LuaKKxJsyeR1smDXLdJQnakaq8SE8L6PM0a3sN5aaFocnI8z7Tw3hNzjNTxWzG6RntwQF0qY=
