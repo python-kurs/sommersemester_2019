@@ -5,8 +5,9 @@ openssl aes-256-cbc -K $encrypted_9d525ff4942a_key -iv $encrypted_9d525ff4942a_i
 chmod 600 deploy-key
 eval `ssh-agent -s`
 ssh-add deploy-key
-zip _site for oer upload
 
+
+#zip _site for oer upload
 cd _site
 zip -r ../oer.zip assets content images units index.html intro.html motivation.html search.html
 cd ..
