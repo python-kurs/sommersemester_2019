@@ -19,7 +19,7 @@ echo "Done"
 sed -i '27,28s/^/#/' _config.yml
 sed -i '31,32s/#//' _config.yml
 
-make book && make site
+make install && make book && make site
 
 ./node_modules/.bin/gh-pages -d _site/ -b gh-pages -r git@github.com:${TRAVIS_REPO_SLUG}.git
 
