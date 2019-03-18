@@ -29,9 +29,9 @@
   "headline":
     "Python Basics I",
   "datePublished":
-    "2019-03-15T10:14:13+00:00",
+    "2019-03-18T14:09:16+00:00",
   "dateModified":
-    "2019-03-15T10:14:13+00:00",
+    "2019-03-18T14:09:16+00:00",
   "description":
     "",
   "author": {
@@ -674,6 +674,7 @@ initFunction(initQuery);
   <li><a href="#arithmetic-operators">Arithmetic operators</a></li>
   <li><a href="#logical-operators">Logical operators</a></li>
   <li><a href="#formatted-printing">Formatted printing</a></li>
+  <li><a href="#input">Input</a></li>
   <li><a href="#exercise-2">Exercise 2</a></li>
 </ul>
     </nav>
@@ -1021,18 +1022,13 @@ False
     <li>Why does the following code block return <code class="highlighter-rouge">False</code>?</li>
   </ol>
 
+  <p><code class="highlighter-rouge">
+ a = 1.8
+ b = 0.6 + 0.6 + 0.6
+ a == b
+</code></p>
+
 </div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mf">1.8</span>
-<span class="n">b</span> <span class="o">=</span> <span class="mf">0.6</span> <span class="o">+</span> <span class="mf">0.6</span> <span class="o">+</span> <span class="mf">0.6</span>
-
-<span class="n">a</span> <span class="o">==</span> <span class="n">b</span>
-</code></pre></div></div>
-
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>False
-</code></pre></div></div>
-
-<hr />
 
 <h2 id="formatted-printing">Formatted printing</h2>
 
@@ -1066,6 +1062,19 @@ Only text within <code class="highlighter-rouge">{</code> and <code class="highl
 </code></pre></div></div>
 
 <div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>10 liters of milk cost:      10.26€.
+
+</code></pre></div></div>
+
+<h2 id="input">Input</h2>
+
+<p>If the input(prompt)-function is called during a program run, the program sequence is stopped until the user makes an entry via the keyboard and closes it with the Return key. The string of the parameter “prompt” is displayed if it is passed. In this way you can show the user what he is expected to enter.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"What is your name? "</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Hello "</span> <span class="o">+</span> <span class="n">x</span> <span class="o">+</span> <span class="s">"!"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>What is your name? Sebastian
+Hello Sebastian!
 
 </code></pre></div></div>
 
