@@ -108,3 +108,7 @@ vendor
 .bundle
 
 Gemfile.lock
+
+_build/
+_site/
+.sass-cache/
