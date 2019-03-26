@@ -61,12 +61,9 @@
   - title: Python Basics III
     url: /units/S01E03
     not_numbered: true
-  - title: Warning cells
+  - title: Python Basics IV
     url: /units/S01E04
     not_numbered: true
-  #- title: Unit 2
-    #url: /units/S01E01
-    #not_numbered: true
-  #- title: Unit 3
-    #url: /units/S01E02
-    #not_numbered: true
+  #- title: Warning cells
+  #  url: /units/S01E04
+  #  not_numbered: true
