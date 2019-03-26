@@ -29,9 +29,9 @@
   "headline":
     "Warning cells",
   "datePublished":
-    "2019-03-19T09:56:44+00:00",
+    "2019-03-26T11:09:41+00:00",
   "dateModified":
-    "2019-03-19T09:56:44+00:00",
+    "2019-03-26T11:09:41+00:00",
   "description":
     "",
   "author": {
@@ -664,6 +664,26 @@ initFunction(initQuery);
 <!-- TOC will only show up if it has at least one item -->
 
 
+  <aside class="sidebar__right">
+    <nav class="onthispage">
+      <header><h4 class="nav__title"><i class="fa fa-list"></i>   On this page</h4></header>
+      <ul class="toc__menu">
+  <li><a href="#python-modules">Python modules</a>
+    <ul>
+      <li><a href="#the-import-system">The import system</a></li>
+    </ul>
+  </li>
+  <li><a href="#data-import--export">Data import &amp; export</a>
+    <ul>
+      <li><a href="#read-files">Read files</a></li>
+      <li><a href="#write-files">Write files</a></li>
+    </ul>
+  </li>
+  <li><a href="#errors-and-exceptions">Errors and Exceptions</a></li>
+</ul>
+    </nav>
+  </aside>
+
 
       
       <main class="c-textbook__page" tabindex="-1">
@@ -697,6 +717,109 @@ initFunction(initQuery);
 
             <div class="c-textbook__content">
               
+<h1 id="python-basics-iv">Python Basics IV</h1>
+
+<h2 id="python-modules">Python modules</h2>
+
+<p>When you write larger scripts, it makes sense to split your code into multiple files so that you do not lose track of all your functions. You may also want to use a handy function that you’ve written in several programs without copying its definition into each program.</p>
+
+<p>To support this, Python has a way to put definitions in one file and use them in another script. Such a file is called a module. Definitions from one module can be imported into other modules or into the main module.</p>
+
+<p>A module is a file containing Python definitions and statements. The file name is the module name with the suffix .py appended.</p>
+
+<h3 id="the-import-system">The import system</h3>
+
+<p>Lets say, we defined the following function (to print the Fibonacci numbers) in the file “fibo.py”:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s">' '</span><span class="p">)</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+    <span class="k">print</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>Now we want to use this function in another script. To import the definitions from a module into another script, you can use the <code class="highlighter-rouge">import</code> statement:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">fibo</span> <span class="c"># Import the fibo-module</span>
+
+<span class="n">fibo</span><span class="o">.</span><span class="n">fibonacci</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span> <span class="c"># Use the fibonacci function from the fibo module</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0 1 1 2 3 5 8 13 21 34 55 89 
+
+</code></pre></div></div>
+
+<p>You can also assign an alias to the imported module via:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">fibo</span> <span class="k">as</span> <span class="n">fb</span>
+
+<span class="n">fb</span><span class="o">.</span><span class="n">fibonacci</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0 1 1 2 3 5 8 13 21 34 55 89 
+
+</code></pre></div></div>
+
+<p>This is common practice as module names are sometimes long and coders like short module names in their code.</p>
+
+<div class="alert task">
+
+  <p><strong>Task:</strong></p>
+
+  <ol>
+    <li>Write a function “add5(x)” that adds 5 to the given number <code class="highlighter-rouge">x</code> and returns the result. Save this function in the file “mathe.py” in your home folder.</li>
+    <li>Start an interactive python shell in your home folder.</li>
+    <li>Import the function “add5(x)”, call it with some random arguments and print the results.</li>
+  </ol>
+
+</div>
+
+<h2 id="data-import--export">Data import &amp; export</h2>
+
+<h3 id="read-files">Read files</h3>
+
+<h3 id="write-files">Write files</h3>
+
+<h2 id="errors-and-exceptions">Errors and Exceptions</h2>
+
+<p>When an error occurs in Python, it will normally stop and generate an error message.
+This happens, e.g., when you try to read a non-existing or corrupt file:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">open</span><span class="p">(</span><span class="s">"non_existing_file.csv"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+    ---------------------------------------------------------------------------
+
+    FileNotFoundError                         Traceback (most recent call last)
+
+    &lt;ipython-input-11-f31a83254d49&gt; in &lt;module&gt;()
+    ----&gt; 1 open("non_existing_file.csv")
+    
+
+    FileNotFoundError: [Errno 2] No such file or directory: 'non_existing_file.csv'
+
+
+</code></pre></div></div>
+
+<p>These errors (or “exceptions”) can be handled using the try statement:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span><span class="p">:</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"non_existing_file.csv"</span><span class="p">)</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"An error occurred when I tried to open the file."</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>An error occurred when I tried to open the file.
+
+</code></pre></div></div>
+
+<ul>
+  <li>The try block lets you test a block of code for errors.</li>
+  <li>The except block lets you handle the error.</li>
+</ul>
+
 
               <nav class="c-page__nav">
   
