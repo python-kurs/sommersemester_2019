@@ -1,6 +1,9 @@
 # Syllabus
 
 **Introduction & Orga** (17.04.2019)
+- Organizational matters
+- Software requirements
+- GitHub classroom
 
 **Python Basics I** (24.04.2019)
 - Variables
@@ -10,17 +13,17 @@
     
 **Python Basics II** (08.05.2019)
 - Sequential data types (Strings & Lists)
-- List manipulation (peek, pop, deep copies, ...)
-- Indents
-- for- and while- loops
-- conditional cases
+- List manipulation (peek, pop, ...)
+- Blocks & indentation
+- Loops
+- Conditional cases
 
 **Python Basics III** (15.05.2019)
 - Dictionaries
 - Functions
-- global vs. local variables
-- import function
-- try/except
+- Global vs. local variables
+- Modules & Import
+- Exception handling (try/except)
 
 **Essentials for data science** (22.05.2019)
 - numpy  (unlabeled nd-arrays)
