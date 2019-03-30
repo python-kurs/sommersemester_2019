@@ -22,7 +22,7 @@
 # See the links below for an example.
 
 # Top-level page
-- title: Orga
+- title: Introduction
   url: /intro
   not_numbered: true
 
@@ -61,7 +61,7 @@
   - title: Python Basics III
     url: /units/S01E03
     not_numbered: true
-  - title: Python Basics IV
+  - title: Essentials for data science
     url: /units/S01E04
     not_numbered: true
   #- title: Warning cells

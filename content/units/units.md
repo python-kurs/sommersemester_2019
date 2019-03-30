@@ -22,7 +22,7 @@
 - Dictionaries
 - Functions
 - Global vs. local variables
-- Modules & Import
+- Modules & import
 - Exception handling (try/except)
 
 **Essentials for data science** (22.05.2019)
