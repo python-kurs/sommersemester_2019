@@ -30,6 +30,10 @@
   url: /motivation
   not_numbered: true
 
+- title: About
+  url: /about
+  not_numbered: true
+
 # External link
 #- title: GitHub repository
   #url: https://github.com/jupyter/jupyter-book
