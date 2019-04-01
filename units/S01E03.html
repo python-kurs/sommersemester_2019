@@ -29,9 +29,9 @@
   "headline":
     "Python Basics III",
   "datePublished":
-    "2019-03-31T17:27:08+00:00",
+    "2019-04-01T13:18:39+00:00",
   "dateModified":
-    "2019-03-31T17:27:08+00:00",
+    "2019-04-01T13:18:39+00:00",
   "description":
     "",
   "author": {
@@ -689,6 +689,18 @@ initFunction(initQuery);
     <nav class="onthispage">
       <header><h4 class="nav__title"><i class="fa fa-list"></i>   On this page</h4></header>
       <ul class="toc__menu">
+  <li><a href="#dictionaries">Dictionaries</a></li>
+  <li><a href="#functions">Functions</a>
+    <ul>
+      <li><a href="#documentation">Documentation</a></li>
+      <li><a href="#built-in-functions">Built in functions</a></li>
+    </ul>
+  </li>
+  <li><a href="#variable-scope---global-vs-local">Variable scope - global vs. local</a>
+    <ul>
+      <li><a href="#constants">Constants</a></li>
+    </ul>
+  </li>
   <li><a href="#python-modules">Python modules</a>
     <ul>
       <li><a href="#the-import-system">The import system</a></li>
@@ -735,15 +747,265 @@ initFunction(initQuery);
               
 <h1 id="python-basics-iii">Python Basics III</h1>
 
+<h2 id="dictionaries">Dictionaries</h2>
+
+<p>Another useful datatype are dictionaries. In contrast to lists, where you have to keep track of a specific index to be able to access a certain value, dictionaries use keywords.
+A dictionary can be created by using curly braces <em>{}</em> and each element in it is a <strong>key : value</strong> pair.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">kitchen_supplies</span> <span class="o">=</span> <span class="p">{</span><span class="s">"pans"</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">"pots"</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s">"knives"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s">"spoons"</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="s">"forks"</span><span class="p">:</span> <span class="mi">6</span><span class="p">}</span>
+</code></pre></div></div>
+
+<p>Accessing values is done by specifying the name of the key:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">kitchen_supplies</span><span class="p">[</span><span class="s">"knives"</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>10
+</code></pre></div></div>
+
+<p>While in this example strings were used as keys and integers used as values this is not a neccessity. Any datatype can be used for values but the keys can only be of immutable type (meaning types which can not be changed afterwards like strings and numbers) and have to be unique. So a list can not be a key but can be a value.</p>
+
+<p>Like lists dictionaries have some built in methods (functions) which are usefull like:</p>
+
+<p>Checking if a key exists in the dictionary</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">"mixer"</span> <span class="ow">in</span> <span class="n">kitchen_supplies</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>False
+</code></pre></div></div>
+
+<p>Remove an item while returning the value at the same time.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">num_pans</span> <span class="o">=</span> <span class="n">kitchen_supplies</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">"pans"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">kitchen_supplies</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">num_pans</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'pots': 4, 'knives': 10, 'spoons': 12, 'forks': 6}
+3
+
+</code></pre></div></div>
+
+<p>If you try to pop an element which does not exist an error will the thrown. Fortunately the pop method accepts a second argument where a default return value can be specified</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">kitchen_supplies</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">"mixer"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+    ---------------------------------------------------------------------------
+
+    KeyError                                  Traceback (most recent call last)
+
+    &lt;ipython-input-8-b62981f981c6&gt; in &lt;module&gt;
+    ----&gt; 1 kitchen_supplies.pop("mixer")
+    
+
+    KeyError: 'mixer'
+
+
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">kitchen_supplies</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">"mixer"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
+</code></pre></div></div>
+
+<p>Get a list of all keys, values or items in the dictionary which you can loop over</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">kitchen_supplies</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">kitchen_supplies</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">kitchen_supplies</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dict_keys(['pots', 'knives', 'spoons', 'forks'])
+dict_values([4, 10, 12, 6])
+dict_items([('pots', 4), ('knives', 10), ('spoons', 12), ('forks', 6)])
+
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">kitchen_supplies</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"There are {} {} in the kitchen"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">key</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>There are 4 pots in the kitchen
+There are 10 knives in the kitchen
+There are 12 spoons in the kitchen
+There are 6 forks in the kitchen
+
+</code></pre></div></div>
+
+<p>Similarly there is a <strong>get</strong> method which can be used to access values. The advantage over just using the <strong>[ ]</strong> method to access values is that the <em>get</em> method can return a default value when you are trying to access elements which do not exist while the square brackets give an error which can be usefull if you don’t know in advance if an element exists or not.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">kitchen_supplies</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">"pots"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4
+</code></pre></div></div>
+
+<h2 id="functions">Functions</h2>
+
+<p>For small tasks chaining together command one by one in a script can be a viable solution but often the problem at hand consists of multiple steps and/or needs to repeated multiple times for example for different directories. Then the code will get messy pretty fast which, according to rule one of <a href="https://www.python.org/dev/peps/pep-0020/"><strong>The Zen of Python</strong></a>, is something we want to avoid.</p>
+
+<p>To achive this we can use <strong>functions</strong> which:</p>
 <ul>
-  <li>Dictionaries</li>
-  <li>Functions</li>
-  <li>global vs. local variables</li>
-  <li>import function</li>
-  <li>try/except</li>
+  <li>encapsulate small snippets of code</li>
+  <li>can be reused any number of times</li>
+  <li>make our code more <em>modular</em>, less repititous and easier to maintain</li>
 </ul>
 
-<h1 id="todo-benjamin-dicts-functions-globloc-vars">TODO Benjamin: dicts, functions, glob/loc. vars</h1>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">happy_birthday</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Happy birthday Tom!"</span><span class="p">)</span>
+    
+<span class="n">happy_birthday</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Happy birthday Tom!
+
+</code></pre></div></div>
+
+<p>Now this does not save very much code because if we wanted to congratulate Sally we would need to write another quite similar function. To make this function more generic we can use <strong>Parameters</strong>.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">happy_birthday</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Happy birthday {}!"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+    
+<span class="n">happy_birthday</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">"Tom"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Happy birthday Tom!
+
+</code></pre></div></div>
+
+<p>Functions can have any number of parameters which can also have a default value assigned to them makeing them optional in the function call.
+Additionally a <strong>return</strong> value can be specified.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">calc_something</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="n">y</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">calc_something</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">calc_something</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4096
+256
+
+</code></pre></div></div>
+
+<h3 id="documentation">Documentation</h3>
+<p>While this is still an easy example where it’s pretty clear what is done in general it is important to document functions. While normal inline comments like you already know can be used there are special “comments” called <a href="https://www.python.org/dev/peps/pep-0257/"><strong>docstrings</strong></a> which can be inserted as a first statement in a function and are a standardized way of documenting.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">calc_something</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
+    <span class="s">"""
+    Calculate x to the power of y.
+    
+    Parameters
+    ----------
+    x : number
+        The base
+    y : number, optional
+        The exponent, defaults to 4
+        
+    Returns
+    -------
+    number
+    
+    """</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="n">y</span>
+</code></pre></div></div>
+
+<p>The first line should contain a short one line description. Following a blank line a more detailed description of what the function is doing can be given (omitted in this example).</p>
+
+<p>This example uses the so called <a href="https://numpydoc.readthedocs.io/en/latest/"><em>numpydoc</em></a> style which has the advantage to be very readable. Another popular style is the <a href="https://github.com/google/styleguide/blob/gh-pages/pyguide.md#38-comments-and-docstrings"><em>google</em></a> style. The choice which one to use is up to you, just make sure you stick with that choice.</p>
+
+<p>Documenting can be a lot of work but the advantages pay of quickly:</p>
+<ul>
+  <li>for your self to remember what a certain piece of code does if you want to use it sometime in the future</li>
+  <li>other people who use your code understand what is done and which input is needed and what is returned</li>
+</ul>
+
+<p>So it is a good habit to document code right when it is written even though sometimes it can be tempting to do it later.</p>
+
+<h3 id="built-in-functions">Built in functions</h3>
+
+<p>Python has many built in functions which solve common problems and are fastern than if we would implement those on our own. Often the purpose of the function is clear on first sight for example “min”, “max” or “sum”, but there are also some more complex functions.</p>
+<ul>
+  <li>set, map, enumerate, zip, sorted, max, min, sum, any, all</li>
+</ul>
+
+<p>keys = [‘a’, ‘b’, ‘c’]
+vals = [1, 2, 3]
+zipped = dict(zip(keys, vals))</p>
+
+<div class="alert task">
+
+  <p><strong>Task:</strong></p>
+  <ol>
+    <li>Go to the official <a href="https://docs.python.org/3.4/library/functions.html">Python documentation</a> or use a search engine of your choice and have a look at the built in functions like:
+      <ul>
+        <li>any</li>
+        <li>all</li>
+        <li>sorted</li>
+        <li>set</li>
+        <li>zip</li>
+        <li>enumerate</li>
+      </ul>
+
+      <p>Find out what they do and make sure you try them out.</p>
+    </li>
+    <li>Rewrite the following loop using the “map” function.
+      <pre><code class="language-Python">&gt;&gt;&gt; numbers = [1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15]
+&gt;&gt;&gt; for i, num in enumerate(numbers):
+&gt;&gt;&gt;    numbers[i] = numbers[i]**2 + 5
+</code></pre>
+    </li>
+  </ol>
+
+</div>
+
+<h2 id="variable-scope---global-vs-local">Variable scope - global vs. local</h2>
+
+<p>Let’s say we define the following:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="s">"Foo"</span>
+
+<span class="k">def</span> <span class="nf">very_usefull_function</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>What will happen if we call “very_usefull_function”?</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">very_usefull_function</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Foo
+
+</code></pre></div></div>
+
+<p>Now consider the following change to the function and think about what will happen when we first call the function and then print out “a” again afterwards.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">very_usefull_function</span><span class="p">():</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="s">"Bar"</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">very_usefull_function</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Bar
+Foo
+
+</code></pre></div></div>
+
+<p>This shows the difference between global and local variables. While we can access global variables inside of functions they can, by default, not be changed. A variable with the same name inside the function is a local variable and will always take precedence over global variables. It exists only in the scope of this function.
+In generall it is possible to change the value of a global variable from inside a function but since accessing a global variable from inside a function is considered bad practice and hence trying to change it even worse we neglect that possibility altogether.</p>
+
+<h3 id="constants">Constants</h3>
+<p>Often in other programming languages special variables can be defined which can not be changed and therefore be used for constants for example. In Python this is not possible. So a widely used convention is to mark constants with all upper case variable names.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SPEED_OF_LIGHT</span> <span class="o">=</span> <span class="mi">1080000000</span> <span class="c">#km/h</span>
+</code></pre></div></div>
 
 <h2 id="python-modules">Python modules</h2>
 
@@ -789,6 +1051,19 @@ initFunction(initQuery);
 
 <p>This is common practice as module names are sometimes long and coders like short module names in their code.</p>
 
+<div class="alert info">
+
+  <p>Sometime you will see something like</p>
+  <blockquote>
+    <p>from fibo import *</p>
+  </blockquote>
+
+  <p>which would import all functions from the fibo module. This is considered bad practice because it is not concrete and specific (it violates rule 2 of the <a href="https://www.python.org/dev/peps/pep-0020/"><strong>The Zen of Python</strong></a> ;-) ) and should not be done.</p>
+
+</div>
+
+<p>There are many modules with usefull functions out there which can be installed and used similarly to the way with our own modules shown above. We get to know some of the most common ones in later chapters of the course.</p>
+
 <div class="alert task">
 
   <p><strong>Task:</strong></p>
@@ -797,6 +1072,7 @@ initFunction(initQuery);
     <li>Write a function “add5(x)” that adds 5 to the given number <code class="highlighter-rouge">x</code> and returns the result. Save this function in the file “mathe.py” in your home folder.</li>
     <li>Start an interactive python shell in your home folder.</li>
     <li>Import the function “add5(x)”, call it with some random arguments and print the results.</li>
+    <li>Try out “import this”.</li>
   </ol>
 
 </div>
