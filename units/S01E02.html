@@ -29,9 +29,9 @@
   "headline":
     "Python Basics II",
   "datePublished":
-    "2019-04-02T06:42:06+00:00",
+    "2019-04-03T20:12:31+00:00",
   "dateModified":
-    "2019-04-02T06:42:06+00:00",
+    "2019-04-03T20:12:31+00:00",
   "description":
     "",
   "author": {
@@ -695,6 +695,7 @@ initFunction(initQuery);
       <li><a href="#lists">Lists</a></li>
     </ul>
   </li>
+  <li><a href="#dictionaries">Dictionaries</a></li>
   <li><a href="#loops">Loops</a>
     <ul>
       <li><a href="#the-for-loop">The for-loop</a></li>
@@ -816,7 +817,7 @@ initFunction(initQuery);
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'REMOTE SENSING'
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">zeichenkette</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s">"e"</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">zeichenkette</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s">"e"</span><span class="p">)</span> <span class="c"># Count the occurrences of "e" in the string</span>
 </code></pre></div></div>
 
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3
@@ -868,7 +869,7 @@ initFunction(initQuery);
 
 <p>Lists also feature many built-in functions, e.g. the index method which returns the first index at which a value occurs:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">zahlenreihe</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">zahlenreihe</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">zahlenreihe</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 </code></pre></div></div>
 
@@ -881,10 +882,10 @@ initFunction(initQuery);
 <span class="n">zahlenreihe</span>
 </code></pre></div></div>
 
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[0, 1, 1, 2, 2, 3, 3, 4, 6, 7, 8, 9]
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[0, 1, 2, 2, 3, 3, 4, 6, 7, 8, 8, 9]
 </code></pre></div></div>
 
-<p>Similar to strings lists have a length:</p>
+<p>And similar to strings, lists also have a length:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">len</span><span class="p">(</span><span class="n">zahlenreihe</span><span class="p">)</span>
 </code></pre></div></div>
@@ -916,7 +917,10 @@ initFunction(initQuery);
   <p><strong>Task</strong></p>
 
   <ol>
-    <li>Create a string variable and assign it the following string: <code class="highlighter-rouge">"Zehn zahme Ziegen zogen zehn Zentner Zucker zum Zoo"</code>.</li>
+    <li>Create a string variable and assign it the following string:
+      <pre><code class="language-Python">"Zehn zahme Ziegen zogen zehn Zentner Zucker zum Zoo"
+</code></pre>
+    </li>
     <li>Split the string and put each word as an element into a list.</li>
     <li>Count the words.</li>
     <li>Sort the list.</li>
@@ -925,6 +929,114 @@ initFunction(initQuery);
   </ol>
 
 </div>
+
+<h2 id="dictionaries">Dictionaries</h2>
+
+<p>Another useful datatype are dictionaries. In contrast to lists, where you have to keep track of a specific index to be able to access a certain value, dictionaries use keywords.
+A dictionary can be created by using curly braces <code class="highlighter-rouge">{</code> <code class="highlighter-rouge">}</code> and each element in it is a <strong>key : value</strong> pair.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">kitchen_supplies</span> <span class="o">=</span> <span class="p">{</span><span class="s">"pans"</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">"pots"</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s">"knives"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s">"spoons"</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="s">"forks"</span><span class="p">:</span> <span class="mi">6</span><span class="p">}</span>
+<span class="k">print</span><span class="p">(</span><span class="n">kitchen_supplies</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'pans': 3, 'pots': 4, 'knives': 10, 'spoons': 12, 'forks': 6}
+
+</code></pre></div></div>
+
+<p>Accessing values is done by specifying the name of the key:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">kitchen_supplies</span><span class="p">[</span><span class="s">"knives"</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>10
+</code></pre></div></div>
+
+<div class="alert info">
+
+  <p>While in this example strings were used as keys and integers used as values this is not a neccessity. Any datatype can be used for values but the keys can only be of immutable type (meaning types which can not be changed afterwards like strings and numbers) and have to be unique. So a list can not be a key but can be a value.</p>
+
+</div>
+
+<p>Like lists, dictionaries have some built in methods (functions) which are usefull like:</p>
+
+<p>Checking if a key exists in the dictionary:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">"mixer"</span> <span class="ow">in</span> <span class="n">kitchen_supplies</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>False
+</code></pre></div></div>
+
+<p>Remove an item while returning the value at the same time:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">num_pans</span> <span class="o">=</span> <span class="n">kitchen_supplies</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">"pans"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">kitchen_supplies</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">num_pans</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'pots': 4, 'knives': 10, 'spoons': 12, 'forks': 6}
+3
+
+</code></pre></div></div>
+
+<p>If you try to pop an element which does not exist, an error will the thrown.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">kitchen_supplies</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">"mixer"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+    ---------------------------------------------------------------------------
+
+    KeyError                                  Traceback (most recent call last)
+
+    &lt;ipython-input-7-b62981f981c6&gt; in &lt;module&gt;()
+    ----&gt; 1 kitchen_supplies.pop("mixer")
+    
+
+    KeyError: 'mixer'
+
+
+</code></pre></div></div>
+
+<p>Fortunately the pop method accepts a second argument where a default return value can be specified:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">kitchen_supplies</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">"mixer"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
+</code></pre></div></div>
+
+<p>Get a list of all keys, values or items in the dictionary which you can loop over:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">kitchen_supplies</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">kitchen_supplies</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">kitchen_supplies</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dict_keys(['pots', 'knives', 'spoons', 'forks'])
+dict_values([4, 10, 12, 6])
+dict_items([('pots', 4), ('knives', 10), ('spoons', 12), ('forks', 6)])
+
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">kitchen_supplies</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"There are {} {} in the kitchen."</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">key</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>There are 4 pots in the kitchen.
+There are 10 knives in the kitchen.
+There are 12 spoons in the kitchen.
+There are 6 forks in the kitchen.
+
+</code></pre></div></div>
+
+<p>Similarly there is a <code class="highlighter-rouge">get()</code> function which can be used to access values. The advantage over just using the <code class="highlighter-rouge">[</code> <code class="highlighter-rouge">]</code> method to access values is that the <code class="highlighter-rouge">get()</code> method can return a default value when you are trying to access elements which do not exist while the square brackets give an error. This can be usefull if you don’t know in advance if an element exists or not.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">kitchen_supplies</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">"pots"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4
+</code></pre></div></div>
 
 <h2 id="loops">Loops</h2>
 
@@ -1097,43 +1209,58 @@ g
 
 <h3 id="ifelse-statements">if/else statements</h3>
 
-<p>In many cases, you want to execute code only if a specific condition is met.</p>
+<p>In many cases, you want to execute code only if a specific condition is met:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="mi">1</span><span class="o">+</span><span class="mi">1</span><span class="o">==</span><span class="mi">2</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">"Math still works."</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="k">if</span> <span class="n">a</span><span class="o">&gt;</span><span class="n">b</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"a ist größer als b."</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Math still works.
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a ist größer als b.
 
 </code></pre></div></div>
 
 <p>Sometimes it’s also important to deal with those cases where the condition is not met:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="mi">1</span><span class="o">+</span><span class="mi">1</span><span class="o">==</span><span class="mi">2</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">"Math still works."</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">500</span>
+
+<span class="k">if</span> <span class="n">a</span><span class="o">&gt;</span><span class="n">b</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"a ist größer als b."</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">"Math is broken."</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"a ist kleiner oder gleich b."</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Math still works.
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a ist kleiner oder gleich b.
 
 </code></pre></div></div>
 
 <p>You can also check for multiple cases using the <code class="highlighter-rouge">elif</code> statement:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="mi">1</span><span class="o">+</span><span class="mi">1</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">"Math is broken."</span><span class="p">)</span>
-<span class="k">elif</span> <span class="mi">2</span><span class="o">+</span><span class="mi">2</span><span class="o">==</span><span class="mi">4</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">"Math might still work."</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">10</span>
+
+
+<span class="k">if</span> <span class="n">a</span><span class="o">&gt;</span><span class="n">b</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"a ist größer als b."</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">a</span><span class="o">&lt;</span><span class="n">b</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"a ist kleiner als b."</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">"Math is broken"</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"a ist gleich b."</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Math might still work.
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a ist gleich b.
 
 </code></pre></div></div>
 
-<p>Of course, <code class="highlighter-rouge">1+1==2</code> always evaluates to <code class="highlighter-rouge">True</code>. In the real world, however, you are often confronted with situations where you do not know the value of a variable while you are writing your code. For example, when you are dealing with input values from a person using your program:</p>
+<p>Of course, in these examples you know the result before you execute the code. The above snippet will always evaluate to <code class="highlighter-rouge">True</code> in the last <code class="highlighter-rouge">else</code> block and will consequently always print</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"a ist gleich b." 
+</code></pre></div></div>
+
+<p>In the real world, however, you are often confronted with situations where you do not know the value of a variable while you are writing your code. For example, when you are dealing with input values from a person using your program:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Are you a student? "</span><span class="p">)</span>
 
@@ -1169,7 +1296,10 @@ Welcome!
   <p><strong>Task:</strong></p>
 
   <ol>
-    <li>Check (programmatically) if the result of 2889 divided by 321 is larger than 8 and print “YES” if it is larger and “NO” if it is smaller.</li>
+    <li>Check for each element in the following list, if it is divisible by 17:
+      <pre><code class="language-Python">zahlenliste = [15,34,67,17,436,234,204,568,6787,1054]
+</code></pre>
+    </li>
   </ol>
 
 </div>
