@@ -25,11 +25,11 @@
 - Modules & import
 - Exception handling (try/except)
 
-**Essentials for data science** (22.05.2019)
+**Data science I** (22.05.2019)
 - pandas (csv-import, Datasets)
 - matplotlib (visualization)
 
-**Essentials for data science (multidimensional)** (29.05.2019)
+**Data science II** (29.05.2019)
 - numpy  (unlabeled nd-arrays)
 - xarray (labeled nd-arrays)
 
