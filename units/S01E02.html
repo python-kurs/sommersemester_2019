@@ -29,9 +29,9 @@
   "headline":
     "Python Basics II",
   "datePublished":
-    "2019-04-03T20:12:31+00:00",
+    "2019-04-04T17:14:46+00:00",
   "dateModified":
-    "2019-04-03T20:12:31+00:00",
+    "2019-04-04T17:14:46+00:00",
   "description":
     "",
   "author": {
@@ -706,6 +706,11 @@ initFunction(initQuery);
       <li><a href="#ifelse-statements">if/else statements</a></li>
     </ul>
   </li>
+  <li><a href="#further-control-flow-statements">Further control flow statements</a>
+    <ul>
+      <li><a href="#break">break</a></li>
+    </ul>
+  </li>
   <li><a href="#exercise-2">Exercise 2</a></li>
 </ul>
     </nav>
@@ -951,6 +956,32 @@ A dictionary can be created by using curly braces <code class="highlighter-rouge
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>10
 </code></pre></div></div>
 
+<p>Similarly there is a <code class="highlighter-rouge">get()</code> function which can be used to access values. The advantage over just using the <code class="highlighter-rouge">[</code> <code class="highlighter-rouge">]</code> method to access values is that the <code class="highlighter-rouge">get()</code> method returns the <code class="highlighter-rouge">None</code> value when you are trying to access elements which do not exist. The square brackets give an error. This can be usefull if you don’t know in advance if an element exists or not.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">kitchen_supplies</span><span class="p">[</span><span class="s">"mixer"</span><span class="p">])</span>
+</code></pre></div></div>
+
+<div class="output output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+    ---------------------------------------------------------------------------
+
+    KeyError                                  Traceback (most recent call last)
+
+    &lt;ipython-input-9-724b6649f6aa&gt; in &lt;module&gt;()
+    ----&gt; 1 print(kitchen_supplies["mixer"])
+    
+
+    KeyError: 'mixer'
+
+
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">kitchen_supplies</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">"mixer"</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>None
+
+</code></pre></div></div>
+
 <div class="alert info">
 
   <p>While in this example strings were used as keys and integers used as values this is not a neccessity. Any datatype can be used for values but the keys can only be of immutable type (meaning types which can not be changed afterwards like strings and numbers) and have to be unique. So a list can not be a key but can be a value.</p>
@@ -1006,7 +1037,7 @@ A dictionary can be created by using curly braces <code class="highlighter-rouge
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
 </code></pre></div></div>
 
-<p>Get a list of all keys, values or items in the dictionary which you can loop over:</p>
+<p>You can get a list of all keys, values or items in the dictionary via the respective dict methods:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">kitchen_supplies</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
 <span class="k">print</span><span class="p">(</span><span class="n">kitchen_supplies</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
@@ -1017,25 +1048,6 @@ A dictionary can be created by using curly braces <code class="highlighter-rouge
 dict_values([4, 10, 12, 6])
 dict_items([('pots', 4), ('knives', 10), ('spoons', 12), ('forks', 6)])
 
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">kitchen_supplies</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">"There are {} {} in the kitchen."</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">key</span><span class="p">))</span>
-</code></pre></div></div>
-
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>There are 4 pots in the kitchen.
-There are 10 knives in the kitchen.
-There are 12 spoons in the kitchen.
-There are 6 forks in the kitchen.
-
-</code></pre></div></div>
-
-<p>Similarly there is a <code class="highlighter-rouge">get()</code> function which can be used to access values. The advantage over just using the <code class="highlighter-rouge">[</code> <code class="highlighter-rouge">]</code> method to access values is that the <code class="highlighter-rouge">get()</code> method can return a default value when you are trying to access elements which do not exist while the square brackets give an error. This can be usefull if you don’t know in advance if an element exists or not.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">kitchen_supplies</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">"pots"</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4
 </code></pre></div></div>
 
 <h2 id="loops">Loops</h2>
@@ -1147,7 +1159,7 @@ white
 
 </code></pre></div></div>
 
-<p>A for-loop is used for iterating over any sequence. That means it can also be used to iterate over strings:</p>
+<p>A for-loop is used for iterating over any sequence. That means it can also be used to iterate over strings and dictionaries:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">uni</span> <span class="o">=</span> <span class="s">"Universität Marburg"</span>
 <span class="k">for</span> <span class="n">Buchstabe</span> <span class="ow">in</span> <span class="n">uni</span><span class="p">:</span>
@@ -1173,6 +1185,17 @@ b
 u
 r
 g
+
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">kitchen_supplies</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"There are {} {} in the kitchen."</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">key</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>There are 4 pots in the kitchen.
+There are 10 knives in the kitchen.
+There are 12 spoons in the kitchen.
+There are 6 forks in the kitchen.
 
 </code></pre></div></div>
 
@@ -1290,6 +1313,33 @@ Welcome!
 659
 
 </code></pre></div></div>
+
+<h2 id="further-control-flow-statements">Further control flow statements</h2>
+
+<h3 id="break">break</h3>
+
+<p>You can stop the execution of a loop with the <code class="highlighter-rouge">break</code> statement:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">"Sie haben 10 Versuche!"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Wie heißt unsere Bundeskanzlerin? "</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="s">"Angela Merkel"</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Richtig!"</span><span class="p">)</span>
+        <span class="k">break</span>
+        
+    <span class="k">print</span><span class="p">(</span><span class="s">"Das war falsch!"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Sie haben 10 Versuche!
+Wie heißt unsere Bundeskanzlerin? Peter
+Das war falsch!
+Wie heißt unsere Bundeskanzlerin? Angela Merkel
+Richtig!
+
+</code></pre></div></div>
+
+<p>There is also the <code class="highlighter-rouge">continue</code> statement. It is used to skip the rest of the code in the current loop block and to continue to the next iteration of the loop.</p>
 
 <div class="alert task">
 
