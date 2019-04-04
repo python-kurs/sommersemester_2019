@@ -29,9 +29,9 @@
   "headline":
     "Data science I",
   "datePublished":
-    "2019-04-04T17:38:07+00:00",
+    "2019-04-04T19:12:18+00:00",
   "dateModified":
-    "2019-04-04T17:38:07+00:00",
+    "2019-04-04T19:12:18+00:00",
   "description":
     "",
   "author": {
@@ -749,9 +749,145 @@ initFunction(initQuery);
 <h1 id="data-science-i">Data science I</h1>
 
 <h2 id="pandas">pandas</h2>
-<p>…</p>
+
+<p><img src="https://pandas.pydata.org/_static/pandas_logo.png" alt="" /></p>
+
+<p><strong>Python Data Analysis Library</strong></p>
+
+<blockquote>
+  <p>pandas is an open source, BSD-licensed library providing high-performance, easy-to-use data structures and data analysis tools for the Python programming language (<a href="https://pandas.pydata.org/index.html">pandas-website</a>).</p>
+</blockquote>
+
+<p>First-off a typical use case:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+
+<span class="n">tabelle</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'../data/metar_frankfurt.csv'</span><span class="p">)</span>
+<span class="n">tabelle</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>time</th>
+      <th>vis</th>
+      <th>temp</th>
+      <th>dewpt</th>
+      <th>winddir</th>
+      <th>windspeed</th>
+      <th>press_sealevel</th>
+      <th>cloudlevels</th>
+      <th>lcl_alt</th>
+      <th>lcl_cov</th>
+      <th>ucl_alt</th>
+      <th>ucl_cov</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2015-12-01 00:20</td>
+      <td>10000.0</td>
+      <td>11.0</td>
+      <td>8.0</td>
+      <td>230.0</td>
+      <td>19.0</td>
+      <td>1017.0</td>
+      <td>3.0</td>
+      <td>2600.0</td>
+      <td>FEW</td>
+      <td>14000.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2015-12-01 00:50</td>
+      <td>10000.0</td>
+      <td>11.0</td>
+      <td>8.0</td>
+      <td>230.0</td>
+      <td>19.0</td>
+      <td>1017.0</td>
+      <td>2.0</td>
+      <td>2800.0</td>
+      <td>SCT</td>
+      <td>14000.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2015-12-01 01:20</td>
+      <td>10000.0</td>
+      <td>11.0</td>
+      <td>8.0</td>
+      <td>230.0</td>
+      <td>16.0</td>
+      <td>1018.0</td>
+      <td>2.0</td>
+      <td>2800.0</td>
+      <td>SCT</td>
+      <td>13000.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2015-12-01 01:50</td>
+      <td>10000.0</td>
+      <td>12.0</td>
+      <td>8.0</td>
+      <td>230.0</td>
+      <td>16.0</td>
+      <td>1018.0</td>
+      <td>2.0</td>
+      <td>2200.0</td>
+      <td>BKN</td>
+      <td>13000.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2015-12-01 02:20</td>
+      <td>10000.0</td>
+      <td>12.0</td>
+      <td>8.0</td>
+      <td>220.0</td>
+      <td>14.0</td>
+      <td>1019.0</td>
+      <td>3.0</td>
+      <td>2200.0</td>
+      <td>FEW</td>
+      <td>12000.0</td>
+      <td>BKN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"windspeed"</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s">"press_sealevel"</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s">"cloudlevels"</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s">"."</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../images/units/S01E04_6_0.png" alt="png" /></p>
 
 <h2 id="matplotlib">matplotlib</h2>
+
+<p><img src="https://matplotlib.org/_static/logo2.png" alt="" /></p>
 
 <div class="alert task">
 
