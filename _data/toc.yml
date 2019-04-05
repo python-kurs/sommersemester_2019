@@ -65,9 +65,13 @@
   - title: Python Basics III
     url: /units/S01E03
     not_numbered: true
-  - title: Essentials for data science
+  - title: Data science I
     url: /units/S01E04
     not_numbered: true
+  - title: Data science II
+    url: /units/S01E05
+    not_numbered: true
+    
   #- title: Warning cells
   #  url: /units/S01E04
   #  not_numbered: true
