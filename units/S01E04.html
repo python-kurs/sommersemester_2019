@@ -29,9 +29,9 @@
   "headline":
     "Data science I",
   "datePublished":
-    "2019-04-05T11:04:11+00:00",
+    "2019-04-05T20:44:24+00:00",
   "dateModified":
-    "2019-04-05T11:04:11+00:00",
+    "2019-04-05T20:44:24+00:00",
   "description":
     "",
   "author": {
@@ -706,7 +706,15 @@ initFunction(initQuery);
     <nav class="onthispage">
       <header><h4 class="nav__title"><i class="fa fa-list"></i>   On this page</h4></header>
       <ul class="toc__menu">
-  <li><a href="#pandas">pandas</a></li>
+  <li><a href="#pandas">pandas</a>
+    <ul>
+      <li><a href="#selection-by-label">Selection by label</a></li>
+      <li><a href="#selection-by-position-index">Selection by position (index)</a></li>
+      <li><a href="#boolean-indexing">Boolean indexing</a></li>
+      <li><a href="#operations">Operations</a></li>
+      <li><a href="#resampling">Resampling</a></li>
+    </ul>
+  </li>
   <li><a href="#matplotlib">matplotlib</a></li>
   <li><a href="#exercise-4">Exercise 4</a></li>
 </ul>
@@ -752,18 +760,29 @@ initFunction(initQuery);
 
 <p><img src="https://pandas.pydata.org/_static/pandas_logo.png" alt="" /></p>
 
-<p><strong>Python Data Analysis Library</strong></p>
-
 <blockquote>
   <p>pandas is an open source, BSD-licensed library providing high-performance, easy-to-use data structures and data analysis tools for the Python programming language (<a href="https://pandas.pydata.org/index.html">pandas-website</a>).</p>
 </blockquote>
 
-<p>First-off a typical use case:</p>
+<p>Let’s say we want to investigate the weather data recorded at the Frankfurt International Airport from the year 2015. The data is available in the tabular CSV format:</p>
+
+<p><img src="attachment:image.png" alt="image.png" /></p>
+
+<p>First, we want to read the data:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="n">tabelle</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'../data/metar_frankfurt.csv'</span><span class="p">,</span><span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s">'time'</span><span class="p">],</span><span class="n">index_col</span><span class="o">=</span><span class="s">"time"</span><span class="p">)</span>
+</code></pre></div></div>
 
-<span class="n">tabelle</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'../data/metar_frankfurt.csv'</span><span class="p">)</span>
-<span class="n">tabelle</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<p>The pandas function <code class="highlighter-rouge">pd.read_csv(...)</code> opens the csv file and reads its contents. The <code class="highlighter-rouge">parse_dates</code> argument tells Python to interpret the values in the <code class="highlighter-rouge">time</code> column as dates and the <code class="highlighter-rouge">index_col</code> argument tells it to use this column as index.</p>
+
+<p>All data is stored in the <code class="highlighter-rouge">tabelle</code> object. This object is a so-called <strong>DataFrame</strong>, the basic pandas object. You can think of it like a spreadsheet.</p>
+
+<p>The DataFrame object offers many functions that allow you to work with the data conveniently.</p>
+
+<p>For a first glimps at the data, you can call the <code class="highlighter-rouge">head()</code> function which prints out the first 5 rows of the table:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div></div>
 
 <div class="output output_html">
@@ -785,7 +804,6 @@ initFunction(initQuery);
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>time</th>
       <th>vis</th>
       <th>temp</th>
       <th>dewpt</th>
@@ -798,16 +816,2066 @@ initFunction(initQuery);
       <th>ucl_alt</th>
       <th>ucl_cov</th>
     </tr>
+    <tr>
+      <th>time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
-      <td>2015-12-01 00:20</td>
+      <th>2015-01-01 00:20:00</th>
+      <td>2800.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1036.0</td>
+      <td>1.0</td>
+      <td>200.0</td>
+      <td>OVC</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 00:50:00</th>
+      <td>1500.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1036.0</td>
+      <td>1.0</td>
+      <td>100.0</td>
+      <td>OVC</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 01:20:00</th>
+      <td>1000.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1036.0</td>
+      <td>1.0</td>
+      <td>100.0</td>
+      <td>OVC</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 01:50:00</th>
+      <td>700.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1036.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 02:20:00</th>
+      <td>600.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1036.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>To get an <strong>overview</strong> of the value distributions of the variables within <code class="highlighter-rouge">tabelle</code>, you can call the <code class="highlighter-rouge">describe()</code> function. It generates descriptive statistics that summarize the central tendency, dispersion and shape of a dataset’s distribution, excluding NaN values:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>vis</th>
+      <th>temp</th>
+      <th>dewpt</th>
+      <th>winddir</th>
+      <th>windspeed</th>
+      <th>press_sealevel</th>
+      <th>cloudlevels</th>
+      <th>lcl_alt</th>
+      <th>ucl_alt</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>17520.000000</td>
+      <td>17507.000000</td>
+      <td>17507.000000</td>
+      <td>15615.000000</td>
+      <td>17519.000000</td>
+      <td>17507.000000</td>
+      <td>10210.000000</td>
+      <td>10210.000000</td>
+      <td>7743.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>9421.269977</td>
+      <td>11.679785</td>
+      <td>6.006740</td>
+      <td>169.353186</td>
+      <td>7.120212</td>
+      <td>1018.367967</td>
+      <td>2.056611</td>
+      <td>2142.938296</td>
+      <td>8763.786646</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>1839.270055</td>
+      <td>7.840700</td>
+      <td>5.574845</td>
+      <td>95.499760</td>
+      <td>4.378843</td>
+      <td>8.490866</td>
+      <td>0.747168</td>
+      <td>1371.047900</td>
+      <td>8246.197043</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>100.000000</td>
+      <td>-5.000000</td>
+      <td>-11.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>972.000000</td>
+      <td>1.000000</td>
+      <td>100.000000</td>
+      <td>200.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>10000.000000</td>
+      <td>5.000000</td>
+      <td>2.000000</td>
+      <td>70.000000</td>
+      <td>4.000000</td>
+      <td>1014.000000</td>
+      <td>2.000000</td>
+      <td>1000.000000</td>
+      <td>3150.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>10000.000000</td>
+      <td>11.000000</td>
+      <td>6.000000</td>
+      <td>200.000000</td>
+      <td>6.000000</td>
+      <td>1019.000000</td>
+      <td>2.000000</td>
+      <td>2000.000000</td>
+      <td>5500.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>10000.000000</td>
+      <td>17.000000</td>
+      <td>10.000000</td>
+      <td>230.000000</td>
+      <td>10.000000</td>
+      <td>1024.000000</td>
+      <td>3.000000</td>
+      <td>3100.000000</td>
+      <td>10000.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>10000.000000</td>
+      <td>39.000000</td>
+      <td>20.000000</td>
+      <td>360.000000</td>
+      <td>40.000000</td>
+      <td>1041.000000</td>
+      <td>4.000000</td>
+      <td>8000.000000</td>
+      <td>30000.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>The <code class="highlighter-rouge">dtypes</code> field of <code class="highlighter-rouge">tabelle</code> shows you all column names and the <strong>data type</strong> of the respective column:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="o">.</span><span class="n">dtypes</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vis               float64
+temp              float64
+dewpt             float64
+winddir           float64
+windspeed         float64
+press_sealevel    float64
+cloudlevels       float64
+lcl_alt           float64
+lcl_cov            object
+ucl_alt           float64
+ucl_cov            object
+dtype: object
+</code></pre></div></div>
+
+<p>You can <strong>sort</strong> the table by the values of a specific column, e.g.:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s">'vis'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>vis</th>
+      <th>temp</th>
+      <th>dewpt</th>
+      <th>winddir</th>
+      <th>windspeed</th>
+      <th>press_sealevel</th>
+      <th>cloudlevels</th>
+      <th>lcl_alt</th>
+      <th>lcl_cov</th>
+      <th>ucl_alt</th>
+      <th>ucl_cov</th>
+    </tr>
+    <tr>
+      <th>time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2015-11-01 19:20:00</th>
+      <td>100.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>1031.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-11-13 02:20:00</th>
+      <td>100.0</td>
+      <td>4.0</td>
+      <td>3.0</td>
+      <td>180.0</td>
+      <td>1.0</td>
+      <td>1024.0</td>
+      <td>1.0</td>
+      <td>100.0</td>
+      <td>BKN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 19:50:00</th>
+      <td>100.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>1031.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 18:50:00</th>
+      <td>100.0</td>
+      <td>6.0</td>
+      <td>5.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>1031.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 18:20:00</th>
+      <td>150.0</td>
+      <td>6.0</td>
+      <td>5.0</td>
+      <td>240.0</td>
+      <td>3.0</td>
+      <td>1031.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 07:50:00</th>
+      <td>150.0</td>
+      <td>3.0</td>
+      <td>2.0</td>
+      <td>140.0</td>
+      <td>3.0</td>
+      <td>1032.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-08 15:50:00</th>
+      <td>150.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>210.0</td>
+      <td>3.0</td>
+      <td>1030.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-08 15:20:00</th>
+      <td>150.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>240.0</td>
+      <td>3.0</td>
+      <td>1030.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-19 02:20:00</th>
+      <td>150.0</td>
+      <td>-1.0</td>
+      <td>-1.0</td>
+      <td>350.0</td>
+      <td>4.0</td>
+      <td>1013.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-19 01:50:00</th>
+      <td>150.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>360.0</td>
+      <td>3.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-19 01:20:00</th>
+      <td>150.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-08 16:20:00</th>
+      <td>150.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>220.0</td>
+      <td>5.0</td>
+      <td>1031.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-19 00:20:00</th>
+      <td>150.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>20.0</td>
+      <td>3.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-20 04:20:00</th>
+      <td>150.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>1021.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-08 09:20:00</th>
+      <td>150.0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>160.0</td>
+      <td>3.0</td>
+      <td>1032.0</td>
+      <td>1.0</td>
+      <td>100.0</td>
+      <td>BKN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-19 00:50:00</th>
+      <td>150.0</td>
+      <td>-1.0</td>
+      <td>-1.0</td>
+      <td>50.0</td>
+      <td>3.0</td>
+      <td>1014.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 17:50:00</th>
+      <td>200.0</td>
+      <td>6.0</td>
+      <td>5.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>1031.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 17:20:00</th>
+      <td>200.0</td>
+      <td>6.0</td>
+      <td>5.0</td>
+      <td>220.0</td>
+      <td>3.0</td>
+      <td>1031.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 16:50:00</th>
+      <td>200.0</td>
+      <td>6.0</td>
+      <td>5.0</td>
+      <td>210.0</td>
+      <td>4.0</td>
+      <td>1031.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-08 11:50:00</th>
+      <td>200.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>210.0</td>
+      <td>6.0</td>
+      <td>1032.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-20 04:50:00</th>
+      <td>200.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>90.0</td>
+      <td>2.0</td>
+      <td>1020.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-20 01:50:00</th>
+      <td>200.0</td>
+      <td>4.0</td>
+      <td>3.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>1020.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-20 02:20:00</th>
+      <td>200.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>1020.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-08 23:20:00</th>
+      <td>200.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>280.0</td>
+      <td>3.0</td>
+      <td>1031.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-08 23:50:00</th>
+      <td>200.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>1030.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-20 02:50:00</th>
+      <td>200.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>1020.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-18 23:50:00</th>
+      <td>200.0</td>
+      <td>-1.0</td>
+      <td>-1.0</td>
+      <td>340.0</td>
+      <td>3.0</td>
+      <td>1014.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 20:20:00</th>
+      <td>200.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>1031.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-20 05:50:00</th>
+      <td>200.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>190.0</td>
+      <td>3.0</td>
+      <td>1021.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-08 22:50:00</th>
+      <td>250.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>290.0</td>
+      <td>3.0</td>
+      <td>1030.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2015-05-18 03:20:00</th>
+      <td>10000.0</td>
+      <td>6.0</td>
+      <td>5.0</td>
+      <td>210.0</td>
+      <td>3.0</td>
+      <td>1017.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-05-18 03:50:00</th>
+      <td>10000.0</td>
+      <td>6.0</td>
+      <td>5.0</td>
+      <td>250.0</td>
+      <td>2.0</td>
+      <td>1016.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-05-18 04:20:00</th>
+      <td>10000.0</td>
+      <td>7.0</td>
+      <td>6.0</td>
+      <td>200.0</td>
+      <td>1.0</td>
+      <td>1016.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-05-18 04:50:00</th>
+      <td>10000.0</td>
+      <td>8.0</td>
+      <td>7.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1016.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-05-18 05:20:00</th>
+      <td>10000.0</td>
+      <td>10.0</td>
+      <td>7.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>1016.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-05-18 05:50:00</th>
       <td>10000.0</td>
       <td>11.0</td>
       <td>8.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>1016.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-05-18 06:20:00</th>
+      <td>10000.0</td>
+      <td>12.0</td>
+      <td>8.0</td>
+      <td>210.0</td>
+      <td>4.0</td>
+      <td>1015.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-05-18 06:50:00</th>
+      <td>10000.0</td>
+      <td>13.0</td>
+      <td>7.0</td>
+      <td>190.0</td>
+      <td>5.0</td>
+      <td>1015.0</td>
+      <td>2.0</td>
+      <td>2000.0</td>
+      <td>FEW</td>
+      <td>30000.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-05-18 07:20:00</th>
+      <td>10000.0</td>
+      <td>14.0</td>
+      <td>7.0</td>
+      <td>200.0</td>
+      <td>5.0</td>
+      <td>1015.0</td>
+      <td>2.0</td>
+      <td>2500.0</td>
+      <td>FEW</td>
+      <td>30000.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-05-18 07:50:00</th>
+      <td>10000.0</td>
+      <td>15.0</td>
+      <td>8.0</td>
+      <td>180.0</td>
+      <td>6.0</td>
+      <td>1014.0</td>
+      <td>2.0</td>
+      <td>2800.0</td>
+      <td>FEW</td>
+      <td>30000.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-05-18 08:20:00</th>
+      <td>10000.0</td>
+      <td>16.0</td>
+      <td>7.0</td>
+      <td>200.0</td>
+      <td>6.0</td>
+      <td>1014.0</td>
+      <td>2.0</td>
+      <td>3200.0</td>
+      <td>FEW</td>
+      <td>30000.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-05-18 08:50:00</th>
+      <td>10000.0</td>
+      <td>18.0</td>
+      <td>7.0</td>
+      <td>220.0</td>
+      <td>9.0</td>
+      <td>1013.0</td>
+      <td>2.0</td>
+      <td>3700.0</td>
+      <td>FEW</td>
+      <td>30000.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-05-18 09:20:00</th>
+      <td>10000.0</td>
+      <td>18.0</td>
+      <td>7.0</td>
+      <td>220.0</td>
+      <td>10.0</td>
+      <td>1013.0</td>
+      <td>2.0</td>
+      <td>4000.0</td>
+      <td>FEW</td>
+      <td>30000.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-05-18 17:50:00</th>
+      <td>10000.0</td>
+      <td>22.0</td>
+      <td>4.0</td>
       <td>230.0</td>
+      <td>12.0</td>
+      <td>1005.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-05-18 09:50:00</th>
+      <td>10000.0</td>
+      <td>18.0</td>
+      <td>7.0</td>
+      <td>240.0</td>
+      <td>7.0</td>
+      <td>1013.0</td>
+      <td>2.0</td>
+      <td>4200.0</td>
+      <td>FEW</td>
+      <td>30000.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-05-18 10:50:00</th>
+      <td>10000.0</td>
+      <td>20.0</td>
+      <td>4.0</td>
+      <td>210.0</td>
+      <td>11.0</td>
+      <td>1011.0</td>
+      <td>2.0</td>
+      <td>4800.0</td>
+      <td>FEW</td>
+      <td>30000.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-05-18 11:20:00</th>
+      <td>10000.0</td>
+      <td>21.0</td>
+      <td>5.0</td>
+      <td>200.0</td>
+      <td>10.0</td>
+      <td>1011.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-05-18 11:50:00</th>
+      <td>10000.0</td>
+      <td>22.0</td>
+      <td>6.0</td>
+      <td>190.0</td>
+      <td>11.0</td>
+      <td>1010.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-05-18 12:20:00</th>
+      <td>10000.0</td>
+      <td>22.0</td>
+      <td>4.0</td>
+      <td>190.0</td>
+      <td>11.0</td>
+      <td>1009.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-05-18 12:50:00</th>
+      <td>10000.0</td>
+      <td>22.0</td>
+      <td>1.0</td>
+      <td>220.0</td>
+      <td>15.0</td>
+      <td>1009.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-05-18 13:20:00</th>
+      <td>10000.0</td>
+      <td>23.0</td>
+      <td>1.0</td>
+      <td>230.0</td>
+      <td>15.0</td>
+      <td>1008.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-05-18 13:50:00</th>
+      <td>10000.0</td>
+      <td>22.0</td>
+      <td>1.0</td>
+      <td>210.0</td>
+      <td>14.0</td>
+      <td>1008.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-05-18 14:20:00</th>
+      <td>10000.0</td>
+      <td>23.0</td>
+      <td>1.0</td>
+      <td>220.0</td>
+      <td>14.0</td>
+      <td>1007.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-05-18 14:50:00</th>
+      <td>10000.0</td>
+      <td>23.0</td>
+      <td>1.0</td>
+      <td>230.0</td>
+      <td>17.0</td>
+      <td>1007.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-05-18 15:20:00</th>
+      <td>10000.0</td>
+      <td>23.0</td>
+      <td>2.0</td>
+      <td>220.0</td>
+      <td>15.0</td>
+      <td>1007.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-05-18 15:50:00</th>
+      <td>10000.0</td>
+      <td>22.0</td>
+      <td>3.0</td>
+      <td>210.0</td>
+      <td>13.0</td>
+      <td>1006.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-05-18 16:20:00</th>
+      <td>10000.0</td>
+      <td>22.0</td>
+      <td>3.0</td>
+      <td>210.0</td>
+      <td>11.0</td>
+      <td>1006.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-05-18 16:50:00</th>
+      <td>10000.0</td>
+      <td>22.0</td>
+      <td>3.0</td>
+      <td>220.0</td>
+      <td>11.0</td>
+      <td>1006.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-05-18 10:20:00</th>
+      <td>10000.0</td>
       <td>19.0</td>
+      <td>6.0</td>
+      <td>220.0</td>
+      <td>10.0</td>
+      <td>1012.0</td>
+      <td>2.0</td>
+      <td>4500.0</td>
+      <td>FEW</td>
+      <td>30000.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-07-02 11:50:00</th>
+      <td>10000.0</td>
+      <td>34.0</td>
+      <td>16.0</td>
+      <td>160.0</td>
+      <td>6.0</td>
+      <td>1019.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>17520 rows × 11 columns</p>
+</div>
+</div>
+
+<h3 id="selection-by-label">Selection by label</h3>
+
+<p>When the index of the DataFrame is a range of dates (like in this case), you can <strong>select</strong> one or more <strong>rows</strong> ( = measurement dates) by specifying a date or a date range (as strings):</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s">"2015-11"</span><span class="p">]</span> <span class="c"># selects all rows where the date is in November 2015.</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>vis</th>
+      <th>temp</th>
+      <th>dewpt</th>
+      <th>winddir</th>
+      <th>windspeed</th>
+      <th>press_sealevel</th>
+      <th>cloudlevels</th>
+      <th>lcl_alt</th>
+      <th>lcl_cov</th>
+      <th>ucl_alt</th>
+      <th>ucl_cov</th>
+    </tr>
+    <tr>
+      <th>time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2015-11-01 00:20:00</th>
+      <td>7000.0</td>
+      <td>3.0</td>
+      <td>2.0</td>
+      <td>80.0</td>
+      <td>5.0</td>
+      <td>1030.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 00:50:00</th>
+      <td>7000.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>60.0</td>
+      <td>6.0</td>
+      <td>1030.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 01:20:00</th>
+      <td>6000.0</td>
+      <td>3.0</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>1030.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 01:50:00</th>
+      <td>5000.0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>1030.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 02:20:00</th>
+      <td>5000.0</td>
+      <td>4.0</td>
+      <td>3.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>1030.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 02:50:00</th>
+      <td>5000.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>70.0</td>
+      <td>3.0</td>
+      <td>1030.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 03:20:00</th>
+      <td>5000.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>80.0</td>
+      <td>4.0</td>
+      <td>1030.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 03:50:00</th>
+      <td>5000.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>80.0</td>
+      <td>7.0</td>
+      <td>1030.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 04:20:00</th>
+      <td>6000.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>70.0</td>
+      <td>7.0</td>
+      <td>1030.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 04:50:00</th>
+      <td>5000.0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>10.0</td>
+      <td>3.0</td>
+      <td>1030.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 05:20:00</th>
+      <td>4500.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>1030.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 05:50:00</th>
+      <td>4000.0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>1031.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 06:20:00</th>
+      <td>2800.0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>160.0</td>
+      <td>3.0</td>
+      <td>1031.0</td>
+      <td>1.0</td>
+      <td>100.0</td>
+      <td>FEW</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 06:50:00</th>
+      <td>2800.0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>170.0</td>
+      <td>3.0</td>
+      <td>1031.0</td>
+      <td>1.0</td>
+      <td>200.0</td>
+      <td>FEW</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 07:20:00</th>
+      <td>1000.0</td>
+      <td>3.0</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>1032.0</td>
+      <td>2.0</td>
+      <td>100.0</td>
+      <td>FEW</td>
+      <td>600.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 07:50:00</th>
+      <td>150.0</td>
+      <td>3.0</td>
+      <td>2.0</td>
+      <td>140.0</td>
+      <td>3.0</td>
+      <td>1032.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 08:20:00</th>
+      <td>300.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>140.0</td>
+      <td>3.0</td>
+      <td>1032.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 08:50:00</th>
+      <td>300.0</td>
+      <td>4.0</td>
+      <td>3.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>1032.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 09:20:00</th>
+      <td>400.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>1032.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 09:50:00</th>
+      <td>400.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>1032.0</td>
+      <td>1.0</td>
+      <td>100.0</td>
+      <td>BKN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 10:20:00</th>
+      <td>600.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>150.0</td>
+      <td>3.0</td>
+      <td>1032.0</td>
+      <td>2.0</td>
+      <td>100.0</td>
+      <td>BKN</td>
+      <td>400.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 10:50:00</th>
+      <td>900.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>180.0</td>
+      <td>3.0</td>
+      <td>1032.0</td>
+      <td>2.0</td>
+      <td>100.0</td>
+      <td>BKN</td>
+      <td>300.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 11:20:00</th>
+      <td>1600.0</td>
+      <td>6.0</td>
+      <td>5.0</td>
+      <td>160.0</td>
+      <td>3.0</td>
+      <td>1032.0</td>
+      <td>2.0</td>
+      <td>100.0</td>
+      <td>SCT</td>
+      <td>200.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 11:50:00</th>
+      <td>1800.0</td>
+      <td>6.0</td>
+      <td>5.0</td>
+      <td>190.0</td>
+      <td>4.0</td>
+      <td>1031.0</td>
+      <td>3.0</td>
+      <td>100.0</td>
+      <td>FEW</td>
+      <td>400.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 12:20:00</th>
+      <td>2500.0</td>
+      <td>6.0</td>
+      <td>6.0</td>
+      <td>200.0</td>
+      <td>4.0</td>
+      <td>1031.0</td>
+      <td>3.0</td>
+      <td>100.0</td>
+      <td>FEW</td>
+      <td>400.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 12:50:00</th>
+      <td>3000.0</td>
+      <td>6.0</td>
+      <td>6.0</td>
+      <td>220.0</td>
+      <td>5.0</td>
+      <td>1031.0</td>
+      <td>2.0</td>
+      <td>200.0</td>
+      <td>FEW</td>
+      <td>300.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 13:20:00</th>
+      <td>3500.0</td>
+      <td>6.0</td>
+      <td>5.0</td>
+      <td>220.0</td>
+      <td>5.0</td>
+      <td>1031.0</td>
+      <td>2.0</td>
+      <td>200.0</td>
+      <td>FEW</td>
+      <td>300.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 13:50:00</th>
+      <td>3000.0</td>
+      <td>6.0</td>
+      <td>5.0</td>
+      <td>200.0</td>
+      <td>4.0</td>
+      <td>1031.0</td>
+      <td>2.0</td>
+      <td>200.0</td>
+      <td>FEW</td>
+      <td>300.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 14:20:00</th>
+      <td>2500.0</td>
+      <td>6.0</td>
+      <td>5.0</td>
+      <td>200.0</td>
+      <td>5.0</td>
+      <td>1031.0</td>
+      <td>2.0</td>
+      <td>200.0</td>
+      <td>FEW</td>
+      <td>300.0</td>
+      <td>OVC</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 14:50:00</th>
+      <td>1400.0</td>
+      <td>6.0</td>
+      <td>5.0</td>
+      <td>180.0</td>
+      <td>4.0</td>
+      <td>1031.0</td>
+      <td>2.0</td>
+      <td>100.0</td>
+      <td>FEW</td>
+      <td>200.0</td>
+      <td>OVC</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2015-11-30 09:20:00</th>
+      <td>10000.0</td>
+      <td>8.0</td>
+      <td>7.0</td>
+      <td>180.0</td>
+      <td>4.0</td>
+      <td>1021.0</td>
+      <td>3.0</td>
+      <td>300.0</td>
+      <td>FEW</td>
+      <td>2500.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-11-30 09:50:00</th>
+      <td>10000.0</td>
+      <td>9.0</td>
+      <td>8.0</td>
+      <td>200.0</td>
+      <td>7.0</td>
+      <td>1021.0</td>
+      <td>3.0</td>
+      <td>300.0</td>
+      <td>FEW</td>
+      <td>2500.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-11-30 10:20:00</th>
+      <td>8000.0</td>
+      <td>9.0</td>
+      <td>8.0</td>
+      <td>210.0</td>
+      <td>11.0</td>
+      <td>1021.0</td>
+      <td>3.0</td>
+      <td>300.0</td>
+      <td>FEW</td>
+      <td>3200.0</td>
+      <td>OVC</td>
+    </tr>
+    <tr>
+      <th>2015-11-30 10:50:00</th>
+      <td>6000.0</td>
+      <td>9.0</td>
+      <td>8.0</td>
+      <td>220.0</td>
+      <td>9.0</td>
+      <td>1020.0</td>
+      <td>3.0</td>
+      <td>300.0</td>
+      <td>FEW</td>
+      <td>2200.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-11-30 11:20:00</th>
+      <td>7000.0</td>
+      <td>9.0</td>
+      <td>8.0</td>
+      <td>200.0</td>
+      <td>7.0</td>
+      <td>1020.0</td>
+      <td>3.0</td>
+      <td>300.0</td>
+      <td>FEW</td>
+      <td>2100.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-11-30 11:50:00</th>
+      <td>10000.0</td>
+      <td>10.0</td>
+      <td>9.0</td>
+      <td>210.0</td>
+      <td>12.0</td>
+      <td>1019.0</td>
+      <td>3.0</td>
+      <td>300.0</td>
+      <td>FEW</td>
+      <td>3600.0</td>
+      <td>OVC</td>
+    </tr>
+    <tr>
+      <th>2015-11-30 12:20:00</th>
+      <td>10000.0</td>
+      <td>10.0</td>
+      <td>9.0</td>
+      <td>210.0</td>
+      <td>15.0</td>
+      <td>1019.0</td>
+      <td>2.0</td>
+      <td>300.0</td>
+      <td>FEW</td>
+      <td>2500.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-11-30 12:50:00</th>
+      <td>5000.0</td>
+      <td>10.0</td>
+      <td>9.0</td>
+      <td>210.0</td>
+      <td>18.0</td>
+      <td>1019.0</td>
+      <td>3.0</td>
+      <td>300.0</td>
+      <td>FEW</td>
+      <td>1700.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-11-30 13:20:00</th>
+      <td>10000.0</td>
+      <td>10.0</td>
+      <td>9.0</td>
+      <td>210.0</td>
+      <td>17.0</td>
+      <td>1019.0</td>
+      <td>3.0</td>
+      <td>500.0</td>
+      <td>FEW</td>
+      <td>3200.0</td>
+      <td>OVC</td>
+    </tr>
+    <tr>
+      <th>2015-11-30 13:50:00</th>
+      <td>10000.0</td>
+      <td>10.0</td>
+      <td>8.0</td>
+      <td>220.0</td>
+      <td>16.0</td>
+      <td>1018.0</td>
+      <td>2.0</td>
+      <td>500.0</td>
+      <td>FEW</td>
+      <td>2800.0</td>
+      <td>OVC</td>
+    </tr>
+    <tr>
+      <th>2015-11-30 14:20:00</th>
+      <td>10000.0</td>
+      <td>10.0</td>
+      <td>8.0</td>
+      <td>220.0</td>
+      <td>16.0</td>
+      <td>1018.0</td>
+      <td>2.0</td>
+      <td>600.0</td>
+      <td>FEW</td>
+      <td>2500.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-11-30 14:50:00</th>
+      <td>10000.0</td>
+      <td>10.0</td>
+      <td>8.0</td>
+      <td>220.0</td>
+      <td>15.0</td>
+      <td>1018.0</td>
+      <td>2.0</td>
+      <td>1000.0</td>
+      <td>FEW</td>
+      <td>2800.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-11-30 15:20:00</th>
+      <td>10000.0</td>
+      <td>11.0</td>
+      <td>7.0</td>
+      <td>220.0</td>
+      <td>17.0</td>
+      <td>1017.0</td>
+      <td>2.0</td>
+      <td>1000.0</td>
+      <td>FEW</td>
+      <td>2600.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-11-30 15:50:00</th>
+      <td>10000.0</td>
+      <td>11.0</td>
+      <td>7.0</td>
+      <td>220.0</td>
+      <td>17.0</td>
+      <td>1017.0</td>
+      <td>2.0</td>
+      <td>1300.0</td>
+      <td>FEW</td>
+      <td>2800.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-11-30 16:20:00</th>
+      <td>10000.0</td>
+      <td>11.0</td>
+      <td>7.0</td>
+      <td>220.0</td>
+      <td>15.0</td>
+      <td>1017.0</td>
+      <td>2.0</td>
+      <td>1500.0</td>
+      <td>FEW</td>
+      <td>3000.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-11-30 16:50:00</th>
+      <td>10000.0</td>
+      <td>11.0</td>
+      <td>7.0</td>
+      <td>220.0</td>
+      <td>19.0</td>
+      <td>1017.0</td>
+      <td>2.0</td>
+      <td>1500.0</td>
+      <td>FEW</td>
+      <td>3000.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-11-30 17:20:00</th>
+      <td>10000.0</td>
+      <td>11.0</td>
+      <td>7.0</td>
+      <td>220.0</td>
+      <td>22.0</td>
+      <td>1016.0</td>
+      <td>2.0</td>
+      <td>1500.0</td>
+      <td>FEW</td>
+      <td>3000.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-11-30 17:50:00</th>
+      <td>10000.0</td>
+      <td>11.0</td>
+      <td>7.0</td>
+      <td>220.0</td>
+      <td>19.0</td>
+      <td>1016.0</td>
+      <td>2.0</td>
+      <td>1500.0</td>
+      <td>FEW</td>
+      <td>3000.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-11-30 18:20:00</th>
+      <td>10000.0</td>
+      <td>11.0</td>
+      <td>7.0</td>
+      <td>210.0</td>
+      <td>19.0</td>
+      <td>1016.0</td>
+      <td>2.0</td>
+      <td>1500.0</td>
+      <td>FEW</td>
+      <td>3500.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-11-30 18:50:00</th>
+      <td>10000.0</td>
+      <td>11.0</td>
+      <td>7.0</td>
+      <td>220.0</td>
+      <td>21.0</td>
+      <td>1015.0</td>
+      <td>2.0</td>
+      <td>1000.0</td>
+      <td>FEW</td>
+      <td>3100.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-11-30 19:20:00</th>
+      <td>10000.0</td>
+      <td>10.0</td>
+      <td>8.0</td>
+      <td>240.0</td>
+      <td>18.0</td>
+      <td>1016.0</td>
+      <td>2.0</td>
+      <td>1000.0</td>
+      <td>FEW</td>
+      <td>3300.0</td>
+      <td>OVC</td>
+    </tr>
+    <tr>
+      <th>2015-11-30 19:50:00</th>
+      <td>10000.0</td>
+      <td>11.0</td>
+      <td>7.0</td>
+      <td>240.0</td>
+      <td>21.0</td>
+      <td>1016.0</td>
+      <td>2.0</td>
+      <td>1000.0</td>
+      <td>FEW</td>
+      <td>3200.0</td>
+      <td>OVC</td>
+    </tr>
+    <tr>
+      <th>2015-11-30 20:20:00</th>
+      <td>10000.0</td>
+      <td>11.0</td>
+      <td>8.0</td>
+      <td>240.0</td>
+      <td>20.0</td>
+      <td>1016.0</td>
+      <td>2.0</td>
+      <td>1000.0</td>
+      <td>FEW</td>
+      <td>3200.0</td>
+      <td>OVC</td>
+    </tr>
+    <tr>
+      <th>2015-11-30 20:50:00</th>
+      <td>10000.0</td>
+      <td>10.0</td>
+      <td>8.0</td>
+      <td>230.0</td>
+      <td>22.0</td>
+      <td>1016.0</td>
+      <td>3.0</td>
+      <td>1000.0</td>
+      <td>FEW</td>
+      <td>3700.0</td>
+      <td>OVC</td>
+    </tr>
+    <tr>
+      <th>2015-11-30 21:20:00</th>
+      <td>10000.0</td>
+      <td>11.0</td>
+      <td>8.0</td>
+      <td>240.0</td>
+      <td>20.0</td>
+      <td>1016.0</td>
+      <td>3.0</td>
+      <td>1000.0</td>
+      <td>FEW</td>
+      <td>4300.0</td>
+      <td>OVC</td>
+    </tr>
+    <tr>
+      <th>2015-11-30 21:50:00</th>
+      <td>10000.0</td>
+      <td>10.0</td>
+      <td>8.0</td>
+      <td>240.0</td>
+      <td>24.0</td>
+      <td>1016.0</td>
+      <td>3.0</td>
+      <td>1000.0</td>
+      <td>FEW</td>
+      <td>3500.0</td>
+      <td>OVC</td>
+    </tr>
+    <tr>
+      <th>2015-11-30 22:20:00</th>
+      <td>10000.0</td>
+      <td>11.0</td>
+      <td>8.0</td>
+      <td>240.0</td>
+      <td>22.0</td>
+      <td>1016.0</td>
+      <td>3.0</td>
+      <td>1000.0</td>
+      <td>FEW</td>
+      <td>3500.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-11-30 22:50:00</th>
+      <td>10000.0</td>
+      <td>11.0</td>
+      <td>8.0</td>
+      <td>240.0</td>
+      <td>21.0</td>
+      <td>1016.0</td>
+      <td>3.0</td>
+      <td>2600.0</td>
+      <td>FEW</td>
+      <td>15000.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-11-30 23:20:00</th>
+      <td>10000.0</td>
+      <td>11.0</td>
+      <td>8.0</td>
+      <td>240.0</td>
+      <td>22.0</td>
+      <td>1017.0</td>
+      <td>3.0</td>
+      <td>2600.0</td>
+      <td>FEW</td>
+      <td>15000.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-11-30 23:50:00</th>
+      <td>10000.0</td>
+      <td>11.0</td>
+      <td>8.0</td>
+      <td>240.0</td>
+      <td>22.0</td>
       <td>1017.0</td>
       <td>3.0</td>
       <td>2600.0</td>
@@ -815,64 +2883,2058 @@ initFunction(initQuery);
       <td>14000.0</td>
       <td>BKN</td>
     </tr>
-    <tr>
-      <th>1</th>
-      <td>2015-12-01 00:50</td>
-      <td>10000.0</td>
-      <td>11.0</td>
-      <td>8.0</td>
-      <td>230.0</td>
-      <td>19.0</td>
-      <td>1017.0</td>
-      <td>2.0</td>
-      <td>2800.0</td>
-      <td>SCT</td>
-      <td>14000.0</td>
-      <td>BKN</td>
+  </tbody>
+</table>
+<p>1440 rows × 11 columns</p>
+</div>
+</div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s">"2015-11-01 15:55"</span><span class="p">:</span><span class="s">"2015-11-01 19:20"</span><span class="p">]</span> <span class="c"># selects all rows between 2015-11-01 15:55 and 2015-11-01 19:20</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>vis</th>
+      <th>temp</th>
+      <th>dewpt</th>
+      <th>winddir</th>
+      <th>windspeed</th>
+      <th>press_sealevel</th>
+      <th>cloudlevels</th>
+      <th>lcl_alt</th>
+      <th>lcl_cov</th>
+      <th>ucl_alt</th>
+      <th>ucl_cov</th>
     </tr>
     <tr>
-      <th>2</th>
-      <td>2015-12-01 01:20</td>
-      <td>10000.0</td>
-      <td>11.0</td>
-      <td>8.0</td>
-      <td>230.0</td>
-      <td>16.0</td>
-      <td>1018.0</td>
-      <td>2.0</td>
-      <td>2800.0</td>
-      <td>SCT</td>
-      <td>13000.0</td>
-      <td>BKN</td>
+      <th>time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2015-11-01 16:20:00</th>
+      <td>250.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>190.0</td>
+      <td>5.0</td>
+      <td>1031.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
     <tr>
-      <th>3</th>
-      <td>2015-12-01 01:50</td>
-      <td>10000.0</td>
-      <td>12.0</td>
-      <td>8.0</td>
-      <td>230.0</td>
-      <td>16.0</td>
-      <td>1018.0</td>
-      <td>2.0</td>
-      <td>2200.0</td>
-      <td>BKN</td>
-      <td>13000.0</td>
-      <td>BKN</td>
+      <th>2015-11-01 16:50:00</th>
+      <td>200.0</td>
+      <td>6.0</td>
+      <td>5.0</td>
+      <td>210.0</td>
+      <td>4.0</td>
+      <td>1031.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
     <tr>
-      <th>4</th>
-      <td>2015-12-01 02:20</td>
-      <td>10000.0</td>
-      <td>12.0</td>
-      <td>8.0</td>
+      <th>2015-11-01 17:20:00</th>
+      <td>200.0</td>
+      <td>6.0</td>
+      <td>5.0</td>
       <td>220.0</td>
-      <td>14.0</td>
-      <td>1019.0</td>
       <td>3.0</td>
+      <td>1031.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 17:50:00</th>
+      <td>200.0</td>
+      <td>6.0</td>
+      <td>5.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>1031.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 18:20:00</th>
+      <td>150.0</td>
+      <td>6.0</td>
+      <td>5.0</td>
+      <td>240.0</td>
+      <td>3.0</td>
+      <td>1031.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 18:50:00</th>
+      <td>100.0</td>
+      <td>6.0</td>
+      <td>5.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>1031.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 19:20:00</th>
+      <td>100.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>1031.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>You can <strong>select</strong> one or more <strong>columns</strong> by:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s">'vis'</span><span class="p">,</span><span class="s">'temp'</span><span class="p">]]</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>vis</th>
+      <th>temp</th>
+    </tr>
+    <tr>
+      <th>time</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2015-01-01 00:20:00</th>
+      <td>2800.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 00:50:00</th>
+      <td>1500.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 01:20:00</th>
+      <td>1000.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 01:50:00</th>
+      <td>700.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 02:20:00</th>
+      <td>600.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 02:50:00</th>
+      <td>600.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 03:20:00</th>
+      <td>700.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 03:50:00</th>
+      <td>700.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 04:20:00</th>
+      <td>1000.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 04:50:00</th>
+      <td>900.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 05:20:00</th>
+      <td>900.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 05:50:00</th>
+      <td>1300.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 06:20:00</th>
+      <td>1200.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 06:50:00</th>
+      <td>1600.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 07:20:00</th>
+      <td>1100.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 07:50:00</th>
+      <td>700.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 08:20:00</th>
+      <td>700.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 08:50:00</th>
+      <td>600.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 09:20:00</th>
+      <td>700.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 09:50:00</th>
+      <td>800.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 10:20:00</th>
+      <td>900.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 10:50:00</th>
+      <td>900.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 11:20:00</th>
+      <td>1300.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 11:50:00</th>
+      <td>1500.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 12:20:00</th>
+      <td>1600.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 12:50:00</th>
+      <td>2000.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 13:20:00</th>
       <td>2200.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 13:50:00</th>
+      <td>2400.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 14:20:00</th>
+      <td>2400.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 14:50:00</th>
+      <td>2000.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 09:20:00</th>
+      <td>3000.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 09:50:00</th>
+      <td>3500.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 10:20:00</th>
+      <td>3800.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 10:50:00</th>
+      <td>4000.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 11:20:00</th>
+      <td>4000.0</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 11:50:00</th>
+      <td>4000.0</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 12:20:00</th>
+      <td>4000.0</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 12:50:00</th>
+      <td>4000.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 13:20:00</th>
+      <td>4000.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 13:50:00</th>
+      <td>4200.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 14:20:00</th>
+      <td>3800.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 14:50:00</th>
+      <td>3500.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 15:20:00</th>
+      <td>3000.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 15:50:00</th>
+      <td>2000.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 16:20:00</th>
+      <td>1000.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 16:50:00</th>
+      <td>800.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 17:20:00</th>
+      <td>700.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 17:50:00</th>
+      <td>800.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 18:20:00</th>
+      <td>400.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 18:50:00</th>
+      <td>700.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 19:20:00</th>
+      <td>700.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 19:50:00</th>
+      <td>500.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 20:20:00</th>
+      <td>400.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 20:50:00</th>
+      <td>300.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 21:20:00</th>
+      <td>400.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 21:50:00</th>
+      <td>700.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 22:20:00</th>
+      <td>700.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 22:50:00</th>
+      <td>400.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 23:20:00</th>
+      <td>500.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 23:50:00</th>
+      <td>500.0</td>
+      <td>5.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>17520 rows × 2 columns</p>
+</div>
+</div>
+
+<p>And you can also <strong>select columns and rows</strong> together within one call:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s">"2015-11-01 15:55"</span><span class="p">:</span><span class="s">"2015-11-01 19:20"</span><span class="p">,</span> <span class="p">[</span><span class="s">'vis'</span><span class="p">,</span><span class="s">'temp'</span><span class="p">]]</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>vis</th>
+      <th>temp</th>
+    </tr>
+    <tr>
+      <th>time</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2015-11-01 16:20:00</th>
+      <td>250.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 16:50:00</th>
+      <td>200.0</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 17:20:00</th>
+      <td>200.0</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 17:50:00</th>
+      <td>200.0</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 18:20:00</th>
+      <td>150.0</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 18:50:00</th>
+      <td>100.0</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 19:20:00</th>
+      <td>100.0</td>
+      <td>5.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<h3 id="selection-by-position-index">Selection by position (index)</h3>
+
+<p>Just as with the label selection, you can select values via their index using <code class="highlighter-rouge">iloc</code>:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>vis</th>
+      <th>temp</th>
+    </tr>
+    <tr>
+      <th>time</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2015-01-01 01:50:00</th>
+      <td>700.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 02:20:00</th>
+      <td>600.0</td>
+      <td>1.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<div class="alert task">
+
+  <p><strong>Task:</strong></p>
+
+  <ol>
+    <li>Import pandas and open this file: https://github.com/python-kurs/sommersemester_2019/blob/master/content/data/metar_frankfurt.csv</li>
+    <li>Clip the table to February 01, 2015 and the variables “vis”, “temp” and “windspeed”</li>
+  </ol>
+
+</div>
+
+<h3 id="boolean-indexing">Boolean indexing</h3>
+
+<p>You can use a single column’s values to select data:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="p">[</span><span class="n">tabelle</span><span class="o">.</span><span class="n">vis</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="p">]</span> <span class="c"># Selects all rows where vis &lt; 1000</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>vis</th>
+      <th>temp</th>
+      <th>dewpt</th>
+      <th>winddir</th>
+      <th>windspeed</th>
+      <th>press_sealevel</th>
+      <th>cloudlevels</th>
+      <th>lcl_alt</th>
+      <th>lcl_cov</th>
+      <th>ucl_alt</th>
+      <th>ucl_cov</th>
+    </tr>
+    <tr>
+      <th>time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2015-01-01 01:50:00</th>
+      <td>700.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1036.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 02:20:00</th>
+      <td>600.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1036.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 02:50:00</th>
+      <td>600.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1036.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 03:20:00</th>
+      <td>700.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1036.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 03:50:00</th>
+      <td>700.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1036.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 04:50:00</th>
+      <td>900.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1036.0</td>
+      <td>1.0</td>
+      <td>200.0</td>
+      <td>BKN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 05:20:00</th>
+      <td>900.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1036.0</td>
+      <td>1.0</td>
+      <td>200.0</td>
+      <td>BKN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 07:50:00</th>
+      <td>700.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>160.0</td>
+      <td>4.0</td>
+      <td>1037.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 08:20:00</th>
+      <td>700.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>1038.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 08:50:00</th>
+      <td>600.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>160.0</td>
+      <td>5.0</td>
+      <td>1037.0</td>
+      <td>1.0</td>
+      <td>2700.0</td>
+      <td>BKN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 09:20:00</th>
+      <td>700.0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>200.0</td>
+      <td>4.0</td>
+      <td>1037.0</td>
+      <td>2.0</td>
+      <td>300.0</td>
       <td>FEW</td>
-      <td>12000.0</td>
+      <td>2700.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 09:50:00</th>
+      <td>800.0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>230.0</td>
+      <td>5.0</td>
+      <td>1037.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 10:20:00</th>
+      <td>900.0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>220.0</td>
+      <td>5.0</td>
+      <td>1037.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 10:50:00</th>
+      <td>900.0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>240.0</td>
+      <td>4.0</td>
+      <td>1036.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-06 03:20:00</th>
+      <td>300.0</td>
+      <td>-3.0</td>
+      <td>-4.0</td>
+      <td>10.0</td>
+      <td>3.0</td>
+      <td>1027.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-06 03:50:00</th>
+      <td>600.0</td>
+      <td>-3.0</td>
+      <td>-3.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>1027.0</td>
+      <td>1.0</td>
+      <td>100.0</td>
+      <td>SCT</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-06 04:20:00</th>
+      <td>300.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>360.0</td>
+      <td>5.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-06 04:50:00</th>
+      <td>300.0</td>
+      <td>-3.0</td>
+      <td>-3.0</td>
+      <td>360.0</td>
+      <td>3.0</td>
+      <td>1027.0</td>
+      <td>1.0</td>
+      <td>100.0</td>
+      <td>SCT</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-06 05:20:00</th>
+      <td>300.0</td>
+      <td>-3.0</td>
+      <td>-3.0</td>
+      <td>10.0</td>
+      <td>4.0</td>
+      <td>1026.0</td>
+      <td>1.0</td>
+      <td>100.0</td>
+      <td>SCT</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-06 05:50:00</th>
+      <td>300.0</td>
+      <td>-3.0</td>
+      <td>-3.0</td>
+      <td>10.0</td>
+      <td>3.0</td>
+      <td>1026.0</td>
+      <td>1.0</td>
+      <td>100.0</td>
+      <td>BKN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-06 06:20:00</th>
+      <td>300.0</td>
+      <td>-3.0</td>
+      <td>-3.0</td>
+      <td>20.0</td>
+      <td>3.0</td>
+      <td>1026.0</td>
+      <td>1.0</td>
+      <td>100.0</td>
+      <td>BKN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-06 06:50:00</th>
+      <td>500.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.0</td>
+      <td>3.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-06 07:20:00</th>
+      <td>800.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-06 07:50:00</th>
+      <td>400.0</td>
+      <td>-3.0</td>
+      <td>-3.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>1026.0</td>
+      <td>1.0</td>
+      <td>100.0</td>
+      <td>BKN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-06 08:20:00</th>
+      <td>300.0</td>
+      <td>-3.0</td>
+      <td>-3.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>1026.0</td>
+      <td>1.0</td>
+      <td>100.0</td>
+      <td>OVC</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-06 08:50:00</th>
+      <td>300.0</td>
+      <td>-3.0</td>
+      <td>-3.0</td>
+      <td>30.0</td>
+      <td>1.0</td>
+      <td>1026.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-06 09:20:00</th>
+      <td>600.0</td>
+      <td>-2.0</td>
+      <td>-3.0</td>
+      <td>110.0</td>
+      <td>3.0</td>
+      <td>1026.0</td>
+      <td>1.0</td>
+      <td>100.0</td>
+      <td>OVC</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-06 09:50:00</th>
+      <td>600.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-06 10:20:00</th>
+      <td>900.0</td>
+      <td>-2.0</td>
+      <td>-2.0</td>
+      <td>100.0</td>
+      <td>3.0</td>
+      <td>1025.0</td>
+      <td>1.0</td>
+      <td>200.0</td>
+      <td>BKN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-06 14:20:00</th>
+      <td>900.0</td>
+      <td>-2.0</td>
+      <td>-2.0</td>
+      <td>180.0</td>
+      <td>3.0</td>
+      <td>1024.0</td>
+      <td>1.0</td>
+      <td>100.0</td>
+      <td>OVC</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2015-12-23 22:50:00</th>
+      <td>400.0</td>
+      <td>7.0</td>
+      <td>6.0</td>
+      <td>210.0</td>
+      <td>5.0</td>
+      <td>1029.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-23 23:20:00</th>
+      <td>300.0</td>
+      <td>6.0</td>
+      <td>6.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>1029.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-23 23:50:00</th>
+      <td>300.0</td>
+      <td>6.0</td>
+      <td>6.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>1028.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-24 00:20:00</th>
+      <td>300.0</td>
+      <td>6.0</td>
+      <td>6.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>1028.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-24 00:50:00</th>
+      <td>300.0</td>
+      <td>6.0</td>
+      <td>6.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>1028.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-24 01:20:00</th>
+      <td>300.0</td>
+      <td>6.0</td>
+      <td>6.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>1027.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-24 01:50:00</th>
+      <td>400.0</td>
+      <td>6.0</td>
+      <td>6.0</td>
+      <td>20.0</td>
+      <td>2.0</td>
+      <td>1027.0</td>
+      <td>2.0</td>
+      <td>100.0</td>
+      <td>BKN</td>
+      <td>800.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-12-24 02:50:00</th>
+      <td>800.0</td>
+      <td>7.0</td>
+      <td>7.0</td>
+      <td>80.0</td>
+      <td>4.0</td>
+      <td>1027.0</td>
+      <td>2.0</td>
+      <td>100.0</td>
+      <td>BKN</td>
+      <td>300.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-12-24 03:20:00</th>
+      <td>300.0</td>
+      <td>7.0</td>
+      <td>7.0</td>
+      <td>80.0</td>
+      <td>3.0</td>
+      <td>1027.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-24 03:50:00</th>
+      <td>400.0</td>
+      <td>7.0</td>
+      <td>7.0</td>
+      <td>50.0</td>
+      <td>2.0</td>
+      <td>1026.0</td>
+      <td>1.0</td>
+      <td>100.0</td>
+      <td>BKN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-24 04:20:00</th>
+      <td>800.0</td>
+      <td>7.0</td>
+      <td>6.0</td>
+      <td>350.0</td>
+      <td>3.0</td>
+      <td>1026.0</td>
+      <td>2.0</td>
+      <td>100.0</td>
+      <td>SCT</td>
+      <td>2100.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-12-24 04:50:00</th>
+      <td>700.0</td>
+      <td>6.0</td>
+      <td>6.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>1026.0</td>
+      <td>2.0</td>
+      <td>100.0</td>
+      <td>SCT</td>
+      <td>2200.0</td>
+      <td>SCT</td>
+    </tr>
+    <tr>
+      <th>2015-12-24 05:20:00</th>
+      <td>300.0</td>
+      <td>6.0</td>
+      <td>6.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>1026.0</td>
+      <td>2.0</td>
+      <td>100.0</td>
+      <td>FEW</td>
+      <td>2000.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-12-24 06:20:00</th>
+      <td>700.0</td>
+      <td>6.0</td>
+      <td>6.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>1025.0</td>
+      <td>3.0</td>
+      <td>600.0</td>
+      <td>SCT</td>
+      <td>11000.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-12-28 00:50:00</th>
+      <td>800.0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>70.0</td>
+      <td>5.0</td>
+      <td>1031.0</td>
+      <td>2.0</td>
+      <td>100.0</td>
+      <td>FEW</td>
+      <td>25000.0</td>
+      <td>SCT</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 16:50:00</th>
+      <td>800.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>1025.0</td>
+      <td>1.0</td>
+      <td>100.0</td>
+      <td>BKN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 17:20:00</th>
+      <td>700.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>1025.0</td>
+      <td>1.0</td>
+      <td>100.0</td>
+      <td>BKN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 17:50:00</th>
+      <td>800.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>1025.0</td>
+      <td>1.0</td>
+      <td>100.0</td>
+      <td>BKN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 18:20:00</th>
+      <td>400.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>1025.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 18:50:00</th>
+      <td>700.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>320.0</td>
+      <td>3.0</td>
+      <td>1025.0</td>
+      <td>1.0</td>
+      <td>100.0</td>
+      <td>BKN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 19:20:00</th>
+      <td>700.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>330.0</td>
+      <td>4.0</td>
+      <td>1025.0</td>
+      <td>1.0</td>
+      <td>100.0</td>
+      <td>BKN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 19:50:00</th>
+      <td>500.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>300.0</td>
+      <td>3.0</td>
+      <td>1025.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 20:20:00</th>
+      <td>400.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>1025.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 20:50:00</th>
+      <td>300.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>60.0</td>
+      <td>1.0</td>
+      <td>1025.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 21:20:00</th>
+      <td>400.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>1025.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 21:50:00</th>
+      <td>700.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>20.0</td>
+      <td>2.0</td>
+      <td>1025.0</td>
+      <td>1.0</td>
+      <td>100.0</td>
+      <td>BKN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 22:20:00</th>
+      <td>700.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>360.0</td>
+      <td>1.0</td>
+      <td>1025.0</td>
+      <td>1.0</td>
+      <td>100.0</td>
+      <td>OVC</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 22:50:00</th>
+      <td>400.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>1026.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 23:20:00</th>
+      <td>500.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>1026.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 23:50:00</th>
+      <td>500.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>240.0</td>
+      <td>3.0</td>
+      <td>1026.0</td>
+      <td>1.0</td>
+      <td>100.0</td>
+      <td>BKN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>299 rows × 11 columns</p>
+</div>
+</div>
+
+<p>You can also use multiple columns to select data after specific criteria:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="p">[(</span><span class="n">tabelle</span><span class="o">.</span><span class="n">vis</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">tabelle</span><span class="o">.</span><span class="n">temp</span><span class="o">&gt;</span><span class="mi">5</span><span class="p">)]</span> <span class="c"># selects all rows where vis &lt; 1000 and temp &gt; 5</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>vis</th>
+      <th>temp</th>
+      <th>dewpt</th>
+      <th>winddir</th>
+      <th>windspeed</th>
+      <th>press_sealevel</th>
+      <th>cloudlevels</th>
+      <th>lcl_alt</th>
+      <th>lcl_cov</th>
+      <th>ucl_alt</th>
+      <th>ucl_cov</th>
+    </tr>
+    <tr>
+      <th>time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2015-08-29 02:20:00</th>
+      <td>500.0</td>
+      <td>15.0</td>
+      <td>15.0</td>
+      <td>60.0</td>
+      <td>4.0</td>
+      <td>1022.0</td>
+      <td>2.0</td>
+      <td>100.0</td>
+      <td>BKN</td>
+      <td>300.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-10-05 01:50:00</th>
+      <td>400.0</td>
+      <td>9.0</td>
+      <td>9.0</td>
+      <td>10.0</td>
+      <td>4.0</td>
+      <td>1016.0</td>
+      <td>2.0</td>
+      <td>100.0</td>
+      <td>SCT</td>
+      <td>28000.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-10-05 02:20:00</th>
+      <td>600.0</td>
+      <td>9.0</td>
+      <td>9.0</td>
+      <td>360.0</td>
+      <td>5.0</td>
+      <td>1016.0</td>
+      <td>2.0</td>
+      <td>100.0</td>
+      <td>SCT</td>
+      <td>28000.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-10-05 02:50:00</th>
+      <td>800.0</td>
+      <td>10.0</td>
+      <td>9.0</td>
+      <td>20.0</td>
+      <td>5.0</td>
+      <td>1016.0</td>
+      <td>2.0</td>
+      <td>100.0</td>
+      <td>SCT</td>
+      <td>27000.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 15:20:00</th>
+      <td>500.0</td>
+      <td>6.0</td>
+      <td>5.0</td>
+      <td>200.0</td>
+      <td>5.0</td>
+      <td>1031.0</td>
+      <td>1.0</td>
+      <td>100.0</td>
+      <td>OVC</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 16:50:00</th>
+      <td>200.0</td>
+      <td>6.0</td>
+      <td>5.0</td>
+      <td>210.0</td>
+      <td>4.0</td>
+      <td>1031.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 17:20:00</th>
+      <td>200.0</td>
+      <td>6.0</td>
+      <td>5.0</td>
+      <td>220.0</td>
+      <td>3.0</td>
+      <td>1031.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 17:50:00</th>
+      <td>200.0</td>
+      <td>6.0</td>
+      <td>5.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>1031.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 18:20:00</th>
+      <td>150.0</td>
+      <td>6.0</td>
+      <td>5.0</td>
+      <td>240.0</td>
+      <td>3.0</td>
+      <td>1031.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 18:50:00</th>
+      <td>100.0</td>
+      <td>6.0</td>
+      <td>5.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>1031.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-11-13 07:20:00</th>
+      <td>700.0</td>
+      <td>6.0</td>
+      <td>5.0</td>
+      <td>190.0</td>
+      <td>7.0</td>
+      <td>1025.0</td>
+      <td>1.0</td>
+      <td>100.0</td>
+      <td>OVC</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-17 22:50:00</th>
+      <td>300.0</td>
+      <td>8.0</td>
+      <td>8.0</td>
+      <td>120.0</td>
+      <td>2.0</td>
+      <td>1023.0</td>
+      <td>2.0</td>
+      <td>300.0</td>
+      <td>FEW</td>
+      <td>15000.0</td>
+      <td>SCT</td>
+    </tr>
+    <tr>
+      <th>2015-12-17 23:20:00</th>
+      <td>400.0</td>
+      <td>8.0</td>
+      <td>8.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>1023.0</td>
+      <td>2.0</td>
+      <td>300.0</td>
+      <td>FEW</td>
+      <td>15000.0</td>
+      <td>SCT</td>
+    </tr>
+    <tr>
+      <th>2015-12-17 23:50:00</th>
+      <td>800.0</td>
+      <td>8.0</td>
+      <td>7.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>1022.0</td>
+      <td>2.0</td>
+      <td>300.0</td>
+      <td>FEW</td>
+      <td>16000.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-12-23 20:50:00</th>
+      <td>800.0</td>
+      <td>7.0</td>
+      <td>7.0</td>
+      <td>190.0</td>
+      <td>7.0</td>
+      <td>1029.0</td>
+      <td>1.0</td>
+      <td>100.0</td>
+      <td>BKN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-23 21:20:00</th>
+      <td>300.0</td>
+      <td>7.0</td>
+      <td>7.0</td>
+      <td>200.0</td>
+      <td>3.0</td>
+      <td>1029.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-23 21:50:00</th>
+      <td>300.0</td>
+      <td>7.0</td>
+      <td>7.0</td>
+      <td>200.0</td>
+      <td>4.0</td>
+      <td>1029.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-23 22:20:00</th>
+      <td>300.0</td>
+      <td>7.0</td>
+      <td>7.0</td>
+      <td>220.0</td>
+      <td>6.0</td>
+      <td>1029.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-23 22:50:00</th>
+      <td>400.0</td>
+      <td>7.0</td>
+      <td>6.0</td>
+      <td>210.0</td>
+      <td>5.0</td>
+      <td>1029.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-23 23:20:00</th>
+      <td>300.0</td>
+      <td>6.0</td>
+      <td>6.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>1029.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-23 23:50:00</th>
+      <td>300.0</td>
+      <td>6.0</td>
+      <td>6.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>1028.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-24 00:20:00</th>
+      <td>300.0</td>
+      <td>6.0</td>
+      <td>6.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>1028.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-24 00:50:00</th>
+      <td>300.0</td>
+      <td>6.0</td>
+      <td>6.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>1028.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-24 01:20:00</th>
+      <td>300.0</td>
+      <td>6.0</td>
+      <td>6.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>1027.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-24 01:50:00</th>
+      <td>400.0</td>
+      <td>6.0</td>
+      <td>6.0</td>
+      <td>20.0</td>
+      <td>2.0</td>
+      <td>1027.0</td>
+      <td>2.0</td>
+      <td>100.0</td>
+      <td>BKN</td>
+      <td>800.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-12-24 02:50:00</th>
+      <td>800.0</td>
+      <td>7.0</td>
+      <td>7.0</td>
+      <td>80.0</td>
+      <td>4.0</td>
+      <td>1027.0</td>
+      <td>2.0</td>
+      <td>100.0</td>
+      <td>BKN</td>
+      <td>300.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-12-24 03:20:00</th>
+      <td>300.0</td>
+      <td>7.0</td>
+      <td>7.0</td>
+      <td>80.0</td>
+      <td>3.0</td>
+      <td>1027.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-24 03:50:00</th>
+      <td>400.0</td>
+      <td>7.0</td>
+      <td>7.0</td>
+      <td>50.0</td>
+      <td>2.0</td>
+      <td>1026.0</td>
+      <td>1.0</td>
+      <td>100.0</td>
+      <td>BKN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-24 04:20:00</th>
+      <td>800.0</td>
+      <td>7.0</td>
+      <td>6.0</td>
+      <td>350.0</td>
+      <td>3.0</td>
+      <td>1026.0</td>
+      <td>2.0</td>
+      <td>100.0</td>
+      <td>SCT</td>
+      <td>2100.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-12-24 04:50:00</th>
+      <td>700.0</td>
+      <td>6.0</td>
+      <td>6.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>1026.0</td>
+      <td>2.0</td>
+      <td>100.0</td>
+      <td>SCT</td>
+      <td>2200.0</td>
+      <td>SCT</td>
+    </tr>
+    <tr>
+      <th>2015-12-24 05:20:00</th>
+      <td>300.0</td>
+      <td>6.0</td>
+      <td>6.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>1026.0</td>
+      <td>2.0</td>
+      <td>100.0</td>
+      <td>FEW</td>
+      <td>2000.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-12-24 06:20:00</th>
+      <td>700.0</td>
+      <td>6.0</td>
+      <td>6.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>1025.0</td>
+      <td>3.0</td>
+      <td>600.0</td>
+      <td>SCT</td>
+      <td>11000.0</td>
       <td>BKN</td>
     </tr>
   </tbody>
@@ -880,14 +4942,1778 @@ initFunction(initQuery);
 </div>
 </div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#TODO: Pandas NUR für pandas-spez. Sachen hier zeigen. Visualisierung klappt ja nich so dolle, </span>
- <span class="c"># daher hier lieber dann sowas wie Altair verwenden. (Mal nachschauen, was die beliebteste bib ist)</span>
+<h3 id="operations">Operations</h3>
 
+<p>DataFrames provide many functions for calculating statistical measures, e.g. the average of each column:</p>
 
-<span class="n">tabelle</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"windspeed"</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s">"press_sealevel"</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s">"cloudlevels"</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s">"."</span><span class="p">);</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E04_6_0.png" alt="png" /></p>
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vis               9421.269977
+temp                11.679785
+dewpt                6.006740
+winddir            169.353186
+windspeed            7.120212
+press_sealevel    1018.367967
+cloudlevels          2.056611
+lcl_alt           2142.938296
+ucl_alt           8763.786646
+dtype: float64
+</code></pre></div></div>
+
+<p>You can do the same for single columns, or <code class="highlighter-rouge">Series</code> as they are called in pandas:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="o">.</span><span class="n">vis</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>9421.26997716895
+</code></pre></div></div>
+
+<p>And of course, you can combine all of the above:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="p">[</span><span class="n">tabelle</span><span class="o">.</span><span class="n">vis</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="p">]</span><span class="o">.</span><span class="n">windspeed</span><span class="o">.</span><span class="n">median</span><span class="p">()</span> <span class="c"># Calculate the median wind speed for times when the visibility was below 1000m</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3.0
+</code></pre></div></div>
+
+<p>You can also <strong>apply</strong> specific functions to a Series or along an axis of a DataFrame object using the <code class="highlighter-rouge">apply()</code> method:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># First we define the function</span>
+<span class="k">def</span> <span class="nf">do_sth</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">5</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+
+<span class="c"># then we apply it:</span>
+<span class="n">tabelle</span><span class="o">.</span><span class="n">temp</span><span class="o">.</span><span class="nb">apply</span><span class="p">(</span><span class="n">do_sth</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>time
+2015-01-01 00:20:00     36.0
+2015-01-01 00:50:00     36.0
+2015-01-01 01:20:00     36.0
+2015-01-01 01:50:00     36.0
+2015-01-01 02:20:00     36.0
+2015-01-01 02:50:00     36.0
+2015-01-01 03:20:00     36.0
+2015-01-01 03:50:00     36.0
+2015-01-01 04:20:00     36.0
+2015-01-01 04:50:00     36.0
+2015-01-01 05:20:00     36.0
+2015-01-01 05:50:00     36.0
+2015-01-01 06:20:00     36.0
+2015-01-01 06:50:00     36.0
+2015-01-01 07:20:00     36.0
+2015-01-01 07:50:00     36.0
+2015-01-01 08:20:00     36.0
+2015-01-01 08:50:00     36.0
+2015-01-01 09:20:00     49.0
+2015-01-01 09:50:00     49.0
+2015-01-01 10:20:00     49.0
+2015-01-01 10:50:00     49.0
+2015-01-01 11:20:00     49.0
+2015-01-01 11:50:00     64.0
+2015-01-01 12:20:00     64.0
+2015-01-01 12:50:00     64.0
+2015-01-01 13:20:00     64.0
+2015-01-01 13:50:00     64.0
+2015-01-01 14:20:00     64.0
+2015-01-01 14:50:00     64.0
+                       ...  
+2015-12-31 09:20:00     64.0
+2015-12-31 09:50:00     64.0
+2015-12-31 10:20:00     64.0
+2015-12-31 10:50:00     64.0
+2015-12-31 11:20:00     81.0
+2015-12-31 11:50:00     81.0
+2015-12-31 12:20:00     81.0
+2015-12-31 12:50:00    100.0
+2015-12-31 13:20:00    100.0
+2015-12-31 13:50:00    100.0
+2015-12-31 14:20:00    100.0
+2015-12-31 14:50:00    100.0
+2015-12-31 15:20:00    100.0
+2015-12-31 15:50:00    100.0
+2015-12-31 16:20:00    100.0
+2015-12-31 16:50:00    100.0
+2015-12-31 17:20:00    100.0
+2015-12-31 17:50:00    100.0
+2015-12-31 18:20:00    100.0
+2015-12-31 18:50:00    100.0
+2015-12-31 19:20:00    100.0
+2015-12-31 19:50:00    100.0
+2015-12-31 20:20:00    100.0
+2015-12-31 20:50:00    100.0
+2015-12-31 21:20:00    100.0
+2015-12-31 21:50:00    100.0
+2015-12-31 22:20:00    100.0
+2015-12-31 22:50:00    100.0
+2015-12-31 23:20:00    100.0
+2015-12-31 23:50:00    100.0
+Name: temp, Length: 17520, dtype: float64
+</code></pre></div></div>
+
+<div class="alert task">
+
+  <p><strong>Task:</strong></p>
+
+  <ol>
+    <li>Calculate the maximum wind speed for wind directions between 225° and 315° (West wind)</li>
+    <li>Calculate the average wind speed for times when the horizontal visibility (vis) was below/above 1000m. Which one is higher? Do you have an idea, why?</li>
+  </ol>
+
+</div>
+
+<h3 id="resampling">Resampling</h3>
+
+<p>Another often needed functionality when working with time series data is provided by the <code class="highlighter-rouge">resample()</code> method. You can use it to resample your data to different temporal resolutions.</p>
+
+<p>The <code class="highlighter-rouge">resample()</code> function returns a <a href="https://pandas.pydata.org/pandas-docs/stable/reference/resampling.html">Resampler</a> object which in turn provides many functions for the specific resampling method.</p>
+
+<p>For example, we can average the Frankfurt Aiport data on a 3 hour interval:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s">'3H'</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>vis</th>
+      <th>temp</th>
+      <th>dewpt</th>
+      <th>winddir</th>
+      <th>windspeed</th>
+      <th>press_sealevel</th>
+      <th>cloudlevels</th>
+      <th>lcl_alt</th>
+      <th>ucl_alt</th>
+    </tr>
+    <tr>
+      <th>time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2015-01-01 00:00:00</th>
+      <td>1200.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1036.000000</td>
+      <td>1.000000</td>
+      <td>133.333333</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 03:00:00</th>
+      <td>916.666667</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1036.000000</td>
+      <td>1.000000</td>
+      <td>200.000000</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 06:00:00</th>
+      <td>983.333333</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>155.000000</td>
+      <td>2.666667</td>
+      <td>1037.333333</td>
+      <td>1.750000</td>
+      <td>850.000000</td>
+      <td>1166.666667</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 09:00:00</th>
+      <td>1016.666667</td>
+      <td>2.166667</td>
+      <td>1.666667</td>
+      <td>228.333333</td>
+      <td>4.333333</td>
+      <td>1036.666667</td>
+      <td>2.000000</td>
+      <td>300.000000</td>
+      <td>1200.000000</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 12:00:00</th>
+      <td>2100.000000</td>
+      <td>3.000000</td>
+      <td>2.000000</td>
+      <td>198.000000</td>
+      <td>4.000000</td>
+      <td>1035.500000</td>
+      <td>2.500000</td>
+      <td>566.666667</td>
+      <td>1433.333333</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 15:00:00</th>
+      <td>2983.333333</td>
+      <td>3.000000</td>
+      <td>2.000000</td>
+      <td>191.666667</td>
+      <td>6.000000</td>
+      <td>1035.333333</td>
+      <td>2.833333</td>
+      <td>516.666667</td>
+      <td>1866.666667</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 18:00:00</th>
+      <td>5083.333333</td>
+      <td>2.833333</td>
+      <td>1.666667</td>
+      <td>195.000000</td>
+      <td>7.666667</td>
+      <td>1034.333333</td>
+      <td>2.000000</td>
+      <td>550.000000</td>
+      <td>1216.666667</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 21:00:00</th>
+      <td>8500.000000</td>
+      <td>2.000000</td>
+      <td>1.000000</td>
+      <td>216.666667</td>
+      <td>8.833333</td>
+      <td>1033.000000</td>
+      <td>1.333333</td>
+      <td>666.666667</td>
+      <td>900.000000</td>
+    </tr>
+    <tr>
+      <th>2015-01-02 00:00:00</th>
+      <td>9000.000000</td>
+      <td>1.500000</td>
+      <td>0.500000</td>
+      <td>205.000000</td>
+      <td>11.500000</td>
+      <td>1030.666667</td>
+      <td>1.000000</td>
+      <td>650.000000</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-02 03:00:00</th>
+      <td>9166.666667</td>
+      <td>0.833333</td>
+      <td>-0.333333</td>
+      <td>201.666667</td>
+      <td>10.833333</td>
+      <td>1029.166667</td>
+      <td>1.666667</td>
+      <td>700.000000</td>
+      <td>7125.000000</td>
+    </tr>
+    <tr>
+      <th>2015-01-02 06:00:00</th>
+      <td>6000.000000</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>201.666667</td>
+      <td>11.666667</td>
+      <td>1028.000000</td>
+      <td>2.500000</td>
+      <td>733.333333</td>
+      <td>4050.000000</td>
+    </tr>
+    <tr>
+      <th>2015-01-02 09:00:00</th>
+      <td>6666.666667</td>
+      <td>1.666667</td>
+      <td>0.833333</td>
+      <td>203.333333</td>
+      <td>12.833333</td>
+      <td>1028.000000</td>
+      <td>2.000000</td>
+      <td>683.333333</td>
+      <td>1366.666667</td>
+    </tr>
+    <tr>
+      <th>2015-01-02 12:00:00</th>
+      <td>10000.000000</td>
+      <td>3.833333</td>
+      <td>2.000000</td>
+      <td>210.000000</td>
+      <td>14.000000</td>
+      <td>1028.500000</td>
+      <td>2.000000</td>
+      <td>600.000000</td>
+      <td>1533.333333</td>
+    </tr>
+    <tr>
+      <th>2015-01-02 15:00:00</th>
+      <td>10000.000000</td>
+      <td>4.000000</td>
+      <td>3.000000</td>
+      <td>213.333333</td>
+      <td>13.833333</td>
+      <td>1030.333333</td>
+      <td>2.166667</td>
+      <td>1133.333333</td>
+      <td>3520.000000</td>
+    </tr>
+    <tr>
+      <th>2015-01-02 18:00:00</th>
+      <td>10000.000000</td>
+      <td>3.500000</td>
+      <td>2.000000</td>
+      <td>193.333333</td>
+      <td>9.833333</td>
+      <td>1032.833333</td>
+      <td>1.666667</td>
+      <td>2700.000000</td>
+      <td>4225.000000</td>
+    </tr>
+    <tr>
+      <th>2015-01-02 21:00:00</th>
+      <td>10000.000000</td>
+      <td>2.333333</td>
+      <td>0.666667</td>
+      <td>215.000000</td>
+      <td>10.833333</td>
+      <td>1033.833333</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-03 00:00:00</th>
+      <td>10000.000000</td>
+      <td>1.666667</td>
+      <td>0.000000</td>
+      <td>211.666667</td>
+      <td>6.166667</td>
+      <td>1033.833333</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-03 03:00:00</th>
+      <td>9500.000000</td>
+      <td>1.333333</td>
+      <td>0.666667</td>
+      <td>188.333333</td>
+      <td>5.333333</td>
+      <td>1031.833333</td>
+      <td>2.500000</td>
+      <td>850.000000</td>
+      <td>11500.000000</td>
+    </tr>
+    <tr>
+      <th>2015-01-03 06:00:00</th>
+      <td>8000.000000</td>
+      <td>1.333333</td>
+      <td>0.833333</td>
+      <td>181.666667</td>
+      <td>6.333333</td>
+      <td>1029.333333</td>
+      <td>2.500000</td>
+      <td>383.333333</td>
+      <td>5916.666667</td>
+    </tr>
+    <tr>
+      <th>2015-01-03 09:00:00</th>
+      <td>9000.000000</td>
+      <td>2.833333</td>
+      <td>1.833333</td>
+      <td>186.666667</td>
+      <td>8.666667</td>
+      <td>1026.166667</td>
+      <td>2.666667</td>
+      <td>416.666667</td>
+      <td>2116.666667</td>
+    </tr>
+    <tr>
+      <th>2015-01-03 12:00:00</th>
+      <td>4083.333333</td>
+      <td>0.500000</td>
+      <td>0.500000</td>
+      <td>194.000000</td>
+      <td>5.500000</td>
+      <td>1020.833333</td>
+      <td>2.166667</td>
+      <td>266.666667</td>
+      <td>400.000000</td>
+    </tr>
+    <tr>
+      <th>2015-01-03 15:00:00</th>
+      <td>3983.333333</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>42.000000</td>
+      <td>0.833333</td>
+      <td>1017.000000</td>
+      <td>2.166667</td>
+      <td>150.000000</td>
+      <td>500.000000</td>
+    </tr>
+    <tr>
+      <th>2015-01-03 18:00:00</th>
+      <td>5666.666667</td>
+      <td>0.166667</td>
+      <td>0.000000</td>
+      <td>216.000000</td>
+      <td>2.500000</td>
+      <td>1017.000000</td>
+      <td>3.000000</td>
+      <td>183.333333</td>
+      <td>3466.666667</td>
+    </tr>
+    <tr>
+      <th>2015-01-03 21:00:00</th>
+      <td>10000.000000</td>
+      <td>1.666667</td>
+      <td>0.833333</td>
+      <td>293.333333</td>
+      <td>7.333333</td>
+      <td>1021.833333</td>
+      <td>2.500000</td>
+      <td>483.333333</td>
+      <td>5516.666667</td>
+    </tr>
+    <tr>
+      <th>2015-01-04 00:00:00</th>
+      <td>10000.000000</td>
+      <td>2.333333</td>
+      <td>1.166667</td>
+      <td>234.000000</td>
+      <td>5.666667</td>
+      <td>1026.000000</td>
+      <td>2.666667</td>
+      <td>866.666667</td>
+      <td>2116.666667</td>
+    </tr>
+    <tr>
+      <th>2015-01-04 03:00:00</th>
+      <td>10000.000000</td>
+      <td>3.000000</td>
+      <td>0.666667</td>
+      <td>260.000000</td>
+      <td>7.333333</td>
+      <td>1028.333333</td>
+      <td>2.000000</td>
+      <td>1750.000000</td>
+      <td>2900.000000</td>
+    </tr>
+    <tr>
+      <th>2015-01-04 06:00:00</th>
+      <td>10000.000000</td>
+      <td>3.166667</td>
+      <td>0.833333</td>
+      <td>243.333333</td>
+      <td>6.666667</td>
+      <td>1030.000000</td>
+      <td>1.833333</td>
+      <td>2033.333333</td>
+      <td>2400.000000</td>
+    </tr>
+    <tr>
+      <th>2015-01-04 09:00:00</th>
+      <td>10000.000000</td>
+      <td>4.000000</td>
+      <td>1.000000</td>
+      <td>240.000000</td>
+      <td>8.500000</td>
+      <td>1032.166667</td>
+      <td>2.333333</td>
+      <td>2000.000000</td>
+      <td>3100.000000</td>
+    </tr>
+    <tr>
+      <th>2015-01-04 12:00:00</th>
+      <td>10000.000000</td>
+      <td>4.500000</td>
+      <td>1.000000</td>
+      <td>236.666667</td>
+      <td>6.166667</td>
+      <td>1033.333333</td>
+      <td>2.000000</td>
+      <td>2283.333333</td>
+      <td>2983.333333</td>
+    </tr>
+    <tr>
+      <th>2015-01-04 15:00:00</th>
+      <td>10000.000000</td>
+      <td>4.000000</td>
+      <td>1.333333</td>
+      <td>238.333333</td>
+      <td>5.000000</td>
+      <td>1034.666667</td>
+      <td>2.000000</td>
+      <td>2883.333333</td>
+      <td>3980.000000</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2015-12-28 06:00:00</th>
+      <td>8333.333333</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>71.666667</td>
+      <td>4.333333</td>
+      <td>1030.000000</td>
+      <td>1.833333</td>
+      <td>116.666667</td>
+      <td>30000.000000</td>
+    </tr>
+    <tr>
+      <th>2015-12-28 09:00:00</th>
+      <td>10000.000000</td>
+      <td>5.666667</td>
+      <td>3.666667</td>
+      <td>35.000000</td>
+      <td>7.333333</td>
+      <td>1029.500000</td>
+      <td>2.000000</td>
+      <td>420.000000</td>
+      <td>30000.000000</td>
+    </tr>
+    <tr>
+      <th>2015-12-28 12:00:00</th>
+      <td>10000.000000</td>
+      <td>7.833333</td>
+      <td>4.500000</td>
+      <td>25.000000</td>
+      <td>6.500000</td>
+      <td>1027.666667</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-28 15:00:00</th>
+      <td>10000.000000</td>
+      <td>6.500000</td>
+      <td>3.666667</td>
+      <td>33.333333</td>
+      <td>9.833333</td>
+      <td>1027.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-28 18:00:00</th>
+      <td>10000.000000</td>
+      <td>5.333333</td>
+      <td>3.000000</td>
+      <td>61.666667</td>
+      <td>11.500000</td>
+      <td>1026.166667</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-28 21:00:00</th>
+      <td>10000.000000</td>
+      <td>3.500000</td>
+      <td>1.833333</td>
+      <td>53.333333</td>
+      <td>6.333333</td>
+      <td>1026.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-29 00:00:00</th>
+      <td>10000.000000</td>
+      <td>1.500000</td>
+      <td>0.500000</td>
+      <td>80.000000</td>
+      <td>2.666667</td>
+      <td>1025.500000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-29 03:00:00</th>
+      <td>10000.000000</td>
+      <td>-0.166667</td>
+      <td>-0.833333</td>
+      <td>117.500000</td>
+      <td>3.166667</td>
+      <td>1025.166667</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-29 06:00:00</th>
+      <td>10000.000000</td>
+      <td>-1.500000</td>
+      <td>-1.833333</td>
+      <td>240.000000</td>
+      <td>1.833333</td>
+      <td>1026.500000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-29 09:00:00</th>
+      <td>10000.000000</td>
+      <td>3.166667</td>
+      <td>0.333333</td>
+      <td>250.000000</td>
+      <td>2.166667</td>
+      <td>1027.833333</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-29 12:00:00</th>
+      <td>10000.000000</td>
+      <td>5.833333</td>
+      <td>1.333333</td>
+      <td>183.333333</td>
+      <td>3.000000</td>
+      <td>1028.333333</td>
+      <td>2.000000</td>
+      <td>4000.000000</td>
+      <td>30000.000000</td>
+    </tr>
+    <tr>
+      <th>2015-12-29 15:00:00</th>
+      <td>10000.000000</td>
+      <td>4.333333</td>
+      <td>2.000000</td>
+      <td>130.000000</td>
+      <td>2.000000</td>
+      <td>1029.833333</td>
+      <td>1.333333</td>
+      <td>3083.333333</td>
+      <td>16500.000000</td>
+    </tr>
+    <tr>
+      <th>2015-12-29 18:00:00</th>
+      <td>10000.000000</td>
+      <td>3.666667</td>
+      <td>2.333333</td>
+      <td>137.500000</td>
+      <td>1.833333</td>
+      <td>1031.000000</td>
+      <td>1.833333</td>
+      <td>2633.333333</td>
+      <td>3660.000000</td>
+    </tr>
+    <tr>
+      <th>2015-12-29 21:00:00</th>
+      <td>10000.000000</td>
+      <td>4.333333</td>
+      <td>2.833333</td>
+      <td>80.000000</td>
+      <td>4.166667</td>
+      <td>1031.333333</td>
+      <td>1.500000</td>
+      <td>1950.000000</td>
+      <td>5233.333333</td>
+    </tr>
+    <tr>
+      <th>2015-12-30 00:00:00</th>
+      <td>10000.000000</td>
+      <td>4.666667</td>
+      <td>3.000000</td>
+      <td>112.000000</td>
+      <td>4.166667</td>
+      <td>1031.000000</td>
+      <td>1.333333</td>
+      <td>1400.000000</td>
+      <td>1400.000000</td>
+    </tr>
+    <tr>
+      <th>2015-12-30 03:00:00</th>
+      <td>10000.000000</td>
+      <td>5.000000</td>
+      <td>3.000000</td>
+      <td>55.000000</td>
+      <td>4.833333</td>
+      <td>1030.833333</td>
+      <td>2.000000</td>
+      <td>1066.666667</td>
+      <td>1533.333333</td>
+    </tr>
+    <tr>
+      <th>2015-12-30 06:00:00</th>
+      <td>10000.000000</td>
+      <td>5.166667</td>
+      <td>2.666667</td>
+      <td>48.333333</td>
+      <td>6.500000</td>
+      <td>1030.000000</td>
+      <td>2.166667</td>
+      <td>916.666667</td>
+      <td>2700.000000</td>
+    </tr>
+    <tr>
+      <th>2015-12-30 09:00:00</th>
+      <td>10000.000000</td>
+      <td>6.000000</td>
+      <td>3.000000</td>
+      <td>91.666667</td>
+      <td>10.000000</td>
+      <td>1028.666667</td>
+      <td>2.333333</td>
+      <td>1316.666667</td>
+      <td>2416.666667</td>
+    </tr>
+    <tr>
+      <th>2015-12-30 12:00:00</th>
+      <td>10000.000000</td>
+      <td>6.000000</td>
+      <td>2.166667</td>
+      <td>98.333333</td>
+      <td>12.333333</td>
+      <td>1026.333333</td>
+      <td>2.000000</td>
+      <td>1500.000000</td>
+      <td>1883.333333</td>
+    </tr>
+    <tr>
+      <th>2015-12-30 15:00:00</th>
+      <td>10000.000000</td>
+      <td>5.500000</td>
+      <td>1.166667</td>
+      <td>113.333333</td>
+      <td>8.500000</td>
+      <td>1025.333333</td>
+      <td>1.166667</td>
+      <td>1883.333333</td>
+      <td>1900.000000</td>
+    </tr>
+    <tr>
+      <th>2015-12-30 18:00:00</th>
+      <td>10000.000000</td>
+      <td>5.333333</td>
+      <td>1.500000</td>
+      <td>96.666667</td>
+      <td>5.000000</td>
+      <td>1023.333333</td>
+      <td>1.000000</td>
+      <td>1916.666667</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-30 21:00:00</th>
+      <td>10000.000000</td>
+      <td>3.166667</td>
+      <td>0.833333</td>
+      <td>83.333333</td>
+      <td>5.000000</td>
+      <td>1021.500000</td>
+      <td>1.000000</td>
+      <td>2000.000000</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 00:00:00</th>
+      <td>10000.000000</td>
+      <td>0.666667</td>
+      <td>-0.666667</td>
+      <td>91.666667</td>
+      <td>5.666667</td>
+      <td>1020.333333</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 03:00:00</th>
+      <td>9833.333333</td>
+      <td>1.500000</td>
+      <td>0.666667</td>
+      <td>100.000000</td>
+      <td>1.833333</td>
+      <td>1021.000000</td>
+      <td>2.200000</td>
+      <td>2940.000000</td>
+      <td>11800.000000</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 06:00:00</th>
+      <td>5800.000000</td>
+      <td>2.666667</td>
+      <td>1.833333</td>
+      <td>116.666667</td>
+      <td>1.500000</td>
+      <td>1022.166667</td>
+      <td>3.000000</td>
+      <td>933.333333</td>
+      <td>6016.666667</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 09:00:00</th>
+      <td>3716.666667</td>
+      <td>3.333333</td>
+      <td>2.500000</td>
+      <td>225.000000</td>
+      <td>2.500000</td>
+      <td>1023.333333</td>
+      <td>2.500000</td>
+      <td>416.666667</td>
+      <td>1216.666667</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 12:00:00</th>
+      <td>3916.666667</td>
+      <td>4.833333</td>
+      <td>3.833333</td>
+      <td>212.500000</td>
+      <td>2.666667</td>
+      <td>1024.000000</td>
+      <td>1.166667</td>
+      <td>366.666667</td>
+      <td>500.000000</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 15:00:00</th>
+      <td>1383.333333</td>
+      <td>5.000000</td>
+      <td>4.500000</td>
+      <td>NaN</td>
+      <td>1.500000</td>
+      <td>1025.000000</td>
+      <td>1.166667</td>
+      <td>133.333333</td>
+      <td>300.000000</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 18:00:00</th>
+      <td>500.000000</td>
+      <td>5.000000</td>
+      <td>5.000000</td>
+      <td>252.500000</td>
+      <td>2.333333</td>
+      <td>1025.000000</td>
+      <td>1.000000</td>
+      <td>100.000000</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 21:00:00</th>
+      <td>533.333333</td>
+      <td>5.000000</td>
+      <td>5.000000</td>
+      <td>206.666667</td>
+      <td>2.000000</td>
+      <td>1025.500000</td>
+      <td>1.000000</td>
+      <td>100.000000</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>2920 rows × 9 columns</p>
+</div>
+</div>
+
+<p>But we are not limited to calculating the mean over these intervals. We can also calculate the sum or any other function we like:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s">'3H'</span><span class="p">)</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>vis</th>
+      <th>temp</th>
+      <th>dewpt</th>
+      <th>winddir</th>
+      <th>windspeed</th>
+      <th>press_sealevel</th>
+      <th>cloudlevels</th>
+      <th>lcl_alt</th>
+      <th>ucl_alt</th>
+    </tr>
+    <tr>
+      <th>time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2015-01-01 00:00:00</th>
+      <td>7200.0</td>
+      <td>6.0</td>
+      <td>6.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>6216.0</td>
+      <td>3.0</td>
+      <td>400.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 03:00:00</th>
+      <td>5500.0</td>
+      <td>6.0</td>
+      <td>6.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>6216.0</td>
+      <td>4.0</td>
+      <td>800.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 06:00:00</th>
+      <td>5900.0</td>
+      <td>6.0</td>
+      <td>6.0</td>
+      <td>620.0</td>
+      <td>16.0</td>
+      <td>6224.0</td>
+      <td>7.0</td>
+      <td>3400.0</td>
+      <td>3500.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 09:00:00</th>
+      <td>6100.0</td>
+      <td>13.0</td>
+      <td>10.0</td>
+      <td>1370.0</td>
+      <td>26.0</td>
+      <td>6220.0</td>
+      <td>6.0</td>
+      <td>900.0</td>
+      <td>3600.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 12:00:00</th>
+      <td>12600.0</td>
+      <td>18.0</td>
+      <td>12.0</td>
+      <td>990.0</td>
+      <td>24.0</td>
+      <td>6213.0</td>
+      <td>15.0</td>
+      <td>3400.0</td>
+      <td>8600.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 15:00:00</th>
+      <td>17900.0</td>
+      <td>18.0</td>
+      <td>12.0</td>
+      <td>1150.0</td>
+      <td>36.0</td>
+      <td>6212.0</td>
+      <td>17.0</td>
+      <td>3100.0</td>
+      <td>11200.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 18:00:00</th>
+      <td>30500.0</td>
+      <td>17.0</td>
+      <td>10.0</td>
+      <td>1170.0</td>
+      <td>46.0</td>
+      <td>6206.0</td>
+      <td>12.0</td>
+      <td>3300.0</td>
+      <td>7300.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 21:00:00</th>
+      <td>51000.0</td>
+      <td>12.0</td>
+      <td>6.0</td>
+      <td>1300.0</td>
+      <td>53.0</td>
+      <td>6198.0</td>
+      <td>8.0</td>
+      <td>4000.0</td>
+      <td>1800.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-02 00:00:00</th>
+      <td>54000.0</td>
+      <td>9.0</td>
+      <td>3.0</td>
+      <td>1230.0</td>
+      <td>69.0</td>
+      <td>6184.0</td>
+      <td>6.0</td>
+      <td>3900.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-02 03:00:00</th>
+      <td>55000.0</td>
+      <td>5.0</td>
+      <td>-2.0</td>
+      <td>1210.0</td>
+      <td>65.0</td>
+      <td>6175.0</td>
+      <td>10.0</td>
+      <td>4200.0</td>
+      <td>28500.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-02 06:00:00</th>
+      <td>36000.0</td>
+      <td>6.0</td>
+      <td>0.0</td>
+      <td>1210.0</td>
+      <td>70.0</td>
+      <td>6168.0</td>
+      <td>15.0</td>
+      <td>4400.0</td>
+      <td>24300.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-02 09:00:00</th>
+      <td>40000.0</td>
+      <td>10.0</td>
+      <td>5.0</td>
+      <td>1220.0</td>
+      <td>77.0</td>
+      <td>6168.0</td>
+      <td>12.0</td>
+      <td>4100.0</td>
+      <td>8200.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-02 12:00:00</th>
+      <td>60000.0</td>
+      <td>23.0</td>
+      <td>12.0</td>
+      <td>1260.0</td>
+      <td>84.0</td>
+      <td>6171.0</td>
+      <td>12.0</td>
+      <td>3600.0</td>
+      <td>9200.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-02 15:00:00</th>
+      <td>60000.0</td>
+      <td>24.0</td>
+      <td>18.0</td>
+      <td>1280.0</td>
+      <td>83.0</td>
+      <td>6182.0</td>
+      <td>13.0</td>
+      <td>6800.0</td>
+      <td>17600.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-02 18:00:00</th>
+      <td>60000.0</td>
+      <td>21.0</td>
+      <td>12.0</td>
+      <td>1160.0</td>
+      <td>59.0</td>
+      <td>6197.0</td>
+      <td>10.0</td>
+      <td>16200.0</td>
+      <td>16900.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-02 21:00:00</th>
+      <td>60000.0</td>
+      <td>14.0</td>
+      <td>4.0</td>
+      <td>1290.0</td>
+      <td>65.0</td>
+      <td>6203.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-03 00:00:00</th>
+      <td>60000.0</td>
+      <td>10.0</td>
+      <td>0.0</td>
+      <td>1270.0</td>
+      <td>37.0</td>
+      <td>6203.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-03 03:00:00</th>
+      <td>57000.0</td>
+      <td>8.0</td>
+      <td>4.0</td>
+      <td>1130.0</td>
+      <td>32.0</td>
+      <td>6191.0</td>
+      <td>5.0</td>
+      <td>1700.0</td>
+      <td>23000.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-03 06:00:00</th>
+      <td>48000.0</td>
+      <td>8.0</td>
+      <td>5.0</td>
+      <td>1090.0</td>
+      <td>38.0</td>
+      <td>6176.0</td>
+      <td>15.0</td>
+      <td>2300.0</td>
+      <td>35500.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-03 09:00:00</th>
+      <td>54000.0</td>
+      <td>17.0</td>
+      <td>11.0</td>
+      <td>1120.0</td>
+      <td>52.0</td>
+      <td>6157.0</td>
+      <td>16.0</td>
+      <td>2500.0</td>
+      <td>12700.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-03 12:00:00</th>
+      <td>24500.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>970.0</td>
+      <td>33.0</td>
+      <td>6125.0</td>
+      <td>13.0</td>
+      <td>1600.0</td>
+      <td>2400.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-03 15:00:00</th>
+      <td>23900.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>210.0</td>
+      <td>5.0</td>
+      <td>6102.0</td>
+      <td>13.0</td>
+      <td>900.0</td>
+      <td>2000.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-03 18:00:00</th>
+      <td>34000.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1080.0</td>
+      <td>15.0</td>
+      <td>6102.0</td>
+      <td>18.0</td>
+      <td>1100.0</td>
+      <td>20800.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-03 21:00:00</th>
+      <td>60000.0</td>
+      <td>10.0</td>
+      <td>5.0</td>
+      <td>1760.0</td>
+      <td>44.0</td>
+      <td>6131.0</td>
+      <td>15.0</td>
+      <td>2900.0</td>
+      <td>33100.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-04 00:00:00</th>
+      <td>60000.0</td>
+      <td>14.0</td>
+      <td>7.0</td>
+      <td>1170.0</td>
+      <td>34.0</td>
+      <td>6156.0</td>
+      <td>16.0</td>
+      <td>5200.0</td>
+      <td>12700.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-04 03:00:00</th>
+      <td>60000.0</td>
+      <td>18.0</td>
+      <td>4.0</td>
+      <td>1560.0</td>
+      <td>44.0</td>
+      <td>6170.0</td>
+      <td>12.0</td>
+      <td>10500.0</td>
+      <td>17400.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-04 06:00:00</th>
+      <td>60000.0</td>
+      <td>19.0</td>
+      <td>5.0</td>
+      <td>1460.0</td>
+      <td>40.0</td>
+      <td>6180.0</td>
+      <td>11.0</td>
+      <td>12200.0</td>
+      <td>12000.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-04 09:00:00</th>
+      <td>60000.0</td>
+      <td>24.0</td>
+      <td>6.0</td>
+      <td>1440.0</td>
+      <td>51.0</td>
+      <td>6193.0</td>
+      <td>14.0</td>
+      <td>12000.0</td>
+      <td>18600.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-04 12:00:00</th>
+      <td>60000.0</td>
+      <td>27.0</td>
+      <td>6.0</td>
+      <td>1420.0</td>
+      <td>37.0</td>
+      <td>6200.0</td>
+      <td>12.0</td>
+      <td>13700.0</td>
+      <td>17900.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-04 15:00:00</th>
+      <td>60000.0</td>
+      <td>24.0</td>
+      <td>8.0</td>
+      <td>1430.0</td>
+      <td>30.0</td>
+      <td>6208.0</td>
+      <td>12.0</td>
+      <td>17300.0</td>
+      <td>19900.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2015-12-28 06:00:00</th>
+      <td>50000.0</td>
+      <td>6.0</td>
+      <td>6.0</td>
+      <td>430.0</td>
+      <td>26.0</td>
+      <td>6180.0</td>
+      <td>11.0</td>
+      <td>700.0</td>
+      <td>150000.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-28 09:00:00</th>
+      <td>60000.0</td>
+      <td>34.0</td>
+      <td>22.0</td>
+      <td>210.0</td>
+      <td>44.0</td>
+      <td>6177.0</td>
+      <td>10.0</td>
+      <td>2100.0</td>
+      <td>150000.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-28 12:00:00</th>
+      <td>60000.0</td>
+      <td>47.0</td>
+      <td>27.0</td>
+      <td>150.0</td>
+      <td>39.0</td>
+      <td>6166.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-28 15:00:00</th>
+      <td>60000.0</td>
+      <td>39.0</td>
+      <td>22.0</td>
+      <td>200.0</td>
+      <td>59.0</td>
+      <td>6162.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-28 18:00:00</th>
+      <td>60000.0</td>
+      <td>32.0</td>
+      <td>18.0</td>
+      <td>370.0</td>
+      <td>69.0</td>
+      <td>6157.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-28 21:00:00</th>
+      <td>60000.0</td>
+      <td>21.0</td>
+      <td>11.0</td>
+      <td>320.0</td>
+      <td>38.0</td>
+      <td>6156.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-29 00:00:00</th>
+      <td>60000.0</td>
+      <td>9.0</td>
+      <td>3.0</td>
+      <td>160.0</td>
+      <td>16.0</td>
+      <td>6153.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-29 03:00:00</th>
+      <td>60000.0</td>
+      <td>-1.0</td>
+      <td>-5.0</td>
+      <td>470.0</td>
+      <td>19.0</td>
+      <td>6151.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-29 06:00:00</th>
+      <td>60000.0</td>
+      <td>-9.0</td>
+      <td>-11.0</td>
+      <td>720.0</td>
+      <td>11.0</td>
+      <td>6159.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-29 09:00:00</th>
+      <td>60000.0</td>
+      <td>19.0</td>
+      <td>2.0</td>
+      <td>250.0</td>
+      <td>13.0</td>
+      <td>6167.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-29 12:00:00</th>
+      <td>60000.0</td>
+      <td>35.0</td>
+      <td>8.0</td>
+      <td>550.0</td>
+      <td>18.0</td>
+      <td>6170.0</td>
+      <td>2.0</td>
+      <td>4000.0</td>
+      <td>30000.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-29 15:00:00</th>
+      <td>60000.0</td>
+      <td>26.0</td>
+      <td>12.0</td>
+      <td>260.0</td>
+      <td>12.0</td>
+      <td>6179.0</td>
+      <td>8.0</td>
+      <td>18500.0</td>
+      <td>33000.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-29 18:00:00</th>
+      <td>60000.0</td>
+      <td>22.0</td>
+      <td>14.0</td>
+      <td>550.0</td>
+      <td>11.0</td>
+      <td>6186.0</td>
+      <td>11.0</td>
+      <td>15800.0</td>
+      <td>18300.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-29 21:00:00</th>
+      <td>60000.0</td>
+      <td>26.0</td>
+      <td>17.0</td>
+      <td>480.0</td>
+      <td>25.0</td>
+      <td>6188.0</td>
+      <td>9.0</td>
+      <td>11700.0</td>
+      <td>15700.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-30 00:00:00</th>
+      <td>60000.0</td>
+      <td>28.0</td>
+      <td>18.0</td>
+      <td>560.0</td>
+      <td>25.0</td>
+      <td>6186.0</td>
+      <td>8.0</td>
+      <td>8400.0</td>
+      <td>2800.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-30 03:00:00</th>
+      <td>60000.0</td>
+      <td>30.0</td>
+      <td>18.0</td>
+      <td>330.0</td>
+      <td>29.0</td>
+      <td>6185.0</td>
+      <td>12.0</td>
+      <td>6400.0</td>
+      <td>9200.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-30 06:00:00</th>
+      <td>60000.0</td>
+      <td>31.0</td>
+      <td>16.0</td>
+      <td>290.0</td>
+      <td>39.0</td>
+      <td>6180.0</td>
+      <td>13.0</td>
+      <td>5500.0</td>
+      <td>16200.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-30 09:00:00</th>
+      <td>60000.0</td>
+      <td>36.0</td>
+      <td>18.0</td>
+      <td>550.0</td>
+      <td>60.0</td>
+      <td>6172.0</td>
+      <td>14.0</td>
+      <td>7900.0</td>
+      <td>14500.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-30 12:00:00</th>
+      <td>60000.0</td>
+      <td>36.0</td>
+      <td>13.0</td>
+      <td>590.0</td>
+      <td>74.0</td>
+      <td>6158.0</td>
+      <td>12.0</td>
+      <td>9000.0</td>
+      <td>11300.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-30 15:00:00</th>
+      <td>60000.0</td>
+      <td>33.0</td>
+      <td>7.0</td>
+      <td>680.0</td>
+      <td>51.0</td>
+      <td>6152.0</td>
+      <td>7.0</td>
+      <td>11300.0</td>
+      <td>1900.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-30 18:00:00</th>
+      <td>60000.0</td>
+      <td>32.0</td>
+      <td>9.0</td>
+      <td>580.0</td>
+      <td>30.0</td>
+      <td>6140.0</td>
+      <td>6.0</td>
+      <td>11500.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-30 21:00:00</th>
+      <td>60000.0</td>
+      <td>19.0</td>
+      <td>5.0</td>
+      <td>500.0</td>
+      <td>30.0</td>
+      <td>6129.0</td>
+      <td>3.0</td>
+      <td>6000.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 00:00:00</th>
+      <td>60000.0</td>
+      <td>4.0</td>
+      <td>-4.0</td>
+      <td>550.0</td>
+      <td>34.0</td>
+      <td>6122.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 03:00:00</th>
+      <td>59000.0</td>
+      <td>9.0</td>
+      <td>4.0</td>
+      <td>300.0</td>
+      <td>11.0</td>
+      <td>6126.0</td>
+      <td>11.0</td>
+      <td>14700.0</td>
+      <td>59000.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 06:00:00</th>
+      <td>34800.0</td>
+      <td>16.0</td>
+      <td>11.0</td>
+      <td>350.0</td>
+      <td>9.0</td>
+      <td>6133.0</td>
+      <td>18.0</td>
+      <td>5600.0</td>
+      <td>36100.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 09:00:00</th>
+      <td>22300.0</td>
+      <td>20.0</td>
+      <td>15.0</td>
+      <td>900.0</td>
+      <td>15.0</td>
+      <td>6140.0</td>
+      <td>15.0</td>
+      <td>2500.0</td>
+      <td>7300.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 12:00:00</th>
+      <td>23500.0</td>
+      <td>29.0</td>
+      <td>23.0</td>
+      <td>850.0</td>
+      <td>16.0</td>
+      <td>6144.0</td>
+      <td>7.0</td>
+      <td>2200.0</td>
+      <td>500.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 15:00:00</th>
+      <td>8300.0</td>
+      <td>30.0</td>
+      <td>27.0</td>
+      <td>0.0</td>
+      <td>9.0</td>
+      <td>6150.0</td>
+      <td>7.0</td>
+      <td>800.0</td>
+      <td>300.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 18:00:00</th>
+      <td>3000.0</td>
+      <td>30.0</td>
+      <td>30.0</td>
+      <td>1010.0</td>
+      <td>14.0</td>
+      <td>6150.0</td>
+      <td>2.0</td>
+      <td>200.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 21:00:00</th>
+      <td>3200.0</td>
+      <td>30.0</td>
+      <td>30.0</td>
+      <td>620.0</td>
+      <td>12.0</td>
+      <td>6153.0</td>
+      <td>3.0</td>
+      <td>300.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>2920 rows × 9 columns</p>
+</div>
+</div>
+
+<p>We can also resample to a higher temporal resolution than the original data set and provide an interpolation technique for time steps between known measurement points:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="o">.</span><span class="n">temp</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s">'10Min'</span><span class="p">)</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="s">"linear"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>time
+2015-01-01 00:20:00    1.0
+2015-01-01 00:30:00    1.0
+2015-01-01 00:40:00    1.0
+2015-01-01 00:50:00    1.0
+2015-01-01 01:00:00    1.0
+2015-01-01 01:10:00    1.0
+2015-01-01 01:20:00    1.0
+2015-01-01 01:30:00    1.0
+2015-01-01 01:40:00    1.0
+2015-01-01 01:50:00    1.0
+2015-01-01 02:00:00    1.0
+2015-01-01 02:10:00    1.0
+2015-01-01 02:20:00    1.0
+2015-01-01 02:30:00    1.0
+2015-01-01 02:40:00    1.0
+2015-01-01 02:50:00    1.0
+2015-01-01 03:00:00    1.0
+2015-01-01 03:10:00    1.0
+2015-01-01 03:20:00    1.0
+2015-01-01 03:30:00    1.0
+2015-01-01 03:40:00    1.0
+2015-01-01 03:50:00    1.0
+2015-01-01 04:00:00    1.0
+2015-01-01 04:10:00    1.0
+2015-01-01 04:20:00    1.0
+2015-01-01 04:30:00    1.0
+2015-01-01 04:40:00    1.0
+2015-01-01 04:50:00    1.0
+2015-01-01 05:00:00    1.0
+2015-01-01 05:10:00    1.0
+                      ... 
+2015-12-31 19:00:00    5.0
+2015-12-31 19:10:00    5.0
+2015-12-31 19:20:00    5.0
+2015-12-31 19:30:00    5.0
+2015-12-31 19:40:00    5.0
+2015-12-31 19:50:00    5.0
+2015-12-31 20:00:00    5.0
+2015-12-31 20:10:00    5.0
+2015-12-31 20:20:00    5.0
+2015-12-31 20:30:00    5.0
+2015-12-31 20:40:00    5.0
+2015-12-31 20:50:00    5.0
+2015-12-31 21:00:00    5.0
+2015-12-31 21:10:00    5.0
+2015-12-31 21:20:00    5.0
+2015-12-31 21:30:00    5.0
+2015-12-31 21:40:00    5.0
+2015-12-31 21:50:00    5.0
+2015-12-31 22:00:00    5.0
+2015-12-31 22:10:00    5.0
+2015-12-31 22:20:00    5.0
+2015-12-31 22:30:00    5.0
+2015-12-31 22:40:00    5.0
+2015-12-31 22:50:00    5.0
+2015-12-31 23:00:00    5.0
+2015-12-31 23:10:00    5.0
+2015-12-31 23:20:00    5.0
+2015-12-31 23:30:00    5.0
+2015-12-31 23:40:00    5.0
+2015-12-31 23:50:00    5.0
+Freq: 10T, Name: temp, Length: 52558, dtype: float64
+</code></pre></div></div>
+
+<p>Although pandas has the ability to plot the data in graphs as well, we use specific plotting libraries for this purpose. There are many plotting libraries for virtually any data visualization need. Some of these libraries can be used regardless of the specific application, but many of them are intensely focused on accomplishing a particular task. A good overview is given on the <a href="https://www.fusioncharts.com/blog/best-python-data-visualization-libraries/">FusionCharts Blog</a>.</p>
+
+<p>Here we will focus on the most basic (and oldest) plotting library called “<strong>matplotlib</strong>”:</p>
 
 <h2 id="matplotlib">matplotlib</h2>
 
