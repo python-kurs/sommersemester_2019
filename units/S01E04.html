@@ -29,9 +29,9 @@
   "headline":
     "Data science I",
   "datePublished":
-    "2019-04-06T08:31:50+00:00",
+    "2019-04-06T18:59:08+00:00",
   "dateModified":
-    "2019-04-06T08:31:50+00:00",
+    "2019-04-06T18:59:08+00:00",
   "description":
     "",
   "author": {
@@ -708,11 +708,14 @@ initFunction(initQuery);
       <ul class="toc__menu">
   <li><a href="#pandas">pandas</a>
     <ul>
+      <li><a href="#read-data">Read data</a></li>
+      <li><a href="#dataframe">DataFrame</a></li>
       <li><a href="#selection-by-label">Selection by label</a></li>
       <li><a href="#selection-by-position-index">Selection by position (index)</a></li>
       <li><a href="#boolean-indexing">Boolean indexing</a></li>
       <li><a href="#operations">Operations</a></li>
       <li><a href="#resampling">Resampling</a></li>
+      <li><a href="#write-data">Write data</a></li>
     </ul>
   </li>
   <li><a href="#matplotlib">matplotlib</a></li>
@@ -768,6 +771,8 @@ initFunction(initQuery);
 
 <p><img src="images/S01E04/csv_example.png" alt="" /></p>
 
+<h3 id="read-data">Read data</h3>
+
 <p>First, we want to read the data:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
@@ -775,6 +780,10 @@ initFunction(initQuery);
 </code></pre></div></div>
 
 <p>The pandas function <code class="highlighter-rouge">pd.read_csv(...)</code> opens the csv file and reads its contents. The <code class="highlighter-rouge">parse_dates</code> argument tells Python to interpret the values in the <code class="highlighter-rouge">time</code> column as dates and the <code class="highlighter-rouge">index_col</code> argument tells it to use this column as index.</p>
+
+<p>pandas has many more readers for a variety of file types, e.g. Excel, SQL, HDF, HTML, etc. The full list of supported file types and the respective readers can be found <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/io.html">here</a>.</p>
+
+<h3 id="dataframe">DataFrame</h3>
 
 <p>All data is stored in the <code class="highlighter-rouge">tabelle</code> object. This object is a so-called <strong>DataFrame</strong>, the basic pandas object. You can think of it like a spreadsheet.</p>
 
@@ -3042,7 +3051,7 @@ dtype: object
 </div>
 </div>
 
-<p>You can <strong>select</strong> one or more <strong>columns</strong> by:</p>
+<p>You can <strong>select</strong> multiple <strong>columns</strong> by:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s">'vis'</span><span class="p">,</span><span class="s">'temp'</span><span class="p">]]</span>
 </code></pre></div></div>
@@ -3387,7 +3396,79 @@ dtype: object
 </div>
 </div>
 
-<p>And you can also <strong>select columns and rows</strong> together within one call:</p>
+<p>You can <strong>select</strong> single <strong>columns</strong> by:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s">'vis'</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>time
+2015-01-01 00:20:00    2800.0
+2015-01-01 00:50:00    1500.0
+2015-01-01 01:20:00    1000.0
+2015-01-01 01:50:00     700.0
+2015-01-01 02:20:00     600.0
+2015-01-01 02:50:00     600.0
+2015-01-01 03:20:00     700.0
+2015-01-01 03:50:00     700.0
+2015-01-01 04:20:00    1000.0
+2015-01-01 04:50:00     900.0
+2015-01-01 05:20:00     900.0
+2015-01-01 05:50:00    1300.0
+2015-01-01 06:20:00    1200.0
+2015-01-01 06:50:00    1600.0
+2015-01-01 07:20:00    1100.0
+2015-01-01 07:50:00     700.0
+2015-01-01 08:20:00     700.0
+2015-01-01 08:50:00     600.0
+2015-01-01 09:20:00     700.0
+2015-01-01 09:50:00     800.0
+2015-01-01 10:20:00     900.0
+2015-01-01 10:50:00     900.0
+2015-01-01 11:20:00    1300.0
+2015-01-01 11:50:00    1500.0
+2015-01-01 12:20:00    1600.0
+2015-01-01 12:50:00    2000.0
+2015-01-01 13:20:00    2200.0
+2015-01-01 13:50:00    2400.0
+2015-01-01 14:20:00    2400.0
+2015-01-01 14:50:00    2000.0
+                        ...  
+2015-12-31 09:20:00    3000.0
+2015-12-31 09:50:00    3500.0
+2015-12-31 10:20:00    3800.0
+2015-12-31 10:50:00    4000.0
+2015-12-31 11:20:00    4000.0
+2015-12-31 11:50:00    4000.0
+2015-12-31 12:20:00    4000.0
+2015-12-31 12:50:00    4000.0
+2015-12-31 13:20:00    4000.0
+2015-12-31 13:50:00    4200.0
+2015-12-31 14:20:00    3800.0
+2015-12-31 14:50:00    3500.0
+2015-12-31 15:20:00    3000.0
+2015-12-31 15:50:00    2000.0
+2015-12-31 16:20:00    1000.0
+2015-12-31 16:50:00     800.0
+2015-12-31 17:20:00     700.0
+2015-12-31 17:50:00     800.0
+2015-12-31 18:20:00     400.0
+2015-12-31 18:50:00     700.0
+2015-12-31 19:20:00     700.0
+2015-12-31 19:50:00     500.0
+2015-12-31 20:20:00     400.0
+2015-12-31 20:50:00     300.0
+2015-12-31 21:20:00     400.0
+2015-12-31 21:50:00     700.0
+2015-12-31 22:20:00     700.0
+2015-12-31 22:50:00     400.0
+2015-12-31 23:20:00     500.0
+2015-12-31 23:50:00     500.0
+Name: vis, Length: 17520, dtype: float64
+</code></pre></div></div>
+
+<p>A column in pandas is also called a <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html"><strong>Series</strong></a>. In principle, it is a one-dimensional DataFrame and it provides more or less the same functionality. We will not go into further detail here.</p>
+
+<p>You can also <strong>select columns and rows</strong> together within one call:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s">"2015-11-01 15:55"</span><span class="p">:</span><span class="s">"2015-11-01 19:20"</span><span class="p">,</span> <span class="p">[</span><span class="s">'vis'</span><span class="p">,</span><span class="s">'temp'</span><span class="p">]]</span>
 </code></pre></div></div>
@@ -4961,7 +5042,7 @@ ucl_alt           8763.786646
 dtype: float64
 </code></pre></div></div>
 
-<p>You can do the same for single columns, or <code class="highlighter-rouge">Series</code> as they are called in pandas:</p>
+<p>You can do the same for single columns (<code class="highlighter-rouge">Series</code>):</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="o">.</span><span class="n">vis</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </code></pre></div></div>
@@ -4983,7 +5064,7 @@ dtype: float64
 <span class="k">def</span> <span class="nf">do_sth</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">5</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
 
-<span class="c"># then we apply it:</span>
+<span class="c"># then we apply it to the temp Series:</span>
 <span class="n">tabelle</span><span class="o">.</span><span class="n">temp</span><span class="o">.</span><span class="nb">apply</span><span class="p">(</span><span class="n">do_sth</span><span class="p">)</span>
 </code></pre></div></div>
 
@@ -5051,6 +5132,141 @@ dtype: float64
 2015-12-31 23:50:00    100.0
 Name: temp, Length: 17520, dtype: float64
 </code></pre></div></div>
+
+<p>We can also use the values of multiple columns of a DataFrame and create a new column from the results:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="p">[</span><span class="s">'temp_dewpt_diff'</span><span class="p">]</span> <span class="o">=</span> <span class="n">tabelle</span><span class="o">.</span><span class="n">temp</span> <span class="o">-</span> <span class="n">tabelle</span><span class="o">.</span><span class="n">dewpt</span>
+<span class="n">tabelle</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>vis</th>
+      <th>temp</th>
+      <th>dewpt</th>
+      <th>winddir</th>
+      <th>windspeed</th>
+      <th>press_sealevel</th>
+      <th>cloudlevels</th>
+      <th>lcl_alt</th>
+      <th>lcl_cov</th>
+      <th>ucl_alt</th>
+      <th>ucl_cov</th>
+      <th>temp_dewpt_diff</th>
+    </tr>
+    <tr>
+      <th>time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2015-01-01 00:20:00</th>
+      <td>2800.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1036.0</td>
+      <td>1.0</td>
+      <td>200.0</td>
+      <td>OVC</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 00:50:00</th>
+      <td>1500.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1036.0</td>
+      <td>1.0</td>
+      <td>100.0</td>
+      <td>OVC</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 01:20:00</th>
+      <td>1000.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1036.0</td>
+      <td>1.0</td>
+      <td>100.0</td>
+      <td>OVC</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 01:50:00</th>
+      <td>700.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1036.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 02:20:00</th>
+      <td>600.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1036.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
 
 <div class="alert task">
 
@@ -6643,81 +6859,1062 @@ Name: temp, Length: 17520, dtype: float64
 
 <p>We can also resample to a higher temporal resolution than the original data set and provide an interpolation technique for time steps between known measurement points:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="o">.</span><span class="n">temp</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s">'10Min'</span><span class="p">)</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="s">"linear"</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s">'10Min'</span><span class="p">)</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="s">"linear"</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>time
-2015-01-01 00:20:00    1.0
-2015-01-01 00:30:00    1.0
-2015-01-01 00:40:00    1.0
-2015-01-01 00:50:00    1.0
-2015-01-01 01:00:00    1.0
-2015-01-01 01:10:00    1.0
-2015-01-01 01:20:00    1.0
-2015-01-01 01:30:00    1.0
-2015-01-01 01:40:00    1.0
-2015-01-01 01:50:00    1.0
-2015-01-01 02:00:00    1.0
-2015-01-01 02:10:00    1.0
-2015-01-01 02:20:00    1.0
-2015-01-01 02:30:00    1.0
-2015-01-01 02:40:00    1.0
-2015-01-01 02:50:00    1.0
-2015-01-01 03:00:00    1.0
-2015-01-01 03:10:00    1.0
-2015-01-01 03:20:00    1.0
-2015-01-01 03:30:00    1.0
-2015-01-01 03:40:00    1.0
-2015-01-01 03:50:00    1.0
-2015-01-01 04:00:00    1.0
-2015-01-01 04:10:00    1.0
-2015-01-01 04:20:00    1.0
-2015-01-01 04:30:00    1.0
-2015-01-01 04:40:00    1.0
-2015-01-01 04:50:00    1.0
-2015-01-01 05:00:00    1.0
-2015-01-01 05:10:00    1.0
-                      ... 
-2015-12-31 19:00:00    5.0
-2015-12-31 19:10:00    5.0
-2015-12-31 19:20:00    5.0
-2015-12-31 19:30:00    5.0
-2015-12-31 19:40:00    5.0
-2015-12-31 19:50:00    5.0
-2015-12-31 20:00:00    5.0
-2015-12-31 20:10:00    5.0
-2015-12-31 20:20:00    5.0
-2015-12-31 20:30:00    5.0
-2015-12-31 20:40:00    5.0
-2015-12-31 20:50:00    5.0
-2015-12-31 21:00:00    5.0
-2015-12-31 21:10:00    5.0
-2015-12-31 21:20:00    5.0
-2015-12-31 21:30:00    5.0
-2015-12-31 21:40:00    5.0
-2015-12-31 21:50:00    5.0
-2015-12-31 22:00:00    5.0
-2015-12-31 22:10:00    5.0
-2015-12-31 22:20:00    5.0
-2015-12-31 22:30:00    5.0
-2015-12-31 22:40:00    5.0
-2015-12-31 22:50:00    5.0
-2015-12-31 23:00:00    5.0
-2015-12-31 23:10:00    5.0
-2015-12-31 23:20:00    5.0
-2015-12-31 23:30:00    5.0
-2015-12-31 23:40:00    5.0
-2015-12-31 23:50:00    5.0
-Freq: 10T, Name: temp, Length: 52558, dtype: float64
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>vis</th>
+      <th>temp</th>
+      <th>dewpt</th>
+      <th>winddir</th>
+      <th>windspeed</th>
+      <th>press_sealevel</th>
+      <th>cloudlevels</th>
+      <th>lcl_alt</th>
+      <th>lcl_cov</th>
+      <th>ucl_alt</th>
+      <th>ucl_cov</th>
+    </tr>
+    <tr>
+      <th>time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2015-01-01 00:20:00</th>
+      <td>2800.000000</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1036.000000</td>
+      <td>1.0</td>
+      <td>200.000000</td>
+      <td>OVC</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 00:30:00</th>
+      <td>2366.666667</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1036.000000</td>
+      <td>1.0</td>
+      <td>166.666667</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 00:40:00</th>
+      <td>1933.333333</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1036.000000</td>
+      <td>1.0</td>
+      <td>133.333333</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 00:50:00</th>
+      <td>1500.000000</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1036.000000</td>
+      <td>1.0</td>
+      <td>100.000000</td>
+      <td>OVC</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 01:00:00</th>
+      <td>1333.333333</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1036.000000</td>
+      <td>1.0</td>
+      <td>100.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 01:10:00</th>
+      <td>1166.666667</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1036.000000</td>
+      <td>1.0</td>
+      <td>100.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 01:20:00</th>
+      <td>1000.000000</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1036.000000</td>
+      <td>1.0</td>
+      <td>100.000000</td>
+      <td>OVC</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 01:30:00</th>
+      <td>900.000000</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1036.000000</td>
+      <td>1.0</td>
+      <td>105.555556</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 01:40:00</th>
+      <td>800.000000</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1036.000000</td>
+      <td>1.0</td>
+      <td>111.111111</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 01:50:00</th>
+      <td>700.000000</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1036.000000</td>
+      <td>1.0</td>
+      <td>116.666667</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 02:00:00</th>
+      <td>666.666667</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1036.000000</td>
+      <td>1.0</td>
+      <td>122.222222</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 02:10:00</th>
+      <td>633.333333</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1036.000000</td>
+      <td>1.0</td>
+      <td>127.777778</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 02:20:00</th>
+      <td>600.000000</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1036.000000</td>
+      <td>1.0</td>
+      <td>133.333333</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 02:30:00</th>
+      <td>600.000000</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1036.000000</td>
+      <td>1.0</td>
+      <td>138.888889</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 02:40:00</th>
+      <td>600.000000</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1036.000000</td>
+      <td>1.0</td>
+      <td>144.444444</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 02:50:00</th>
+      <td>600.000000</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1036.000000</td>
+      <td>1.0</td>
+      <td>150.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 03:00:00</th>
+      <td>633.333333</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1036.000000</td>
+      <td>1.0</td>
+      <td>155.555556</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 03:10:00</th>
+      <td>666.666667</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1036.000000</td>
+      <td>1.0</td>
+      <td>161.111111</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 03:20:00</th>
+      <td>700.000000</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1036.000000</td>
+      <td>1.0</td>
+      <td>166.666667</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 03:30:00</th>
+      <td>700.000000</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1036.000000</td>
+      <td>1.0</td>
+      <td>172.222222</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 03:40:00</th>
+      <td>700.000000</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1036.000000</td>
+      <td>1.0</td>
+      <td>177.777778</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 03:50:00</th>
+      <td>700.000000</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1036.000000</td>
+      <td>1.0</td>
+      <td>183.333333</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 04:00:00</th>
+      <td>800.000000</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1036.000000</td>
+      <td>1.0</td>
+      <td>188.888889</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 04:10:00</th>
+      <td>900.000000</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1036.000000</td>
+      <td>1.0</td>
+      <td>194.444444</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 04:20:00</th>
+      <td>1000.000000</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1036.000000</td>
+      <td>1.0</td>
+      <td>200.000000</td>
+      <td>OVC</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 04:30:00</th>
+      <td>966.666667</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1036.000000</td>
+      <td>1.0</td>
+      <td>200.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 04:40:00</th>
+      <td>933.333333</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1036.000000</td>
+      <td>1.0</td>
+      <td>200.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 04:50:00</th>
+      <td>900.000000</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1036.000000</td>
+      <td>1.0</td>
+      <td>200.000000</td>
+      <td>BKN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 05:00:00</th>
+      <td>900.000000</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1036.000000</td>
+      <td>1.0</td>
+      <td>200.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 05:10:00</th>
+      <td>900.000000</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1036.000000</td>
+      <td>1.0</td>
+      <td>200.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 19:00:00</th>
+      <td>700.000000</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>323.333333</td>
+      <td>3.333333</td>
+      <td>1025.000000</td>
+      <td>1.0</td>
+      <td>100.000000</td>
+      <td>NaN</td>
+      <td>300.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 19:10:00</th>
+      <td>700.000000</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>326.666667</td>
+      <td>3.666667</td>
+      <td>1025.000000</td>
+      <td>1.0</td>
+      <td>100.000000</td>
+      <td>NaN</td>
+      <td>300.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 19:20:00</th>
+      <td>700.000000</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>330.000000</td>
+      <td>4.000000</td>
+      <td>1025.000000</td>
+      <td>1.0</td>
+      <td>100.000000</td>
+      <td>BKN</td>
+      <td>300.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 19:30:00</th>
+      <td>633.333333</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>320.000000</td>
+      <td>3.666667</td>
+      <td>1025.000000</td>
+      <td>1.0</td>
+      <td>100.000000</td>
+      <td>NaN</td>
+      <td>300.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 19:40:00</th>
+      <td>566.666667</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>310.000000</td>
+      <td>3.333333</td>
+      <td>1025.000000</td>
+      <td>1.0</td>
+      <td>100.000000</td>
+      <td>NaN</td>
+      <td>300.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 19:50:00</th>
+      <td>500.000000</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>300.000000</td>
+      <td>3.000000</td>
+      <td>1025.000000</td>
+      <td>1.0</td>
+      <td>100.000000</td>
+      <td>NaN</td>
+      <td>300.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 20:00:00</th>
+      <td>466.666667</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>260.000000</td>
+      <td>2.666667</td>
+      <td>1025.000000</td>
+      <td>1.0</td>
+      <td>100.000000</td>
+      <td>NaN</td>
+      <td>300.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 20:10:00</th>
+      <td>433.333333</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>220.000000</td>
+      <td>2.333333</td>
+      <td>1025.000000</td>
+      <td>1.0</td>
+      <td>100.000000</td>
+      <td>NaN</td>
+      <td>300.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 20:20:00</th>
+      <td>400.000000</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>180.000000</td>
+      <td>2.000000</td>
+      <td>1025.000000</td>
+      <td>1.0</td>
+      <td>100.000000</td>
+      <td>NaN</td>
+      <td>300.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 20:30:00</th>
+      <td>366.666667</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>140.000000</td>
+      <td>1.666667</td>
+      <td>1025.000000</td>
+      <td>1.0</td>
+      <td>100.000000</td>
+      <td>NaN</td>
+      <td>300.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 20:40:00</th>
+      <td>333.333333</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>100.000000</td>
+      <td>1.333333</td>
+      <td>1025.000000</td>
+      <td>1.0</td>
+      <td>100.000000</td>
+      <td>NaN</td>
+      <td>300.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 20:50:00</th>
+      <td>300.000000</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>60.000000</td>
+      <td>1.000000</td>
+      <td>1025.000000</td>
+      <td>1.0</td>
+      <td>100.000000</td>
+      <td>NaN</td>
+      <td>300.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 21:00:00</th>
+      <td>333.333333</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>53.333333</td>
+      <td>1.333333</td>
+      <td>1025.000000</td>
+      <td>1.0</td>
+      <td>100.000000</td>
+      <td>NaN</td>
+      <td>300.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 21:10:00</th>
+      <td>366.666667</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>46.666667</td>
+      <td>1.666667</td>
+      <td>1025.000000</td>
+      <td>1.0</td>
+      <td>100.000000</td>
+      <td>NaN</td>
+      <td>300.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 21:20:00</th>
+      <td>400.000000</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>40.000000</td>
+      <td>2.000000</td>
+      <td>1025.000000</td>
+      <td>1.0</td>
+      <td>100.000000</td>
+      <td>NaN</td>
+      <td>300.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 21:30:00</th>
+      <td>500.000000</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>33.333333</td>
+      <td>2.000000</td>
+      <td>1025.000000</td>
+      <td>1.0</td>
+      <td>100.000000</td>
+      <td>NaN</td>
+      <td>300.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 21:40:00</th>
+      <td>600.000000</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>26.666667</td>
+      <td>2.000000</td>
+      <td>1025.000000</td>
+      <td>1.0</td>
+      <td>100.000000</td>
+      <td>NaN</td>
+      <td>300.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 21:50:00</th>
+      <td>700.000000</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>20.000000</td>
+      <td>2.000000</td>
+      <td>1025.000000</td>
+      <td>1.0</td>
+      <td>100.000000</td>
+      <td>BKN</td>
+      <td>300.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 22:00:00</th>
+      <td>700.000000</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>133.333333</td>
+      <td>1.666667</td>
+      <td>1025.000000</td>
+      <td>1.0</td>
+      <td>100.000000</td>
+      <td>NaN</td>
+      <td>300.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 22:10:00</th>
+      <td>700.000000</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>246.666667</td>
+      <td>1.333333</td>
+      <td>1025.000000</td>
+      <td>1.0</td>
+      <td>100.000000</td>
+      <td>NaN</td>
+      <td>300.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 22:20:00</th>
+      <td>700.000000</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>360.000000</td>
+      <td>1.000000</td>
+      <td>1025.000000</td>
+      <td>1.0</td>
+      <td>100.000000</td>
+      <td>OVC</td>
+      <td>300.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 22:30:00</th>
+      <td>600.000000</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>346.666667</td>
+      <td>1.333333</td>
+      <td>1025.333333</td>
+      <td>1.0</td>
+      <td>100.000000</td>
+      <td>NaN</td>
+      <td>300.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 22:40:00</th>
+      <td>500.000000</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>333.333333</td>
+      <td>1.666667</td>
+      <td>1025.666667</td>
+      <td>1.0</td>
+      <td>100.000000</td>
+      <td>NaN</td>
+      <td>300.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 22:50:00</th>
+      <td>400.000000</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>320.000000</td>
+      <td>2.000000</td>
+      <td>1026.000000</td>
+      <td>1.0</td>
+      <td>100.000000</td>
+      <td>NaN</td>
+      <td>300.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 23:00:00</th>
+      <td>433.333333</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>306.666667</td>
+      <td>2.000000</td>
+      <td>1026.000000</td>
+      <td>1.0</td>
+      <td>100.000000</td>
+      <td>NaN</td>
+      <td>300.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 23:10:00</th>
+      <td>466.666667</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>293.333333</td>
+      <td>2.000000</td>
+      <td>1026.000000</td>
+      <td>1.0</td>
+      <td>100.000000</td>
+      <td>NaN</td>
+      <td>300.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 23:20:00</th>
+      <td>500.000000</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>280.000000</td>
+      <td>2.000000</td>
+      <td>1026.000000</td>
+      <td>1.0</td>
+      <td>100.000000</td>
+      <td>NaN</td>
+      <td>300.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 23:30:00</th>
+      <td>500.000000</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>266.666667</td>
+      <td>2.333333</td>
+      <td>1026.000000</td>
+      <td>1.0</td>
+      <td>100.000000</td>
+      <td>NaN</td>
+      <td>300.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 23:40:00</th>
+      <td>500.000000</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>253.333333</td>
+      <td>2.666667</td>
+      <td>1026.000000</td>
+      <td>1.0</td>
+      <td>100.000000</td>
+      <td>NaN</td>
+      <td>300.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 23:50:00</th>
+      <td>500.000000</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>240.000000</td>
+      <td>3.000000</td>
+      <td>1026.000000</td>
+      <td>1.0</td>
+      <td>100.000000</td>
+      <td>BKN</td>
+      <td>300.0</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>52558 rows × 11 columns</p>
+</div>
+</div>
+
+<h3 id="write-data">Write data</h3>
+
+<p>If you want to save your data, you can use one of the many writers of pandas. A full list of available writers is given <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/io.html">here</a>.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="n">tabelle</span><span class="p">[(</span><span class="n">tabelle</span><span class="o">.</span><span class="n">vis</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">tabelle</span><span class="o">.</span><span class="n">temp</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">)]</span>
+<span class="n">x</span><span class="o">.</span><span class="n">to_html</span><span class="p">(</span><span class="s">"../data/output.html"</span><span class="p">)</span>
 </code></pre></div></div>
+
+<div class="alert task">
+
+  <p><strong>Task</strong></p>
+
+  <ol>
+    <li>Resample the table to 1 hour intervals</li>
+    <li>Select all rows where the lowest clouds altitude (lcl_alt) was below 1000m and the sky was overcast (OVC)</li>
+    <li>Write the result to the file “my_data.html”</li>
+  </ol>
+
+</div>
+
+<p>So far, you have learned how to read, manipulate and write data in tabular shape. But what if you want to get a visual representation of your data?</p>
 
 <p>Although pandas has the ability to plot the data in graphs as well, we use specific plotting libraries for this purpose. There are many plotting libraries for virtually any data visualization need. Some of these libraries can be used regardless of the specific application, but many of them are intensely focused on accomplishing a particular task. A good overview is given on the <a href="https://www.fusioncharts.com/blog/best-python-data-visualization-libraries/">FusionCharts Blog</a>.</p>
 
-<p>Here we will focus on the most basic (and oldest) plotting library called “<strong>matplotlib</strong>”:</p>
+<p>Here we will focus on the most basic (and oldest) plotting library called “<strong>matplotlib</strong>”.</p>
 
 <h2 id="matplotlib">matplotlib</h2>
 
 <p><img src="https://matplotlib.org/_static/logo2.png" alt="" /></p>
+
+<p>Let’s start with a simple example. We want to take a look at the time series of the temperature data in a simple line plot:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tabelle</span><span class="o">.</span><span class="n">temp</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../images/units/S01E04_61_0.png" alt="png" /></p>
+
+<p>This gives us a nice little line plot with the temperature time series depicted as blue line. However, the plot is a little small, the axes are not labeled and there is no legend. Let’s fix that…</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s">'font'</span><span class="p">,</span> <span class="o">**</span><span class="p">{</span><span class="s">'size'</span> <span class="p">:</span> <span class="mi">18</span><span class="p">})</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tabelle</span><span class="o">.</span><span class="n">temp</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s">"Air temperature at Frankfurt Int. Airport"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">"Temperature (°C)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../images/units/S01E04_63_0.png" alt="png" /></p>
+
+<p>This looks better. However, we are not interested in the daily temperature fluctuations. So let’s resample the data to daily means and plot it again…</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">temp_resampled</span> <span class="o">=</span> <span class="n">tabelle</span><span class="o">.</span><span class="n">temp</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s">"1d"</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s">'font'</span><span class="p">,</span> <span class="o">**</span><span class="p">{</span><span class="s">'size'</span> <span class="p">:</span> <span class="mi">18</span><span class="p">})</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">temp_resampled</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s">"Air temperature at Frankfurt Int. Airport"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">"Temperature (°C)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">((</span><span class="s">"2015-01-01"</span><span class="p">,</span><span class="s">"2015-12-31"</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="s">"2015-{:02d}-15"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">1</span><span class="p">)],[</span><span class="s">"Jan"</span><span class="p">,</span><span class="s">"Feb"</span><span class="p">,</span><span class="s">"Mar"</span><span class="p">,</span><span class="s">"Apr"</span><span class="p">,</span><span class="s">"May"</span><span class="p">,</span><span class="s">"Jun"</span><span class="p">,</span><span class="s">"Jul"</span><span class="p">,</span><span class="s">"Aug"</span><span class="p">,</span><span class="s">"Sep"</span><span class="p">,</span><span class="s">"Oct"</span><span class="p">,</span><span class="s">"Nov"</span><span class="p">,</span><span class="s">"Dec"</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../images/units/S01E04_65_0.png" alt="png" /></p>
+
+<p>You can also put multiple lines into one plot:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">temp_resampled</span> <span class="o">=</span> <span class="n">tabelle</span><span class="o">.</span><span class="n">temp</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s">"1d"</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">dewpt_resampled</span> <span class="o">=</span> <span class="n">tabelle</span><span class="o">.</span><span class="n">dewpt</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s">"1d"</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s">'font'</span><span class="p">,</span> <span class="o">**</span><span class="p">{</span><span class="s">'size'</span> <span class="p">:</span> <span class="mi">18</span><span class="p">})</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">temp_resampled</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s">"Air temperature"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dewpt_resampled</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s">"Dewpoint"</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">"Temperature (°C)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">((</span><span class="s">"2015-01-01"</span><span class="p">,</span><span class="s">"2015-12-31"</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="s">"2015-{:02d}-15"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">1</span><span class="p">)],[</span><span class="s">"Jan"</span><span class="p">,</span><span class="s">"Feb"</span><span class="p">,</span><span class="s">"Mar"</span><span class="p">,</span><span class="s">"Apr"</span><span class="p">,</span><span class="s">"May"</span><span class="p">,</span><span class="s">"Jun"</span><span class="p">,</span><span class="s">"Jul"</span><span class="p">,</span><span class="s">"Aug"</span><span class="p">,</span><span class="s">"Sep"</span><span class="p">,</span><span class="s">"Oct"</span><span class="p">,</span><span class="s">"Nov"</span><span class="p">,</span><span class="s">"Dec"</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../images/units/S01E04_67_0.png" alt="png" /></p>
+
+<p>And if we don’t like the colors, we can choose different ones but providing the <code class="highlighter-rouge">c</code> argument to the plotting function:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">temp_resampled</span> <span class="o">=</span> <span class="n">tabelle</span><span class="o">.</span><span class="n">temp</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s">"1d"</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">dewpt_resampled</span> <span class="o">=</span> <span class="n">tabelle</span><span class="o">.</span><span class="n">dewpt</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s">"1d"</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s">'font'</span><span class="p">,</span> <span class="o">**</span><span class="p">{</span><span class="s">'size'</span> <span class="p">:</span> <span class="mi">18</span><span class="p">})</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">temp_resampled</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s">"Air temperature"</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s">"k"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dewpt_resampled</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s">"Dewpoint"</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s">"r"</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">"Temperature (°C)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">((</span><span class="s">"2015-01-01"</span><span class="p">,</span><span class="s">"2015-12-31"</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="s">"2015-{:02d}-15"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">1</span><span class="p">)],[</span><span class="s">"Jan"</span><span class="p">,</span><span class="s">"Feb"</span><span class="p">,</span><span class="s">"Mar"</span><span class="p">,</span><span class="s">"Apr"</span><span class="p">,</span><span class="s">"May"</span><span class="p">,</span><span class="s">"Jun"</span><span class="p">,</span><span class="s">"Jul"</span><span class="p">,</span><span class="s">"Aug"</span><span class="p">,</span><span class="s">"Sep"</span><span class="p">,</span><span class="s">"Oct"</span><span class="p">,</span><span class="s">"Nov"</span><span class="p">,</span><span class="s">"Dec"</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../images/units/S01E04_69_0.png" alt="png" /></p>
+
+<p>We can also plot a histogram of the data:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">tabelle</span><span class="o">.</span><span class="n">temp</span><span class="o">.</span><span class="n">dropna</span><span class="p">())</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../images/units/S01E04_71_0.png" alt="png" /></p>
+
+<p>Again, this plot is nice and simple but we can do better…</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">temperatur</span> <span class="o">=</span> <span class="n">tabelle</span><span class="o">.</span><span class="n">temp</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s">'font'</span><span class="p">,</span> <span class="o">**</span><span class="p">{</span><span class="s">'size'</span> <span class="p">:</span> <span class="mi">18</span><span class="p">})</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">temperatur</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="nb">sorted</span><span class="p">(</span><span class="n">temperatur</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span><span class="o">-</span><span class="mf">0.5</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="s">"#ffa8a8"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../images/units/S01E04_73_0.png" alt="png" /></p>
+
+<p>We can also plot multiple histograms within one chart, e.g. the temperature values separated into Jan and Aug:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">temperatur_jan</span> <span class="o">=</span> <span class="n">tabelle</span><span class="o">.</span><span class="n">temp</span><span class="p">[</span><span class="s">"2015-01"</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">temperatur_aug</span> <span class="o">=</span> <span class="n">tabelle</span><span class="o">.</span><span class="n">temp</span><span class="p">[</span><span class="s">"2015-08"</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s">'font'</span><span class="p">,</span> <span class="o">**</span><span class="p">{</span><span class="s">'size'</span> <span class="p">:</span> <span class="mi">18</span><span class="p">})</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">temperatur_jan</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="nb">sorted</span><span class="p">(</span><span class="n">tabelle</span><span class="o">.</span><span class="n">temp</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span><span class="o">-</span><span class="mf">0.5</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="s">"#00b1ff"</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s">"January"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">temperatur_aug</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="nb">sorted</span><span class="p">(</span><span class="n">tabelle</span><span class="o">.</span><span class="n">temp</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span><span class="o">-</span><span class="mf">0.5</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="s">"#ff0000"</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s">"August"</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../images/units/S01E04_75_0.png" alt="png" /></p>
+
+<p>There are many more options that you can tweak in order to get a nice looking ready to print plot. We won’t cover them here but you can have a look at the <a href="https://matplotlib.org/contents.html">matplotlib documentation</a>.</p>
 
 <div class="alert task">
 
