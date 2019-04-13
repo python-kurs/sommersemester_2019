@@ -29,9 +29,9 @@
   "headline":
     "Data science I",
   "datePublished":
-    "2019-04-13T19:35:30+00:00",
+    "2019-04-13T19:53:37+00:00",
   "dateModified":
-    "2019-04-13T19:35:30+00:00",
+    "2019-04-13T19:53:37+00:00",
   "description":
     "",
   "author": {
@@ -7674,6 +7674,18 @@ Name: air_temperature, Length: 17520, dtype: float64
 
 <p class="output output_png"><img src="../images/units/S01E04_76_0.png" alt="png" /></p>
 
+<p>If you want to save your figure, you can simply call the <code class="highlighter-rouge">savefig()</code> function instead of <code class="highlighter-rouge">show()</code>:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s">'font.size'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">18</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tabelle</span><span class="o">.</span><span class="n">air_temperature</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s">"1d"</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span><span class="n">c</span><span class="o">=</span><span class="s">"r"</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s">"Temperature"</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s">"images/S01E04/beispiel_output.png"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../images/units/S01E04_78_0.png" alt="png" /></p>
+
 <h3 id="histograms">Histograms</h3>
 
 <p>To get an overview of the distribution of temperature values, we can also plot a histogram of the data:</p>
@@ -7682,7 +7694,7 @@ Name: air_temperature, Length: 17520, dtype: float64
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E04_78_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E04_80_0.png" alt="png" /></p>
 
 <p>Again, this plot is nice and simple but we can do better…</p>
 
@@ -7697,7 +7709,7 @@ Name: air_temperature, Length: 17520, dtype: float64
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E04_80_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E04_82_0.png" alt="png" /></p>
 
 <p>We can also plot multiple histograms within one chart, e.g. the temperature values separated into January and August:</p>
 
@@ -7714,7 +7726,7 @@ Name: air_temperature, Length: 17520, dtype: float64
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E04_82_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E04_84_0.png" alt="png" /></p>
 
 <p>And we can draw multiple plot types within one plot. Let’s plot the winter and summer temperature counts as lines and the total temperature counts as bars:</p>
 
@@ -7738,7 +7750,7 @@ Name: air_temperature, Length: 17520, dtype: float64
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E04_84_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E04_86_0.png" alt="png" /></p>
 
 <h3 id="scatterplots">Scatterplots</h3>
 
@@ -7753,7 +7765,7 @@ Name: air_temperature, Length: 17520, dtype: float64
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E04_86_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E04_88_0.png" alt="png" /></p>
 
 <p>We can also plot multiple scatterplots on top of each other to depict more information within one plot.</p>
 
@@ -7773,7 +7785,7 @@ Name: air_temperature, Length: 17520, dtype: float64
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E04_88_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E04_90_0.png" alt="png" /></p>
 
 <p>There are many more options that you can tweak in order to get a nice looking ready to print plot. 
 And of course, there are many more plot types (e.g. bar plots, box plots, 3d plots, …)
@@ -7793,7 +7805,7 @@ We won’t cover all of them here but you can have a look at the <a href="https:
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E04_91_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E04_93_0.png" alt="png" /></p>
 
 <div class="alert task">
 
