@@ -39,18 +39,18 @@
 - Visualize data
 - Write data to disk
 
-**Advanced visualization** (12.06.2019)
-- CartoPy
-- Image plots
-- Map plots (of georeferenced data)
-
-**SatPy II** (26.06.2019)
+**SatPy II** (12.06.2019)
 - Reproject satellite data (resampling)
-- create band combinations
-- MultiScene function
-
-**SatPy III** (03.07.2019)
+- Create band combinations
 - Integration of multiple satellite formats (MODIS, Meteosat, ...)
+
+**Visualization** (26.06.2019)
+- Image plots
+- Map plots with CartoPy (of georeferenced data)
+
+**Data science III** (03.07.2019)
+- scipy
+- scikit-learn
 
 **???** (10.07.2019)
 
