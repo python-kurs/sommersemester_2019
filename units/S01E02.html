@@ -29,9 +29,9 @@
   "headline":
     "Python Basics II",
   "datePublished":
-    "2019-04-13T21:31:33+00:00",
+    "2019-04-15T18:00:29+00:00",
   "dateModified":
-    "2019-04-13T21:31:33+00:00",
+    "2019-04-15T18:00:29+00:00",
   "description":
     "",
   "author": {
@@ -1037,7 +1037,7 @@ A dictionary can be created by using curly braces <code class="highlighter-rouge
 
     KeyError                                  Traceback (most recent call last)
 
-    &lt;ipython-input-7-b62981f981c6&gt; in &lt;module&gt;()
+    &lt;ipython-input-3-b62981f981c6&gt; in &lt;module&gt;()
     ----&gt; 1 kitchen_supplies.pop("mixer")
     
 
@@ -1052,6 +1052,15 @@ A dictionary can be created by using curly braces <code class="highlighter-rouge
 </code></pre></div></div>
 
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
+</code></pre></div></div>
+
+<p>Of course, you can also add key/value-pairs to a dictionary after its instantiation:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">kitchen_supplies</span><span class="p">[</span><span class="s">"mixers"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">kitchen_supplies</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'forks': 6, 'knives': 10, 'mixers': 3, 'pots': 4, 'spoons': 12}
 </code></pre></div></div>
 
 <p>You can get a list of all keys, values or items in the dictionary via the respective dict methods:</p>
