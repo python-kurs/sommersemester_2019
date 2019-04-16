@@ -29,9 +29,9 @@
   "headline":
     "Motivation",
   "datePublished":
-    "2019-04-16T10:43:20+00:00",
+    "2019-04-16T17:39:13+00:00",
   "dateModified":
-    "2019-04-16T10:43:20+00:00",
+    "2019-04-16T17:39:13+00:00",
   "description":
     "",
   "author": {
@@ -757,21 +757,12 @@ initFunction(initQuery);
 
 <p>Python…</p>
 <ul>
-  <li>is beginner friendly,</li>
-  <li>flexible,</li>
-  <li>readable,</li>
-  <li>has a big onliny community,</li>
-  <li>is a first-class tool for scientific computing tasks, including the analysis and visualization of large datasets,</li>
-  <li>is used in
-    <ul>
-      <li>Remote Sensing</li>
-      <li>Machine Learning</li>
-      <li>Big Data</li>
-      <li>Image Processing</li>
-      <li>Data Analysis</li>
-      <li>Data Visualization</li>
-    </ul>
-  </li>
+  <li>is beginner friendly</li>
+  <li>flexible</li>
+  <li>readable</li>
+  <li>has a big onliny community</li>
+  <li>is a first-class tool for scientific computing tasks</li>
+  <li>is used in Remote Sensing, Machine Learning, Big Data Analysis, Image Processing , Data Visualization</li>
   <li>is the 2nd most demanded programming skill (in the US)</li>
   <li>is the 2nd best paid programming skill (&gt; 105’000$ in the US)</li>
   <li>is heavily used at large companies like Google &amp; Facebook but also at NASA, ESA, EUMETSAT, etc.</li>
@@ -1033,10 +1024,16 @@ fünf
 
 <p class="output output_png"><img src="/home/travis/build/python-kurs/sommersemester_2019/_build/motivation_23_0.png" alt="png" /></p>
 
-<p>… and to manipulate and interpret meteorological satellite data for scientific purposes, e.g. calculate the NDVI:</p>
+<p>… and to manipulate and interpret meteorological satellite data for scientific purposes:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">scn</span><span class="p">[</span><span class="s">"ndvi"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">scn</span><span class="p">[</span><span class="mf">0.8</span><span class="p">]</span> <span class="o">-</span> <span class="n">scn</span><span class="p">[</span><span class="mf">0.6</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">scn</span><span class="p">[</span><span class="mf">0.8</span><span class="p">]</span> <span class="o">+</span> <span class="n">scn</span><span class="p">[</span><span class="mf">0.6</span><span class="p">])[</span><span class="mi">100</span><span class="p">:</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">:</span><span class="o">-</span><span class="mi">100</span><span class="p">]</span>
-<span class="n">scn</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s">"ndvi"</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">scn</span><span class="p">[</span><span class="s">"ndvi"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">scn</span><span class="p">[</span><span class="mf">0.8</span><span class="p">]</span> <span class="o">-</span> <span class="n">scn</span><span class="p">[</span><span class="mf">0.6</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">scn</span><span class="p">[</span><span class="mf">0.8</span><span class="p">]</span> <span class="o">+</span> <span class="n">scn</span><span class="p">[</span><span class="mf">0.6</span><span class="p">])[</span><span class="mi">100</span><span class="p">:</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">:</span><span class="o">-</span><span class="mi">100</span><span class="p">]</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">scn</span><span class="p">[</span><span class="s">"ndvi"</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">),</span><span class="n">cmap</span><span class="o">=</span><span class="s">"RdBu_r"</span><span class="p">)</span>
+<span class="n">cb</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span><span class="n">fraction</span><span class="o">=</span><span class="mf">0.046</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.02</span><span class="p">)</span>
+<span class="n">cb</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s">"NDVI"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
 <p class="output output_png"><img src="/home/travis/build/python-kurs/sommersemester_2019/_build/motivation_25_0.png" alt="png" /></p>
