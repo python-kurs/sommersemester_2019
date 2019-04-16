@@ -29,9 +29,9 @@
   "headline":
     "Motivation",
   "datePublished":
-    "2019-04-15T18:00:29+00:00",
+    "2019-04-16T10:43:20+00:00",
   "dateModified":
-    "2019-04-15T18:00:29+00:00",
+    "2019-04-16T10:43:20+00:00",
   "description":
     "",
   "author": {
@@ -783,9 +783,12 @@ initFunction(initQuery);
 
 <div class="language-python input_area hidecode highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="n">xr</span>
+<span class="kn">import</span> <span class="nn">satpy</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">curve_fit</span>
 <span class="kn">from</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">import</span> <span class="n">rcParams</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
 
 <span class="n">rcParams</span><span class="p">[</span><span class="s">'figure.figsize'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span><span class="mi">6</span>
 <span class="n">rcParams</span><span class="p">[</span><span class="s">'font.size'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">14</span>
@@ -797,6 +800,8 @@ initFunction(initQuery);
 <span class="n">y</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
 <span class="n">y_noise</span> <span class="o">=</span> <span class="mf">5.2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">xdata</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
 <span class="n">ydata</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">y_noise</span>
+
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s">'ignore'</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>… to work with the basic concepts of Python:</p>
@@ -821,10 +826,10 @@ fünf
 
 </code></pre></div></div>
 
-<p>… to read, interpret and manipulate your scientific data with the standard Python tools for data science (numpy, scipy, pandas, matplotlib):</p>
+<p>… to read, interpret and manipulate your scientific data with the standard Python tools for data science (numpy, scipy, pandas):</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">iris</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'data/iris.csv'</span><span class="p">)</span>
-<span class="n">iris</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'data/frankfurt_weather.csv'</span><span class="p">,</span><span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s">'time'</span><span class="p">],</span><span class="n">index_col</span><span class="o">=</span><span class="s">"time"</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s">","</span><span class="p">)</span>
+<span class="n">tabelle</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div></div>
 
 <div class="output output_html">
@@ -846,90 +851,195 @@ fünf
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>sepal_length</th>
-      <th>sepal_width</th>
-      <th>petal_length</th>
-      <th>petal_width</th>
-      <th>species</th>
-      <th>color</th>
+      <th>visibility</th>
+      <th>air_temperature</th>
+      <th>dewpoint</th>
+      <th>wind_direction</th>
+      <th>wind_speed</th>
+      <th>air_pressure</th>
+      <th>cloud_height</th>
+      <th>cloud_cover</th>
+    </tr>
+    <tr>
+      <th>time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
-      <td>5.1</td>
-      <td>3.5</td>
-      <td>1.4</td>
-      <td>0.2</td>
-      <td>setosa</td>
-      <td>0.8</td>
+      <th>2015-01-01 00:20:00</th>
+      <td>2800</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1036.0</td>
+      <td>200.0</td>
+      <td>OVC</td>
     </tr>
     <tr>
-      <th>1</th>
-      <td>4.9</td>
-      <td>3.0</td>
-      <td>1.4</td>
-      <td>0.2</td>
-      <td>setosa</td>
-      <td>0.8</td>
+      <th>2015-01-01 00:50:00</th>
+      <td>1500</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1036.0</td>
+      <td>100.0</td>
+      <td>OVC</td>
     </tr>
     <tr>
-      <th>2</th>
-      <td>4.7</td>
-      <td>3.2</td>
-      <td>1.3</td>
-      <td>0.2</td>
-      <td>setosa</td>
-      <td>0.8</td>
+      <th>2015-01-01 01:20:00</th>
+      <td>1000</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1036.0</td>
+      <td>100.0</td>
+      <td>OVC</td>
     </tr>
     <tr>
-      <th>3</th>
-      <td>4.6</td>
-      <td>3.1</td>
-      <td>1.5</td>
-      <td>0.2</td>
-      <td>setosa</td>
-      <td>0.8</td>
+      <th>2015-01-01 01:50:00</th>
+      <td>700</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1036.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
     <tr>
-      <th>4</th>
-      <td>5.0</td>
-      <td>3.6</td>
-      <td>1.4</td>
-      <td>0.2</td>
-      <td>setosa</td>
-      <td>0.8</td>
+      <th>2015-01-01 02:20:00</th>
+      <td>600</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1036.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
   </tbody>
 </table>
 </div>
 </div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">sepal_length</span><span class="p">,</span><span class="n">iris</span><span class="o">.</span><span class="n">petal_length</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">iris</span><span class="o">.</span><span class="n">color</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s">"plasma"</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s">'k'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">"Petal length"</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">"Sepal length"</span><span class="p">)</span>
+<p>… to plot your data in various ways using matplotlib:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">temp_resampled</span> <span class="o">=</span> <span class="n">tabelle</span><span class="o">.</span><span class="n">air_temperature</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s">"1d"</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">dewpt_resampled</span> <span class="o">=</span> <span class="n">tabelle</span><span class="o">.</span><span class="n">dewpoint</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s">"1d"</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s">'font.size'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">18</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">temp_resampled</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s">"Air temperature"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dewpt_resampled</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s">"Dewpoint"</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">"Temperature (°C)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">((</span><span class="s">"2015-01-01"</span><span class="p">,</span><span class="s">"2015-12-31"</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="s">"2015-{:02d}-15"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">1</span><span class="p">)],[</span><span class="s">"Jan"</span><span class="p">,</span><span class="s">"Feb"</span><span class="p">,</span><span class="s">"Mar"</span><span class="p">,</span><span class="s">"Apr"</span><span class="p">,</span><span class="s">"May"</span><span class="p">,</span><span class="s">"Jun"</span><span class="p">,</span><span class="s">"Jul"</span><span class="p">,</span><span class="s">"Aug"</span><span class="p">,</span><span class="s">"Sep"</span><span class="p">,</span><span class="s">"Oct"</span><span class="p">,</span><span class="s">"Nov"</span><span class="p">,</span><span class="s">"Dec"</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="/home/travis/build/python-kurs/sommersemester_2019/_build/motivation_11_0.png" alt="png" /></p>
+<p class="output output_png"><img src="/home/travis/build/python-kurs/sommersemester_2019/_build/motivation_12_0.png" alt="png" /></p>
+
+<p>… to statistically analyze your data and know how to build statistical (maybe even machine learning) models using scikit-learn:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">popt</span><span class="p">,</span> <span class="n">pcov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">)</span>
-
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s">'font.size'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">16</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">func</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">popt</span><span class="p">),</span> <span class="s">'r-'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'fit'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'measurements'</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="s">"k"</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s">"."</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="/home/travis/build/python-kurs/sommersemester_2019/_build/motivation_12_0.png" alt="png" /></p>
+<p class="output output_png"><img src="/home/travis/build/python-kurs/sommersemester_2019/_build/motivation_14_0.png" alt="png" /></p>
 
-<p>… to visualize your data in map plots:</p>
+<p>… to visualize your data in map plots with CartoPy:</p>
 
 <p><img src="images/motivation/basemap_example.png" alt="" /></p>
 
-<p>… to read, manipulate and visualize meteorological satellite data (e.g. Meteosat):</p>
+<p>… to read, reproject and visualize meteorological satellite data using satpy (e.g. Meteosat):</p>
 
 <p><img src="images/motivation/msg_example.png" alt="" /></p>
+
+<p>… to generate colour composites of meteorological satellite data for different use cases:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">datei</span> <span class="o">=</span> <span class="p">[</span><span class="s">"data/W_XX-EUMETSAT-Darmstadt,VIS+IR+IMAGERY,MSG3+SEVIRI_C_EUMG_20180112120010.nc"</span><span class="p">]</span>
+
+<span class="n">files</span> <span class="o">=</span> <span class="p">{</span><span class="s">'seviri_l1b_nc'</span> <span class="p">:</span> <span class="n">datei</span><span class="p">}</span>
+
+<span class="n">scn</span> <span class="o">=</span> <span class="n">satpy</span><span class="o">.</span><span class="n">Scene</span><span class="p">(</span><span class="n">filenames</span><span class="o">=</span><span class="n">files</span><span class="p">)</span>
+<span class="n">available_bands</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">scn</span><span class="o">.</span><span class="n">available_dataset_ids</span><span class="p">()]))</span>
+<span class="n">scn</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">available_bands</span><span class="p">)</span>
+
+<span class="n">compo</span> <span class="o">=</span> <span class="s">"natural_color"</span>
+<span class="n">scn</span><span class="o">.</span><span class="n">load</span><span class="p">([</span><span class="n">compo</span><span class="p">])</span>
+<span class="n">scn</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">compo</span><span class="p">)</span>
+<span class="n">scn</span><span class="p">[</span><span class="n">compo</span><span class="p">]</span> <span class="o">=</span> <span class="n">scn</span><span class="p">[</span><span class="n">compo</span><span class="p">][:,</span><span class="mi">100</span><span class="p">:</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">:</span><span class="o">-</span><span class="mi">100</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">scn</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s">"natural_color"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="/home/travis/build/python-kurs/sommersemester_2019/_build/motivation_19_0.png" alt="png" /></p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">datei</span> <span class="o">=</span> <span class="p">[</span><span class="s">"data/W_XX-EUMETSAT-Darmstadt,VIS+IR+IMAGERY,MSG3+SEVIRI_C_EUMG_20180112120010.nc"</span><span class="p">]</span>
+
+<span class="n">files</span> <span class="o">=</span> <span class="p">{</span><span class="s">'seviri_l1b_nc'</span> <span class="p">:</span> <span class="n">datei</span><span class="p">}</span>
+
+<span class="n">scn</span> <span class="o">=</span> <span class="n">satpy</span><span class="o">.</span><span class="n">Scene</span><span class="p">(</span><span class="n">filenames</span><span class="o">=</span><span class="n">files</span><span class="p">)</span>
+<span class="n">available_bands</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">scn</span><span class="o">.</span><span class="n">available_dataset_ids</span><span class="p">()]))</span>
+<span class="n">scn</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">available_bands</span><span class="p">)</span>
+
+<span class="n">compo</span> <span class="o">=</span> <span class="s">"snow"</span>
+<span class="n">scn</span><span class="o">.</span><span class="n">load</span><span class="p">([</span><span class="n">compo</span><span class="p">])</span>
+<span class="n">scn</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">compo</span><span class="p">)</span>
+<span class="n">scn</span><span class="p">[</span><span class="n">compo</span><span class="p">]</span> <span class="o">=</span> <span class="n">scn</span><span class="p">[</span><span class="n">compo</span><span class="p">][:,</span><span class="mi">100</span><span class="p">:</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">:</span><span class="o">-</span><span class="mi">100</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">scn</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s">"snow"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="/home/travis/build/python-kurs/sommersemester_2019/_build/motivation_21_0.png" alt="png" /></p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">datei</span> <span class="o">=</span> <span class="p">[</span><span class="s">"data/W_XX-EUMETSAT-Darmstadt,VIS+IR+IMAGERY,MSG3+SEVIRI_C_EUMG_20180112120010.nc"</span><span class="p">]</span>
+
+<span class="n">files</span> <span class="o">=</span> <span class="p">{</span><span class="s">'seviri_l1b_nc'</span> <span class="p">:</span> <span class="n">datei</span><span class="p">}</span>
+
+<span class="n">scn</span> <span class="o">=</span> <span class="n">satpy</span><span class="o">.</span><span class="n">Scene</span><span class="p">(</span><span class="n">filenames</span><span class="o">=</span><span class="n">files</span><span class="p">)</span>
+<span class="n">available_bands</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">scn</span><span class="o">.</span><span class="n">available_dataset_ids</span><span class="p">()]))</span>
+<span class="n">scn</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">available_bands</span><span class="p">)</span>
+
+<span class="n">compo</span> <span class="o">=</span> <span class="s">"day_microphysics"</span>
+<span class="n">scn</span><span class="o">.</span><span class="n">load</span><span class="p">([</span><span class="n">compo</span><span class="p">])</span>
+<span class="n">scn</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">compo</span><span class="p">)</span>
+<span class="n">scn</span><span class="p">[</span><span class="n">compo</span><span class="p">]</span> <span class="o">=</span> <span class="n">scn</span><span class="p">[</span><span class="n">compo</span><span class="p">][:,</span><span class="mi">100</span><span class="p">:</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">:</span><span class="o">-</span><span class="mi">100</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">scn</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s">"day_microphysics"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="/home/travis/build/python-kurs/sommersemester_2019/_build/motivation_23_0.png" alt="png" /></p>
+
+<p>… and to manipulate and interpret meteorological satellite data for scientific purposes, e.g. calculate the NDVI:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">scn</span><span class="p">[</span><span class="s">"ndvi"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">scn</span><span class="p">[</span><span class="mf">0.8</span><span class="p">]</span> <span class="o">-</span> <span class="n">scn</span><span class="p">[</span><span class="mf">0.6</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">scn</span><span class="p">[</span><span class="mf">0.8</span><span class="p">]</span> <span class="o">+</span> <span class="n">scn</span><span class="p">[</span><span class="mf">0.6</span><span class="p">])[</span><span class="mi">100</span><span class="p">:</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">:</span><span class="o">-</span><span class="mi">100</span><span class="p">]</span>
+<span class="n">scn</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s">"ndvi"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="/home/travis/build/python-kurs/sommersemester_2019/_build/motivation_25_0.png" alt="png" /></p>
 
 
               <nav class="c-page__nav">
