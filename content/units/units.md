@@ -18,11 +18,13 @@
 - Blocks & indentation
 - Loops
 - Conditional cases
+- Control Flow
 
 **Python Basics III** (15.05.2019)
 - Functions
 - Global vs. local variables
 - Modules & import
+- Reading & writing text files
 - Exception handling (try/except)
 
 **Data science I** (22.05.2019)
