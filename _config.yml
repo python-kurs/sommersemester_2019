@@ -23,9 +23,6 @@ description: >- # this means to ignore newlines until next item
   course course-materials geography remote-sensing marburg-open-educational-resource 
   physical-geography environmental-science python
 
-# Serve on Ilias
-url: "https://ilias.uni-marburg.de"
-baseurl: "/data/UNIMR/lm_data/lm_2092200"
 
 # Serve on moer
 #url: "https://oer.uni-marburg.de"              # the base hostname & protocol for your site, e.g. http://example.com
