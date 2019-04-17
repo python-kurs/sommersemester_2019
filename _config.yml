@@ -31,6 +31,9 @@ baseurl: "/data/UNIMR/lm_data/lm_2092200"
 #url: "https://oer.uni-marburg.de"              # the base hostname & protocol for your site, e.g. http://example.com
 #baseurl: "/data/mriliasmooc/lm_data/lm_2934"  # the subpath of your site, e.g. /blog. If there is no subpath for your site, use an empty string ""
 #
+#Serve on Ilias
+url: "https://ilias.uni-marburg.de"
+baseurl: "/data/UNIMR/lm_data/lm_2092200"
 # Serve on GitHub
 #url: https://python-kurs.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 #baseurl: "/sommersemester_2019/"
