@@ -11,7 +11,7 @@
   <meta name="description" content="">
 
   <link rel="canonical" href="https://python-kurs.github.io/sommersemester_2019//units/S01E01.html">
-  <link rel="alternate" type="application/rss+xml" title="Python for remote sensing" href="https://python-kurs.github.io/sommersemester_2019//feed.xml">
+  <link rel="alternate" type="application/rss+xml" title="Python for climatology & remote sensing" href="https://python-kurs.github.io/sommersemester_2019//feed.xml">
 
   <meta property="og:url"         content="https://python-kurs.github.io/sommersemester_2019//units/S01E01.html" />
 <meta property="og:type"        content="article" />
@@ -29,9 +29,9 @@
   "headline":
     "Python Basics I",
   "datePublished":
-    "2019-04-17T17:18:00+00:00",
+    "2019-04-19T10:18:36+00:00",
   "dateModified":
-    "2019-04-17T17:18:00+00:00",
+    "2019-04-19T10:18:36+00:00",
   "description":
     "",
   "author": {
@@ -499,7 +499,7 @@ initFunction(initQuery);
 
 <nav id="js-sidebar" class="c-textbook__sidebar">
   <a href="https://python-kurs.github.io/sommersemester_2019/intro.html"><img src="/sommersemester_2019/images/logo/logo.png" class="textbook_logo" id="sidebar-logo" data-turbolinks-permanent/></a>
-  <h2 class="c-sidebar__title">Python for remote sensing</h2>
+  <h2 class="c-sidebar__title">Python for climatology & remote sensing</h2>
   <ul class="c-sidebar__chapters">
     
       
@@ -838,7 +838,7 @@ Important to know, is that integers generally take much less memory space than f
 <p><strong>Naming conventions:</strong> Variable names can consist of more than just one character. The following rules apply:</p>
 
 <ul>
-  <li>They must begin with a letter (a - z, A - B) or underscore (<code class="highlighter-rouge">_</code>)</li>
+  <li>They must begin with a letter (a - z, A - Z) or underscore (<code class="highlighter-rouge">_</code>)</li>
   <li>Other characters can be letters, numbers or an underscore</li>
   <li>They are case sensitive</li>
   <li>You cannot use some reserved words as a variable name because Python uses them for other things (e.g. <code class="highlighter-rouge">def</code>, <code class="highlighter-rouge">str</code>, <code class="highlighter-rouge">print</code>, …)</li>
@@ -864,6 +864,7 @@ Important to know, is that integers generally take much less memory space than f
   <ol>
     <li>Create two variables called <code class="highlighter-rouge">Vorname</code> and  <code class="highlighter-rouge">Nachname</code> and assign your first/last name to them as strings.</li>
     <li>Create another variable called <code class="highlighter-rouge">Lieblingszahl</code> and assign it your favourite number.</li>
+    <li>Print all three variables in one call.</li>
   </ol>
 
 </div>
@@ -891,6 +892,33 @@ Important to know, is that integers generally take much less memory space than f
 </code></pre></div></div>
 
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Python'
+</code></pre></div></div>
+
+<p>However, if you mix strings and numbers using the <code class="highlighter-rouge">+</code> operator, be careful:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">+</span><span class="mi">3</span>
+</code></pre></div></div>
+
+<div class="output output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+    ---------------------------------------------------------------------------
+
+    TypeError                                 Traceback (most recent call last)
+
+    &lt;ipython-input-3-1760fa2bf485&gt; in &lt;module&gt;()
+    ----&gt; 1 a+b+3
+    
+
+    TypeError: can only concatenate str (not "int") to str
+
+
+</code></pre></div></div>
+
+<p>If you want to concatenate strings and numbers, you have to convert the numbers to strings using the <code class="highlighter-rouge">str()</code> method:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Python3'
 </code></pre></div></div>
 
 <p>Normally expressions are assigned to variables:</p>
@@ -942,6 +970,14 @@ Important to know, is that integers generally take much less memory space than f
 <div class="alert task">
 
   <p><strong>Task:</strong></p>
+
+  <ol>
+    <li>Print the variables from above (Vorname, Nachname, Lieblingszahl) in the following manner:</li>
+  </ol>
+
+  <blockquote>
+    <p>Die Lieblingszahl von Benjamin Rösner ist 42.</p>
+  </blockquote>
 
   <ol>
     <li>Let Python calculate the sum of 44 and 124 and divide the result by 76 (all in one line). What is your result?</li>
