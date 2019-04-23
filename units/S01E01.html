@@ -29,9 +29,9 @@
   "headline":
     "Python Basics I",
   "datePublished":
-    "2019-04-22T11:35:46+00:00",
+    "2019-04-23T13:19:47+00:00",
   "dateModified":
-    "2019-04-22T11:35:46+00:00",
+    "2019-04-23T13:19:47+00:00",
   "description":
     "",
   "author": {
@@ -642,6 +642,7 @@ initFunction(initQuery);
   <li><a href="#comments">Comments</a></li>
   <li><a href="#variables--datatypes">Variables &amp; datatypes</a></li>
   <li><a href="#arithmetic-operators">Arithmetic operators</a></li>
+  <li><a href="#comparison-operators">Comparison operators</a></li>
   <li><a href="#logical-operators">Logical operators</a></li>
   <li><a href="#formatted-printing">Formatted printing</a></li>
   <li><a href="#input">Input</a></li>
@@ -869,11 +870,12 @@ Important to know, is that integers generally take much less memory space than f
 
 </div>
 
+<h1 id="operators">Operators</h1>
 <h2 id="arithmetic-operators">Arithmetic operators</h2>
 
 <p>Most statements (logical lines) that you write will contain expressions. A simple example of an expression is <code class="highlighter-rouge">5 + 9</code>. An expression can be broken down into operators and operands.</p>
 
-<p>In Python, you can use four basic operators: <code class="highlighter-rouge">+</code>, <code class="highlighter-rouge">-</code>, <code class="highlighter-rouge">*</code> and <code class="highlighter-rouge">/</code>. There are many more operators, which will be covered later.</p>
+<p>In Python, you can use four basic arithmetic operators: <code class="highlighter-rouge">+</code>, <code class="highlighter-rouge">-</code>, <code class="highlighter-rouge">*</code> and <code class="highlighter-rouge">/</code>. There are many more operators, which will be covered later.</p>
 
 <p>Operators perform a specific computation. They require data to operate on. Such data is called operands, in this case, <code class="highlighter-rouge">5</code> and <code class="highlighter-rouge">9</code> are the operands.</p>
 
@@ -986,6 +988,30 @@ Important to know, is that integers generally take much less memory space than f
 
 </div>
 
+<h2 id="comparison-operators">Comparison operators</h2>
+
+<p>Another operator is the double <code class="highlighter-rouge">==</code>. It is used to compare two variables and it returns <code class="highlighter-rouge">True</code>, if both variables have the same value, otherwise <code class="highlighter-rouge">False</code>:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="n">x</span> <span class="o">==</span> <span class="n">y</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>False
+</code></pre></div></div>
+
+<p>You can also compare two variables/expressions using the <code class="highlighter-rouge">&gt;</code> or <code class="highlighter-rouge">&lt;</code> operators (and many more).</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
 <h2 id="logical-operators">Logical operators</h2>
 
 <p>There are also logical operators, like <code class="highlighter-rouge">and</code>, <code class="highlighter-rouge">or</code> and <code class="highlighter-rouge">not</code>. (Again, there are some more operators but we will not cover all of them)</p>
@@ -1012,28 +1038,6 @@ False
 
 </code></pre></div></div>
 
-<p>Another operator is the double <code class="highlighter-rouge">==</code>. It is used to compare two variables and it returns <code class="highlighter-rouge">True</code>, if both variables have the same value, otherwise <code class="highlighter-rouge">False</code>:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mi">4</span>
-<span class="n">y</span> <span class="o">=</span> <span class="mi">3</span>
-
-<span class="n">x</span> <span class="o">==</span> <span class="n">y</span>
-</code></pre></div></div>
-
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>False
-</code></pre></div></div>
-
-<p>You can also compare two variables/expressions using the <code class="highlighter-rouge">&gt;</code> or <code class="highlighter-rouge">&lt;</code> operators (and many more).</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="n">y</span> <span class="o">=</span> <span class="mi">5</span>
-
-<span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span>
-</code></pre></div></div>
-
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
-</code></pre></div></div>
-
 <p>A good overview over all standard operators in Python is given <a href="https://www.w3schools.com/python/python_operators.asp">here</a>.</p>
 
 <div class="alert task">
@@ -1051,8 +1055,6 @@ False
  True or False</code></li>
         <li><code class="highlighter-rouge">Python 
  not True</code></li>
-        <li><code class="highlighter-rouge">Python 
- not True and False or True</code></li>
       </ul>
     </li>
     <li>Why does the following code block return <code class="highlighter-rouge">False</code>?
@@ -1069,16 +1071,22 @@ a == b</code></li>
 <p>Often, you want to print stuff to the console in a specific format. For example, you are not interested in the 10th decimal of a floating point number when you are calculating with euros and cents. For that, you can use formatted printing:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mf">321.14159265359</span>
-<span class="n">y</span> <span class="o">=</span> <span class="mi">5678</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mf">0.489</span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>                      <span class="c"># prints the raw value 3.14159265359</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"{0:1.2f}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>   <span class="c"># prints x as floating point number with min. 1 digit printed in total and max. 2 digits after the "."</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>                       <span class="c"># prints the raw value 321.14159265359</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"{0:6.2f}€"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>   <span class="c"># prints x as floating point number with min. 6 digits printed in total and max. 2 digits after the "."</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"{0:6.2f}€"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>   <span class="c"># prints x as floating point number with min. 6 digits printed in total and max. 2 digits after the "."</span>
+
 <span class="k">print</span><span class="p">(</span><span class="s">"{0:10.2f}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>  <span class="c"># prints x as floating point number with min. 10 digits printed in total and max. 2 digits after the ".". Leading zeros are not shown, only blanks.</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"{0:15d}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>    <span class="c"># prints y as integer with min. 15 digits printed in total. Leading zeros are not shown, only blanks.</span>
+
+<span class="n">z</span> <span class="o">=</span> <span class="mi">5678</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"{0:15d}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">z</span><span class="p">))</span>    <span class="c"># prints z as integer with min. 15 digits printed in total. Leading zeros are not shown, only blanks.</span>
 </code></pre></div></div>
 
 <div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>321.14159265359
-321.14
+321.14€
+  0.49€
     321.14
            5678
 
@@ -1088,14 +1096,15 @@ a == b</code></li>
 The digit before the <code class="highlighter-rouge">:</code> references the index of the argument.
 Only text within <code class="highlighter-rouge">{</code> and <code class="highlighter-rouge">}</code> is interpreted:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mf">10.25923457</span>
-<span class="n">y</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="n">z</span> <span class="o">=</span> <span class="s">"milk"</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">res</span> <span class="o">=</span> <span class="mf">3000.00</span>
+<span class="n">unit</span> <span class="o">=</span> <span class="s">"meters"</span>
+<span class="n">gen</span>  <span class="o">=</span> <span class="mi">2</span>
+<span class="n">name</span>   <span class="o">=</span> <span class="s">"Meteosat"</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s">"{1:2d} liters of {2} cost: {0:10.2f}€."</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"{3} satellites of generation {2:1d} have a resolution of {0:5.2f} {1}."</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">res</span><span class="p">,</span><span class="n">unit</span><span class="p">,</span><span class="n">gen</span><span class="p">,</span><span class="n">name</span><span class="p">))</span>
 </code></pre></div></div>
 
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>10 liters of milk cost:      10.26€.
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Meteosat satellites of generation 2 have a resolution of 3000.00 meters.
 
 </code></pre></div></div>
 
@@ -1113,6 +1122,14 @@ Only text within <code class="highlighter-rouge">{</code> and <code class="highl
 Hello Benjamin!
 
 </code></pre></div></div>
+
+<p><strong>Task:</strong></p>
+
+<ol>
+  <li>Write a script that asks the user to input her/his age.</li>
+  <li>Ask the user what year it is.</li>
+  <li>Tell the user how old she/he was in the year 2000.</li>
+</ol>
 
 <div class="alert task">
 
