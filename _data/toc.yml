@@ -78,7 +78,7 @@
 
 - divider: true
 
-- header: Solutions
+- title: Solutions
   not_numbered: true
   expand_sections: true
   sections:
