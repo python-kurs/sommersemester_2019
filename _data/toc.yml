@@ -75,3 +75,13 @@
   #- title: Warning cells
   #  url: /units/S01E04
   #  not_numbered: true
+
+- divider: true
+
+- header: Solutions
+  not_numbered: true
+  expand_sections: true
+  sections:
+  - title: Exercise I
+    url: /solutions/exercise-1/Exercise-1_Solutions
+    not_numbered: true
