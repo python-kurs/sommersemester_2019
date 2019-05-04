@@ -51,7 +51,7 @@
 #- header: Python Kurs
 
 # A chapter w/ a collection of sections beneath it
-- title: Syllabus
+- title: Sessions
   url: /units/units
   not_numbered: true
   expand_sections: true
@@ -79,6 +79,7 @@
 - divider: true
 
 - title: Solutions
+  url: /solutions/solutions
   not_numbered: true
   expand_sections: true
   sections:
