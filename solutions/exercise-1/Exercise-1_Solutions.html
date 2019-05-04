@@ -29,9 +29,9 @@
   "headline":
     "Exercise I",
   "datePublished":
-    "2019-05-04T07:22:04+00:00",
+    "2019-05-04T10:27:30+00:00",
   "dateModified":
-    "2019-05-04T07:22:04+00:00",
+    "2019-05-04T10:27:30+00:00",
   "description":
     "",
   "author": {
@@ -759,6 +759,17 @@ initFunction(initQuery);
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>631.543
 </code></pre></div></div>
 
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">"The data type of a is: {}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"The data type of b is: {}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">)))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"The data type of v_1 is: {}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">v_1</span><span class="p">)))</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>The data type of a is: &lt;class 'float'&gt;
+The data type of b is: &lt;class 'int'&gt;
+The data type of v_1 is: &lt;class 'float'&gt;
+
+</code></pre></div></div>
+
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 3) Calculate the remainder of the division 100/17 by only using one operator </span>
 <span class="c">#    and save the result in v_2 (maybe google helps?) [1P]</span>
 <span class="n">v_2</span> <span class="o">=</span> <span class="mi">100</span><span class="o">%</span><span class="mi">17</span>
@@ -773,10 +784,10 @@ initFunction(initQuery);
 <span class="c">#    If you don't know how to convert frequencies to wavelengths, google can help you!</span>
 <span class="c">#    Save the result in v_3.</span>
 
-<span class="n">s</span> <span class="o">=</span> <span class="mi">300000</span> <span class="o">*</span> <span class="mi">1000</span> <span class="c"># conversion into meters/s</span>
+<span class="n">c</span> <span class="o">=</span> <span class="mi">300000</span> <span class="o">*</span> <span class="mi">1000</span> <span class="c"># conversion into meters/s</span>
 <span class="n">f</span> <span class="o">=</span> <span class="mf">5.0E+14</span>
 
-<span class="n">wv</span> <span class="o">=</span> <span class="n">s</span><span class="o">/</span><span class="n">f</span>
+<span class="n">wv</span> <span class="o">=</span> <span class="n">c</span><span class="o">/</span><span class="n">f</span>
 
 <span class="n">v_3</span> <span class="o">=</span> <span class="n">wv</span><span class="o">*</span><span class="mf">1.0E+9</span> <span class="c"># conversion into nanometers</span>
 <span class="n">v_3</span> <span class="c"># Yes we can see the light at 600nm (red/orange)</span>
@@ -795,7 +806,7 @@ initFunction(initQuery);
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../../images/solutions/exercise-1/Exercise-1_Solutions_5_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../../images/solutions/exercise-1/Exercise-1_Solutions_6_0.png" alt="png" /></p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 5) Print the following string to the console using the format-function and the variables 'n' and 'pi': "Pi rounded to the first 10 decimals is: 3.1415926536" [2P]</span>
 <span class="n">n</span>  <span class="o">=</span> <span class="mi">10</span>
