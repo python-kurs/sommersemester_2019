@@ -62,9 +62,9 @@
   - title: Python Basics II
     url: /units/S01E02
     not_numbered: true
-  #- title: Python Basics III
-  #  url: /units/S01E03
-  #  not_numbered: true
+  - title: Python Basics III
+    url: /units/S01E03
+    not_numbered: true
   #- title: Data science I
   #  url: /units/S01E04
   #  not_numbered: true
@@ -86,3 +86,9 @@
   - title: Exercise I
     url: /solutions/exercise-1/Exercise-1_Solutions
     not_numbered: true
+
+- divider: true
+
+- title: Results
+  url: /results
+  not_numbered: true
