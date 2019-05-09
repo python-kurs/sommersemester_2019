@@ -29,9 +29,9 @@
   "headline":
     "Python Basics II",
   "datePublished":
-    "2019-05-08T09:42:09+00:00",
+    "2019-05-09T14:43:44+00:00",
   "dateModified":
-    "2019-05-08T09:42:09+00:00",
+    "2019-05-09T14:43:44+00:00",
   "description":
     "",
   "author": {
@@ -634,6 +634,23 @@ initFunction(initQuery);
               </li>
               
             
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/sommersemester_2019/units/S01E03.html"
+                >
+                  
+                  Python Basics III
+                </a>
+
+                
+                
+
+              </li>
+              
+            
           </ul>
         
       </li>
@@ -689,6 +706,31 @@ initFunction(initQuery);
               
             
           </ul>
+        
+      </li>
+
+      
+    
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/sommersemester_2019/results.html"
+        >
+          
+          Results
+        </a>
+
         
       </li>
 
@@ -894,7 +936,7 @@ initFunction(initQuery);
 
 <p>Lists also feature many built-in functions, e.g. the index method which returns the first index at which a value occurs:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">zahlenreihe</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">zahlenreihe</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
 <span class="n">zahlenreihe</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 </code></pre></div></div>
 
@@ -903,11 +945,11 @@ initFunction(initQuery);
 
 <p>Lists can be sorted:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">zahlenreihe</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">zahlenreihe</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="n">zahlenreihe</span>
 </code></pre></div></div>
 
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[0, 1, 2, 2, 3, 3, 4, 6, 7, 8, 8, 9]
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[9, 8, 8, 7, 6, 4, 4, 3, 3, 2, 2, 1, 0]
 </code></pre></div></div>
 
 <p>And similar to strings, lists also have a length:</p>
@@ -915,14 +957,17 @@ initFunction(initQuery);
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">len</span><span class="p">(</span><span class="n">zahlenreihe</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>12
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>13
 </code></pre></div></div>
 
 <p>You can append and remove elements to/from a list:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">zahlenreihe</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c"># Appends the given element to the end of a list</span>
-<span class="k">print</span><span class="p">(</span><span class="n">zahlenreihe</span><span class="p">)</span>
-<span class="n">zahlenreihe</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>  <span class="c"># Removes the first element with the given value</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">zahlenreihe</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+
+
+<span class="c">#zahlenreihe.append(0)  # Appends the given element to the end of a list</span>
+<span class="c">#print(zahlenreihe)</span>
+<span class="n">zahlenreihe</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="c"># Removes the first element with the given value</span>
 <span class="k">print</span><span class="p">(</span><span class="n">zahlenreihe</span><span class="p">)</span>
 <span class="n">zahlenreihe</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>    <span class="c"># Removes the element at the given index</span>
 <span class="k">print</span><span class="p">(</span><span class="n">zahlenreihe</span><span class="p">)</span>
@@ -930,10 +975,9 @@ initFunction(initQuery);
 <span class="k">print</span><span class="p">(</span><span class="n">zahlenreihe</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[0, 1, 1, 2, 2, 3, 3, 4, 6, 7, 8, 9, 0]
-[0, 1, 1, 2, 2, 3, 3, 4, 6, 8, 9, 0]
-[0, 1, 1, 2, 2, 3, 3, 4, 6, 8, 9]
-[0, 1, 1, 999, 2, 3, 3, 4, 6, 8, 9]
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[8, 2, 4, 1, 2, 3, 9, 6, 7, 8, 0, 4]
+[8, 2, 4, 1, 2, 3, 9, 6, 7, 8, 0]
+[8, 2, 4, 999, 2, 3, 9, 6, 7, 8, 0]
 
 </code></pre></div></div>
 
@@ -960,7 +1004,11 @@ initFunction(initQuery);
 <p>Another useful datatype are dictionaries. In contrast to lists, where you have to keep track of a specific index to be able to access a certain value, dictionaries use keywords.
 A dictionary can be created by using curly braces <code class="highlighter-rouge">{</code> <code class="highlighter-rouge">}</code> and each element in it is a <strong>key : value</strong> pair.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">kitchen_supplies</span> <span class="o">=</span> <span class="p">{</span><span class="s">"pans"</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">"pots"</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s">"knives"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s">"spoons"</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="s">"forks"</span><span class="p">:</span> <span class="mi">6</span><span class="p">}</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">kitchen_supplies</span> <span class="o">=</span> <span class="p">{</span><span class="s">"pans"</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> 
+                    <span class="s">"pots"</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> 
+                    <span class="s">"knives"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> 
+                    <span class="s">"spoons"</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> 
+                    <span class="s">"forks"</span><span class="p">:</span> <span class="mi">6</span><span class="p">}</span>
 <span class="k">print</span><span class="p">(</span><span class="n">kitchen_supplies</span><span class="p">)</span>
 </code></pre></div></div>
 
@@ -1012,7 +1060,7 @@ A dictionary can be created by using curly braces <code class="highlighter-rouge
 
 <p>Checking if a key exists in the dictionary:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">"mixers"</span> <span class="ow">in</span> <span class="n">kitchen_supplies</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">10</span> <span class="ow">in</span> <span class="n">kitchen_supplies</span>
 </code></pre></div></div>
 
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>False
@@ -1051,7 +1099,7 @@ A dictionary can be created by using curly braces <code class="highlighter-rouge
 
 <p>Fortunately the pop method accepts a second argument where a default return value can be specified:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">kitchen_supplies</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">"mixer"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">kitchen_supplies</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">"mixers"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 </code></pre></div></div>
 
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
@@ -1119,8 +1167,8 @@ Also, what would you do, if you want to print the numbers 1 to 999999 below each
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">zahlenliste</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]</span>
 
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">zahlenliste</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">zahl</span> <span class="ow">in</span> <span class="n">zahlenliste</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">zahl</span><span class="p">)</span>
 </code></pre></div></div>
 
 <div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
@@ -1138,19 +1186,20 @@ Also, what would you do, if you want to print the numbers 1 to 999999 below each
 <p>The <code class="highlighter-rouge">range()</code>-Method is another basic Python function that creates a list from a given start, stop and increment value.
 The code above can thus further be shortened to:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">3</span><span class="p">):</span>
     <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"foo"</span><span class="p">)</span>
+    
+<span class="k">print</span><span class="p">(</span><span class="s">"bar"</span><span class="p">)</span>
 </code></pre></div></div>
 
 <div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
-2
-3
+foo
 4
-5
-6
+foo
 7
-8
-9
+foo
+bar
 
 </code></pre></div></div>
 
@@ -1299,7 +1348,7 @@ There are 6 forks in the kitchen.
     <span class="k">print</span><span class="p">(</span><span class="s">"a ist größer als b."</span><span class="p">)</span>
 <span class="k">elif</span> <span class="n">a</span><span class="o">&lt;</span><span class="n">b</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="s">"a ist kleiner als b."</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
+<span class="k">elif</span> <span class="n">a</span><span class="o">==</span><span class="n">b</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="s">"a ist gleich b."</span><span class="p">)</span>
 </code></pre></div></div>
 
@@ -1324,8 +1373,8 @@ There are 6 forks in the kitchen.
     <span class="k">print</span><span class="p">(</span><span class="s">"I did not understand your answer!"</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Are you a student? yes
-Welcome!
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Are you a student? Hallo
+I did not understand your answer!
 
 </code></pre></div></div>
 
@@ -1361,7 +1410,7 @@ Welcome!
 </code></pre></div></div>
 
 <div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Sie haben 10 Versuche!
-Wie heißt unsere Bundeskanzlerin? Peter
+Wie heißt unsere Bundeskanzlerin? Gerhard Schröder
 Das war falsch!
 Wie heißt unsere Bundeskanzlerin? Angela Merkel
 Richtig!
@@ -1405,8 +1454,8 @@ Richtig!
 
   
     
-    <a id="js-page__nav__next" class="c-page__nav__next" href="/sommersemester_2019/solutions/solutions">
-      Solutions <span class="u-margin-right-tiny"></span> 〉
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/sommersemester_2019/units/S01E03">
+      Python Basics III <span class="u-margin-right-tiny"></span> 〉
     </a>
   
 </nav>

@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+
+  <title>Python Basics III</title>
+  <meta name="description" content="">
+
+  <link rel="canonical" href="https://python-kurs.github.io/sommersemester_2019//units/S01E03.html">
+  <link rel="alternate" type="application/rss+xml" title="Sommersemester 2019" href="https://python-kurs.github.io/sommersemester_2019//feed.xml">
+
+  <meta property="og:url"         content="https://python-kurs.github.io/sommersemester_2019//units/S01E03.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Python Basics III" />
+<meta property="og:description" content="" />
+<meta property="og:image"       content="" />
+
+
+  <script type="application/ld+json">
+  {
+  "@context": "http://schema.org",
+  "@type": "NewsArticle",
+  "mainEntityOfPage":
+    "https://python-kurs.github.io/sommersemester_2019//units/S01E03.html",
+  "headline":
+    "Python Basics III",
+  "datePublished":
+    "2019-05-09T14:43:44+00:00",
+  "dateModified":
+    "2019-05-09T14:43:44+00:00",
+  "description":
+    "",
+  "author": {
+    "@type": "Person",
+    "name": "Sebastian Egli, Benjamin Rösner"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Data 100 at UC Berkeley",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://python-kurs.github.io/sommersemester_2019/",
+      "width": 60,
+      "height": 60
+    }
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://python-kurs.github.io/sommersemester_2019/",
+    "height": 60,
+    "width": 60
+  }
+}
+
+  </script>
+  <link rel="stylesheet" href="/sommersemester_2019/assets/css/styles.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css ">
+  <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+
+  <!-- <link rel="manifest" href="/manifest.json"> -->
+  <!-- <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#efae0a"> -->
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+  <meta name="theme-color" content="#233947">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="/sommersemester_2019/images/logo/favicon.ico">
+
+  <!-- MathJax Config -->
+  <!-- Allow inline math using $ and automatically break long math lines -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true,
+        processEnvironments: true
+    },
+    CommonHTML: {
+        linebreaks: {
+            automatic: true,
+        },
+    },
+});
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML' async></script>
+
+  <!-- DOM updating function -->
+  <script>
+const runWhenDOMLoaded = cb => {
+  if (document.readyState != 'loading') {
+    cb()
+  } else if (document.addEventListener) {
+    document.addEventListener('DOMContentLoaded', cb)
+  } else {
+    document.attachEvent('onreadystatechange', function() {
+      if (document.readyState == 'complete') cb()
+    })
+  }
+}
+
+// Helper function to init things quickly
+initFunction = function(myfunc) {
+  runWhenDOMLoaded(myfunc);
+  document.addEventListener('turbolinks:load', myfunc);
+};
+</script>
+
+  <!-- Define some javascript variables that will be useful in other javascript -->
+  <script>
+    const site_basename = '/sommersemester_2019/';
+  </script>
+
+  <!-- Add AnchorJS to let headers be linked -->
+  <script src="/sommersemester_2019/assets/js/anchor.min.js"  type="text/javascript"></script>
+  <script>
+
+initFunction(function () {
+    anchors.add("main h1, main h2, main h3, main h4")
+});
+
+</script>
+
+  <!-- Include Turbolinks to make page loads fast -->
+  <!-- https://github.com/turbolinks/turbolinks -->
+  <script src="/sommersemester_2019/assets/js/turbolinks.js" async></script>
+  <meta name="turbolinks-cache-control" content="no-cache">
+
+  <!-- Load nbinteract for widgets -->
+  <script src="https://unpkg.com/nbinteract-core" async></script>
+
+  <!-- Load Thebelab for interactive widgets -->
+  <!-- Include Thebelab for interactive code if it's enabled -->
+
+<script type="text/x-thebe-config">
+    {
+      requestKernel: true,
+      binderOptions: {
+        repo: 'YOUR-ORG/YOUR-REPO',
+        ref: 'master',
+      },
+      kernelOptions: {
+        name: 'python3',
+      }
+    }
+</script>
+<script src="https://unpkg.com/thebelab@0.3.3/lib/index.js"></script>
+<script>
+    /**
+     * Add attributes to Thebelab blocks
+     */
+
+    const initThebelab = () => {
+        const addThebelabToCodeCells = () => {
+            console.log("Adding thebelab to code cells...");
+            // If Thebelab hasn't loaded, wait a bit and try again. This
+            // happens because we load ClipboardJS asynchronously.
+            if (window.thebelab === undefined) {
+                setTimeout(addThebelabToCodeCells, 250)
+            return
+            }
+
+            // If we already detect a Thebelab cell, don't re-run
+            if (document.querySelectorAll('div.thebelab-cell').length > 0) {
+                return;
+            }
+
+            // Find all code cells, replace with Thebelab interactive code cells
+            const codeCells = document.querySelectorAll('.input_area pre')
+            codeCells.forEach((codeCell, index) => {
+                const id = codeCellId(index)
+                codeCell.setAttribute('data-executable', 'true')
+
+                // Figure out the language it uses and add this too
+                var parentDiv = codeCell.parentElement.parentElement;
+                var arrayLength = parentDiv.classList.length;
+                for (var ii = 0; ii < arrayLength; ii++) {
+                    var parts = parentDiv.classList[ii].split('language-');
+                    if (parts.length === 2) {
+                        // If found, assign dataLanguage and break the loop
+                        var dataLanguage = parts[1];
+                        break;
+                    }
+                }
+                codeCell.setAttribute('data-language', dataLanguage)
+
+                // If the code cell is hidden, show it
+                var inputCheckbox = document.querySelector(`input#hidebtn${codeCell.id}`);
+                if (inputCheckbox !== null) {
+                    setCodeCellVisibility(inputCheckbox, 'visible');
+                }
+            });
+
+            // Remove the event listener from the page so keyboard press doesn't
+            // Change page
+            document.removeEventListener('keydown', initPageNav)
+            keyboardListener = false;
+
+            // Init thebelab
+            thebelab.bootstrap();
+
+            // Remove copy buttons since they won't work anymore
+            const copyButtons = document.querySelectorAll('.copybtn')
+            copyButtons.forEach((copyButton, index) => {
+                copyButton.remove();
+            });
+
+            // Remove outputs since they'll be stale
+            const outputs = document.querySelectorAll('.output *, .output')
+            outputs.forEach((output, index) => {
+                output.remove();
+            });
+        }
+
+        // Add event listener for the function to modify code cells
+        const thebelabButton = document.getElementById('interact-button-thebelab');
+        if (thebelabButton === null) {
+            setTimeout(initThebelab, 250)
+        return
+        };
+        thebelabButton.addEventListener('click', addThebelabToCodeCells);
+    }
+
+    // Initialize Thebelab
+    initFunction(initThebelab);
+</script>
+
+
+  <!-- Google analytics -->
+  <script src="/sommersemester_2019/assets/js/ga.js" async></script>
+
+  <!-- Clipboard copy button -->
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" async></script>
+
+  <!-- Load JS that depends on site variables -->
+  <script>
+/**
+ * Set up copy/paste for code blocks
+ */
+const codeCellId = index => `codecell${index}`
+
+const clipboardButton = id =>
+  `<a class="btn copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#${id}">
+    <img src="/sommersemester_2019/assets/images/copy-button.svg" alt="Copy to clipboard">
+  </a>`
+
+// Clears selected text since ClipboardJS will select the text when copying
+const clearSelection = () => {
+  if (window.getSelection) {
+    window.getSelection().removeAllRanges()
+  } else if (document.selection) {
+    document.selection.empty()
+  }
+}
+
+// Changes tooltip text for two seconds, then changes it back
+const temporarilyChangeTooltip = (el, newText) => {
+  const oldText = el.getAttribute('data-tooltip')
+  el.setAttribute('data-tooltip', newText)
+  setTimeout(() => el.setAttribute('data-tooltip', oldText), 2000)
+}
+
+const addCopyButtonToCodeCells = () => {
+  // If ClipboardJS hasn't loaded, wait a bit and try again. This
+  // happens because we load ClipboardJS asynchronously.
+  if (window.ClipboardJS === undefined) {
+    setTimeout(addCopyButtonToCodeCells, 250)
+    return
+  }
+
+  const codeCells = document.querySelectorAll('div.highlighter-rouge:not(.output) pre')
+  codeCells.forEach((codeCell, index) => {
+    const id = codeCellId(index)
+    codeCell.setAttribute('id', id)
+    if (document.querySelector(`pre#${id} + a`) == null) {
+      codeCell.insertAdjacentHTML('afterend', clipboardButton(id));
+    }
+  })
+
+  const clipboard = new ClipboardJS('.copybtn')
+  clipboard.on('success', event => {
+    clearSelection()
+    temporarilyChangeTooltip(event.trigger, 'Copied!')
+  })
+
+  clipboard.on('error', event => {
+    temporarilyChangeTooltip(event.trigger, 'Failed to copy')
+  })
+
+  // Get rid of clipboard before the next page visit to avoid memory leak
+  document.addEventListener('turbolinks:before-visit', () =>
+    clipboard.destroy()
+  )
+}
+
+initFunction(addCopyButtonToCodeCells);
+</script>
+
+  <!-- Hide cell code -->
+  
+<script>
+/**
+Add buttons to hide code cells
+*/
+
+
+var setCodeCellVisibility = function(inputField, kind) {
+    // Update the image and class for hidden
+    var id = inputField.getAttribute('data-id');
+    var codeCell = document.querySelector(`#${id}`);
+
+    if (kind === "visible") {
+        codeCell.classList.remove('hidden');
+        inputField.checked = true;
+    } else {
+        codeCell.classList.add('hidden');
+        inputField.checked = false;
+    }
+}
+
+var toggleCodeCellVisibility = function (event) {
+    // The label is clicked, and now we decide what to do based on the input field's clicked status
+    if (event.target.tagName === "LABEL") {
+        var inputField = event.target.previousElementSibling;
+    } else {
+        // It is the span inside the target
+        var inputField = event.target.parentElement.previousElementSibling;
+    }
+
+    if (inputField.checked === true) {
+        setCodeCellVisibility(inputField, "visible");
+    } else {
+        setCodeCellVisibility(inputField, "hidden");
+    }
+}
+
+
+// Button constructor
+const hideCodeButton = id => `<input class="hidebtn" type="checkbox" id="hidebtn${id}" data-id="${id}"><label title="Toggle cell" for="hidebtn${id}" class="plusminus"><span class="pm_h"></span><span class="pm_v"></span></label>`
+
+var addHideButton = function () {
+  // If a hide button is already added, don't add another
+  if (document.querySelector('div.hidecode input') !== null) {
+      return;
+  }
+
+  // Find the input cells and add a hide button
+  document.querySelectorAll('div.input_area div.highlight').forEach(function (item, index) {
+    if (!item.parentElement.classList.contains("hidecode")) {
+        // Skip the cell if it doesn't have a hidecode class
+        return;
+    }
+
+    const id = codeCellId(index)
+    item.setAttribute('id', id);
+    item.insertAdjacentHTML('afterend', hideCodeButton(id))
+
+    // Set up the visibility toggle
+    hideLink = document.querySelector(`#${id} + input + label`);
+    hideLink.addEventListener('click', toggleCodeCellVisibility)
+  });
+}
+
+
+// Initialize the hide buttos
+var initHiddenCells = function () {
+    // Add hide buttons to the cells
+    addHideButton();
+
+    // Toggle the code cells that should be hidden
+    document.querySelectorAll('div.hidecode input').forEach(function (item) {
+        setCodeCellVisibility(item, 'hidden');
+        item.checked = true;
+    })
+}
+
+initFunction(initHiddenCells);
+
+</script>
+
+
+  <!-- Load custom website scripts -->
+  <script src="/sommersemester_2019/assets/js/scripts.js" async></script>
+
+  <!-- Load custom user CSS and JS  -->
+  <script src="/sommersemester_2019/assets/custom/custom.js" async></script>
+  <link rel="stylesheet" href="/sommersemester_2019/assets/custom/custom.css">
+
+  <!-- Update interact links w/ REST param, is defined in includes so we can use templates -->
+  
+
+  <!-- Lunr search code - will only be executed on the /search page -->
+  <script src="/sommersemester_2019/assets/js/lunr/lunr.min.js" type="text/javascript"></script>
+  <script>var initQuery = function() {
+  // See if we have a search box
+  var searchInput = document.querySelector('input#lunr_search');
+  if (searchInput === null) {
+    return;
+  }
+
+  // Function to parse our lunr cache
+  var idx = lunr(function () {
+    this.field('title')
+    this.field('excerpt')
+    this.field('categories')
+    this.field('tags')
+    this.ref('id')
+
+    this.pipeline.remove(lunr.trimmer)
+
+    for (var item in store) {
+      this.add({
+        title: store[item].title,
+        excerpt: store[item].excerpt,
+        categories: store[item].categories,
+        tags: store[item].tags,
+        id: item
+      })
+    }
+  });
+
+  // Run search upon keyup
+  searchInput.addEventListener('keyup', function () {
+    var resultdiv = document.querySelector('#results');
+    var query = document.querySelector("input#lunr_search").value.toLowerCase();
+    var result =
+      idx.query(function (q) {
+        query.split(lunr.tokenizer.separator).forEach(function (term) {
+          q.term(term, { boost: 100 })
+          if(query.lastIndexOf(" ") != query.length-1){
+            q.term(term, {  usePipeline: false, wildcard: lunr.Query.wildcard.TRAILING, boost: 10 })
+          }
+          if (term != ""){
+            q.term(term, {  usePipeline: false, editDistance: 1, boost: 1 })
+          }
+        })
+      });
+
+      // Empty the results div
+      while (resultdiv.firstChild) {
+        resultdiv.removeChild(resultdiv.firstChild);
+      }
+
+    resultdiv.insertAdjacentHTML('afterbegin', '<p class="results__found">'+result.length+' Result(s) found</p>');
+    for (var item in result) {
+      var ref = result[item].ref;
+      if(store[ref].teaser){
+        var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<div class="archive__item-teaser">'+
+                '<img src="'+store[ref].teaser+'" alt="">'+
+              '</div>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      else{
+    	  var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      resultdiv.insertAdjacentHTML('beforeend', searchitem);
+    }
+  });
+};
+
+initFunction(initQuery);
+</script>
+</head>
+
+  <body>
+    <!-- .js-show-sidebar shows sidebar by default -->
+    <div id="js-textbook" class="c-textbook js-show-sidebar">
+      
+
+
+
+<nav id="js-sidebar" class="c-textbook__sidebar">
+  <a href="https://python-kurs.github.io/sommersemester_2019/intro.html"><img src="/sommersemester_2019/images/logo/logo.png" class="textbook_logo" id="sidebar-logo" data-turbolinks-permanent/></a>
+  <h2 class="c-sidebar__title">Sommersemester 2019</h2>
+  <ul class="c-sidebar__chapters">
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/sommersemester_2019/intro.html"
+        >
+          
+          Introduction
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/sommersemester_2019/motivation.html"
+        >
+          
+          Motivation
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/sommersemester_2019/about.html"
+        >
+          
+          About
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+        <li class="c-sidebar__chapter"><a class="c-sidebar__entry" href="/sommersemester_2019/search.html">Search</a></li>
+        
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/sommersemester_2019/units/units.html"
+        >
+          
+          Sessions
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections ">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/sommersemester_2019/units/S01E01.html"
+                >
+                  
+                  Python Basics I
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/sommersemester_2019/units/S01E02.html"
+                >
+                  
+                  Python Basics II
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry c-sidebar__entry--active"
+                  href="/sommersemester_2019/units/S01E03.html"
+                >
+                  
+                  Python Basics III
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/sommersemester_2019/solutions/solutions.html"
+        >
+          
+          Solutions
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections ">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/sommersemester_2019/solutions/exercise-1/Exercise-1_Solutions.html"
+                >
+                  
+                  Exercise I
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/sommersemester_2019/results.html"
+        >
+          
+          Results
+        </a>
+
+        
+      </li>
+
+      
+    
+  </ul>
+  <p class="sidebar_footer">Powered by <a href="https://github.com/jupyter/jupyter-book">Jupyter Book</a></p>
+</nav>
+
+      
+      <!-- Shamelessly copied from minimal mistakes -->
+
+
+<!-- TOC will only show up if it has at least one item -->
+
+
+  <aside class="sidebar__right">
+    <nav class="onthispage">
+      <header><h4 class="nav__title"><i class="fa fa-list"></i>   On this page</h4></header>
+      <ul class="toc__menu">
+  <li><a href="#functions">Functions</a>
+    <ul>
+      <li><a href="#documentation">Documentation</a></li>
+      <li><a href="#built-in-functions">Built in functions</a></li>
+    </ul>
+  </li>
+  <li><a href="#variable-scope---global-vs-local">Variable scope - global vs. local</a>
+    <ul>
+      <li><a href="#constants">Constants</a></li>
+    </ul>
+  </li>
+  <li><a href="#python-modules">Python modules</a>
+    <ul>
+      <li><a href="#the-import-system">The import system</a></li>
+    </ul>
+  </li>
+  <li><a href="#working-with-files">Working with files</a>
+    <ul>
+      <li><a href="#reading-and-writing-text-files">Reading and writing text files</a></li>
+      <li><a href="#file-pathes-and-directories">File pathes and directories</a></li>
+    </ul>
+  </li>
+  <li><a href="#classes-and-objects">Classes and objects</a>
+    <ul>
+      <li><a href="#connecting-the-dots">Connecting the dots</a></li>
+    </ul>
+  </li>
+  <li><a href="#errors-and-exceptions">Errors and Exceptions</a></li>
+  <li><a href="#exercise-3">Exercise 3</a></li>
+</ul>
+    </nav>
+  </aside>
+
+
+      
+      <main class="c-textbook__page" tabindex="-1">
+          <div class="o-wrapper">
+            <div class="c-sidebar-toggle">
+  <!-- We show the sidebar by default so we use .is-active -->
+  <button
+    id="js-sidebar-toggle"
+    class="hamburger hamburger--arrowalt is-active"
+  >
+    <span class="hamburger-box">
+      <span class="hamburger-inner"></span>
+    </span>
+    <span class="c-sidebar-toggle__label">Toggle Sidebar</span>
+  </button>
+</div>
+
+            
+<div class="buttons">
+<a href="/sommersemester_2019/content/units/S01E03.ipynb" download>
+<button id="interact-button-download" class="interact-button">Download</button>
+</a>
+
+<button id="interact-button-thebelab" class="interact-button">Interact</button>
+
+
+
+
+</div>
+
+
+            <div class="c-textbook__content">
+              
+<h1 id="python-basics-iii">Python Basics III</h1>
+
+<h2 id="functions">Functions</h2>
+
+<p>For small tasks chaining together command one by one in a script can be a viable solution but often the problem at hand consists of multiple steps and/or needs to repeated multiple times for example for different directories. Then the code will get messy pretty fast which, according to rule one of <a href="https://www.python.org/dev/peps/pep-0020/"><strong>The Zen of Python</strong></a>, is something we want to avoid.</p>
+
+<p>To achive this we can use <strong>functions</strong> which:</p>
+<ul>
+  <li>encapsulate small snippets of code</li>
+  <li>can be reused any number of times</li>
+  <li>make our code more <em>modular</em>, less repititous and easier to maintain</li>
+</ul>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">happy_birthday</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Happy birthday Tom!"</span><span class="p">)</span>
+    
+<span class="n">happy_birthday</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Happy birthday Tom!
+
+</code></pre></div></div>
+
+<p>Now this does not save very much code because if we wanted to congratulate Sally we would need to write another quite similar function. To make this function more generic we can use <strong>Parameters</strong>.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">happy_birthday</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Happy birthday {}!"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+    
+<span class="n">happy_birthday</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">"Tom"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Happy birthday Tom!
+
+</code></pre></div></div>
+
+<p>Functions can have any number of parameters which can also have a default value assigned to them, making them optional in the function call.
+Additionally a <strong>return</strong> value can be specified.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">x_power_y</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="n">y</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">x_power_y</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x_power_y</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4096
+256
+
+</code></pre></div></div>
+
+<h3 id="documentation">Documentation</h3>
+<p>While this is still an easy example where it’s pretty clear what is done in general it is important to document functions (and all other code structures that is). While normal inline comments like you already know can be used there are special “comments” called <a href="https://www.python.org/dev/peps/pep-0257/"><strong>docstrings</strong></a> which can be inserted as a first statement in a function and are a standardized way of documenting.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">x_power_y</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
+    <span class="s">"""
+    Calculate x to the power of y.
+    
+    Parameters
+    ----------
+    x : number
+        The base
+    y : number, optional
+        The exponent, defaults to 4
+        
+    Returns
+    -------
+    number
+    
+    """</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="n">y</span>
+</code></pre></div></div>
+
+<p>The first line should contain a short one line description. Following a blank line a more detailed description of what the function is doing can be given (omitted in this example).</p>
+
+<p>This example uses the so called <a href="https://numpydoc.readthedocs.io/en/latest/"><strong>numpydoc</strong></a> style which has the advantage to be very readable. Another popular style is the <a href="https://github.com/google/styleguide/blob/gh-pages/pyguide.md#38-comments-and-docstrings"><strong>google</strong></a> style. The choice which one to use is up to you, just make sure you stick with that choice.</p>
+
+<p>Documenting can be a lot of work but the advantages pay off quickly:</p>
+<ul>
+  <li>for your self to remember what a certain piece of code does if you want to use it sometime in the future</li>
+  <li>other people who use your code understand what is done and which input is needed and what is returned</li>
+</ul>
+
+<p>So it is a good habit to document code right when it is written even though sometimes it can be tempting to do it later.</p>
+
+<h3 id="built-in-functions">Built in functions</h3>
+
+<p>Python has many built in functions which solve common problems and are faster than if we would implement those on our own. Often, the purpose of these functions is clear on first sight. For example <code class="highlighter-rouge">min()</code>, <code class="highlighter-rouge">max()</code> or <code class="highlighter-rouge">sum()</code> are pretty self-explanatory, but there are also some more complex functions.</p>
+
+<div class="alert task">
+
+  <p><strong>Task:</strong></p>
+  <ol>
+    <li>Go to the official <a href="https://docs.python.org/3.4/library/functions.html">Python documentation</a> or use a search engine of your choice and have a look at the follwoing built in functions:
+      <ul>
+        <li>set</li>
+        <li>enumerate</li>
+        <li>map</li>
+      </ul>
+
+      <p>Find out what they do and try them out.</p>
+    </li>
+    <li>Rewrite the following loop using the <code class="highlighter-rouge">map</code> function.
+      <pre><code class="language-Python">numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+for i, num in enumerate(numbers):
+     numbers[i] = numbers[i]**2 + 5
+</code></pre>
+    </li>
+  </ol>
+
+</div>
+
+<h2 id="variable-scope---global-vs-local">Variable scope - global vs. local</h2>
+
+<p>Let’s say we define the following:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="s">"Foo"</span>
+
+<span class="k">def</span> <span class="nf">very_usefull_function</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>What will happen if we call <code class="highlighter-rouge">very_usefull_function()</code>?</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">very_usefull_function</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Foo
+
+</code></pre></div></div>
+
+<p>Now consider the following change to the function and think about what will happen when we first call the function and then print out <code class="highlighter-rouge">a</code> again afterwards.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="s">"Foo"</span>
+
+<span class="k">def</span> <span class="nf">very_usefull_function</span><span class="p">():</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="s">"Bar"</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">very_usefull_function</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Bar
+Foo
+
+</code></pre></div></div>
+
+<p>This shows the difference between global and local variables.</p>
+
+<p>While we can access global variables within functions, they can not be changed by default. A variable with the same name inside a function is a local variable and will always take precedence over global variables. It exists only in the scope of this function.
+In generall it is possible to change the value of a global variable from inside a function but since accessing a global variable from inside a function is considered bad practice and hence trying to change it even worse we neglect that possibility altogether.</p>
+
+<h3 id="constants">Constants</h3>
+<p>Often in other programming languages special variables can be defined which can not be changed and therefore be used for constants for example. In Python this is not possible. So a widely used convention is to mark constants with all upper case variable names.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SPEED_OF_LIGHT</span> <span class="o">=</span> <span class="mi">1080000000</span> <span class="c">#km/h</span>
+</code></pre></div></div>
+
+<h2 id="python-modules">Python modules</h2>
+
+<p>When you write larger scripts, it makes sense to split your code into multiple files so that you do not lose track of all your functions. You may also want to use a handy function that you’ve written in several programs without copying its definition into each program.</p>
+
+<p>To support this, Python has a way to put definitions in one file and use them in another script. Such a file is called a <strong>module</strong>. Definitions from one module can be imported into other modules or into the main module.</p>
+
+<p>A module is a file containing Python definitions and statements. The file name is the module name with the suffix .py appended.</p>
+
+<h3 id="the-import-system">The import system</h3>
+
+<p>Lets say, we defined the following function (to print the Fibonacci numbers) in the file “fibo.py”:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s">' '</span><span class="p">)</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+    <span class="k">print</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>Now we want to use this function in another script. To import the definitions from a module into a script, you can use the <code class="highlighter-rouge">import</code> statement:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">fibo</span> <span class="c"># Import the fibo-module (fibo.py)</span>
+
+<span class="n">fibo</span><span class="o">.</span><span class="n">fibonacci</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span> <span class="c"># Use the fibonacci function from the fibo module</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0 1 1 2 3 5 8 13 21 34 55 89 
+
+</code></pre></div></div>
+
+<p>You can also assign an alias to the imported module via:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">fibo</span> <span class="k">as</span> <span class="n">fb</span>
+
+<span class="n">fb</span><span class="o">.</span><span class="n">fibonacci</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0 1 1 2 3 5 8 13 21 34 55 89 
+
+</code></pre></div></div>
+
+<p>This is common practice as module names are sometimes long and coders like short module names in their code.</p>
+
+<div class="alert info">
+
+  <p>Sometimes you will see something like</p>
+
+  <pre><code class="language-Python">from fibo import *
+</code></pre>
+  <p>which would import all functions from the fibo module. This is considered bad practice because it is not concrete and specific (it violates rule 2 of the <a href="https://www.python.org/dev/peps/pep-0020/"><strong>The Zen of Python</strong></a> ;-) ) and should not be done.</p>
+
+</div>
+
+<p>There are many modules with usefull functions out there which can be installed and used similarly to the way with our own modules shown above. We get to know some of the most common ones in later chapters of the course.</p>
+
+<div class="alert task">
+
+  <p><strong>Task:</strong></p>
+
+  <ol>
+    <li>Write a function <code class="highlighter-rouge">add5(x)</code> that adds 5 to the given number <code class="highlighter-rouge">x</code> and returns the result. Save this function in the file “mathe.py” in your home folder.</li>
+    <li>Start an interactive python shell in your home folder.</li>
+    <li>Import the function <code class="highlighter-rouge">add5(x)</code>, call it with some random arguments and print the results.</li>
+    <li>Try out “import this”.</li>
+  </ol>
+
+</div>
+
+<h2 id="working-with-files">Working with files</h2>
+
+<p>Sometimes we need to access files on disk in our scripts. This can be done using the <code class="highlighter-rouge">open(filename, access_mode)</code> function. The access mode is one of:</p>
+<ul>
+  <li><code class="highlighter-rouge">r</code>: read only</li>
+  <li><code class="highlighter-rouge">w</code>: write only</li>
+  <li><code class="highlighter-rouge">a</code>: appending to a file</li>
+  <li><code class="highlighter-rouge">r+</code>: special mode to handle reading and writing</li>
+</ul>
+
+<h3 id="reading-and-writing-text-files">Reading and writing text files</h3>
+<p>The simplest file we can access are text files and there are some conveniant methods which help us writing to them:</p>
+<ul>
+  <li><code class="highlighter-rouge">write()</code>: writes a line to a file</li>
+  <li><code class="highlighter-rouge">writelines()</code>: given a list writes each item as a line</li>
+</ul>
+
+<p>Using the <code class="highlighter-rouge">with</code> syntax we don’t have to worry about closing the file connection once we are done.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#Writing a shopping list to a text file</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">"shopping_list.txt"</span><span class="p">,</span> <span class="s">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="nb">file</span><span class="p">:</span>
+    <span class="nb">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">"Milk</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+    <span class="nb">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">"Cereal</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+    <span class="nb">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">"Pizza</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Similarly there are functions to read from a file:</p>
+<ul>
+  <li><code class="highlighter-rouge">read(n)</code>: if n is given reads the first n characters from the file otherwise reads the entire file</li>
+  <li><code class="highlighter-rouge">readline(n)</code>: if n is given reads the n’th line from the file otherwise reads the first line</li>
+  <li><code class="highlighter-rouge">readlines()</code>: reads the entire file line by line and returns them as a list</li>
+</ul>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#Reading our list</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">"shopping_list.txt"</span><span class="p">,</span> <span class="s">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="nb">file</span><span class="p">:</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="nb">file</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+    
+<span class="k">print</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['Milk\n', 'Cereal\n', 'Pizza\n']
+
+</code></pre></div></div>
+
+<div class="alert task">
+
+  <p><strong>Task:</strong></p>
+
+  <p>Notice the “\n” at the end of each line.</p>
+  <ol>
+    <li>Find out what the “\n” is all about (Hint: Try the code without it)</li>
+    <li>Find out how to get rid of the “\n” when reading the file again.</li>
+  </ol>
+
+</div>
+
+<h3 id="file-pathes-and-directories">File pathes and directories</h3>
+
+<p>Beyond writing to text files other interactions with the filesystem like creating, deleting files and directories or just creation of system compatible pathes is often needed. All of this and more can be achieved with the <code class="highlighter-rouge">Path</code> function of the <a href="https://docs.python.org/3/library/pathlib.html">pathlib</a> module which ships with every Python 3 installation.</p>
+
+<h4 id="create-pathes">Create pathes</h4>
+<p>Instead of creating pathes by concatenating strings with the <code class="highlighter-rouge">+</code> operator it can be conveniantly be done like:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span> <span class="c">#first import the Path "function" from the module</span>
+
+<span class="c"># create the path object with an initial path. If no path is provided the current directory is used</span>
+<span class="n">basedir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s">"user/data"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">basedir</span><span class="p">)</span>
+<span class="c"># create path to a sub directory with the "/" operator</span>
+<span class="c"># instead of a string the second argument could also be a Path object</span>
+<span class="n">subdir</span> <span class="o">=</span> <span class="n">basedir</span> <span class="o">/</span> <span class="s">"subdirectory"</span>
+<span class="k">print</span><span class="p">(</span><span class="n">subdir</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>user/data
+user/data/subdirectory
+
+</code></pre></div></div>
+
+<h4 id="check-existance-of--create--delete-directories">Check existance of / create / delete directories</h4>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># check if path exists</span>
+<span class="n">dir_exists</span> <span class="o">=</span> <span class="n">subdir</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Directory exists: {}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dir_exists</span><span class="p">))</span>
+<span class="c"># create directory. If parents is True intermediate directories are created if they don't exist.</span>
+<span class="c"># exist_ok = True supresses errors is directory already exists.</span>
+<span class="n">subdir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">exist_ok</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Directory exists after creation: {}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">subdir</span><span class="o">.</span><span class="n">exists</span><span class="p">()))</span>
+<span class="c"># delete directory. Directory must be empty.</span>
+<span class="n">subdir</span><span class="o">.</span><span class="n">rmdir</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Directory exists after deletion: {}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">subdir</span><span class="o">.</span><span class="n">exists</span><span class="p">()))</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Directory exists: False
+Directory exists after creation: True
+Directory exists after deletion: False
+
+</code></pre></div></div>
+
+<h4 id="list-files-and-directories">List files and directories</h4>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">img_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s">"images"</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"List files and directories"</span><span class="p">)</span>
+<span class="n">flist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">img_dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s">"*"</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">flist</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"Recursive png file list:"</span><span class="p">)</span>
+<span class="n">flist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">img_dir</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s">"*.png"</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">flist</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>List files and directories
+[PosixPath('images/S01E03'), PosixPath('images/S01E04'), PosixPath('images/S01E02')]
+Recursive png file list:
+[PosixPath('images/S01E03/string_explanation.png'), PosixPath('images/S01E04/beispiel_output.png'), PosixPath('images/S01E04/csv_example.png'), PosixPath('images/S01E02/python_interpreter.png')]
+
+</code></pre></div></div>
+
+<h4 id="other-usefull-things">Other usefull things</h4>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># is it a file or directory?</span>
+<span class="n">img_dir</span><span class="o">.</span><span class="n">is_file</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>False
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">img_dir</span><span class="o">.</span><span class="n">is_dir</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># file/directory name</span>
+<span class="n">flist</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'string_explanation.png'
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># file suffix</span>
+<span class="n">flist</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">suffix</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'.png'
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># parent directory</span>
+<span class="n">flist</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">parent</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PosixPath('images/S01E03')
+</code></pre></div></div>
+
+<div class="alert info">
+
+  <p><strong>Info</strong></p>
+  <ul>
+    <li>always use “/” in path strings. pathlib will convert those to “\” on Windows</li>
+    <li>be carefull when deleting you will not be asked if you really want to delete</li>
+    <li>in older scripts you might encounter <code class="highlighter-rouge">os.path</code> functions because <code class="highlighter-rouge">pathlib</code> is only available in Python 3 (a comparison is given in the documentation linked above</li>
+  </ul>
+
+</div>
+
+<h2 id="classes-and-objects">Classes and objects</h2>
+
+<p>In the examples on the previous slides we used functions with a weird “dot”-notation. In addition it looks like sometimes you need brackets when calling a function and sometimes you don’t.</p>
+
+<p>This has something to do with <strong>object oriented programming</strong> which is a paradigm tightly coupled with Python.</p>
+
+<p>While we won’t go into the details, it is important to understand the concept and terminology.
+It will help to grasp whats going on in the above examples and it makes it easier to understand explanations and solutions you might find online</p>
+
+<p>The basic idea about <strong>object oriented programming</strong> is to group data and functions which can interact with that data into an <strong>object</strong></p>
+
+<p>This programming style can make it easier to:</p>
+<ul>
+  <li>structure big and complex software</li>
+  <li>write reusable code</li>
+  <li>maintain code</li>
+</ul>
+
+<p>Two important concepts are:</p>
+<ul>
+  <li><strong>classes</strong> which are like a blueprint</li>
+  <li><strong>objects</strong> which are <strong>instances</strong>, the actual realisation, of the corresponding class</li>
+</ul>
+
+<p><img src="images/S01E03/classes_objects.jpeg" alt="" /></p>
+
+<p><small>(adapted after https://www.slideshare.net/ArslanArshad9/object-oriented-programming-with-python slide 3)</small></p>
+
+<h3 id="connecting-the-dots">Connecting the dots</h3>
+
+<p>So what has that to do with the “dot”-notation in the examples?</p>
+
+<p><img src="images/S01E03/classes_objects_explanation.png" alt="" /></p>
+
+<h2 id="errors-and-exceptions">Errors and Exceptions</h2>
+
+<p>When an error occurs in a Python script, it will stop and generate an error message.
+This happens, e.g., when you try to read a non-existing or corrupt file:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">"non_existing_file.txt"</span><span class="p">)</span> <span class="k">as</span> <span class="nb">file</span><span class="p">:</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="nb">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="output output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+    ---------------------------------------------------------------------------
+
+    FileNotFoundError                         Traceback (most recent call last)
+
+    &lt;ipython-input-15-b91d3e0c2f63&gt; in &lt;module&gt;
+    ----&gt; 1 with open("non_existing_file.txt") as file:
+          2     content = file.read()
+
+
+    FileNotFoundError: [Errno 2] No such file or directory: 'non_existing_file.txt'
+
+
+</code></pre></div></div>
+
+<p>These errors (or “exceptions”) can be handled using a try-except block:</p>
+
+<pre><code class="language-Python">try:
+    #code which possibly gives an error
+except:
+    #code to execute in case of error
+</code></pre>
+
+<p>If an exception occurs and the <code class="highlighter-rouge">except</code> block has run the script does not stop but continues to run.</p>
+
+<div class="alert info">
+
+  <p><strong>Note:</strong></p>
+
+  <p>While the length of the <code class="highlighter-rouge">try</code> block is not limited as soon as an Error is encountered the block will stop (i.e. other code after the line with the error will be skipped)!</p>
+
+</div>
+
+<p>Some best practice rules to keep in mind when writing try-except blocks are:</p>
+
+<ul>
+  <li>always handle specific errors =&gt; don’t catch <code class="highlighter-rouge">Exception</code> because it silently hides all errors (most of the time you know what might break so catch it specifically)</li>
+  <li>give the user the stack trace in addition to custom text (for example with the built in <a href="https://docs.python.org/3/library/traceback.html">traceback module</a>, because it contains information where the exception occurred</li>
+  <li>if different errors might come up you can have multiple exception blocks to handle them differently</li>
+</ul>
+
+<p>applied to the example above a refactored code might look like this:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">traceback</span>
+
+<span class="n">filename</span> <span class="o">=</span> <span class="s">"non_existing_file.txt"</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="nb">file</span><span class="p">:</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="nb">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="k">except</span> <span class="n">FileNotFoundError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="c"># Print the error</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Make sure </span><span class="se">\"</span><span class="s">{}</span><span class="se">\"</span><span class="s"> exists"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">filename</span><span class="p">))</span> <span class="c"># Custom message to user</span>
+    <span class="n">traceback</span><span class="o">.</span><span class="n">print_exc</span><span class="p">()</span> <span class="c"># give the user the full stacktrace</span>
+    
+<span class="k">print</span><span class="p">(</span><span class="s">"Script continues after catching exception instead of exiting!"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[Errno 2] No such file or directory: 'non_existing_file.txt'
+Make sure "non_existing_file.txt" exists
+Script continues after catching exception instead of exiting!
+
+</code></pre></div></div>
+
+<div class="alert task">
+
+  <p><strong>Task:</strong></p>
+
+  <ol>
+    <li>Have a look at Pythons built in exceptions <a href="https://docs.python.org/3/library/exceptions.html">here</a> and find the one you can use in the next task.</li>
+    <li>Re-write your <code class="highlighter-rouge">add5(x)</code>-function so that it does not kill the program when a wrong argument is passed (e.g. a string like “zehn”)</li>
+    <li>Inform the caller of the function about a raised exception so that she/he can react accordingly.</li>
+  </ol>
+
+</div>
+
+<h2 id="exercise-3">Exercise 3</h2>
+
+<ul>
+  <li>Complete the third assignment and push your results until tuesday 14:00 next week</li>
+  <li>Assignment link: <a href="https://classroom.github.com/a/kRdKEeyg">https://classroom.github.com/a/kRdKEeyg</a></li>
+</ul>
+
+
+              <nav class="c-page__nav">
+  
+    
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/sommersemester_2019/units/S01E02">
+      〈 <span class="u-margin-right-tiny"></span> Python Basics II
+    </a>
+  
+
+  
+    
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/sommersemester_2019/solutions/solutions">
+      Solutions <span class="u-margin-right-tiny"></span> 〉
+    </a>
+  
+</nav>
+
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+  </body>
+</html>
