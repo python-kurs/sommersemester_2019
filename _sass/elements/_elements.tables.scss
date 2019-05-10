@@ -17,9 +17,11 @@ table {
 
 table td,
 table th {
-  padding: $spacing-unit-tiny $spacing-unit-small;
-  border: 1px solid $color-dark-gray;
+  padding:    $spacing-unit-tiny;
+  border:     1px solid $color-dark-gray;
   text-align: right;
+  font-size:  0.75rem;
+  white-space: nowrap;
 }
 
 /* [2] */

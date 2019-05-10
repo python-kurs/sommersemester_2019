@@ -1,4 +1,4 @@
-## The following table shows the exercise results of all participants:
+## Exercise results:
 
 | Codename     | Ex 0 | Ex 1 | Ex 2 | Ex 3 | Ex 4 | Ex 5 | Ex 6 | Ex 7 | Ex 8 | Ex 9 | Ex 10 | Ex 11 | Sum   | Percentage|
 |--------------|------|------|------|------|------|------|------|------|------|------|-------|-------|-------|-----------|
