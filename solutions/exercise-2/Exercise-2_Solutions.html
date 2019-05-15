@@ -29,9 +29,9 @@
   "headline":
     "Exercise II",
   "datePublished":
-    "2019-05-15T10:53:36+00:00",
+    "2019-05-15T13:23:30+00:00",
   "dateModified":
-    "2019-05-15T10:53:36+00:00",
+    "2019-05-15T13:23:30+00:00",
   "description":
     "",
   "author": {
@@ -814,10 +814,6 @@ initFunction(initQuery);
 <span class="k">print</span><span class="p">(</span><span class="n">sat_database</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'METEOSAT': 3000, 'LANDSAT': 30, 'MODIS': 500, 'GOES': 2000, 'worldview': 0.31}
-
-</code></pre></div></div>
-
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">"I have the following satellites in my database:"</span><span class="p">)</span>
 
 <span class="c"># 2) print out all satellite names contained in the dictionary [2P]</span>
@@ -825,37 +821,21 @@ initFunction(initQuery);
     <span class="k">print</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>I have the following satellites in my database:
-METEOSAT
-LANDSAT
-MODIS
-GOES
-worldview
-
-</code></pre></div></div>
-
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 3) Ask the user to enter the satellite name from which she/he would like to know the resolution [2P]</span>
 <span class="n">user_input</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">From which satellite would you like to know the resolution? "</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-From which satellite would you like to know the resolution? METEOSAT
-
-</code></pre></div></div>
-
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 4) Check, if the satellite is in the database and inform the user, if it is not [2P]</span>
-<span class="k">if</span> <span class="ow">not</span> <span class="n">user_input</span> <span class="ow">in</span> <span class="n">sat_database</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">"I do not have the satellite '{}' in my database."</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">user_input</span><span class="p">))</span>
+<span class="k">if</span> <span class="n">user_input</span> <span class="ow">in</span> <span class="n">sat_database</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"The resolution of {0} is: {1:1.2f}m"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">user_input</span><span class="p">,</span><span class="n">sat_database</span><span class="p">[</span><span class="n">user_input</span><span class="p">]))</span>
     
 <span class="c"># 5) If the satellite name is in the database, print a meaningful message </span>
 <span class="c">#    containing the satellite name and it's resolution [2P] </span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">"The resolution of {0} is: {1:1.2f}m"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">user_input</span><span class="p">,</span><span class="n">sat_database</span><span class="p">[</span><span class="n">user_input</span><span class="p">]))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"I do not have the satellite '{}' in my database."</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">user_input</span><span class="p">))</span>
+    
 </code></pre></div></div>
 
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>The resolution of METEOSAT is: 3000.00m
-
-</code></pre></div></div>
 
               <nav class="c-page__nav">
   
