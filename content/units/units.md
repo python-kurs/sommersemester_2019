@@ -20,28 +20,28 @@
 - Conditional cases
 - Control Flow
 
-**Python Basics III** (15.05.2019)
+**Python Basics III** (15.05.2019 & 22.05.2019)
 - Functions
 - Global vs. local variables
 - Modules & import
 - Reading & writing text files
 - Exception handling (try/except)
 
-**Data science I** (22.05.2019)
+**Data science I** (29.05.2019)
 - pandas (csv-import, Datasets)
 - matplotlib (visualization)
 
-**Data science II** (29.05.2019)
+**Data science II** (05.06.2019)
 - numpy  (unlabeled nd-arrays)
 - xarray (labeled nd-arrays)
 
-**SatPy I** (05.06.2019)
+**SatPy I** (12.06.2019)
 - Read satellite scenes (Meteosat)
 - Print and interpret scene properties
 - Visualize data
 - Write data to disk
 
-**SatPy II** (12.06.2019)
+**SatPy II** (19.06.2019)
 - Reproject satellite data (resampling)
 - Create band combinations
 - Integration of multiple satellite formats (MODIS, Meteosat, ...)
