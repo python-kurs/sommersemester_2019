@@ -1,0 +1,2992 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+
+  <title>Data science I</title>
+  <meta name="description" content="">
+
+  <link rel="canonical" href="https://python-kurs.github.io/sommersemester_2019//units/S01E04.html">
+  <link rel="alternate" type="application/rss+xml" title="Sommersemester 2019" href="https://python-kurs.github.io/sommersemester_2019//feed.xml">
+
+  <meta property="og:url"         content="https://python-kurs.github.io/sommersemester_2019//units/S01E04.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Data science I" />
+<meta property="og:description" content="" />
+<meta property="og:image"       content="" />
+
+
+  <script type="application/ld+json">
+  {
+  "@context": "http://schema.org",
+  "@type": "NewsArticle",
+  "mainEntityOfPage":
+    "https://python-kurs.github.io/sommersemester_2019//units/S01E04.html",
+  "headline":
+    "Data science I",
+  "datePublished":
+    "2019-05-22T11:43:41+00:00",
+  "dateModified":
+    "2019-05-22T11:43:41+00:00",
+  "description":
+    "",
+  "author": {
+    "@type": "Person",
+    "name": "Sebastian Egli, Benjamin Rösner"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Data 100 at UC Berkeley",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://python-kurs.github.io/sommersemester_2019/",
+      "width": 60,
+      "height": 60
+    }
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://python-kurs.github.io/sommersemester_2019/",
+    "height": 60,
+    "width": 60
+  }
+}
+
+  </script>
+  <link rel="stylesheet" href="/sommersemester_2019/assets/css/styles.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css ">
+  <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+
+  <!-- <link rel="manifest" href="/manifest.json"> -->
+  <!-- <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#efae0a"> -->
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+  <meta name="theme-color" content="#233947">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="/sommersemester_2019/images/logo/favicon.ico">
+
+  <!-- MathJax Config -->
+  <!-- Allow inline math using $ and automatically break long math lines -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true,
+        processEnvironments: true
+    },
+    CommonHTML: {
+        linebreaks: {
+            automatic: true,
+        },
+    },
+});
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML' async></script>
+
+  <!-- DOM updating function -->
+  <script>
+const runWhenDOMLoaded = cb => {
+  if (document.readyState != 'loading') {
+    cb()
+  } else if (document.addEventListener) {
+    document.addEventListener('DOMContentLoaded', cb)
+  } else {
+    document.attachEvent('onreadystatechange', function() {
+      if (document.readyState == 'complete') cb()
+    })
+  }
+}
+
+// Helper function to init things quickly
+initFunction = function(myfunc) {
+  runWhenDOMLoaded(myfunc);
+  document.addEventListener('turbolinks:load', myfunc);
+};
+</script>
+
+  <!-- Define some javascript variables that will be useful in other javascript -->
+  <script>
+    const site_basename = '/sommersemester_2019/';
+  </script>
+
+  <!-- Add AnchorJS to let headers be linked -->
+  <script src="/sommersemester_2019/assets/js/anchor.min.js"  type="text/javascript"></script>
+  <script>
+
+initFunction(function () {
+    anchors.add("main h1, main h2, main h3, main h4")
+});
+
+</script>
+
+  <!-- Include Turbolinks to make page loads fast -->
+  <!-- https://github.com/turbolinks/turbolinks -->
+  <script src="/sommersemester_2019/assets/js/turbolinks.js" async></script>
+  <meta name="turbolinks-cache-control" content="no-cache">
+
+  <!-- Load nbinteract for widgets -->
+  <script src="https://unpkg.com/nbinteract-core" async></script>
+
+  <!-- Load Thebelab for interactive widgets -->
+  <!-- Include Thebelab for interactive code if it's enabled -->
+
+<script type="text/x-thebe-config">
+    {
+      requestKernel: true,
+      binderOptions: {
+        repo: 'YOUR-ORG/YOUR-REPO',
+        ref: 'master',
+      },
+      kernelOptions: {
+        name: 'python3',
+      }
+    }
+</script>
+<script src="https://unpkg.com/thebelab@0.3.3/lib/index.js"></script>
+<script>
+    /**
+     * Add attributes to Thebelab blocks
+     */
+
+    const initThebelab = () => {
+        const addThebelabToCodeCells = () => {
+            console.log("Adding thebelab to code cells...");
+            // If Thebelab hasn't loaded, wait a bit and try again. This
+            // happens because we load ClipboardJS asynchronously.
+            if (window.thebelab === undefined) {
+                setTimeout(addThebelabToCodeCells, 250)
+            return
+            }
+
+            // If we already detect a Thebelab cell, don't re-run
+            if (document.querySelectorAll('div.thebelab-cell').length > 0) {
+                return;
+            }
+
+            // Find all code cells, replace with Thebelab interactive code cells
+            const codeCells = document.querySelectorAll('.input_area pre')
+            codeCells.forEach((codeCell, index) => {
+                const id = codeCellId(index)
+                codeCell.setAttribute('data-executable', 'true')
+
+                // Figure out the language it uses and add this too
+                var parentDiv = codeCell.parentElement.parentElement;
+                var arrayLength = parentDiv.classList.length;
+                for (var ii = 0; ii < arrayLength; ii++) {
+                    var parts = parentDiv.classList[ii].split('language-');
+                    if (parts.length === 2) {
+                        // If found, assign dataLanguage and break the loop
+                        var dataLanguage = parts[1];
+                        break;
+                    }
+                }
+                codeCell.setAttribute('data-language', dataLanguage)
+
+                // If the code cell is hidden, show it
+                var inputCheckbox = document.querySelector(`input#hidebtn${codeCell.id}`);
+                if (inputCheckbox !== null) {
+                    setCodeCellVisibility(inputCheckbox, 'visible');
+                }
+            });
+
+            // Remove the event listener from the page so keyboard press doesn't
+            // Change page
+            document.removeEventListener('keydown', initPageNav)
+            keyboardListener = false;
+
+            // Init thebelab
+            thebelab.bootstrap();
+
+            // Remove copy buttons since they won't work anymore
+            const copyButtons = document.querySelectorAll('.copybtn')
+            copyButtons.forEach((copyButton, index) => {
+                copyButton.remove();
+            });
+
+            // Remove outputs since they'll be stale
+            const outputs = document.querySelectorAll('.output *, .output')
+            outputs.forEach((output, index) => {
+                output.remove();
+            });
+        }
+
+        // Add event listener for the function to modify code cells
+        const thebelabButton = document.getElementById('interact-button-thebelab');
+        if (thebelabButton === null) {
+            setTimeout(initThebelab, 250)
+        return
+        };
+        thebelabButton.addEventListener('click', addThebelabToCodeCells);
+    }
+
+    // Initialize Thebelab
+    initFunction(initThebelab);
+</script>
+
+
+  <!-- Google analytics -->
+  <script src="/sommersemester_2019/assets/js/ga.js" async></script>
+
+  <!-- Clipboard copy button -->
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" async></script>
+
+  <!-- Load JS that depends on site variables -->
+  <script>
+/**
+ * Set up copy/paste for code blocks
+ */
+const codeCellId = index => `codecell${index}`
+
+const clipboardButton = id =>
+  `<a class="btn copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#${id}">
+    <img src="/sommersemester_2019/assets/images/copy-button.svg" alt="Copy to clipboard">
+  </a>`
+
+// Clears selected text since ClipboardJS will select the text when copying
+const clearSelection = () => {
+  if (window.getSelection) {
+    window.getSelection().removeAllRanges()
+  } else if (document.selection) {
+    document.selection.empty()
+  }
+}
+
+// Changes tooltip text for two seconds, then changes it back
+const temporarilyChangeTooltip = (el, newText) => {
+  const oldText = el.getAttribute('data-tooltip')
+  el.setAttribute('data-tooltip', newText)
+  setTimeout(() => el.setAttribute('data-tooltip', oldText), 2000)
+}
+
+const addCopyButtonToCodeCells = () => {
+  // If ClipboardJS hasn't loaded, wait a bit and try again. This
+  // happens because we load ClipboardJS asynchronously.
+  if (window.ClipboardJS === undefined) {
+    setTimeout(addCopyButtonToCodeCells, 250)
+    return
+  }
+
+  const codeCells = document.querySelectorAll('div.highlighter-rouge:not(.output) pre')
+  codeCells.forEach((codeCell, index) => {
+    const id = codeCellId(index)
+    codeCell.setAttribute('id', id)
+    if (document.querySelector(`pre#${id} + a`) == null) {
+      codeCell.insertAdjacentHTML('afterend', clipboardButton(id));
+    }
+  })
+
+  const clipboard = new ClipboardJS('.copybtn')
+  clipboard.on('success', event => {
+    clearSelection()
+    temporarilyChangeTooltip(event.trigger, 'Copied!')
+  })
+
+  clipboard.on('error', event => {
+    temporarilyChangeTooltip(event.trigger, 'Failed to copy')
+  })
+
+  // Get rid of clipboard before the next page visit to avoid memory leak
+  document.addEventListener('turbolinks:before-visit', () =>
+    clipboard.destroy()
+  )
+}
+
+initFunction(addCopyButtonToCodeCells);
+</script>
+
+  <!-- Hide cell code -->
+  
+<script>
+/**
+Add buttons to hide code cells
+*/
+
+
+var setCodeCellVisibility = function(inputField, kind) {
+    // Update the image and class for hidden
+    var id = inputField.getAttribute('data-id');
+    var codeCell = document.querySelector(`#${id}`);
+
+    if (kind === "visible") {
+        codeCell.classList.remove('hidden');
+        inputField.checked = true;
+    } else {
+        codeCell.classList.add('hidden');
+        inputField.checked = false;
+    }
+}
+
+var toggleCodeCellVisibility = function (event) {
+    // The label is clicked, and now we decide what to do based on the input field's clicked status
+    if (event.target.tagName === "LABEL") {
+        var inputField = event.target.previousElementSibling;
+    } else {
+        // It is the span inside the target
+        var inputField = event.target.parentElement.previousElementSibling;
+    }
+
+    if (inputField.checked === true) {
+        setCodeCellVisibility(inputField, "visible");
+    } else {
+        setCodeCellVisibility(inputField, "hidden");
+    }
+}
+
+
+// Button constructor
+const hideCodeButton = id => `<input class="hidebtn" type="checkbox" id="hidebtn${id}" data-id="${id}"><label title="Toggle cell" for="hidebtn${id}" class="plusminus"><span class="pm_h"></span><span class="pm_v"></span></label>`
+
+var addHideButton = function () {
+  // If a hide button is already added, don't add another
+  if (document.querySelector('div.hidecode input') !== null) {
+      return;
+  }
+
+  // Find the input cells and add a hide button
+  document.querySelectorAll('div.input_area div.highlight').forEach(function (item, index) {
+    if (!item.parentElement.classList.contains("hidecode")) {
+        // Skip the cell if it doesn't have a hidecode class
+        return;
+    }
+
+    const id = codeCellId(index)
+    item.setAttribute('id', id);
+    item.insertAdjacentHTML('afterend', hideCodeButton(id))
+
+    // Set up the visibility toggle
+    hideLink = document.querySelector(`#${id} + input + label`);
+    hideLink.addEventListener('click', toggleCodeCellVisibility)
+  });
+}
+
+
+// Initialize the hide buttos
+var initHiddenCells = function () {
+    // Add hide buttons to the cells
+    addHideButton();
+
+    // Toggle the code cells that should be hidden
+    document.querySelectorAll('div.hidecode input').forEach(function (item) {
+        setCodeCellVisibility(item, 'hidden');
+        item.checked = true;
+    })
+}
+
+initFunction(initHiddenCells);
+
+</script>
+
+
+  <!-- Load custom website scripts -->
+  <script src="/sommersemester_2019/assets/js/scripts.js" async></script>
+
+  <!-- Load custom user CSS and JS  -->
+  <script src="/sommersemester_2019/assets/custom/custom.js" async></script>
+  <link rel="stylesheet" href="/sommersemester_2019/assets/custom/custom.css">
+
+  <!-- Update interact links w/ REST param, is defined in includes so we can use templates -->
+  
+
+  <!-- Lunr search code - will only be executed on the /search page -->
+  <script src="/sommersemester_2019/assets/js/lunr/lunr.min.js" type="text/javascript"></script>
+  <script>var initQuery = function() {
+  // See if we have a search box
+  var searchInput = document.querySelector('input#lunr_search');
+  if (searchInput === null) {
+    return;
+  }
+
+  // Function to parse our lunr cache
+  var idx = lunr(function () {
+    this.field('title')
+    this.field('excerpt')
+    this.field('categories')
+    this.field('tags')
+    this.ref('id')
+
+    this.pipeline.remove(lunr.trimmer)
+
+    for (var item in store) {
+      this.add({
+        title: store[item].title,
+        excerpt: store[item].excerpt,
+        categories: store[item].categories,
+        tags: store[item].tags,
+        id: item
+      })
+    }
+  });
+
+  // Run search upon keyup
+  searchInput.addEventListener('keyup', function () {
+    var resultdiv = document.querySelector('#results');
+    var query = document.querySelector("input#lunr_search").value.toLowerCase();
+    var result =
+      idx.query(function (q) {
+        query.split(lunr.tokenizer.separator).forEach(function (term) {
+          q.term(term, { boost: 100 })
+          if(query.lastIndexOf(" ") != query.length-1){
+            q.term(term, {  usePipeline: false, wildcard: lunr.Query.wildcard.TRAILING, boost: 10 })
+          }
+          if (term != ""){
+            q.term(term, {  usePipeline: false, editDistance: 1, boost: 1 })
+          }
+        })
+      });
+
+      // Empty the results div
+      while (resultdiv.firstChild) {
+        resultdiv.removeChild(resultdiv.firstChild);
+      }
+
+    resultdiv.insertAdjacentHTML('afterbegin', '<p class="results__found">'+result.length+' Result(s) found</p>');
+    for (var item in result) {
+      var ref = result[item].ref;
+      if(store[ref].teaser){
+        var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<div class="archive__item-teaser">'+
+                '<img src="'+store[ref].teaser+'" alt="">'+
+              '</div>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      else{
+    	  var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      resultdiv.insertAdjacentHTML('beforeend', searchitem);
+    }
+  });
+};
+
+initFunction(initQuery);
+</script>
+</head>
+
+  <body>
+    <!-- .js-show-sidebar shows sidebar by default -->
+    <div id="js-textbook" class="c-textbook js-show-sidebar">
+      
+
+
+
+<nav id="js-sidebar" class="c-textbook__sidebar">
+  <a href="https://python-kurs.github.io/sommersemester_2019/intro.html"><img src="/sommersemester_2019/images/logo/logo.png" class="textbook_logo" id="sidebar-logo" data-turbolinks-permanent/></a>
+  <h2 class="c-sidebar__title">Sommersemester 2019</h2>
+  <ul class="c-sidebar__chapters">
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/sommersemester_2019/intro.html"
+        >
+          
+          Introduction
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/sommersemester_2019/motivation.html"
+        >
+          
+          Motivation
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/sommersemester_2019/about.html"
+        >
+          
+          About
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+        <li class="c-sidebar__chapter"><a class="c-sidebar__entry" href="/sommersemester_2019/search.html">Search</a></li>
+        
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/sommersemester_2019/units/units.html"
+        >
+          
+          Sessions
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections ">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/sommersemester_2019/units/S01E01.html"
+                >
+                  
+                  Python Basics I
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/sommersemester_2019/units/S01E02.html"
+                >
+                  
+                  Python Basics II
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/sommersemester_2019/units/S01E03.html"
+                >
+                  
+                  Python Basics III
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry c-sidebar__entry--active"
+                  href="/sommersemester_2019/units/S01E04.html"
+                >
+                  
+                  Data science I
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/sommersemester_2019/solutions/solutions.html"
+        >
+          
+          Solutions
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections ">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/sommersemester_2019/solutions/exercise-1/Exercise-1_Solutions.html"
+                >
+                  
+                  Exercise I
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/sommersemester_2019/solutions/exercise-2/Exercise-2_Solutions.html"
+                >
+                  
+                  Exercise II
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/sommersemester_2019/results.html"
+        >
+          
+          Results
+        </a>
+
+        
+      </li>
+
+      
+    
+  </ul>
+  <p class="sidebar_footer">Powered by <a href="https://github.com/jupyter/jupyter-book">Jupyter Book</a></p>
+</nav>
+
+      
+      <!-- Shamelessly copied from minimal mistakes -->
+
+
+<!-- TOC will only show up if it has at least one item -->
+
+
+  <aside class="sidebar__right">
+    <nav class="onthispage">
+      <header><h4 class="nav__title"><i class="fa fa-list"></i>   On this page</h4></header>
+      <ul class="toc__menu">
+  <li><a href="#pandas">pandas</a>
+    <ul>
+      <li><a href="#read-data">Read data</a></li>
+      <li><a href="#dataframe">DataFrame</a></li>
+      <li><a href="#selection-by-label">Selection by label</a></li>
+      <li><a href="#selection-by-position-index">Selection by position (index)</a></li>
+      <li><a href="#boolean-indexing">Boolean indexing</a></li>
+      <li><a href="#getting-the-values-of-a-column">Getting the values of a column</a></li>
+      <li><a href="#operations">Operations</a></li>
+      <li><a href="#resampling">Resampling</a></li>
+      <li><a href="#write-data">Write data</a></li>
+    </ul>
+  </li>
+  <li><a href="#matplotlib">matplotlib</a>
+    <ul>
+      <li><a href="#line-plots">Line plots</a></li>
+      <li><a href="#histograms">Histograms</a></li>
+      <li><a href="#scatterplots">Scatterplots</a></li>
+      <li><a href="#windroses">Windroses</a></li>
+    </ul>
+  </li>
+  <li><a href="#exercise-4">Exercise 4</a></li>
+</ul>
+    </nav>
+  </aside>
+
+
+      
+      <main class="c-textbook__page" tabindex="-1">
+          <div class="o-wrapper">
+            <div class="c-sidebar-toggle">
+  <!-- We show the sidebar by default so we use .is-active -->
+  <button
+    id="js-sidebar-toggle"
+    class="hamburger hamburger--arrowalt is-active"
+  >
+    <span class="hamburger-box">
+      <span class="hamburger-inner"></span>
+    </span>
+    <span class="c-sidebar-toggle__label">Toggle Sidebar</span>
+  </button>
+</div>
+
+            
+<div class="buttons">
+<a href="/sommersemester_2019/content/units/S01E04.ipynb" download>
+<button id="interact-button-download" class="interact-button">Download</button>
+</a>
+
+<button id="interact-button-thebelab" class="interact-button">Interact</button>
+
+
+
+
+</div>
+
+
+            <div class="c-textbook__content">
+              
+<h1 id="data-science-i">Data science I</h1>
+
+<h2 id="pandas">pandas</h2>
+
+<p><img src="https://pandas.pydata.org/_static/pandas_logo.png" alt="" /></p>
+
+<blockquote>
+  <p>pandas is an open source, BSD-licensed library providing high-performance, easy-to-use data structures and data analysis tools for the Python programming language (<a href="https://pandas.pydata.org/index.html">pandas-website</a>).</p>
+</blockquote>
+
+<p>Let’s say we want to investigate the weather data recorded at the Frankfurt International Airport from the year 2015. The data is available in the tabular CSV format:</p>
+
+<p><img src="images/S01E04/csv_example.png" alt="" /></p>
+
+<h3 id="read-data">Read data</h3>
+
+<p>First, we want to read the data:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="n">tabelle</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"../data/frankfurt_weather.csv"</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s">"time"</span><span class="p">],</span> <span class="n">index_col</span><span class="o">=</span><span class="s">"time"</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">","</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s">'display.max_rows'</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>The pandas function <code class="highlighter-rouge">pd.read_csv(...)</code> opens the csv file and reads its contents.</p>
+
+<ul>
+  <li>The <code class="highlighter-rouge">parse_dates</code> argument tells Python to interpret the values in the <code class="highlighter-rouge">time</code> column as dates</li>
+  <li>The <code class="highlighter-rouge">index_col</code> argument tells it to use this column as index.</li>
+  <li>The <code class="highlighter-rouge">sep</code> argument tells it which character it should use for separating columns</li>
+</ul>
+
+<p>pandas has many more readers for a variety of file types, e.g. Excel, SQL, HDF, HTML, etc. The full list of supported file types and the respective readers can be found <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/io.html">here</a>.</p>
+
+<h3 id="dataframe">DataFrame</h3>
+
+<p>All data is stored in the <code class="highlighter-rouge">tabelle</code> object. This object is a so-called <strong>DataFrame</strong>, the basic pandas object. You can think of it like a spreadsheet.</p>
+
+<p>To be more precise, it is a two-dimensional size-mutable, potentially heterogeneous tabular data structure with labeled axes (rows and columns).</p>
+
+<p>The DataFrame object offers many functions that allow you to work with the data conveniently.</p>
+
+<p>For a first glimps at the data, you can call the <code class="highlighter-rouge">head()</code> function which prints out the first 5 rows of the table:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>visibility</th>
+      <th>air_temperature</th>
+      <th>dewpoint</th>
+      <th>wind_direction</th>
+      <th>wind_speed</th>
+      <th>air_pressure</th>
+      <th>cloud_height</th>
+      <th>cloud_cover</th>
+    </tr>
+    <tr>
+      <th>time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2015-01-01 00:20:00</th>
+      <td>2800</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1036.0</td>
+      <td>200.0</td>
+      <td>OVC</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 00:50:00</th>
+      <td>1500</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1036.0</td>
+      <td>100.0</td>
+      <td>OVC</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 01:20:00</th>
+      <td>1000</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1036.0</td>
+      <td>100.0</td>
+      <td>OVC</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 01:50:00</th>
+      <td>700</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1036.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 02:20:00</th>
+      <td>600</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1036.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>To get an <strong>overview</strong> of the value distributions of the variables within <code class="highlighter-rouge">tabelle</code>, you can call the <code class="highlighter-rouge">describe()</code> function. It generates descriptive statistics that summarize the central tendency, dispersion and shape of a dataset’s distribution, excluding NaN values:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>visibility</th>
+      <th>air_temperature</th>
+      <th>dewpoint</th>
+      <th>wind_direction</th>
+      <th>wind_speed</th>
+      <th>air_pressure</th>
+      <th>cloud_height</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>17520.000000</td>
+      <td>17507.000000</td>
+      <td>17507.00000</td>
+      <td>15615.000000</td>
+      <td>17519.000000</td>
+      <td>17507.000000</td>
+      <td>10210.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>9421.269977</td>
+      <td>11.679785</td>
+      <td>6.00674</td>
+      <td>169.353186</td>
+      <td>7.120212</td>
+      <td>1018.367967</td>
+      <td>2142.938296</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>10000.000000</td>
+      <td>17.000000</td>
+      <td>10.00000</td>
+      <td>230.000000</td>
+      <td>10.000000</td>
+      <td>1024.000000</td>
+      <td>3100.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>10000.000000</td>
+      <td>39.000000</td>
+      <td>20.00000</td>
+      <td>360.000000</td>
+      <td>40.000000</td>
+      <td>1041.000000</td>
+      <td>8000.000000</td>
+    </tr>
+  </tbody>
+</table>
+<p>8 rows × 7 columns</p>
+</div>
+</div>
+
+<p>The <code class="highlighter-rouge">dtypes</code> field of <code class="highlighter-rouge">tabelle</code> shows you all column names and the <strong>data type</strong> of the respective column:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="o">.</span><span class="n">dtypes</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>visibility           int64
+air_temperature    float64
+                    ...   
+cloud_height       float64
+cloud_cover         object
+Length: 8, dtype: object
+</code></pre></div></div>
+
+<p>Let’s say, you want to <strong>sort</strong> this table by visibility values in descending order.</p>
+
+<p>You can sort a pandas DataFrame by the values of a specific column, using the <code class="highlighter-rouge">sort_values()</code> function:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s">"visibility"</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>visibility</th>
+      <th>air_temperature</th>
+      <th>dewpoint</th>
+      <th>wind_direction</th>
+      <th>wind_speed</th>
+      <th>air_pressure</th>
+      <th>cloud_height</th>
+      <th>cloud_cover</th>
+    </tr>
+    <tr>
+      <th>time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2015-07-02 12:20:00</th>
+      <td>10000</td>
+      <td>34.0</td>
+      <td>15.0</td>
+      <td>90.0</td>
+      <td>6.0</td>
+      <td>1019.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-08-13 23:20:00</th>
+      <td>10000</td>
+      <td>24.0</td>
+      <td>17.0</td>
+      <td>240.0</td>
+      <td>21.0</td>
+      <td>1010.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-08-13 16:50:00</th>
+      <td>10000</td>
+      <td>34.0</td>
+      <td>15.0</td>
+      <td>20.0</td>
+      <td>14.0</td>
+      <td>1009.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-08-13 17:20:00</th>
+      <td>10000</td>
+      <td>34.0</td>
+      <td>16.0</td>
+      <td>10.0</td>
+      <td>12.0</td>
+      <td>1009.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-08-13 17:50:00</th>
+      <td>10000</td>
+      <td>33.0</td>
+      <td>16.0</td>
+      <td>30.0</td>
+      <td>11.0</td>
+      <td>1009.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<h3 id="selection-by-label">Selection by label</h3>
+
+<p>Let’s assume, we are not interested in the complete year 2015 but only in August. We can select the respective rows with the <code class="highlighter-rouge">loc</code> attribute.</p>
+
+<p>When the index of the DataFrame is a range of dates (like in this case), you can <strong>select</strong> a row ( = measurement date) by specifying a date (as string):</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s">"2015-08"</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span> <span class="c"># select all measurements of August 2015.</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>visibility</th>
+      <th>air_temperature</th>
+      <th>dewpoint</th>
+      <th>wind_direction</th>
+      <th>wind_speed</th>
+      <th>air_pressure</th>
+      <th>cloud_height</th>
+      <th>cloud_cover</th>
+    </tr>
+    <tr>
+      <th>time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2015-08-01 00:20:00</th>
+      <td>10000</td>
+      <td>16.0</td>
+      <td>5.0</td>
+      <td>30.0</td>
+      <td>11.0</td>
+      <td>1015.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-08-01 00:50:00</th>
+      <td>10000</td>
+      <td>16.0</td>
+      <td>5.0</td>
+      <td>20.0</td>
+      <td>11.0</td>
+      <td>1014.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-08-01 01:20:00</th>
+      <td>10000</td>
+      <td>16.0</td>
+      <td>5.0</td>
+      <td>20.0</td>
+      <td>10.0</td>
+      <td>1014.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-08-01 01:50:00</th>
+      <td>10000</td>
+      <td>16.0</td>
+      <td>5.0</td>
+      <td>30.0</td>
+      <td>10.0</td>
+      <td>1014.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-08-01 02:20:00</th>
+      <td>10000</td>
+      <td>16.0</td>
+      <td>5.0</td>
+      <td>20.0</td>
+      <td>10.0</td>
+      <td>1014.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>If you want to select a specific date range, you can do so by providing a start and end date (notice that the specific dates do not have to match the date values in the “time” column):</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s">"2015-08-01 15:55"</span><span class="p">:</span><span class="s">"2015-08-01 19:20"</span><span class="p">]</span> <span class="c"># selects all rows between 2015-08-01 15:55 and 2015-08-01 19:20</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>visibility</th>
+      <th>air_temperature</th>
+      <th>dewpoint</th>
+      <th>wind_direction</th>
+      <th>wind_speed</th>
+      <th>air_pressure</th>
+      <th>cloud_height</th>
+      <th>cloud_cover</th>
+    </tr>
+    <tr>
+      <th>time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2015-08-01 16:20:00</th>
+      <td>10000</td>
+      <td>27.0</td>
+      <td>6.0</td>
+      <td>190.0</td>
+      <td>9.0</td>
+      <td>1013.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-08-01 16:50:00</th>
+      <td>10000</td>
+      <td>27.0</td>
+      <td>7.0</td>
+      <td>180.0</td>
+      <td>9.0</td>
+      <td>1013.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2015-08-01 18:50:00</th>
+      <td>10000</td>
+      <td>22.0</td>
+      <td>10.0</td>
+      <td>210.0</td>
+      <td>4.0</td>
+      <td>1014.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-08-01 19:20:00</th>
+      <td>10000</td>
+      <td>21.0</td>
+      <td>10.0</td>
+      <td>190.0</td>
+      <td>5.0</td>
+      <td>1015.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>7 rows × 8 columns</p>
+</div>
+</div>
+
+<p>What if we are only interested in the measurements between 12:00 and 15:00 for each day?
+Unfortunately, for this task we can cannot use the <code class="highlighter-rouge">loc</code> attribute. However, the <code class="highlighter-rouge">between_time()</code> function helps us:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="o">.</span><span class="n">between_time</span><span class="p">(</span><span class="s">"12:00"</span><span class="p">,</span> <span class="s">"15:00"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>visibility</th>
+      <th>air_temperature</th>
+      <th>dewpoint</th>
+      <th>wind_direction</th>
+      <th>wind_speed</th>
+      <th>air_pressure</th>
+      <th>cloud_height</th>
+      <th>cloud_cover</th>
+    </tr>
+    <tr>
+      <th>time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2015-01-01 12:20:00</th>
+      <td>1600</td>
+      <td>3.0</td>
+      <td>2.0</td>
+      <td>220.0</td>
+      <td>3.0</td>
+      <td>1036.0</td>
+      <td>300.0</td>
+      <td>FEW</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 12:50:00</th>
+      <td>2000</td>
+      <td>3.0</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>1036.0</td>
+      <td>500.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 14:20:00</th>
+      <td>3800</td>
+      <td>5.0</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>1024.0</td>
+      <td>400.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 14:50:00</th>
+      <td>3500</td>
+      <td>5.0</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>1024.0</td>
+      <td>300.0</td>
+      <td>BKN</td>
+    </tr>
+  </tbody>
+</table>
+<p>2190 rows × 8 columns</p>
+</div>
+</div>
+
+<p>Now we know, how to select rows in time series (=measurements). But what if we are only interested in one specific variable, e.g. visibility?</p>
+
+<p>You can <strong>select</strong> single <strong>columns</strong> by:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s">"visibility"</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>time
+2015-01-01 00:20:00    2800
+2015-01-01 00:50:00    1500
+                       ... 
+2015-12-31 23:20:00     500
+2015-12-31 23:50:00     500
+Name: visibility, Length: 17520, dtype: int64
+</code></pre></div></div>
+
+<p>You can <strong>select</strong> multiple <strong>columns</strong> by:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s">"visibility"</span><span class="p">,</span> <span class="s">"air_temperature"</span><span class="p">]]</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>visibility</th>
+      <th>air_temperature</th>
+    </tr>
+    <tr>
+      <th>time</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2015-01-01 00:20:00</th>
+      <td>2800</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 00:50:00</th>
+      <td>1500</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 23:20:00</th>
+      <td>500</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 23:50:00</th>
+      <td>500</td>
+      <td>5.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>17520 rows × 2 columns</p>
+</div>
+</div>
+
+<p>A column in pandas is also called a <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html"><strong>Series</strong></a>. In principle, it is a one-dimensional DataFrame and it provides more or less the same functionality. We will not go into further detail here.</p>
+
+<p>You can also <strong>select columns and rows</strong> together within one call:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s">"2015-11-01 15:55"</span><span class="p">:</span><span class="s">"2015-11-01 19:20"</span><span class="p">,</span> <span class="p">[</span><span class="s">"visibility"</span><span class="p">,</span> <span class="s">"air_temperature"</span><span class="p">]]</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>visibility</th>
+      <th>air_temperature</th>
+    </tr>
+    <tr>
+      <th>time</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2015-11-01 16:20:00</th>
+      <td>250</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 16:50:00</th>
+      <td>200</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 18:50:00</th>
+      <td>100</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>2015-11-01 19:20:00</th>
+      <td>100</td>
+      <td>5.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>7 rows × 2 columns</p>
+</div>
+</div>
+
+<h3 id="selection-by-position-index">Selection by position (index)</h3>
+
+<p>Just as with the label selection, you can select values via their index using <code class="highlighter-rouge">iloc</code>:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>visibility</th>
+      <th>air_temperature</th>
+    </tr>
+    <tr>
+      <th>time</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2015-01-01 01:50:00</th>
+      <td>700</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 02:20:00</th>
+      <td>600</td>
+      <td>1.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<div class="alert task">
+
+  <p><strong>Task:</strong></p>
+
+  <ol>
+    <li>Import pandas and open this file: https://github.com/python-kurs/sommersemester_2019/blob/master/content/data/frankfurt_weather.csv</li>
+    <li>Clip the table to February 01, 2015 and the variables “vis”, “temp” and “windspeed”</li>
+  </ol>
+
+</div>
+
+<h3 id="boolean-indexing">Boolean indexing</h3>
+
+<p>What if you don’t want to clip the table to specific times but to other conditions? Let’s assume you want to select all rows, where visibility was measured to be below 1000m.</p>
+
+<p>You can do this easily by specifying the conditions within the <code class="highlighter-rouge">[</code> <code class="highlighter-rouge">]</code> brackets:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="p">[</span><span class="n">tabelle</span><span class="o">.</span><span class="n">visibility</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="p">]</span> <span class="c"># Selects all rows where visibility &lt; 1000</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>visibility</th>
+      <th>air_temperature</th>
+      <th>dewpoint</th>
+      <th>wind_direction</th>
+      <th>wind_speed</th>
+      <th>air_pressure</th>
+      <th>cloud_height</th>
+      <th>cloud_cover</th>
+    </tr>
+    <tr>
+      <th>time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2015-01-01 01:50:00</th>
+      <td>700</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1036.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 02:20:00</th>
+      <td>600</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1036.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 23:20:00</th>
+      <td>500</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>1026.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 23:50:00</th>
+      <td>500</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>240.0</td>
+      <td>3.0</td>
+      <td>1026.0</td>
+      <td>100.0</td>
+      <td>BKN</td>
+    </tr>
+  </tbody>
+</table>
+<p>299 rows × 8 columns</p>
+</div>
+</div>
+
+<p>You can also use multiple columns to select data after specific criteria. Let’s say we are only interested in rows with visibility values below 1000m and temperature values above 5 °C:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="p">[(</span><span class="n">tabelle</span><span class="o">.</span><span class="n">visibility</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">tabelle</span><span class="o">.</span><span class="n">air_temperature</span><span class="o">&gt;</span><span class="mi">5</span><span class="p">)]</span> <span class="c"># selects all rows where vis &lt; 1000 and temp &gt; 5</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>visibility</th>
+      <th>air_temperature</th>
+      <th>dewpoint</th>
+      <th>wind_direction</th>
+      <th>wind_speed</th>
+      <th>air_pressure</th>
+      <th>cloud_height</th>
+      <th>cloud_cover</th>
+    </tr>
+    <tr>
+      <th>time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2015-08-29 02:20:00</th>
+      <td>500</td>
+      <td>15.0</td>
+      <td>15.0</td>
+      <td>60.0</td>
+      <td>4.0</td>
+      <td>1022.0</td>
+      <td>100.0</td>
+      <td>BKN</td>
+    </tr>
+    <tr>
+      <th>2015-10-05 01:50:00</th>
+      <td>400</td>
+      <td>9.0</td>
+      <td>9.0</td>
+      <td>10.0</td>
+      <td>4.0</td>
+      <td>1016.0</td>
+      <td>100.0</td>
+      <td>SCT</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2015-12-24 05:20:00</th>
+      <td>300</td>
+      <td>6.0</td>
+      <td>6.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>1026.0</td>
+      <td>100.0</td>
+      <td>FEW</td>
+    </tr>
+    <tr>
+      <th>2015-12-24 06:20:00</th>
+      <td>700</td>
+      <td>6.0</td>
+      <td>6.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>1025.0</td>
+      <td>600.0</td>
+      <td>SCT</td>
+    </tr>
+  </tbody>
+</table>
+<p>32 rows × 8 columns</p>
+</div>
+</div>
+
+<h3 id="getting-the-values-of-a-column">Getting the values of a column</h3>
+
+<p>Note that selecting a single column also returns a series object and not just the column as a list for example.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s">"visibility"</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>time
+2015-01-01 00:20:00    2800
+2015-01-01 00:50:00    1500
+                       ... 
+2015-12-31 23:20:00     500
+2015-12-31 23:50:00     500
+Name: visibility, Length: 17520, dtype: int64
+</code></pre></div></div>
+
+<p>If you are really interested to get a list with the values of the column use the <code class="highlighter-rouge">.to_list()</code> method but most of the time it is better to use the <code class="highlighter-rouge">.values</code> attribute which returns the values as an array (don’t worry about what an array is right now. We will cover that in the next chapter):</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s">"visibility"</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([2800, 1500, 1000, ...,  400,  500,  500])
+</code></pre></div></div>
+
+<h3 id="operations">Operations</h3>
+
+<p>Besides its many selection options, the DataFrame class provides many functions for calculating statistical measures, e.g. the average of each column:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>visibility         9421.269977
+air_temperature      11.679785
+                      ...     
+air_pressure       1018.367967
+cloud_height       2142.938296
+Length: 7, dtype: float64
+</code></pre></div></div>
+
+<p>You can do the same for single columns (<code class="highlighter-rouge">Series</code>):</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="o">.</span><span class="n">visibility</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>9421.26997716895
+</code></pre></div></div>
+
+<p>And of course, you can combine all of the above:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="p">[</span><span class="n">tabelle</span><span class="o">.</span><span class="n">visibility</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="p">]</span><span class="o">.</span><span class="n">wind_speed</span><span class="o">.</span><span class="n">median</span><span class="p">()</span> <span class="c"># Calculate the median wind speed for times when the visibility was below 1000m</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3.0
+</code></pre></div></div>
+
+<p>If you want to apply specific operations to your data that are not covered by the standard functions of pandas, you can do so by using the <code class="highlighter-rouge">apply()</code> method. This works for single Series or along an axis of a DataFrame object:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># First we define the function</span>
+<span class="k">def</span> <span class="nf">do_sth</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">5</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+
+<span class="c"># then we apply it to the temperature Series:</span>
+<span class="n">tabelle</span><span class="o">.</span><span class="n">air_temperature</span><span class="o">.</span><span class="nb">apply</span><span class="p">(</span><span class="n">do_sth</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>time
+2015-01-01 00:20:00     36.0
+2015-01-01 00:50:00     36.0
+                       ...  
+2015-12-31 23:20:00    100.0
+2015-12-31 23:50:00    100.0
+Name: air_temperature, Length: 17520, dtype: float64
+</code></pre></div></div>
+
+<p>But what if we want to do an operation on multiple columns at the same time and save the result in a new column?</p>
+
+<p>Let’s say we want to calculate the difference between air temperature and dewpoint values and save the results to a new column named “temp_dewpt_diff”.</p>
+
+<p>We can achieve this easily via:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="p">[</span><span class="s">"temp_dewpt_diff"</span><span class="p">]</span> <span class="o">=</span> <span class="n">tabelle</span><span class="o">.</span><span class="n">air_temperature</span> <span class="o">-</span> <span class="n">tabelle</span><span class="o">.</span><span class="n">dewpoint</span>
+<span class="n">tabelle</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>visibility</th>
+      <th>air_temperature</th>
+      <th>dewpoint</th>
+      <th>wind_direction</th>
+      <th>wind_speed</th>
+      <th>air_pressure</th>
+      <th>cloud_height</th>
+      <th>cloud_cover</th>
+      <th>temp_dewpt_diff</th>
+    </tr>
+    <tr>
+      <th>time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2015-01-01 00:20:00</th>
+      <td>2800</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1036.0</td>
+      <td>200.0</td>
+      <td>OVC</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 00:50:00</th>
+      <td>1500</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1036.0</td>
+      <td>100.0</td>
+      <td>OVC</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 01:20:00</th>
+      <td>1000</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1036.0</td>
+      <td>100.0</td>
+      <td>OVC</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 01:50:00</th>
+      <td>700</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1036.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 02:20:00</th>
+      <td>600</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1036.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<div class="alert task">
+
+  <p><strong>Task:</strong></p>
+
+  <ol>
+    <li>Calculate what percentage of the wind came from north-east and how much came from south-west.</li>
+    <li>Calculate the average wind speed for times when the horizontal visibility (vis) was below/above 1000m. Which one is higher? Do you have an idea, why?</li>
+  </ol>
+
+</div>
+
+<h3 id="resampling">Resampling</h3>
+
+<p>Another often needed functionality when working with time series data is provided by the <code class="highlighter-rouge">resample()</code> method. You can use it to resample your data to different temporal resolutions.</p>
+
+<p>The <code class="highlighter-rouge">resample()</code> function returns a <a href="https://pandas.pydata.org/pandas-docs/stable/reference/resampling.html">Resampler</a> object which in turn provides many functions for the specific resampling method.</p>
+
+<p>For example, we can average the Frankfurt Aiport data on a 3 hour interval:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s">"3H"</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>visibility</th>
+      <th>air_temperature</th>
+      <th>dewpoint</th>
+      <th>wind_direction</th>
+      <th>wind_speed</th>
+      <th>air_pressure</th>
+      <th>cloud_height</th>
+      <th>temp_dewpt_diff</th>
+    </tr>
+    <tr>
+      <th>time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2015-01-01 00:00:00</th>
+      <td>1200.000000</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1036.0</td>
+      <td>133.333333</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 03:00:00</th>
+      <td>916.666667</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1036.0</td>
+      <td>200.000000</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 18:00:00</th>
+      <td>500.000000</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>252.500000</td>
+      <td>2.333333</td>
+      <td>1025.0</td>
+      <td>100.000000</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 21:00:00</th>
+      <td>533.333333</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>206.666667</td>
+      <td>2.000000</td>
+      <td>1025.5</td>
+      <td>100.000000</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>2920 rows × 8 columns</p>
+</div>
+</div>
+
+<p>But we are not limited to calculating the mean over these intervals. We can also calculate the sum or any other function we like:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s">"3H"</span><span class="p">)</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>visibility</th>
+      <th>air_temperature</th>
+      <th>dewpoint</th>
+      <th>wind_direction</th>
+      <th>wind_speed</th>
+      <th>air_pressure</th>
+      <th>cloud_height</th>
+      <th>temp_dewpt_diff</th>
+    </tr>
+    <tr>
+      <th>time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2015-01-01 00:00:00</th>
+      <td>7200</td>
+      <td>6.0</td>
+      <td>6.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>6216.0</td>
+      <td>400.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 03:00:00</th>
+      <td>5500</td>
+      <td>6.0</td>
+      <td>6.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>6216.0</td>
+      <td>800.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 18:00:00</th>
+      <td>3000</td>
+      <td>30.0</td>
+      <td>30.0</td>
+      <td>1010.0</td>
+      <td>14.0</td>
+      <td>6150.0</td>
+      <td>200.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 21:00:00</th>
+      <td>3200</td>
+      <td>30.0</td>
+      <td>30.0</td>
+      <td>620.0</td>
+      <td>12.0</td>
+      <td>6153.0</td>
+      <td>300.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>2920 rows × 8 columns</p>
+</div>
+</div>
+
+<p><code class="highlighter-rouge">.sum()</code> and <code class="highlighter-rouge">.mean()</code> are conveniant to calculate the same statistic for all columns of the data frame. Let’s say we want to calculate the mean of the temperature but the maximum of the cloud_height. Instead of selecting each column into a new variable and applying the corresponding function to each we can use the <code class="highlighter-rouge">.agg()</code> method of the data frame.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s">"air_temperature"</span><span class="p">,</span> <span class="s">"cloud_height"</span><span class="p">]]</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s">"3H"</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s">"air_temperature"</span><span class="p">:</span> <span class="s">"mean"</span><span class="p">,</span> <span class="s">"cloud_height"</span><span class="p">:</span> <span class="s">"max"</span><span class="p">})</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>air_temperature</th>
+      <th>cloud_height</th>
+    </tr>
+    <tr>
+      <th>time</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2015-01-01 00:00:00</th>
+      <td>1.000000</td>
+      <td>200.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 03:00:00</th>
+      <td>1.000000</td>
+      <td>200.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 06:00:00</th>
+      <td>1.000000</td>
+      <td>2700.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 09:00:00</th>
+      <td>2.166667</td>
+      <td>300.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 12:00:00</th>
+      <td>3.000000</td>
+      <td>900.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<div class="alert info">
+
+  <p><strong>Info</strong></p>
+
+  <ul>
+    <li>to compute more than one statistic for all columns just give <code class="highlighter-rouge">.agg()</code> a list of the statistics to calculate</li>
+    <li>this can also be done with the dictionary method to compute multiple statistics for different columns
+      <ul>
+        <li>e.g.: <code class="highlighter-rouge">.agg({"air_temperature": ["mean", "min", "max"], "cloud_height": ["min", "max"]}</code></li>
+      </ul>
+    </li>
+  </ul>
+
+</div>
+
+<p>We can also resample to a higher temporal resolution than the original data set and provide an interpolation technique for time steps between known measurement points:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s">"10Min"</span><span class="p">)</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="s">"linear"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>visibility</th>
+      <th>air_temperature</th>
+      <th>dewpoint</th>
+      <th>wind_direction</th>
+      <th>wind_speed</th>
+      <th>air_pressure</th>
+      <th>cloud_height</th>
+      <th>cloud_cover</th>
+      <th>temp_dewpt_diff</th>
+    </tr>
+    <tr>
+      <th>time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2015-01-01 00:20:00</th>
+      <td>2800.000000</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1036.0</td>
+      <td>200.000000</td>
+      <td>OVC</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-01 00:30:00</th>
+      <td>2366.666667</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1036.0</td>
+      <td>166.666667</td>
+      <td>NaN</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 23:40:00</th>
+      <td>500.000000</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>253.333333</td>
+      <td>2.666667</td>
+      <td>1026.0</td>
+      <td>100.000000</td>
+      <td>NaN</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-31 23:50:00</th>
+      <td>500.000000</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>240.000000</td>
+      <td>3.000000</td>
+      <td>1026.0</td>
+      <td>100.000000</td>
+      <td>BKN</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>52558 rows × 9 columns</p>
+</div>
+</div>
+
+<h3 id="write-data">Write data</h3>
+
+<p>If you want to save your data, you can use one of the many writers of pandas. A full list of available writers is given <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/io.html">here</a>.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="n">tabelle</span><span class="p">[(</span><span class="n">tabelle</span><span class="o">.</span><span class="n">visibility</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">tabelle</span><span class="o">.</span><span class="n">air_temperature</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">)]</span>
+<span class="n">x</span><span class="o">.</span><span class="n">to_html</span><span class="p">(</span><span class="s">"../data/output.html"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="alert task">
+
+  <p><strong>Task</strong></p>
+
+  <ol>
+    <li>Resample the table to 1 hour intervals</li>
+    <li>Select all rows where the lowest cloud height was below 1000m and the sky was overcast (OVC)</li>
+    <li>Write the result to the file “my_data.html”</li>
+  </ol>
+
+</div>
+
+<p>So far, you have learned how to read, manipulate and write data in tabular shape. But what if you want to get a visual representation of your data?</p>
+
+<p>Although pandas has the ability to plot the data in graphs as well, we use specific plotting libraries for this purpose. There are many plotting libraries for virtually any data visualization need. Some of these libraries can be used regardless of the specific application, but many of them are intensely focused on accomplishing a particular task. A good overview is given on the <a href="https://www.fusioncharts.com/blog/best-python-data-visualization-libraries/">FusionCharts Blog</a>.</p>
+
+<p>Here we will focus on the most basic (and oldest) plotting library called “<strong>matplotlib</strong>”.</p>
+
+<h2 id="matplotlib">matplotlib</h2>
+
+<p><img src="https://matplotlib.org/_static/logo2.png" alt="" /></p>
+
+<p>is a very powerfull plotting library. This brings some complexity with it, which sometimes can be a little confusing.</p>
+
+<p>So before we get to the actual plotting we have a look at how a plot is structured in general and the vocabulary associated with its elements.</p>
+
+<p>For more details on matplotlib basics have a look at the <a href="https://matplotlib.org/tutorials/introductory/usage.html#sphx-glr-tutorials-introductory-usage-py">Usage Guide</a>.</p>
+
+<p>The <a href="https://matplotlib.org/tutorials/index.html">tutorial</a> and <a href="https://matplotlib.org/gallery/index.html">examples</a> pages are also worth looking at.</p>
+
+<p><img src="images/S01E04/matplotlib_structure.png" style="width: 650px;" align="left" />
+<img src="images/S01E04/anatomy.png" style="width: 650px;" align="left" /></p>
+
+<p><small>Source:
+left: https://www.machinelearningplus.com/wp-content/uploads/2019/01/99_matplotlib_structure-1.png
+ / right: https://matplotlib.org/_images/anatomy.png</small></p>
+
+<h3 id="line-plots">Line plots</h3>
+
+<p>Let’s start with a simple example. We want to take a look at the time series of the temperature data in a simple line plot:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tabelle</span><span class="o">.</span><span class="n">air_temperature</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../images/units/S01E04_74_0.png" alt="png" /></p>
+
+<p>This gives us a nice little line plot with the temperature time series depicted as blue line. However, the plot is a little small, the axes are not labeled and there is no legend. Let’s fix that…</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s">"font.size"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">18</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tabelle</span><span class="o">.</span><span class="n">air_temperature</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s">"Air temperature at Frankfurt Int. Airport in 2015"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">((</span><span class="s">"2015-01-01"</span><span class="p">,</span><span class="s">"2015-12-31"</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="s">"2015-{:02d}-15"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">1</span><span class="p">)],[</span><span class="s">"Jan"</span><span class="p">,</span><span class="s">"Feb"</span><span class="p">,</span><span class="s">"Mar"</span><span class="p">,</span><span class="s">"Apr"</span><span class="p">,</span><span class="s">"May"</span><span class="p">,</span><span class="s">"Jun"</span><span class="p">,</span><span class="s">"Jul"</span><span class="p">,</span><span class="s">"Aug"</span><span class="p">,</span><span class="s">"Sep"</span><span class="p">,</span><span class="s">"Oct"</span><span class="p">,</span><span class="s">"Nov"</span><span class="p">,</span><span class="s">"Dec"</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">"Temperature (°C)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../images/units/S01E04_76_0.png" alt="png" /></p>
+
+<p>This looks better. We can see that we do not have to worry about the details of the <code class="highlighter-rouge">axes</code> and <code class="highlighter-rouge">axis</code> of the plot since <code class="highlighter-rouge">pyplot</code> takes care of it for us. Each time we do a function of <code class="highlighter-rouge">pyplot</code> it just reuses the <code class="highlighter-rouge">axes</code> from the first plot call.</p>
+
+<p>However, let’s say we are not interested in the daily temperature fluctuations.</p>
+
+<p>Additionally while manually constructing the xticks labels works fine, it is a little annoying. Especially since the index of the dataframe (which is used for the x-axis) already contains all information we need and just the formatting is wrong. Fortunately, matplotlib has some convenience functions available in its date submodule we can use if we switch to the “manual-axes” approach.</p>
+
+<p>So let’s resample the data to daily means, format the dates and plot it again…</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">matplotlib.dates</span> <span class="k">as</span> <span class="n">mdates</span> <span class="c"># we need this for proper date formatting</span>
+
+<span class="n">temp_resampled</span> <span class="o">=</span> <span class="n">tabelle</span><span class="o">.</span><span class="n">air_temperature</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s">"1d"</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="c"># We asign the figure to a variable to be able to manipulate it later</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="c"># Add a new axes to the plot manually. </span>
+<span class="c"># The argument to the add_subplot function is used for positioning of the plot</span>
+<span class="c"># First two numbers are number of rows/columns in the figure</span>
+<span class="c"># Third number is the position of the plot to create</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+
+<span class="c"># Plot the data</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">temp_resampled</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s">"Air temperature at Frankfurt Int. Airport in 2015"</span><span class="p">)</span>
+
+<span class="c"># Plot the legend</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="c"># Set the Y-Axis label</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">"Temperature (°C)"</span><span class="p">)</span>
+
+<span class="c"># Set the limits (range) of the X-Axis</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">((</span><span class="s">"2015-01-01"</span><span class="p">,</span><span class="s">"2015-12-31"</span><span class="p">))</span>
+
+<span class="c"># instead of creating the month labels manually (as we did before) we use matplotlib's built-in date locators and formatters</span>
+<span class="c"># set up the locator to find the 15th of every month (even though not every month is the same length this is close enough)</span>
+<span class="n">days</span> <span class="o">=</span> <span class="n">mdates</span><span class="o">.</span><span class="n">DayLocator</span><span class="p">(</span><span class="n">bymonthday</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="c"># set the date format to the month shortname</span>
+<span class="n">monthFmt</span> <span class="o">=</span> <span class="n">mdates</span><span class="o">.</span><span class="n">DateFormatter</span><span class="p">(</span><span class="s">"</span><span class="si">%</span><span class="s">b"</span><span class="p">)</span>
+
+<span class="c"># apply locator and formatter to the ticks</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">days</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">monthFmt</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../images/units/S01E04_79_0.png" alt="png" /></p>
+
+<p>You can also put multiple lines into one plot:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle_resampled</span> <span class="o">=</span> <span class="n">tabelle</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s">"air_temperature"</span><span class="p">,</span> <span class="s">"dewpoint"</span><span class="p">]]</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s">"1d"</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tabelle_resampled</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s">"air_temperature"</span><span class="p">],</span><span class="n">label</span><span class="o">=</span><span class="s">"Air temperature"</span><span class="p">)</span>
+
+<span class="c"># Plot a second line in the same figure</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tabelle_resampled</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s">"dewpoint"</span><span class="p">],</span><span class="n">label</span><span class="o">=</span><span class="s">"Dewpoint"</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">"Temperature (°C)"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">((</span><span class="s">"2015-01-01"</span><span class="p">,</span><span class="s">"2015-12-31"</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">days</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">monthFmt</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../images/units/S01E04_81_0.png" alt="png" /></p>
+
+<p>And if we don’t like the colors or the line types, we can choose different ones by providing the <code class="highlighter-rouge">c</code> and <code class="highlighter-rouge">linestyle</code> arguments to the plotting function:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s">"font.size"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">18</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tabelle_resampled</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s">"air_temperature"</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s">"Air temperature"</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s">"k"</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">"-."</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tabelle_resampled</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s">"dewpoint"</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s">"Dewpoint"</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s">"r"</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">":"</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">"Temperature (°C)"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">((</span><span class="s">"2015-01-01"</span><span class="p">,</span><span class="s">"2015-12-31"</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">days</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">monthFmt</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../images/units/S01E04_83_0.png" alt="png" /></p>
+
+<p>What if we want to plot 2 variables in the same plot that have different units, e.g. temperature and air pressure values?</p>
+
+<p>For this, we can use the <code class="highlighter-rouge">twinx()</code> function. It creates a second subplot that shares the Y-Axis with the first subplot:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle_resampled</span> <span class="o">=</span> <span class="n">tabelle</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s">"air_temperature"</span><span class="p">,</span> <span class="s">"air_pressure"</span><span class="p">]]</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s">"1d"</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">ax2</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tabelle_resampled</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s">"air_temperature"</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s">"r"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">"Temperature"</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tabelle_resampled</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s">"air_pressure"</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s">"b"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">"Air pressure"</span><span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">"Temperature (°C)"</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">"Air pressure (m)"</span><span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">((</span><span class="s">"2015-01-01"</span><span class="p">,</span><span class="s">"2015-12-31"</span><span class="p">))</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">days</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">monthFmt</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../images/units/S01E04_85_0.png" alt="png" /></p>
+
+<p>Normally, subplots are, however, used to plot multiple figures next to each other in one plot. For example, we can create 2 subplots “ax1” and “ax2”, that depict temperature and wind speeds next to each other:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle_resampled</span> <span class="o">=</span> <span class="n">tabelle</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s">"air_temperature"</span><span class="p">,</span> <span class="s">"wind_speed"</span><span class="p">]]</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s">"1d"</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s">"font.size"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">18</span>
+
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="c"># add a subplot at index 1 into a plot that has 1 row and 2 columns</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="c"># add a subplot at index 2 into a plot that has 1 row and 2 columns</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tabelle_resampled</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s">"air_temperature"</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s">"r"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">"Temperature"</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tabelle_resampled</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s">"wind_speed"</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s">"b"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">"Wind speed"</span><span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">((</span><span class="s">"2015-01-01"</span><span class="p">,</span><span class="s">"2015-12-31"</span><span class="p">))</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">((</span><span class="s">"2015-01-01"</span><span class="p">,</span><span class="s">"2015-12-31"</span><span class="p">))</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">days</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">monthFmt</span><span class="p">)</span>
+
+<span class="n">ax2</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">days</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">monthFmt</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../images/units/S01E04_87_0.png" alt="png" /></p>
+
+<p>If you want to save your figure, you can simply call the <code class="highlighter-rouge">savefig()</code> function instead of <code class="highlighter-rouge">show()</code>:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tabelle</span><span class="o">.</span><span class="n">air_temperature</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s">"1d"</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">c</span><span class="o">=</span><span class="s">"r"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">"Temperature"</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s">"images/S01E04/beispiel_output.png"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../images/units/S01E04_89_0.png" alt="png" /></p>
+
+<h3 id="histograms">Histograms</h3>
+
+<p>To get an overview of the distribution of temperature values, we can also plot a histogram of the data:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">tabelle</span><span class="o">.</span><span class="n">air_temperature</span><span class="o">.</span><span class="n">dropna</span><span class="p">())</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../images/units/S01E04_91_0.png" alt="png" /></p>
+
+<p>Again, this plot is nice and simple but we can do better…</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">temperatur</span> <span class="o">=</span> <span class="n">tabelle</span><span class="o">.</span><span class="n">air_temperature</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">temperatur</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="nb">sorted</span><span class="p">(</span><span class="n">temperatur</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span><span class="o">-</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s">"#1aa8a8"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">"Temperature (°C)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">"Count"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../images/units/S01E04_93_0.png" alt="png" /></p>
+
+<p>We can also plot multiple histograms within one chart, e.g. the temperature values separated into January and August:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">temperatur_jan</span> <span class="o">=</span> <span class="n">tabelle</span><span class="o">.</span><span class="n">air_temperature</span><span class="p">[</span><span class="s">"2015-01"</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">temperatur_aug</span> <span class="o">=</span> <span class="n">tabelle</span><span class="o">.</span><span class="n">air_temperature</span><span class="p">[</span><span class="s">"2015-08"</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">temperatur_jan</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="nb">sorted</span><span class="p">(</span><span class="n">tabelle</span><span class="o">.</span><span class="n">air_temperature</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span><span class="o">-</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s">"#00b1ff"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">"January"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">temperatur_aug</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="nb">sorted</span><span class="p">(</span><span class="n">tabelle</span><span class="o">.</span><span class="n">air_temperature</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span><span class="o">-</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s">"#ff0000"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">"August"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">"Temperature (°C)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">"Count"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../images/units/S01E04_95_0.png" alt="png" /></p>
+
+<p>And we can draw multiple plot types within one plot. Let’s plot the winter and summer temperature counts as lines and the total temperature counts as bars:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">temperatur_jan</span> <span class="o">=</span> <span class="n">tabelle</span><span class="o">.</span><span class="n">air_temperature</span><span class="p">[</span><span class="s">"2015-01"</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">temperatur_aug</span> <span class="o">=</span> <span class="n">tabelle</span><span class="o">.</span><span class="n">air_temperature</span><span class="p">[</span><span class="s">"2015-08"</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="n">n_w</span><span class="p">,</span> <span class="n">bins_w</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">tabelle</span><span class="o">.</span><span class="n">air_temperature</span><span class="p">[</span><span class="s">"2015-01"</span><span class="p">:</span><span class="s">"2015-03"</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span> <span class="n">bins</span><span class="o">=</span><span class="nb">sorted</span><span class="p">(</span><span class="n">tabelle</span><span class="o">.</span><span class="n">air_temperature</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span><span class="o">-</span><span class="mf">0.5</span><span class="p">))</span>
+<span class="n">n_s</span><span class="p">,</span> <span class="n">bins_s</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">tabelle</span><span class="o">.</span><span class="n">air_temperature</span><span class="p">[</span><span class="s">"2015-07"</span><span class="p">:</span><span class="s">"2015-09"</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span> <span class="n">bins</span><span class="o">=</span><span class="nb">sorted</span><span class="p">(</span><span class="n">tabelle</span><span class="o">.</span><span class="n">air_temperature</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span><span class="o">-</span><span class="mf">0.5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">tabelle</span><span class="o">.</span><span class="n">air_temperature</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span> <span class="n">bins</span><span class="o">=</span><span class="nb">sorted</span><span class="p">(</span><span class="n">tabelle</span><span class="o">.</span><span class="n">air_temperature</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span><span class="o">-</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s">"#78C179"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bins_w</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">n_w</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">"Winter"</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s">"b"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bins_s</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">n_s</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">"Summer"</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s">"r"</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">"Temperature (°C)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">"Count"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../images/units/S01E04_97_0.png" alt="png" /></p>
+
+<h3 id="scatterplots">Scatterplots</h3>
+
+<p>Another often used plot is the scatterplot.</p>
+
+<p>Let’s use it to plot temperature vs. air pressure values:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s">"font.size"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">14</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">tabelle</span><span class="o">.</span><span class="n">air_temperature</span><span class="p">,</span> <span class="n">tabelle</span><span class="o">.</span><span class="n">air_pressure</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../images/units/S01E04_99_0.png" alt="png" /></p>
+
+<p>We can also plot multiple scatterplots on top of each other to depict more information within one plot.</p>
+
+<p>If we do this with temperature/pressure measurements separately for January and August, we can see that air pressures below 1000 hPa were only prevalent during January but not during August and that the air pressure value range was much larger during January than during August:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">tabelle</span><span class="o">.</span><span class="n">air_temperature</span><span class="p">,</span> <span class="n">tabelle</span><span class="o">.</span><span class="n">air_pressure</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s">"."</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s">"grey"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">""</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">tabelle</span><span class="o">.</span><span class="n">air_temperature</span><span class="p">[</span><span class="s">"2015-01"</span><span class="p">],</span> <span class="n">tabelle</span><span class="o">.</span><span class="n">air_pressure</span><span class="p">[</span><span class="s">"2015-01"</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s">"."</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s">"#35A3FF"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">"January"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">tabelle</span><span class="o">.</span><span class="n">air_temperature</span><span class="p">[</span><span class="s">"2015-08"</span><span class="p">],</span> <span class="n">tabelle</span><span class="o">.</span><span class="n">air_pressure</span><span class="p">[</span><span class="s">"2015-08"</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s">"."</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s">"#FF824C"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">"August"</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">"Temperature (°C)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">"Pressure (hPa)"</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../images/units/S01E04_101_0.png" alt="png" /></p>
+
+<p>There are many more options that you can tweak in order to get a nice looking ready to print plot. 
+And of course, there are many more plot types (e.g. bar plots, box plots, 3d plots, …)
+We won’t cover all of them here but you can have a look at the <a href="https://matplotlib.org/contents.html">matplotlib documentation</a>.</p>
+
+<p>Also, there are many more plotting libraries out there which cover all kinds of useful plotting routines, e.g. for plotting wind data…</p>
+
+<h3 id="windroses">Windroses</h3>
+
+<p>Using the <a href="https://anaconda.org/conda-forge/windrose"><strong>windrose</strong></a> extension, you can easily plot the wind data in a typical wind rose chart:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">windrose</span> <span class="kn">import</span> <span class="n">WindroseAxes</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">WindroseAxes</span><span class="o">.</span><span class="n">from_ax</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">tabelle</span><span class="o">.</span><span class="n">wind_direction</span><span class="p">,</span> <span class="n">tabelle</span><span class="o">.</span><span class="n">wind_speed</span><span class="p">,</span> <span class="n">normed</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">opening</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s">"white"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../images/units/S01E04_104_0.png" alt="png" /></p>
+
+<div class="alert task">
+
+  <p><strong>Task:</strong></p>
+
+  <ol>
+    <li>Create a simple line plot of the wind speed values of February 2015.</li>
+    <li>Create a simple histogram of the same data.</li>
+  </ol>
+
+</div>
+
+<p><strong>Info</strong></p>
+
+<ul>
+  <li>Actually the plotting functions in <code class="highlighter-rouge">pandas</code> use matplotlib in the background too. It just makes smart default assumptions to hide many of the cumbersome <code class="highlighter-rouge">matplotlib</code> tasks.</li>
+  <li>There are other high level plotting libraries like:
+    <ul>
+      <li><a href="http://holoviews.org/">Holoviews</a></li>
+      <li><a href="https://hvplot.pyviz.org/">hvplot</a> (which is based on holoviews)</li>
+    </ul>
+
+    <p>They wrap matplotlib and many of the libraries you can see on the <a href="https://www.fusioncharts.com/blog/best-python-data-visualization-libraries/">FusionCharts Blog</a>. They make it easy and fast to explore data interactively because you don’t need all the “trouble” of plot configuration like with matplotlib.</p>
+  </li>
+</ul>
+
+<p><strong>So if you are still in the knowledge discovery and exploration phase using one of the high level libraries instead of matplotlib can save you a lot of time, but if you need to configure every detail of your plot there is often no way around the latter.</strong></p>
+
+<div class="alert task">
+
+  <h2 id="exercise-4">Exercise 4</h2>
+
+  <ul>
+    <li>Complete the fourth assignment and push your results until tuesday 14:00 next week</li>
+    <li>Assignment link: <a href="https://classroom.github.com/a/j4cFzXy8">https://classroom.github.com/a/j4cFzXy8</a></li>
+  </ul>
+
+</div>
+
+
+              <nav class="c-page__nav">
+  
+    
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/sommersemester_2019/units/S01E03">
+      〈 <span class="u-margin-right-tiny"></span> Python Basics III
+    </a>
+  
+
+  
+    
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/sommersemester_2019/solutions/solutions">
+      Solutions <span class="u-margin-right-tiny"></span> 〉
+    </a>
+  
+</nav>
+
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+  </body>
+</html>
