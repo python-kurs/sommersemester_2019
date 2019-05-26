@@ -36,6 +36,10 @@
 <div class="alert task">
 {{ super() }}
 </div>
+{% elif 'solution' in cell['metadata'].get('tags', []) %}
+<div class="alert solution">
+{{ super() }}
+</div>
 {% else %}
     {{ super() }}
 {% endif %}

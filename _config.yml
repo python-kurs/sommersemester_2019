@@ -36,7 +36,7 @@ baseurl: "/data/UNIMR/lm_data/lm_2092200"
 # Jupyter Book settings
 
 # Notebook content settings
-hide_cell_text: '# HIDDEN'              # When building the textbook, any cells with this text inside will be hidden in the output markdown
+hide_cell_text: '# HIDECELL'              # When building the textbook, any cells with this text inside will be hidden in the output markdown
 hide_code_text: '# NO CODE'              # When building the textbook, any cells with this text inside will have *only* their output shown (no code)
 use_hide_code_button: true        # If True, a small button appears to the right of each cell that lets you hide its contents.
 
