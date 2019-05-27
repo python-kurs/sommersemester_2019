@@ -29,9 +29,9 @@
   "headline":
     "Python Basics I",
   "datePublished":
-    "2019-05-24T11:14:54+00:00",
+    "2019-05-27T06:17:10+00:00",
   "dateModified":
-    "2019-05-24T11:14:54+00:00",
+    "2019-05-27T06:17:10+00:00",
   "description":
     "",
   "author": {
@@ -853,11 +853,24 @@ This is normally the console. In this case, however, the output stream is redire
 
 <div class="alert task">
 
-  <p><strong>Task:</strong></p>
+  <p><strong>Task</strong></p>
 
   <ol>
     <li>Start the interactive python shell</li>
     <li>Print your name to the console</li>
+  </ol>
+
+</div>
+
+<div class="alert solution">
+
+  <p><strong>Solution</strong></p>
+
+  <ol>
+    <li>
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">"My Name"</span><span class="p">)</span>
+</code></pre></div>      </div>
+    </li>
   </ol>
 
 </div>
@@ -1007,12 +1020,34 @@ Important to know, is that integers generally take much less memory space than f
 
 <div class="alert task">
 
-  <p><strong>Task:</strong></p>
+  <p><strong>Task</strong></p>
 
   <ol>
     <li>Create two variables called <code class="highlighter-rouge">Vorname</code> and  <code class="highlighter-rouge">Nachname</code> and assign your first/last name to them as strings.</li>
     <li>Create another variable called <code class="highlighter-rouge">Lieblingszahl</code> and assign it your favourite number.</li>
     <li>Print all three variables in one call.</li>
+  </ol>
+
+</div>
+
+<div class="alert solution">
+
+  <p><strong>Solution</strong></p>
+
+  <ol>
+    <li>
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Vorname</span> <span class="o">=</span> <span class="s">"Peter"</span>
+<span class="n">Nachname</span> <span class="o">=</span> <span class="s">"Zwegat"</span>
+</code></pre></div>      </div>
+    </li>
+    <li>
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Lieblingszahl</span> <span class="o">=</span> <span class="mi">42</span>
+</code></pre></div>      </div>
+    </li>
+    <li>
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">Vorname</span><span class="p">,</span> <span class="n">Nachname</span><span class="p">,</span> <span class="n">Lieblingszahl</span><span class="p">)</span>
+</code></pre></div>      </div>
+    </li>
   </ol>
 
 </div>
@@ -1118,7 +1153,7 @@ Important to know, is that integers generally take much less memory space than f
 
 <div class="alert task">
 
-  <p><strong>Task:</strong></p>
+  <p><strong>Task</strong></p>
 
   <ol>
     <li>Print the variables from above (Vorname, Nachname, Lieblingszahl) in the following manner:</li>
@@ -1132,6 +1167,29 @@ Important to know, is that integers generally take much less memory space than f
     <li>Let Python calculate the sum of 44 and 124 and divide the result by 76 (all in one line). What is your result?</li>
     <li>Let Python calculate the product of 0.3 and 3. Is the result what you expected?</li>
   </ol>
+
+</div>
+
+<div class="alert solution">
+
+  <p><strong>Solution</strong></p>
+
+  <ol>
+    <li>
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">"Die Lieblingszahl von "</span> <span class="o">+</span> <span class="n">Vorname</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">Nachname</span> <span class="o">+</span> <span class="s">" ist "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">Lieblingszahl</span><span class="p">)</span> <span class="o">+</span> <span class="s">"."</span>
+</code></pre></div>      </div>
+    </li>
+    <li>
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="mi">44</span><span class="o">+</span><span class="mi">124</span><span class="p">)</span><span class="o">/</span><span class="mi">76</span>
+</code></pre></div>      </div>
+    </li>
+    <li>
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mf">0.3</span><span class="o">*</span><span class="mi">3</span>
+</code></pre></div>      </div>
+    </li>
+  </ol>
+
+  <p>The result is not 0.9 because of the floating point number conversion problem between decimal and binary system.</p>
 
 </div>
 
@@ -1189,7 +1247,7 @@ False
 
 <div class="alert task">
 
-  <p><strong>Task:</strong></p>
+  <p><strong>Task</strong></p>
 
   <ol>
     <li>What is the result of the following expressions? (Try to get the correct results before checking with Python)
@@ -1209,6 +1267,23 @@ False
 a = 1.8
 b = 0.6 + 0.6 + 0.6
 a == b</code></li>
+  </ol>
+
+</div>
+
+<div class="alert solution">
+
+  <p><strong>Solution</strong></p>
+
+  <ol>
+    <li>
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="bp">False</span>
+<span class="bp">False</span>
+<span class="bp">True</span>
+<span class="bp">False</span>
+</code></pre></div>      </div>
+    </li>
+    <li>The code block returns false because <code class="highlighter-rouge">b</code> doesn’t evaluate to <code class="highlighter-rouge">1.8</code> due to the floating point number conversion problem between decimal and binary system.</li>
   </ol>
 
 </div>
@@ -1270,13 +1345,39 @@ Hello Benjamin!
 
 </code></pre></div></div>
 
-<p><strong>Task:</strong></p>
+<div class="alert task">
 
-<ol>
-  <li>Write a script that asks the user to input her/his age.</li>
-  <li>Ask the user what year it is.</li>
-  <li>Tell the user how old she/he was in the year 2000.</li>
-</ol>
+  <p><strong>Task</strong></p>
+
+  <ol>
+    <li>Write a script that asks the user to input her/his age.</li>
+    <li>Ask the user what year it is.</li>
+    <li>Tell the user how old she/he was in the year 2000.</li>
+  </ol>
+
+</div>
+
+<div class="alert solution">
+
+  <p><strong>Solution</strong></p>
+
+  <ol>
+    <li>
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">age</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"Please enter your age: "</span><span class="p">))</span>
+</code></pre></div>      </div>
+    </li>
+    <li>
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">year</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"What year is it? "</span><span class="p">))</span>
+</code></pre></div>      </div>
+    </li>
+    <li>
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">age_in_2000</span> <span class="o">=</span> <span class="n">age</span><span class="o">-</span><span class="p">(</span><span class="n">year</span><span class="o">-</span><span class="mi">2000</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"In the year 2000 you were {0:01d} years old."</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">age_in_2000</span><span class="p">))</span>
+</code></pre></div>      </div>
+    </li>
+  </ol>
+
+</div>
 
 <div class="alert task">
 
