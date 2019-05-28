@@ -29,9 +29,9 @@
   "headline":
     "Data science I",
   "datePublished":
-    "2019-05-28T09:22:06+00:00",
+    "2019-05-28T11:21:38+00:00",
   "dateModified":
-    "2019-05-28T09:22:06+00:00",
+    "2019-05-28T11:21:38+00:00",
   "description":
     "",
   "author": {
@@ -1423,7 +1423,7 @@ Length: 8, dtype: object
 </div>
 
 <p>What if we are only interested in the measurements between 12:00 and 15:00 for each day?
-Unfortunately, for this task we can cannot use the <code class="highlighter-rouge">loc</code> attribute. However, the <code class="highlighter-rouge">between_time()</code> function helps us:</p>
+Unfortunately, for this task we cannot use the <code class="highlighter-rouge">loc</code> attribute. However, the <code class="highlighter-rouge">between_time()</code> function helps us:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="o">.</span><span class="n">between_time</span><span class="p">(</span><span class="s">"12:00"</span><span class="p">,</span> <span class="s">"15:00"</span><span class="p">)</span>
 </code></pre></div></div>
@@ -1750,26 +1750,6 @@ Name: visibility, Length: 17520, dtype: int64
 
 </div>
 
-<div class="alert solution">
-
-  <h1 id="hidecell">HIDECELL</h1>
-
-  <p><strong>Solution</strong></p>
-
-  <ol>
-    <li>
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
-<span class="n">tabelle</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"path/to/frankfurt_weather.csv"</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s">"time"</span><span class="p">],</span> <span class="n">index_col</span><span class="o">=</span><span class="s">"time"</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">","</span><span class="p">)</span>
-</code></pre></div>      </div>
-    </li>
-    <li>
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s">"2015-02-01"</span><span class="p">,</span> <span class="p">[</span><span class="s">"visibility"</span><span class="p">,</span> <span class="s">"air_temperature"</span><span class="p">,</span> <span class="s">"wind_speed"</span><span class="p">]]</span>
-</code></pre></div>      </div>
-    </li>
-  </ol>
-
-</div>
-
 <h3 id="boolean-indexing">Boolean indexing</h3>
 
 <p>What if you don’t want to clip the table to specific times but to other conditions? Let’s assume you want to select all rows, where visibility was measured to be below 1000m.</p>
@@ -2045,12 +2025,24 @@ Length: 7, dtype: float64
 
 <p>If you want to apply specific operations to your data that are not covered by the standard functions of pandas, you can do so by using the <code class="highlighter-rouge">apply()</code> method. This works for single Series or along an axis of a DataFrame object:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># First we define the function</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">tabelle</span><span class="o">.</span><span class="n">air_temperature</span><span class="p">)</span>
+
+<span class="c"># First we define the function</span>
 <span class="k">def</span> <span class="nf">do_sth</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">5</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
 
 <span class="c"># then we apply it to the temperature Series:</span>
 <span class="n">tabelle</span><span class="o">.</span><span class="n">air_temperature</span><span class="o">.</span><span class="nb">apply</span><span class="p">(</span><span class="n">do_sth</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>time
+2015-01-01 00:20:00    1.0
+2015-01-01 00:50:00    1.0
+                      ... 
+2015-12-31 23:20:00    5.0
+2015-12-31 23:50:00    5.0
+Name: air_temperature, Length: 17520, dtype: float64
+
 </code></pre></div></div>
 
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>time
@@ -2198,40 +2190,13 @@ Name: air_temperature, Length: 17520, dtype: float64
 
 </div>
 
-<div class="alert solution">
-
-  <h1 id="hidecell-1">HIDECELL</h1>
-
-  <p><strong>Solution</strong></p>
-
-  <ol>
-    <li>
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">NE_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tabelle</span><span class="p">[(</span><span class="n">tabelle</span><span class="o">.</span><span class="n">wind_direction</span><span class="o">&gt;=</span><span class="mf">0.</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">tabelle</span><span class="o">.</span><span class="n">wind_direction</span><span class="o">&lt;=</span><span class="mf">90.0</span><span class="p">)])</span>
-<span class="n">SW_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tabelle</span><span class="p">[(</span><span class="n">tabelle</span><span class="o">.</span><span class="n">wind_direction</span><span class="o">&gt;=</span><span class="mf">180.</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">tabelle</span><span class="o">.</span><span class="n">wind_direction</span><span class="o">&lt;=</span><span class="mf">270.0</span><span class="p">)])</span>
-<span class="n">total_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tabelle</span><span class="p">)</span>
-<span class="n">NE_perc</span> <span class="o">=</span> <span class="n">NE_count</span><span class="o">/</span><span class="n">total_count</span><span class="o">*</span><span class="mi">100</span>
-<span class="n">SW_perc</span> <span class="o">=</span> <span class="n">SW_count</span><span class="o">/</span><span class="n">total_count</span><span class="o">*</span><span class="mi">100</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"North-East: {0:2.2f}</span><span class="si">%</span><span class="se">\n</span><span class="s">South-West: {1:2.2f}</span><span class="si">%</span><span class="s">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">NE_perc</span><span class="p">,</span><span class="n">SW_perc</span><span class="p">))</span>
-</code></pre></div>      </div>
-    </li>
-    <li>
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ws_av_below1000</span> <span class="o">=</span> <span class="n">tabelle</span><span class="p">[</span><span class="n">tabelle</span><span class="o">.</span><span class="n">visibility</span><span class="o">&lt;</span><span class="mf">1000.</span><span class="p">]</span><span class="o">.</span><span class="n">wind_speed</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">ws_av_above1000</span> <span class="o">=</span> <span class="n">tabelle</span><span class="p">[</span><span class="n">tabelle</span><span class="o">.</span><span class="n">visibility</span><span class="o">&gt;</span><span class="mf">1000.</span><span class="p">]</span><span class="o">.</span><span class="n">wind_speed</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"Average windspeed below 1000m: {0:2.2f}m/s</span><span class="se">\n</span><span class="s">Average windspeed above 1000m: {1:2.2f}m/s"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ws_av_below1000</span><span class="p">,</span><span class="n">ws_av_above1000</span><span class="p">))</span>
-</code></pre></div>      </div>
-    </li>
-    <li>Average wind speed is lower during low visibility situations because low visibility is mainly caused by fog. And in Frankfurt, fog is more likely to form during stable and calm conditions.</li>
-  </ol>
-
-</div>
-
 <h3 id="resampling">Resampling</h3>
 
 <p>Another often needed functionality when working with time series data is provided by the <code class="highlighter-rouge">resample()</code> method. You can use it to resample your data to different temporal resolutions.</p>
 
 <p>The <code class="highlighter-rouge">resample()</code> function returns a <a href="https://pandas.pydata.org/pandas-docs/stable/reference/resampling.html">Resampler</a> object which in turn provides many functions for the specific resampling method.</p>
 
-<p>For example, we can average the Frankfurt Aiport data on a 3 hour interval:</p>
+<p>For example, we can average the Frankfurt Airport data on a 3 hour interval:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s">"3H"</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </code></pre></div></div>
@@ -2659,30 +2624,6 @@ Name: air_temperature, Length: 17520, dtype: float64
 
 </div>
 
-<div class="alert solution">
-
-  <h1 id="hidecell-2">HIDECELL</h1>
-
-  <p><strong>Solution</strong></p>
-
-  <ol>
-    <li>
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tab_res</span> <span class="o">=</span> <span class="n">tabelle</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s">"1H"</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-</code></pre></div>      </div>
-    </li>
-    <li>
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tab_res_1000</span> <span class="o">=</span> <span class="n">tab_res</span><span class="p">[(</span><span class="n">tab_res</span><span class="p">[</span><span class="s">"cloud_height"</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">1000</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">tab_res</span><span class="p">[</span><span class="s">"air_pressure"</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">1000</span><span class="p">)]</span>
-</code></pre></div>      </div>
-    </li>
-    <li>
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tab_res_1000</span><span class="o">.</span><span class="n">to_html</span><span class="p">(</span><span class="s">"my_data.html"</span><span class="p">)</span>
-</code></pre></div>      </div>
-    </li>
-    <li>The cloumn “cloud_cover” is missing. It was automatically dropped during resampling as the computer doesn’t know how to “average” the listed string values.</li>
-  </ol>
-
-</div>
-
 <p>So far, you have learned how to read, manipulate and write data in tabular shape. But what if you want to get a visual representation of your data?</p>
 
 <p>Although pandas has the ability to plot the data in graphs as well, we use specific plotting libraries for this purpose. There are many plotting libraries for virtually any data visualization need. Some of these libraries can be used regardless of the specific application, but many of them are intensely focused on accomplishing a particular task. A good overview is given on the <a href="https://www.fusioncharts.com/blog/best-python-data-visualization-libraries/">FusionCharts Blog</a>.</p>
@@ -2701,12 +2642,13 @@ Name: air_temperature, Length: 17520, dtype: float64
 
 <p>The <a href="https://matplotlib.org/tutorials/index.html">tutorial</a> and <a href="https://matplotlib.org/gallery/index.html">examples</a> pages are also worth looking at.</p>
 
-<p><img src="images/S01E04/matplotlib_structure.png" style="width: 650px;" align="left" />
-<img src="images/S01E04/anatomy.png" style="width: 650px;" align="left" /></p>
+<p><img src="images/S01E04/matplotlib_structure.png" style="width: 650px;" align="left" /></p>
 
-<p><small>Source:
-left: https://www.machinelearningplus.com/wp-content/uploads/2019/01/99_matplotlib_structure-1.png
- / right: https://matplotlib.org/_images/anatomy.png</small></p>
+<p><small>Source: https://www.machinelearningplus.com/wp-content/uploads/2019/01/99_matplotlib_structure-1.png</small></p>
+
+<p><img src="images/S01E04/anatomy.png" style="width: 650px;" align="left" /></p>
+
+<p><small>Source:https://matplotlib.org/_images/anatomy.png</small></p>
 
 <h3 id="line-plots">Line plots</h3>
 
@@ -2718,7 +2660,7 @@ left: https://www.machinelearningplus.com/wp-content/uploads/2019/01/99_matplotl
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E04_77_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E04_74_0.png" alt="png" /></p>
 
 <p>This gives us a nice little line plot with the temperature time series depicted as blue line. However, the plot is a little small, the axes are not labeled and there is no legend. Let’s fix that…</p>
 
@@ -2733,7 +2675,7 @@ left: https://www.machinelearningplus.com/wp-content/uploads/2019/01/99_matplotl
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E04_79_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E04_76_0.png" alt="png" /></p>
 
 <p>This looks better. We can see that we do not have to worry about the details of the <code class="highlighter-rouge">axes</code> and <code class="highlighter-rouge">axis</code> of the plot since <code class="highlighter-rouge">pyplot</code> takes care of it for us. Each time we do a function of <code class="highlighter-rouge">pyplot</code> it just reuses the <code class="highlighter-rouge">axes</code> from the first plot call.</p>
 
@@ -2781,7 +2723,7 @@ left: https://www.machinelearningplus.com/wp-content/uploads/2019/01/99_matplotl
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E04_82_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E04_79_0.png" alt="png" /></p>
 
 <p>You can also put multiple lines into one plot:</p>
 
@@ -2806,7 +2748,7 @@ left: https://www.machinelearningplus.com/wp-content/uploads/2019/01/99_matplotl
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E04_84_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E04_81_0.png" alt="png" /></p>
 
 <p>And if we don’t like the colors or the line types, we can choose different ones by providing the <code class="highlighter-rouge">c</code> and <code class="highlighter-rouge">linestyle</code> arguments to the plotting function:</p>
 
@@ -2828,7 +2770,7 @@ left: https://www.machinelearningplus.com/wp-content/uploads/2019/01/99_matplotl
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E04_86_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E04_83_0.png" alt="png" /></p>
 
 <p>What if we want to plot 2 variables in the same plot that have different units, e.g. temperature and air pressure values?</p>
 
@@ -2857,7 +2799,7 @@ left: https://www.machinelearningplus.com/wp-content/uploads/2019/01/99_matplotl
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E04_88_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E04_85_0.png" alt="png" /></p>
 
 <p>Normally, subplots are, however, used to plot multiple figures next to each other in one plot. For example, we can create 2 subplots “ax1” and “ax2”, that depict temperature and wind speeds next to each other:</p>
 
@@ -2887,7 +2829,7 @@ left: https://www.machinelearningplus.com/wp-content/uploads/2019/01/99_matplotl
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E04_90_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E04_87_0.png" alt="png" /></p>
 
 <p>If you want to save your figure, you can simply call the <code class="highlighter-rouge">savefig()</code> function instead of <code class="highlighter-rouge">show()</code>:</p>
 
@@ -2898,7 +2840,7 @@ left: https://www.machinelearningplus.com/wp-content/uploads/2019/01/99_matplotl
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s">"images/S01E04/beispiel_output.png"</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E04_92_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E04_89_0.png" alt="png" /></p>
 
 <h3 id="histograms">Histograms</h3>
 
@@ -2908,7 +2850,7 @@ left: https://www.machinelearningplus.com/wp-content/uploads/2019/01/99_matplotl
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E04_94_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E04_91_0.png" alt="png" /></p>
 
 <p>Again, this plot is nice and simple but we can do better…</p>
 
@@ -2922,7 +2864,7 @@ left: https://www.machinelearningplus.com/wp-content/uploads/2019/01/99_matplotl
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E04_96_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E04_93_0.png" alt="png" /></p>
 
 <p>We can also plot multiple histograms within one chart, e.g. the temperature values separated into January and August:</p>
 
@@ -2938,7 +2880,7 @@ left: https://www.machinelearningplus.com/wp-content/uploads/2019/01/99_matplotl
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E04_98_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E04_95_0.png" alt="png" /></p>
 
 <p>And we can draw multiple plot types within one plot. Let’s plot the winter and summer temperature counts as lines and the total temperature counts as bars:</p>
 
@@ -2961,7 +2903,7 @@ left: https://www.machinelearningplus.com/wp-content/uploads/2019/01/99_matplotl
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E04_100_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E04_97_0.png" alt="png" /></p>
 
 <h3 id="scatterplots">Scatterplots</h3>
 
@@ -2976,7 +2918,7 @@ left: https://www.machinelearningplus.com/wp-content/uploads/2019/01/99_matplotl
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E04_102_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E04_99_0.png" alt="png" /></p>
 
 <p>We can also plot multiple scatterplots on top of each other to depict more information within one plot.</p>
 
@@ -2995,7 +2937,7 @@ left: https://www.machinelearningplus.com/wp-content/uploads/2019/01/99_matplotl
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E04_104_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E04_101_0.png" alt="png" /></p>
 
 <p>There are many more options that you can tweak in order to get a nice looking ready to print plot. 
 And of course, there are many more plot types (e.g. bar plots, box plots, 3d plots, …)
@@ -3015,7 +2957,7 @@ We won’t cover all of them here but you can have a look at the <a href="https:
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E04_107_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E04_104_0.png" alt="png" /></p>
 
 <div class="alert task">
 
@@ -3024,23 +2966,6 @@ We won’t cover all of them here but you can have a look at the <a href="https:
   <ol>
     <li>Create a simple line plot of the wind speed values of February 2015.</li>
     <li>Create a simple histogram of the same data.</li>
-  </ol>
-
-</div>
-
-<div class="alert solution">
-
-  <p><strong>Solution</strong></p>
-
-  <ol>
-    <li>
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tabelle</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s">"2015-02"</span><span class="p">]</span><span class="o">.</span><span class="n">wind_speed</span><span class="p">)</span>
-</code></pre></div>      </div>
-    </li>
-    <li>
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">tabelle</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s">"2015-02"</span><span class="p">]</span><span class="o">.</span><span class="n">wind_speed</span><span class="p">)</span>
-</code></pre></div>      </div>
-    </li>
   </ol>
 
 </div>
@@ -3060,6 +2985,50 @@ We won’t cover all of them here but you can have a look at the <a href="https:
 </ul>
 
 <p><strong>So if you are still in the knowledge discovery and exploration phase using one of the high level libraries instead of matplotlib can save you a lot of time, but if you need to configure every detail of your plot there is often no way around the latter.</strong></p>
+
+<p>test1</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">test2</span>
+</code></pre></div></div>
+
+<div class="output output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+    ---------------------------------------------------------------------------
+
+    NameError                                 Traceback (most recent call last)
+
+    &lt;ipython-input-6-9054fbe0b622&gt; in &lt;module&gt;
+    ----&gt; 1 test2
+    
+
+    NameError: name 'test2' is not defined
+
+
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># HIDECELL</span>
+
+<span class="n">test3</span>
+</code></pre></div></div>
+
+<div class="output output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+    ---------------------------------------------------------------------------
+
+    NameError                                 Traceback (most recent call last)
+
+    &lt;ipython-input-7-a2850c7a9d1c&gt; in &lt;module&gt;
+          1 # HIDECELL
+          2 
+    ----&gt; 3 test3
+    
+
+    NameError: name 'test3' is not defined
+
+
+</code></pre></div></div>
+
+<h1 id="hidecell">HIDECELL</h1>
+
+<p>test4</p>
 
 <div class="alert task">
 
