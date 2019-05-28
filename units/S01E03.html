@@ -29,9 +29,9 @@
   "headline":
     "Python Basics III",
   "datePublished":
-    "2019-05-27T20:23:27+00:00",
+    "2019-05-28T09:22:06+00:00",
   "dateModified":
-    "2019-05-27T20:23:27+00:00",
+    "2019-05-28T09:22:06+00:00",
   "description":
     "",
   "author": {
@@ -962,6 +962,39 @@ for i, num in enumerate(numbers):
 
 </div>
 
+<div class="alert solution">
+
+  <p><strong>Solution</strong></p>
+
+  <ol>
+    <li>Built in functions
+      <ul>
+        <li><strong>set</strong> returns a collection of distinct elements (e.g. removing duplicates from a list)</li>
+        <li><strong>enumerate</strong> returns an object containing tuples of count and values of a list.
+For example:
+          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Banana"</span><span class="p">,</span> <span class="s">"Strawberry"</span><span class="p">,</span> <span class="s">"Peach"</span><span class="p">]</span>
+<span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">fruits</span><span class="p">))</span>
+</code></pre></div>          </div>
+          <p>returns:</p>
+          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="s">'Banana'</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">'Strawberry'</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">'Peach'</span><span class="p">)]</span>
+</code></pre></div>          </div>
+        </li>
+        <li><strong>map</strong> applies a function to every element of an iterable (for example a list)</li>
+      </ul>
+    </li>
+    <li></li>
+  </ol>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">quadratic</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">5</span>
+    
+<span class="nb">map</span><span class="p">(</span><span class="n">quadratic</span><span class="p">,</span> <span class="n">numbers</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+</div>
+
 <h2 id="variable-scope---global-vs-local">Variable scope - global vs. local</h2>
 
 <p>Let’s say we define the following:</p>
@@ -1075,6 +1108,33 @@ In generall it is possible to change the value of a global variable from inside 
     <li>Start an interactive python shell in the same directory where you saved the “mathe.py” file.</li>
     <li>Import the function <code class="highlighter-rouge">add5(x)</code>, call it with some random arguments and print the results.</li>
     <li>Try out “import this”.</li>
+  </ol>
+
+</div>
+
+<div class="alert solution">
+
+  <p><strong>Solution</strong></p>
+
+  <ol>
+    <li>
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">add5</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+ <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">5</span>
+</code></pre></div>      </div>
+    </li>
+    <li>
+      <p>Start the shell</p>
+    </li>
+    <li>
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">mathe</span> <span class="kn">import</span> <span class="n">add5</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">add5</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+</code></pre></div>      </div>
+    </li>
+    <li>
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">this</span>
+</code></pre></div>      </div>
+    </li>
   </ol>
 
 </div>
@@ -1357,8 +1417,29 @@ Script continues after catching exception instead of exiting!
 
   <ol>
     <li>Have a look at Pythons built in exceptions <a href="https://docs.python.org/3/library/exceptions.html">here</a> and find the one you can use in the next task.</li>
-    <li>Re-write your <code class="highlighter-rouge">add5(x)</code>-function so that it does not kill the program when a wrong argument is passed (e.g. a string like “zehn”)</li>
-    <li>Inform the caller of the function about a raised exception so that she/he can react accordingly.</li>
+    <li>Re-write your <code class="highlighter-rouge">add5(x)</code>-function so that it does not kill the program when a wrong argument is passed (e.g. a string like “zehn”) and
+inform the caller of the function about a raised exception so that she/he can react accordingly.</li>
+  </ol>
+
+</div>
+
+<div class="alert solution">
+
+  <p><strong>Solution</strong></p>
+
+  <ol>
+    <li>Since a value of 5 can not be added to a string the appropiate exception type would be <code class="highlighter-rouge">python TypeError</code></li>
+    <li>
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">traceback</span>
+<span class="k">def</span> <span class="nf">add5</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+ <span class="k">try</span><span class="p">:</span>
+     <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">5</span>
+ <span class="k">except</span> <span class="nb">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+     <span class="k">print</span><span class="p">(</span><span class="s">"The input to the function has the wrong data type."</span><span class="p">)</span>
+     <span class="k">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+     <span class="n">traceback</span><span class="o">.</span><span class="n">print_exec</span><span class="p">()</span>
+</code></pre></div>      </div>
+    </li>
   </ol>
 
 </div>
