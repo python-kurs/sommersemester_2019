@@ -10,8 +10,8 @@ echo "Deploying to github pages..."
 ./node_modules/.bin/gh-pages -d _site/ -b gh-pages -r git@github.com:${TRAVIS_REPO_SLUG}.git
 echo "Done"
 
-echo "Deploying to oer website..."
-python oer_upload.py
-echo "Done"
+#echo "Deploying to oer website..."
+#python oer_upload.py
+#echo "Done"
 
 
