@@ -71,9 +71,9 @@
   #- title: Data science II
   #  url: /units/S01E05
   #  not_numbered: true
-  - title: SatPy I
-    url: /units/S01E06
-    not_numbered: true
+  #- title: SatPy I
+  #  url: /units/S01E06
+  #  not_numbered: true
 
 - divider: true
 
@@ -89,7 +89,7 @@
     url: /solutions/exercise-2/Exercise-2_Solutions
     not_numbered: true
   - title: Exercise III
-    url: /solutions/exercise-3/Exercise-3_Solutions
+    url: /solutions/exercise-3/Exercise-2_Solutions
     not_numbered: true
 
 - divider: true
