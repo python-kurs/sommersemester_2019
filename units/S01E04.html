@@ -29,9 +29,9 @@
   "headline":
     "Data science I",
   "datePublished":
-    "2019-05-29T15:10:07+00:00",
+    "2019-05-30T07:35:05+00:00",
   "dateModified":
-    "2019-05-29T15:10:07+00:00",
+    "2019-05-30T07:35:05+00:00",
   "description":
     "",
   "author": {
@@ -809,8 +809,8 @@ initFunction(initQuery);
       <li><a href="#selection-by-label">Selection by label</a></li>
       <li><a href="#selection-by-position-index">Selection by position (index)</a></li>
       <li><a href="#boolean-indexing">Boolean indexing</a></li>
-      <li><a href="#getting-the-values-of-a-column">Getting the values of a column</a></li>
       <li><a href="#operations">Operations</a></li>
+      <li><a href="#treating-missing-nan-values">Treating missing (NaN) values</a></li>
       <li><a href="#resampling">Resampling</a></li>
       <li><a href="#write-data">Write data</a></li>
     </ul>
@@ -880,11 +880,7 @@ initFunction(initQuery);
 <p>First, we want to read the data:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
-<span class="n">tabelle</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"../data/frankfurt_weather.csv"</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s">"time"</span><span class="p">],</span> <span class="n">index_col</span><span class="o">=</span><span class="s">"time"</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">","</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># HIDECELL</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s">'display.max_rows'</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">tabelle</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"../data/frankfurt_weather.csv"</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s">"time"</span><span class="p">],</span> <span class="n">index_col</span><span class="o">=</span><span class="s">"time"</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">","</span><span class="p">,</span> <span class="n">na_values</span><span class="o">=</span><span class="s">""</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>The pandas function <code class="highlighter-rouge">pd.read_csv(...)</code> opens the csv file and reads its contents.</p>
@@ -893,9 +889,14 @@ initFunction(initQuery);
   <li>The <code class="highlighter-rouge">parse_dates</code> argument tells Python to interpret the values in the <code class="highlighter-rouge">time</code> column as dates</li>
   <li>The <code class="highlighter-rouge">index_col</code> argument tells it to use this column as index.</li>
   <li>The <code class="highlighter-rouge">sep</code> argument tells it which character it should use for separating columns</li>
+  <li>The <code class="highlighter-rouge">na_values</code> argument tells pandas, which values should be interpreted as NaN (missing) values. In our case, missing values are just blank cells (<code class="highlighter-rouge">""</code>)</li>
 </ul>
 
 <p>pandas has many more readers for a variety of file types, e.g. Excel, SQL, HDF, HTML, etc. The full list of supported file types and the respective readers can be found <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/io.html">here</a>.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># HIDECELL</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s">'display.max_rows'</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</code></pre></div></div>
 
 <h3 id="dataframe">DataFrame</h3>
 
@@ -1112,6 +1113,14 @@ air_temperature    float64
 cloud_height       float64
 cloud_cover         object
 Length: 8, dtype: object
+</code></pre></div></div>
+
+<p>If you want to know, how many columns and lines the table consists of, use the <code class="highlighter-rouge">shape</code> attribute:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="o">.</span><span class="n">shape</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(17520, 8)
 </code></pre></div></div>
 
 <p>Let’s say, you want to <strong>sort</strong> this table by visibility values in descending order.</p>
@@ -1547,20 +1556,42 @@ Unfortunately, for this task we cannot use the <code class="highlighter-rouge">l
 </div>
 </div>
 
-<p>Now we know, how to select rows in time series (=measurements). But what if we are only interested in one specific variable, e.g. visibility?</p>
+<p>Now we know, how to select rows in time series (=measurements). But what if we are only interested in one specific variable, e.g. cloud height?</p>
 
 <p>You can <strong>select</strong> single <strong>columns</strong> by:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s">"visibility"</span><span class="p">]</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s">"cloud_height"</span><span class="p">]</span>
 </code></pre></div></div>
 
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>time
-2015-01-01 00:20:00    2800
-2015-01-01 00:50:00    1500
-                       ... 
-2015-12-31 23:20:00     500
-2015-12-31 23:50:00     500
-Name: visibility, Length: 17520, dtype: int64
+2015-01-01 00:20:00    200.0
+2015-01-01 00:50:00    100.0
+                       ...  
+2015-12-31 23:20:00      NaN
+2015-12-31 23:50:00    100.0
+Name: cloud_height, Length: 17520, dtype: float64
+</code></pre></div></div>
+
+<p>Note that selecting a single column returns a <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html"><strong>Series</strong></a> object and not just the column as a list for example. In principle, a Series is a one-dimensional DataFrame and it provides more or less the same functionality.</p>
+
+<p>For example, you can use the <code class="highlighter-rouge">count()</code> method to count the values within a column/Series:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s">"cloud_height"</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>10210
+</code></pre></div></div>
+
+<p>As you can see, the returned value of <code class="highlighter-rouge">10210</code> is smaller than the total table row count of <code class="highlighter-rouge">17520</code> because NaN values are excluded automatically.</p>
+
+<p>There are many more methods provided with the Series class but we will not go into further detail here.</p>
+
+<p>If you are interested to get a simple list of the values of the column use the <code class="highlighter-rouge">.to_list()</code> method but most of the time it is better to use the <code class="highlighter-rouge">.values</code> attribute which returns the values as an array (don’t worry about what an array is right now. We will cover that in the next chapter):</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s">"cloud_height"</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([200., 100., 100., ...,  nan,  nan, 100.])
 </code></pre></div></div>
 
 <p>You can <strong>select</strong> multiple <strong>columns</strong> by:</p>
@@ -1627,8 +1658,6 @@ Name: visibility, Length: 17520, dtype: int64
 <p>17520 rows × 2 columns</p>
 </div>
 </div>
-
-<p>A column in pandas is also called a <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html"><strong>Series</strong></a>. In principle, it is a one-dimensional DataFrame and it provides more or less the same functionality. We will not go into further detail here.</p>
 
 <p>You can also <strong>select columns and rows</strong> together within one call:</p>
 
@@ -2003,30 +2032,6 @@ Name: visibility, Length: 17520, dtype: int64
 </div>
 </div>
 
-<h3 id="getting-the-values-of-a-column">Getting the values of a column</h3>
-
-<p>Note that selecting a single column also returns a series object and not just the column as a list for example.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s">"visibility"</span><span class="p">]</span>
-</code></pre></div></div>
-
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>time
-2015-01-01 00:20:00    2800
-2015-01-01 00:50:00    1500
-                       ... 
-2015-12-31 23:20:00     500
-2015-12-31 23:50:00     500
-Name: visibility, Length: 17520, dtype: int64
-</code></pre></div></div>
-
-<p>If you are really interested to get a list with the values of the column use the <code class="highlighter-rouge">.to_list()</code> method but most of the time it is better to use the <code class="highlighter-rouge">.values</code> attribute which returns the values as an array (don’t worry about what an array is right now. We will cover that in the next chapter):</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tabelle</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s">"visibility"</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-</code></pre></div></div>
-
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([2800, 1500, 1000, ...,  400,  500,  500])
-</code></pre></div></div>
-
 <h3 id="operations">Operations</h3>
 
 <p>Besides its many selection options, the DataFrame class provides many functions for calculating statistical measures, e.g. the average of each column:</p>
@@ -2206,6 +2211,12 @@ Name: air_temperature, Length: 17520, dtype: float64
 </table>
 </div>
 </div>
+
+<h3 id="treating-missing-nan-values">Treating missing (NaN) values</h3>
+
+<p>All of the methods shown above exclude missing values in their calculations by default. If you do not want to exclude NaNs, you can do that with the <code class="highlighter-rouge">skipna</code> or <code class="highlighter-rouge">dropna</code> keywords (in most methods).</p>
+
+<p>For a complete overview of how pandas treats missing data and where you should be aware of implicit behavior, have a look at the pandas <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/missing_data.html">docs</a>.</p>
 
 <div class="alert task">
 
@@ -2742,7 +2753,7 @@ Name: air_temperature, Length: 17520, dtype: float64
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E04_77_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E04_80_0.png" alt="png" /></p>
 
 <p>This gives us a nice little line plot with the temperature time series depicted as blue line. However, the plot is a little small, the axes are not labeled and there is no legend. Let’s fix that…</p>
 
@@ -2757,7 +2768,7 @@ Name: air_temperature, Length: 17520, dtype: float64
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E04_79_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E04_82_0.png" alt="png" /></p>
 
 <p>This looks better. We can see that we do not have to worry about the details of the <code class="highlighter-rouge">axes</code> and <code class="highlighter-rouge">axis</code> of the plot since <code class="highlighter-rouge">pyplot</code> takes care of it for us. Each time we do a function of <code class="highlighter-rouge">pyplot</code> it just reuses the <code class="highlighter-rouge">axes</code> from the first plot call.</p>
 
@@ -2805,7 +2816,7 @@ Name: air_temperature, Length: 17520, dtype: float64
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E04_82_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E04_85_0.png" alt="png" /></p>
 
 <p>You can also put multiple lines into one plot:</p>
 
@@ -2830,7 +2841,7 @@ Name: air_temperature, Length: 17520, dtype: float64
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E04_84_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E04_87_0.png" alt="png" /></p>
 
 <p>And if we don’t like the colors or the line types, we can choose different ones by providing the <code class="highlighter-rouge">c</code> and <code class="highlighter-rouge">linestyle</code> arguments to the plotting function:</p>
 
@@ -2852,7 +2863,7 @@ Name: air_temperature, Length: 17520, dtype: float64
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E04_86_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E04_89_0.png" alt="png" /></p>
 
 <p>What if we want to plot 2 variables in the same plot that have different units, e.g. temperature and air pressure values?</p>
 
@@ -2881,7 +2892,7 @@ Name: air_temperature, Length: 17520, dtype: float64
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E04_88_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E04_91_0.png" alt="png" /></p>
 
 <p>Normally, subplots are, however, used to plot multiple figures next to each other in one plot. For example, we can create 2 subplots “ax1” and “ax2”, that depict temperature and wind speeds next to each other:</p>
 
@@ -2911,7 +2922,7 @@ Name: air_temperature, Length: 17520, dtype: float64
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E04_90_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E04_93_0.png" alt="png" /></p>
 
 <p>If you want to save your figure, you can simply call the <code class="highlighter-rouge">savefig()</code> function instead of <code class="highlighter-rouge">show()</code>:</p>
 
@@ -2922,7 +2933,7 @@ Name: air_temperature, Length: 17520, dtype: float64
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s">"images/S01E04/beispiel_output.png"</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E04_92_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E04_95_0.png" alt="png" /></p>
 
 <h3 id="histograms">Histograms</h3>
 
@@ -2932,7 +2943,7 @@ Name: air_temperature, Length: 17520, dtype: float64
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E04_94_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E04_97_0.png" alt="png" /></p>
 
 <p>Again, this plot is nice and simple but we can do better…</p>
 
@@ -2946,7 +2957,7 @@ Name: air_temperature, Length: 17520, dtype: float64
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E04_96_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E04_99_0.png" alt="png" /></p>
 
 <p>We can also plot multiple histograms within one chart, e.g. the temperature values separated into January and August:</p>
 
@@ -2962,7 +2973,7 @@ Name: air_temperature, Length: 17520, dtype: float64
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E04_98_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E04_101_0.png" alt="png" /></p>
 
 <p>And we can draw multiple plot types within one plot. Let’s plot the winter and summer temperature counts as lines and the total temperature counts as bars:</p>
 
@@ -2985,7 +2996,7 @@ Name: air_temperature, Length: 17520, dtype: float64
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E04_100_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E04_103_0.png" alt="png" /></p>
 
 <h3 id="scatterplots">Scatterplots</h3>
 
@@ -3000,7 +3011,7 @@ Name: air_temperature, Length: 17520, dtype: float64
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E04_102_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E04_105_0.png" alt="png" /></p>
 
 <p>We can also plot multiple scatterplots on top of each other to depict more information within one plot.</p>
 
@@ -3019,7 +3030,7 @@ Name: air_temperature, Length: 17520, dtype: float64
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E04_104_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E04_107_0.png" alt="png" /></p>
 
 <p>There are many more options that you can tweak in order to get a nice looking ready to print plot. 
 And of course, there are many more plot types (e.g. bar plots, box plots, 3d plots, …)
@@ -3039,7 +3050,7 @@ We won’t cover all of them here but you can have a look at the <a href="https:
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E04_107_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E04_110_0.png" alt="png" /></p>
 
 <div class="alert task">
 
