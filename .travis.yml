@@ -5,8 +5,8 @@ dist: xenial
 language: python
 cache:
   directories:
-  - "$HOME/.cache/pip"
-  - "$HOME/.cache/wheels"
+  #- "$HOME/.cache/pip"
+  #- "$HOME/.cache/wheels"
   - "$HOME/.rvm/gems"
   - node_modules
 python: 3.7
