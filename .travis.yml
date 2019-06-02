@@ -20,7 +20,7 @@ sudo: true
 #- export PATH=$PATH:$PWD/geckodriver
 install:
 - pip install jupyter-book
-#- pip install selenium
+- pip install selenium
 - npm install gh-pages --save-dev
 script: "./.travis_script.sh"
 deploy:
