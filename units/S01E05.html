@@ -29,9 +29,9 @@
   "headline":
     "Data science II",
   "datePublished":
-    "2019-06-05T09:49:48+00:00",
+    "2019-06-05T09:52:48+00:00",
   "dateModified":
-    "2019-06-05T09:49:48+00:00",
+    "2019-06-05T09:52:48+00:00",
   "description":
     "",
   "author": {
@@ -986,14 +986,18 @@ initFunction(initQuery);
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dtype('int64')
 </code></pre></div></div>
 
-<p><strong>Info</strong></p>
+<div class="alert info">
 
-<p>There are more attributes for example</p>
-<ul>
-  <li>size: gives the total number of elements</li>
-  <li>itemsize: gives the memory size of one element</li>
-  <li>nbytes: gives the total memory size of the array</li>
-</ul>
+  <p><strong>Info</strong></p>
+
+  <p>There are more attributes for example</p>
+  <ul>
+    <li>size: gives the total number of elements</li>
+    <li>itemsize: gives the memory size of one element</li>
+    <li>nbytes: gives the total memory size of the array</li>
+  </ul>
+
+</div>
 
 <p>Notice that by default numpy creates data types of 64 bit size. To create other types you need to specify the <code class="highlighter-rouge">dtype</code> argument in the array initalisation which takes one of the many data types listed in the documentation <a href="https://docs.scipy.org/doc/numpy/reference/arrays.scalars.html#arrays-scalars-built-in">here</a></p>
 
@@ -1136,13 +1140,17 @@ By default numpy if an index is omitted slicing</p>
 
 <p class="output output_png"><img src="../images/units/S01E05_40_0.png" alt="png" /></p>
 
-<p><strong>Task</strong></p>
+<div class="alert task">
 
-<ol>
-  <li>Copy the smile array init code from above so you don’t have to type it yourself</li>
-  <li>Give the smiley a nose 2x2 elements big using the same value used for the eyes and mouth</li>
-  <li>What happens when you select a value of -1 for the step index while slicing (Hint: try it on both axis)?</li>
-</ol>
+  <p><strong>Task</strong></p>
+
+  <ol>
+    <li>Copy the smile array init code from above so you don’t have to type it yourself</li>
+    <li>Give the smiley a nose 2x2 elements big using the same value used for the eyes and mouth</li>
+    <li>What happens when you select a value of -1 for the step index while slicing (Hint: try it on both axis)?</li>
+  </ol>
+
+</div>
 
 <h3 id="reshaping">Reshaping</h3>
 
@@ -1410,26 +1418,19 @@ for example sum.</p>
 
 </code></pre></div></div>
 
-<p><strong>Task</strong></p>
+<div class="alert task">
 
-<ol>
-  <li>Assign the following array to a new variable: <code class="highlighter-rouge">np.array([[1., np.nan, 7., 30., -4.], [-7., 18., 11., np.nan, 3.]])</code></li>
-  <li>Select all but the last column and assign it to a new variable, keeping the old array as backup</li>
-  <li>Assign a new value to all nan’s in the selection created in task 2</li>
-  <li>Try to calculate the median for the original array over the rows</li>
-  <li>Go to the numpy documentation <a href="https://docs.scipy.org/doc/numpy/reference/routines.statistics.html">here</a> and find a function which gets around the problem you encountered in task 4</li>
-</ol>
+  <p><strong>Task</strong></p>
 
-<p>np.sum 	np.nansum 	Compute sum of elements
-np.prod 	np.nanprod 	Compute product of elements
-np.mean 	np.nanmean 	Compute mean of elements
-np.std 	np.nanstd 	Compute standard deviation
-np.var 	np.nanvar 	Compute variance
-np.min 	np.nanmin 	Find minimum value
-np.max 	np.nanmax 	Find maximum value
-np.argmin 	np.nanargmin 	Find index of minimum value
-np.argmax 	np.nanargmax 	Find index of maximum value
-np.median 	np.nanmedian 	Compute median of elements</p>
+  <ol>
+    <li>Assign the following array to a new variable: <code class="highlighter-rouge">np.array([[1., np.nan, 7., 30., -4.], [-7., 18., 11., np.nan, 3.]])</code></li>
+    <li>Select all but the last column and assign it to a new variable, keeping the old array as backup</li>
+    <li>Assign a new value to all nan’s in the selection created in task 2</li>
+    <li>Try to calculate the median for the original array over the rows</li>
+    <li>Go to the numpy documentation <a href="https://docs.scipy.org/doc/numpy/reference/routines.statistics.html">here</a> and find a function which gets around the problem you encountered in task 4</li>
+  </ol>
+
+</div>
 
 <h3 id="ufuncs">Ufuncs</h3>
 
@@ -1489,14 +1490,18 @@ np.median 	np.nanmedian 	Compute median of elements</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E05_92_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E05_91_0.png" alt="png" /></p>
 
-<p><strong>Info</strong></p>
+<div class="alert info">
 
-<ul>
-  <li>Have a look at the <a href="https://docs.scipy.org/doc/scipy/reference/special.html">scipy.special</a> library if you need a very special function.</li>
-  <li>Many of the ufuncs have a special <code class="highlighter-rouge">out</code> parameter to which you can supply an output array (even slices work). Using it especially for very large arrays unecessary copies can be avoided saving memory.</li>
-</ul>
+  <p><strong>Info</strong></p>
+
+  <ul>
+    <li>Have a look at the <a href="https://docs.scipy.org/doc/scipy/reference/special.html">scipy.special</a> library if you need a very special function.</li>
+    <li>Many of the ufuncs have a special <code class="highlighter-rouge">out</code> parameter to which you can supply an output array (even slices work). Using it especially for very large arrays unecessary copies can be avoided saving memory.</li>
+  </ul>
+
+</div>
 
 <h3 id="broadcasting">Broadcasting</h3>
 
@@ -2049,13 +2054,17 @@ For <code class="highlighter-rouge">DataArray</code></p>
        [-4.5, -1.3, -1.2, ..., -4.9, -7.5, -8. ]])
 </code></pre></div></div>
 
-<p><strong>Task</strong></p>
+<div class="alert task">
 
-<ol>
-  <li>You should already have the two csv’s used above on your computer. If not download them again.</li>
-  <li>Read them and create a Dataset from them like shown above.</li>
-  <li>Look at the properties. Give them some descriptive attributes.</li>
-</ol>
+  <p><strong>Task</strong></p>
+
+  <ol>
+    <li>You should already have the two csv’s used above on your computer. If not download them again.</li>
+    <li>Read them and create a Dataset from them like shown above.</li>
+    <li>Look at the properties. Give them some descriptive attributes.</li>
+  </ol>
+
+</div>
 
 <h3 id="indexing-and-selecting-data">Indexing and selecting data</h3>
 
@@ -2171,12 +2180,16 @@ Attributes:
 
 <p>In addition to these basic selection methods there are more advanced methods available for example masking or vectorized indexing with <code class="highlighter-rouge">DataArrays</code> which you can read about in the <a href="https://xarray.pydata.org/en/stable/indexing.html#">documentation</a></p>
 
-<p><strong>Task</strong></p>
+<div class="alert task">
 
-<ol>
-  <li>Select the daily maximum Temperature (TNX) and daily minimum temperature (TNK) from the dataset.</li>
-  <li>Select only one month of data.</li>
-</ol>
+  <p><strong>Task</strong></p>
+
+  <ol>
+    <li>Select the daily maximum Temperature (TNX) and daily minimum temperature (TNK) from the dataset.</li>
+    <li>Select only one month of data.</li>
+  </ol>
+
+</div>
 
 <h3 id="computations">Computations</h3>
 
@@ -2292,12 +2305,16 @@ Data variables:
     Precipitation  (season, cities) float64 nan nan nan ... 0.5279 0.7563 0.4739
 </code></pre></div></div>
 
-<p><strong>Task</strong></p>
+<div class="alert task">
 
-<ol>
-  <li>Calculate seasonal means for the variables selected in task 2.</li>
-  <li>Go to the <a href="https://xarray.pydata.org/en/stable/index.html">xarray</a> documentation and find out about the plotting functionality. Make a quick plot of the seasonal means.</li>
-</ol>
+  <p><strong>Task</strong></p>
+
+  <ol>
+    <li>Calculate seasonal means for the variables selected in task 2.</li>
+    <li>Go to the <a href="https://xarray.pydata.org/en/stable/index.html">xarray</a> documentation and find out about the plotting functionality. Make a quick plot of the seasonal means.</li>
+  </ol>
+
+</div>
 
 <h3 id="conversion-to-dataframe">Conversion to dataframe</h3>
 
