@@ -29,9 +29,9 @@
   "headline":
     "Data science II",
   "datePublished":
-    "2019-06-05T09:52:48+00:00",
+    "2019-06-05T09:57:35+00:00",
   "dateModified":
-    "2019-06-05T09:52:48+00:00",
+    "2019-06-05T09:57:35+00:00",
   "description":
     "",
   "author": {
@@ -1240,30 +1240,22 @@ By default numpy if an index is omitted slicing</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nose</span> <span class="o">=</span> <span class="n">smile</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">9</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="mi">8</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[1, 1, 1, 1, 1, 1],
-       [1, 1, 1, 1, 1, 1],
-       [5, 1, 1, 1, 1, 5],
-       [1, 5, 1, 1, 5, 1],
-       [1, 1, 5, 5, 1, 1]])
-</code></pre></div></div>
-
 <p>To be able to differentiate between the nose and the mouth we assign a new value to the nose</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nose</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">20</span>
 <span class="n">nose</span>
 </code></pre></div></div>
 
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[1, 1, 9, 9, 9, 1],
-       [1, 1, 9, 9, 9, 1],
-       [5, 1, 1, 1, 1, 5],
-       [1, 5, 1, 1, 5, 1],
-       [1, 1, 5, 5, 1, 1]])
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[ 1,  1, 20, 20,  1,  1],
+       [ 1,  1, 20, 20,  1,  1],
+       [ 5,  1,  1,  1,  1,  5],
+       [ 1,  5,  1,  1,  5,  1],
+       [ 1,  1,  5,  5,  1,  1]])
 </code></pre></div></div>
 
 <p>Now we could calculate for example occurance of each value in the array.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Later</span> <span class="n">on</span> <span class="n">we</span> <span class="n">want</span> <span class="n">to</span> <span class="n">keep</span> <span class="n">working</span> <span class="n">on</span> <span class="n">the</span> <span class="n">original</span> <span class="n">array</span> <span class="n">but</span> <span class="n">notice</span>
-</code></pre></div></div>
+<p>Later on we want to keep working on the original array but notice</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">smile</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
@@ -1315,13 +1307,13 @@ By default numpy if an index is omitted slicing</p>
         False],
        [False, False, False, False, False, False, False, False, False,
         False],
-       [False, False, False, False, False, False, False, False, False,
+       [False,  True,  True,  True,  True,  True,  True,  True,  True,
         False],
        [False, False, False, False, False, False, False, False, False,
         False],
-       [False, False, False, False,  True,  True,  True, False, False,
+       [False, False, False, False,  True,  True, False, False, False,
         False],
-       [False, False, False, False,  True,  True,  True, False, False,
+       [False, False, False, False,  True,  True, False, False, False,
         False],
        [False, False, False, False, False, False, False, False, False,
         False],
@@ -1338,7 +1330,7 @@ By default numpy if an index is omitted slicing</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">smile</span><span class="p">[</span><span class="n">smile</span> <span class="o">&gt;</span> <span class="mi">8</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([60, 60, 60, 60, 60, 60])
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 9,  9,  9,  9,  9,  9,  9,  9, 20, 20, 20, 20])
 </code></pre></div></div>
 
 <p>or assign new values to those locations</p>
