@@ -19,7 +19,8 @@ sudo: true
 #- tar -xzf geckodriver-v0.24.0-linux64.tar.gz -C geckodriver
 #- export PATH=$PATH:$PWD/geckodriver
 install:
-- pip install jupyter-book
+#- pip install jupyter-book
+- pip install git+https://github.com/jupyter/jupyter-book.git@master
 - pip install selenium
 - npm install gh-pages --save-dev
 script: "./.travis_script.sh"

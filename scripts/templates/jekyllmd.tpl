@@ -20,6 +20,7 @@
 {% block markdowncell scoped %}
 {% if cell['metadata'].get('tags', []) != '' %}
 {::options parse_block_html="true" /}
+{% if 'remove_cell' not in cell['metadata'].get('tags', []) %}
 {% if 'warning' in cell['metadata'].get('tags', []) %}
 <div class="alert warning">
 {{ super() }}
@@ -42,6 +43,7 @@
 </div>
 {% else %}
     {{ super() }}
+{% endif %}
 {% endif %}
 {::options parse_block_html="true" /}
 {% endif %}
