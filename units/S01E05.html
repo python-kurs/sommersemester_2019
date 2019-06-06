@@ -29,9 +29,9 @@
   "headline":
     "Data science II",
   "datePublished":
-    "2019-06-06T07:38:44+00:00",
+    "2019-06-06T07:59:23+00:00",
   "dateModified":
-    "2019-06-06T07:38:44+00:00",
+    "2019-06-06T07:59:23+00:00",
   "description":
     "",
   "author": {
@@ -851,10 +851,6 @@ initFunction(initQuery);
       <li><a href="#broadcasting">Broadcasting</a></li>
       <li><a href="#broadcasting-rules">Broadcasting rules</a></li>
       <li><a href="#fancy-indexing">Fancy indexing</a></li>
-    </ul>
-  </li>
-  <li><a href="#numpy-1">numpy</a>
-    <ul>
       <li><a href="#datastructures">Datastructures</a></li>
       <li><a href="#dataset">Dataset</a></li>
       <li><a href="#indexing-and-selecting-data">Indexing and selecting data</a></li>
@@ -1089,6 +1085,15 @@ Notice that additionally we can specify a dtype other than the default of np.flo
 
 </div>
 
+<div class="alert solution">
+
+  <p><strong>Solution</strong></p>
+
+  <p>np.arange(start, stop, step) creates a sequence of numbers from start to stop with increment step<br />
+np.linspace(start, stop, n) creates a sequence of n evenly spaced numbers from start to stop.</p>
+
+</div>
+
 <h3 id="accessing-elements-indexing">Accessing elements (indexing)</h3>
 
 <p>Array elements can be accessed similar to lists with the bracket notation.<br />
@@ -1112,7 +1117,7 @@ For higher dimensional arrays we need to know which index accesses a certain dim
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E05_35_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E05_36_0.png" alt="png" /></p>
 
 <h3 id="slicing">Slicing</h3>
 
@@ -1125,16 +1130,16 @@ The general syntax is <code class="highlighter-rouge">[start:stop:step]</code>.<
 
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">mouth</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="n">a</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
-<span class="c"># every other element</span>
-<span class="n">a</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
-<span class="c">#negative step index =&gt; reversing</span>
-<span class="n">a</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E05_37_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E05_38_0.png" alt="png" /></p>
 
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([8, 4, 4, 6, 1, 4, 9, 7, 8, 6, 3], dtype=int32)
+<p>Or we can select every other element</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="p">[::</span><span class="mi">2</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([3, 8, 9, 1, 4, 8], dtype=int32)
 </code></pre></div></div>
 
 <p>Notice that we omitted the stop index while selecting rows and both start and stop index with the columns as well as the step size.<br />
@@ -1155,7 +1160,7 @@ By default numpy if an index is omitted slicing</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E05_40_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E05_43_0.png" alt="png" /></p>
 
 <div class="alert task">
 
@@ -1166,6 +1171,23 @@ By default numpy if an index is omitted slicing</p>
     <li>Give the smiley a nose 2x2 elements big using the same value used for the eyes and mouth</li>
     <li>What happens when you select a value of -1 for the step index while slicing (Hint: try it on both axis)?</li>
   </ol>
+
+</div>
+
+<div class="alert solution">
+
+  <p><strong>Solution</strong></p>
+
+  <p>The nose:</p>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">smile</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">smile</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>  </div>
+  <p>Reverting array:</p>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">smile</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">,:])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>  </div>
 
 </div>
 
@@ -1195,23 +1217,13 @@ By default numpy if an index is omitted slicing</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span>
 </code></pre></div></div>
 
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([3, 6, 8, 7, 9, 4, 1, 6, 4, 4, 8], dtype=int32)
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(11,)
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
 </code></pre></div></div>
 
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[3],
-       [6],
-       [8],
-       [7],
-       [9],
-       [4],
-       [1],
-       [6],
-       [4],
-       [4],
-       [8]], dtype=int32)
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(11, 1)
 </code></pre></div></div>
 
 <h4 id="flatten-vs-ravel">Flatten vs. Ravel</h4>
@@ -1250,7 +1262,7 @@ By default numpy if an index is omitted slicing</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E05_54_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E05_58_0.png" alt="png" /></p>
 
 <p>Lets say we want to do some calculations on the mouth area of the array. A common workflow would be to select the corresponding part of the array first</p>
 
@@ -1279,7 +1291,7 @@ By default numpy if an index is omitted slicing</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E05_61_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E05_65_0.png" alt="png" /></p>
 
 <h5 id="what-happend">What happend?</h5>
 
@@ -1359,7 +1371,7 @@ By default numpy if an index is omitted slicing</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E05_69_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E05_73_0.png" alt="png" /></p>
 
 <h4 id="missing-values">Missing values</h4>
 
@@ -1441,6 +1453,31 @@ for example sum.</p>
 
 </div>
 
+<div class="alert solution">
+
+  <p><strong>Solution</strong></p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mf">7.</span><span class="p">,</span> <span class="mf">30.</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">7.</span><span class="p">,</span> <span class="mf">18.</span><span class="p">,</span> <span class="mf">11.</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mf">3.</span><span class="p">]])</span>
+</code></pre></div>  </div>
+
+  <p>Remove the last column and make a copy to new variable b</p>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:,:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</code></pre></div>  </div>
+
+  <p>Assign all <code class="highlighter-rouge">np.nan</code>s the value -99</p>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">b</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">b</span><span class="p">)]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">99</span>
+</code></pre></div>  </div>
+
+  <p>The standard median function included <code class="highlighter-rouge">np.nan</code> values when calculating</p>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+  <p>To ignore <code class="highlighter-rouge">np.nan</code> values most aggregation functions have an equivalent which is prepended with “nan”</p>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">nanmedian</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+</div>
+
 <h3 id="ufuncs">Ufuncs</h3>
 
 <p>Next to functions to aggregate the values in an array there are functions which operate on arrays in an element-by-element fashion. These “vectorized” functions are called universal functions (ufuncs).</p>
@@ -1499,7 +1536,7 @@ for example sum.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E05_91_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E05_96_0.png" alt="png" /></p>
 
 <div class="alert info">
 
@@ -1661,14 +1698,6 @@ Column indices:
        [ 9, 10, 11, 12]])
 </code></pre></div></div>
 
-<h2 id="numpy-1">numpy</h2>
-
-<ul>
-  <li>np.random.random??</li>
-  <li>combining arrays: np.concatenate, np.vstack/hstack</li>
-  <li>transpose, masking?, np.tile, np.repeat</li>
-</ul>
-
 <p><img src="https://xarray.pydata.org/en/stable/_static/dataset-diagram-logo.png" /></p>
 
 <h1 id="xarray">xarray</h1>
@@ -1817,180 +1846,20 @@ Attributes:
 
 <p>Xarray has some conveniant functions to create <code class="highlighter-rouge">DataArray</code>s and <code class="highlighter-rouge">Dataset</code>s from pandas series or dataframes respectively.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">garmisch</span>  <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"../data/produkt_klima_tag_20171010_20190412_01550.txt"</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s">"MESS_DATUM"</span><span class="p">],</span> <span class="n">sep</span><span class="o">=</span><span class="s">";"</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="n">garmisch</span>  <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"../data/produkt_klima_tag_20171010_20190412_01550.txt"</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s">"MESS_DATUM"</span><span class="p">],</span> <span class="n">sep</span><span class="o">=</span><span class="s">";"</span><span class="p">)</span>
 <span class="n">zugspitze</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"../data/produkt_klima_tag_20171010_20190412_05792.txt"</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s">"MESS_DATUM"</span><span class="p">],</span> <span class="n">sep</span><span class="o">=</span><span class="s">";"</span><span class="p">)</span>
 
 <span class="n">klima_tag</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">garmisch</span><span class="p">,</span> <span class="n">zugspitze</span><span class="p">])</span>
 <span class="n">klima_tag</span> <span class="o">=</span> <span class="n">klima_tag</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s">"STATIONS_ID"</span><span class="p">,</span> <span class="s">"MESS_DATUM"</span><span class="p">])</span>
 <span class="n">klima_tag</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="n">klima_tag</span><span class="p">[</span><span class="s">" TMK"</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 </code></pre></div></div>
 
-<div class="output output_html">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th></th>
-      <th>QN_3</th>
-      <th>FX</th>
-      <th>FM</th>
-      <th>QN_4</th>
-      <th>RSK</th>
-      <th>RSKF</th>
-      <th>SDK</th>
-      <th>SHK_TAG</th>
-      <th>NM</th>
-      <th>VPM</th>
-      <th>PM</th>
-      <th>TMK</th>
-      <th>UPM</th>
-      <th>TXK</th>
-      <th>TNK</th>
-      <th>TGK</th>
-      <th>eor</th>
-    </tr>
-    <tr>
-      <th>STATIONS_ID</th>
-      <th>MESS_DATUM</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th rowspan="5" valign="top">1550</th>
-      <th>2017-10-10</th>
-      <td>10</td>
-      <td>5.6</td>
-      <td>1.0</td>
-      <td>3</td>
-      <td>0.0</td>
-      <td>6</td>
-      <td>2.300</td>
-      <td>0</td>
-      <td>7.5</td>
-      <td>9.4</td>
-      <td>937.40</td>
-      <td>9.3</td>
-      <td>82.50</td>
-      <td>15.7</td>
-      <td>4.6</td>
-      <td>3.0</td>
-      <td>eor</td>
-    </tr>
-    <tr>
-      <th>2017-10-11</th>
-      <td>10</td>
-      <td>-999.0</td>
-      <td>-999.0</td>
-      <td>3</td>
-      <td>0.0</td>
-      <td>0</td>
-      <td>9.533</td>
-      <td>0</td>
-      <td>2.6</td>
-      <td>9.1</td>
-      <td>938.41</td>
-      <td>9.2</td>
-      <td>81.04</td>
-      <td>18.5</td>
-      <td>2.9</td>
-      <td>1.4</td>
-      <td>eor</td>
-    </tr>
-    <tr>
-      <th>2017-10-12</th>
-      <td>10</td>
-      <td>-999.0</td>
-      <td>-999.0</td>
-      <td>3</td>
-      <td>0.0</td>
-      <td>0</td>
-      <td>9.483</td>
-      <td>0</td>
-      <td>1.9</td>
-      <td>9.0</td>
-      <td>941.30</td>
-      <td>10.6</td>
-      <td>75.92</td>
-      <td>22.2</td>
-      <td>3.1</td>
-      <td>1.1</td>
-      <td>eor</td>
-    </tr>
-    <tr>
-      <th>2017-10-13</th>
-      <td>10</td>
-      <td>-999.0</td>
-      <td>-999.0</td>
-      <td>3</td>
-      <td>0.0</td>
-      <td>0</td>
-      <td>9.483</td>
-      <td>0</td>
-      <td>3.8</td>
-      <td>10.3</td>
-      <td>944.63</td>
-      <td>10.7</td>
-      <td>82.04</td>
-      <td>19.5</td>
-      <td>4.8</td>
-      <td>2.9</td>
-      <td>eor</td>
-    </tr>
-    <tr>
-      <th>2017-10-14</th>
-      <td>10</td>
-      <td>-999.0</td>
-      <td>-999.0</td>
-      <td>3</td>
-      <td>0.0</td>
-      <td>0</td>
-      <td>9.617</td>
-      <td>0</td>
-      <td>0.3</td>
-      <td>9.9</td>
-      <td>944.99</td>
-      <td>11.2</td>
-      <td>78.67</td>
-      <td>21.4</td>
-      <td>3.9</td>
-      <td>1.9</td>
-      <td>eor</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 9.3,  9.2, 10.6, ..., -4.9, -7.5, -8. ])
+</code></pre></div></div>
 
 <p>After setting the index the conversion of any of the columns (series) of the pandas dataframe  to a <code class="highlighter-rouge">xr.DataArray</code> is easy</p>
 
