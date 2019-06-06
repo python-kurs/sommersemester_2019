@@ -29,9 +29,9 @@
   "headline":
     "Data science II",
   "datePublished":
-    "2019-06-06T13:58:33+00:00",
+    "2019-06-06T14:04:40+00:00",
   "dateModified":
-    "2019-06-06T13:58:33+00:00",
+    "2019-06-06T14:04:40+00:00",
   "description":
     "",
   "author": {
@@ -853,10 +853,10 @@ initFunction(initQuery);
     <nav class="onthispage">
       <header><h4 class="nav__title"><i class="fa fa-list"></i>   On this page</h4></header>
       <ul class="toc__menu">
-  <li><a href="#what-are-arrays">What are arrays?</a>
+  <li><a href="#numpy">Numpy…</a>
     <ul>
+      <li><a href="#what-are-arrays">What are arrays?</a></li>
       <li><a href="#create-arrays">Create arrays</a></li>
-      <li><a href="#array-shape">Array shape</a></li>
       <li><a href="#other-ways-to-create-arrays">Other ways to create arrays</a></li>
       <li><a href="#accessing-elements-indexing">Accessing elements (indexing)</a></li>
       <li><a href="#slicing">Slicing</a></li>
@@ -868,6 +868,10 @@ initFunction(initQuery);
       <li><a href="#broadcasting">Broadcasting</a></li>
       <li><a href="#broadcasting-rules">Broadcasting rules</a></li>
       <li><a href="#fancy-indexing">Fancy indexing</a></li>
+    </ul>
+  </li>
+  <li><a href="#xarray">xarray</a>
+    <ul>
       <li><a href="#datastructures">Datastructures</a></li>
       <li><a href="#dataset">Dataset</a></li>
       <li><a href="#indexing-and-selecting-data">Indexing and selecting data</a></li>
@@ -926,7 +930,7 @@ initFunction(initQuery);
 
 <div class="">
 
-  <h1 id="numpy"><a href="https://www.numpy.org/">Numpy</a>…</h1>
+  <h2 id="numpy"><a href="https://www.numpy.org/">Numpy</a>…</h2>
 
   <p><img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/NumPy_logo.svg" width="400px" /></p>
 
@@ -940,7 +944,7 @@ initFunction(initQuery);
 
 <div class="">
 
-  <h2 id="what-are-arrays">What are arrays?</h2>
+  <h3 id="what-are-arrays">What are arrays?</h3>
 
   <ul>
     <li>like lists</li>
@@ -1086,12 +1090,6 @@ initFunction(initQuery);
 
 <div class="">
 
-  <h3 id="array-shape">Array shape</h3>
-
-</div>
-
-<div class="">
-
   <h3 id="other-ways-to-create-arrays">Other ways to create arrays</h3>
 
   <p>Most of the time we don’t want to create arrays with specific values by hand but need to initialize arrays of a certain shape to populate them with values later.
@@ -1218,7 +1216,7 @@ For higher dimensional arrays we need to know which index accesses a certain dim
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E05_36_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E05_35_0.png" alt="png" /></p>
 
 <div class="">
 
@@ -1237,7 +1235,7 @@ The general syntax is <code class="highlighter-rouge">[start:stop:step]</code>.<
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E05_38_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E05_37_0.png" alt="png" /></p>
 
 <div class="">
 
@@ -1277,7 +1275,7 @@ By default numpy if an index is omitted slicing</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E05_43_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E05_42_0.png" alt="png" /></p>
 
 <div class="">
 
@@ -1411,7 +1409,7 @@ By default numpy if an index is omitted slicing</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E05_58_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E05_57_0.png" alt="png" /></p>
 
 <div class="">
 
@@ -1456,7 +1454,7 @@ By default numpy if an index is omitted slicing</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E05_65_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E05_64_0.png" alt="png" /></p>
 
 <div class="">
 
@@ -1556,7 +1554,7 @@ By default numpy if an index is omitted slicing</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E05_73_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E05_72_0.png" alt="png" /></p>
 
 <div class="">
 
@@ -1769,7 +1767,7 @@ for example sum.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E05_96_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E05_95_0.png" alt="png" /></p>
 
 <div class="">
 
@@ -1981,7 +1979,7 @@ Column indices:
 
 <div class="">
 
-  <h1 id="xarray">xarray</h1>
+  <h2 id="xarray">xarray</h2>
 
   <p><img src="https://xarray.pydata.org/en/stable/_static/dataset-diagram-logo.png" alt="" /></p>
 
