@@ -29,9 +29,9 @@
   "headline":
     "Python Basics III",
   "datePublished":
-    "2019-06-06T13:46:11+00:00",
+    "2019-06-06T13:58:33+00:00",
   "dateModified":
-    "2019-06-06T13:46:11+00:00",
+    "2019-06-06T13:58:33+00:00",
   "description":
     "",
   "author": {
@@ -919,18 +919,26 @@ initFunction(initQuery);
 
             <div class="c-textbook__content">
               
-<h1 id="python-basics-iii">Python Basics III</h1>
+<div class="">
 
-<h2 id="functions">Functions</h2>
+  <h1 id="python-basics-iii">Python Basics III</h1>
 
-<p>For small tasks chaining together command one by one in a script can be a viable solution but often the problem at hand consists of multiple steps and/or needs to repeated multiple times for example for different directories. Then the code will get messy pretty fast which, according to rule one of <a href="https://www.python.org/dev/peps/pep-0020/"><strong>The Zen of Python</strong></a>, is something we want to avoid.</p>
+</div>
 
-<p>To achive this we can use <strong>functions</strong> which:</p>
-<ul>
-  <li>encapsulate small snippets of code</li>
-  <li>can be reused any number of times</li>
-  <li>make our code more <em>modular</em>, less repititous and easier to maintain</li>
-</ul>
+<div class="">
+
+  <h2 id="functions">Functions</h2>
+
+  <p>For small tasks chaining together command one by one in a script can be a viable solution but often the problem at hand consists of multiple steps and/or needs to repeated multiple times for example for different directories. Then the code will get messy pretty fast which, according to rule one of <a href="https://www.python.org/dev/peps/pep-0020/"><strong>The Zen of Python</strong></a>, is something we want to avoid.</p>
+
+  <p>To achive this we can use <strong>functions</strong> which:</p>
+  <ul>
+    <li>encapsulate small snippets of code</li>
+    <li>can be reused any number of times</li>
+    <li>make our code more <em>modular</em>, less repititous and easier to maintain</li>
+  </ul>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">happy_birthday</span><span class="p">():</span>
     <span class="k">print</span><span class="p">(</span><span class="s">"Happy birthday Tom!"</span><span class="p">)</span>
@@ -942,7 +950,11 @@ initFunction(initQuery);
 
 </code></pre></div></div>
 
-<p>Now this does not save very much code because if we wanted to congratulate Sally we would need to write another quite similar function. To make this function more generic we can use <strong>Parameters</strong>.</p>
+<div class="">
+
+  <p>Now this does not save very much code because if we wanted to congratulate Sally we would need to write another quite similar function. To make this function more generic we can use <strong>Parameters</strong>.</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">happy_birthday</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
     <span class="k">print</span><span class="p">(</span><span class="s">"Happy birthday {}!"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
@@ -954,8 +966,12 @@ initFunction(initQuery);
 
 </code></pre></div></div>
 
-<p>Functions can have any number of parameters which can also have a default value assigned to them, making them optional in the function call.
+<div class="">
+
+  <p>Functions can have any number of parameters which can also have a default value assigned to them, making them optional in the function call.
 Additionally a <strong>return</strong> value can be specified.</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">x_power_y</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="n">y</span>
@@ -969,8 +985,12 @@ Additionally a <strong>return</strong> value can be specified.</p>
 
 </code></pre></div></div>
 
-<h3 id="documentation">Documentation</h3>
-<p>While this is still an easy example where it’s pretty clear what is done in general it is important to document functions (and all other code structures that is). While normal inline comments like you already know can be used there are special “comments” called <a href="https://www.python.org/dev/peps/pep-0257/"><strong>docstrings</strong></a> which can be inserted as a first statement in a function and are a standardized way of documenting.</p>
+<div class="">
+
+  <h3 id="documentation">Documentation</h3>
+  <p>While this is still an easy example where it’s pretty clear what is done in general it is important to document functions (and all other code structures that is). While normal inline comments like you already know can be used there are special “comments” called <a href="https://www.python.org/dev/peps/pep-0257/"><strong>docstrings</strong></a> which can be inserted as a first statement in a function and are a standardized way of documenting.</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">x_power_y</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
     <span class="s">"""
@@ -991,81 +1011,105 @@ Additionally a <strong>return</strong> value can be specified.</p>
     <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="n">y</span>
 </code></pre></div></div>
 
-<p>The first line should contain a short one line description. Following a blank line a more detailed description of what the function is doing can be given (omitted in this example).</p>
+<div class="">
 
-<p>This example uses the so called <a href="https://numpydoc.readthedocs.io/en/latest/"><strong>numpydoc</strong></a> style which has the advantage to be very readable. Another popular style is the <a href="https://github.com/google/styleguide/blob/gh-pages/pyguide.md#38-comments-and-docstrings"><strong>google</strong></a> style. The choice which one to use is up to you, just make sure you stick with that choice.</p>
+  <p>The first line should contain a short one line description. Following a blank line a more detailed description of what the function is doing can be given (omitted in this example).</p>
 
-<p>Documenting can be a lot of work but the advantages pay off quickly:</p>
-<ul>
-  <li>for your self to remember what a certain piece of code does if you want to use it sometime in the future</li>
-  <li>other people who use your code understand what is done and which input is needed and what is returned</li>
-</ul>
-
-<p>So it is a good habit to document code right when it is written even though sometimes it can be tempting to do it later.</p>
-
-<h3 id="built-in-functions">Built in functions</h3>
-
-<p>Python has many built in functions which solve common problems and are faster than if we would implement those on our own. Often, the purpose of these functions is clear on first sight. For example <code class="highlighter-rouge">min()</code>, <code class="highlighter-rouge">max()</code> or <code class="highlighter-rouge">sum()</code> are pretty self-explanatory, but there are also some more complex functions.</p>
-
-<div class="alert task">
-
-  <p><strong>Task:</strong></p>
-  <ol>
-    <li>Go to the official <a href="https://docs.python.org/3.4/library/functions.html">Python documentation</a> or use a search engine of your choice and have a look at the follwoing built in functions:
-      <ul>
-        <li>set</li>
-        <li>enumerate</li>
-        <li>map</li>
-      </ul>
-
-      <p>Find out what they do and try them out.</p>
-    </li>
-    <li>Rewrite the following loop using the <code class="highlighter-rouge">map</code> function.
-      <pre><code class="language-Python">numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
-for i, num in enumerate(numbers):
-     numbers[i] = numbers[i]**2 + 5
-</code></pre>
-    </li>
-  </ol>
+  <p>This example uses the so called <a href="https://numpydoc.readthedocs.io/en/latest/"><strong>numpydoc</strong></a> style which has the advantage to be very readable. Another popular style is the <a href="https://github.com/google/styleguide/blob/gh-pages/pyguide.md#38-comments-and-docstrings"><strong>google</strong></a> style. The choice which one to use is up to you, just make sure you stick with that choice.</p>
 
 </div>
 
-<div class="alert solution">
+<div class="">
 
-  <p><strong>Solution</strong></p>
+  <p>Documenting can be a lot of work but the advantages pay off quickly:</p>
+  <ul>
+    <li>for your self to remember what a certain piece of code does if you want to use it sometime in the future</li>
+    <li>other people who use your code understand what is done and which input is needed and what is returned</li>
+  </ul>
 
-  <ol>
-    <li>Built in functions
-      <ul>
-        <li><strong>set</strong> returns a collection of distinct elements (e.g. removing duplicates from a list)</li>
-        <li><strong>enumerate</strong> returns an object containing tuples of count and values of a list.
+  <p>So it is a good habit to document code right when it is written even though sometimes it can be tempting to do it later.</p>
+
+</div>
+
+<div class="">
+
+  <h3 id="built-in-functions">Built in functions</h3>
+
+  <p>Python has many built in functions which solve common problems and are faster than if we would implement those on our own. Often, the purpose of these functions is clear on first sight. For example <code class="highlighter-rouge">min()</code>, <code class="highlighter-rouge">max()</code> or <code class="highlighter-rouge">sum()</code> are pretty self-explanatory, but there are also some more complex functions.</p>
+
+</div>
+
+<div class="">
+
+  <div class="alert task">
+
+    <p><strong>Task:</strong></p>
+    <ol>
+      <li>Go to the official <a href="https://docs.python.org/3.4/library/functions.html">Python documentation</a> or use a search engine of your choice and have a look at the follwoing built in functions:
+        <ul>
+          <li>set</li>
+          <li>enumerate</li>
+          <li>map</li>
+        </ul>
+
+        <p>Find out what they do and try them out.</p>
+      </li>
+      <li>Rewrite the following loop using the <code class="highlighter-rouge">map</code> function.
+        <pre><code class="language-Python">numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+for i, num in enumerate(numbers):
+     numbers[i] = numbers[i]**2 + 5
+</code></pre>
+      </li>
+    </ol>
+
+  </div>
+
+</div>
+
+<div class="">
+
+  <div class="alert solution">
+
+    <p><strong>Solution</strong></p>
+
+    <ol>
+      <li>Built in functions
+        <ul>
+          <li><strong>set</strong> returns a collection of distinct elements (e.g. removing duplicates from a list)</li>
+          <li><strong>enumerate</strong> returns an object containing tuples of count and values of a list.
 For example:
-          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Banana"</span><span class="p">,</span> <span class="s">"Strawberry"</span><span class="p">,</span> <span class="s">"Peach"</span><span class="p">]</span>
+            <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Banana"</span><span class="p">,</span> <span class="s">"Strawberry"</span><span class="p">,</span> <span class="s">"Peach"</span><span class="p">]</span>
 <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">fruits</span><span class="p">))</span>
-</code></pre></div>          </div>
-          <p>returns:</p>
-          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="s">'Banana'</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">'Strawberry'</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">'Peach'</span><span class="p">)]</span>
-</code></pre></div>          </div>
-        </li>
-        <li><strong>map</strong> applies a function to every element of an iterable (for example a list)</li>
-      </ul>
-    </li>
-    <li></li>
-  </ol>
+</code></pre></div>            </div>
+            <p>returns:</p>
+            <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="s">'Banana'</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">'Strawberry'</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">'Peach'</span><span class="p">)]</span>
+</code></pre></div>            </div>
+          </li>
+          <li><strong>map</strong> applies a function to every element of an iterable (for example a list)</li>
+        </ul>
+      </li>
+      <li></li>
+    </ol>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">]</span>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">]</span>
 
 <span class="k">def</span> <span class="nf">quadratic</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">5</span>
     
 <span class="nb">map</span><span class="p">(</span><span class="n">quadratic</span><span class="p">,</span> <span class="n">numbers</span><span class="p">)</span>
-</code></pre></div>  </div>
+</code></pre></div>    </div>
+
+  </div>
 
 </div>
 
-<h2 id="variable-scope---global-vs-local">Variable scope - global vs. local</h2>
+<div class="">
 
-<p>Let’s say we define the following:</p>
+  <h2 id="variable-scope---global-vs-local">Variable scope - global vs. local</h2>
+
+  <p>Let’s say we define the following:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="s">"Foo"</span>
 
@@ -1073,7 +1117,11 @@ For example:
     <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>What will happen if we call <code class="highlighter-rouge">very_usefull_function()</code>?</p>
+<div class="">
+
+  <p>What will happen if we call <code class="highlighter-rouge">very_usefull_function()</code>?</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">very_usefull_function</span><span class="p">()</span>
 </code></pre></div></div>
@@ -1082,7 +1130,11 @@ For example:
 
 </code></pre></div></div>
 
-<p>Now consider the following change to the function and think about what will happen when we first call the function and then print out <code class="highlighter-rouge">a</code> again afterwards.</p>
+<div class="">
+
+  <p>Now consider the following change to the function and think about what will happen when we first call the function and then print out <code class="highlighter-rouge">a</code> again afterwards.</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="s">"Foo"</span>
 
@@ -1100,28 +1152,44 @@ Foo
 
 </code></pre></div></div>
 
-<p>This shows the difference between global and local variables.</p>
+<div class="">
 
-<p>While we can access global variables within functions, they can not be changed by default. A variable with the same name inside a function is a local variable and will always take precedence over global variables. It exists only in the scope of this function.
+  <p>This shows the difference between global and local variables.</p>
+
+  <p>While we can access global variables within functions, they can not be changed by default. A variable with the same name inside a function is a local variable and will always take precedence over global variables. It exists only in the scope of this function.
 In generall it is possible to change the value of a global variable from inside a function but since accessing a global variable from inside a function is considered bad practice and hence trying to change it even worse we neglect that possibility altogether.</p>
 
-<h3 id="constants">Constants</h3>
-<p>Often in other programming languages special variables can be defined which can not be changed and therefore be used for constants for example. In Python this is not possible. So a widely used convention is to mark constants with all upper case variable names.</p>
+</div>
+
+<div class="">
+
+  <h3 id="constants">Constants</h3>
+  <p>Often in other programming languages special variables can be defined which can not be changed and therefore be used for constants for example. In Python this is not possible. So a widely used convention is to mark constants with all upper case variable names.</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SPEED_OF_LIGHT</span> <span class="o">=</span> <span class="mi">1080000000</span> <span class="c">#km/h</span>
 </code></pre></div></div>
 
-<h2 id="python-modules">Python modules</h2>
+<div class="">
 
-<p>When you write larger scripts, it makes sense to split your code into multiple files so that you do not lose track of all your functions. You may also want to use a handy function that you’ve written in several programs without copying its definition into each program.</p>
+  <h2 id="python-modules">Python modules</h2>
 
-<p>To support this, Python has a way to put definitions in one file and use them in another script. Such a file is called a <strong>module</strong>. Definitions from one module can be imported into other modules or into the main module.</p>
+  <p>When you write larger scripts, it makes sense to split your code into multiple files so that you do not lose track of all your functions. You may also want to use a handy function that you’ve written in several programs without copying its definition into each program.</p>
 
-<p>A module is a file containing Python definitions and statements. The file name is the module name with the suffix .py appended.</p>
+  <p>To support this, Python has a way to put definitions in one file and use them in another script. Such a file is called a <strong>module</strong>. Definitions from one module can be imported into other modules or into the main module.</p>
 
-<h3 id="the-import-system">The import system</h3>
+  <p>A module is a file containing Python definitions and statements. The file name is the module name with the suffix .py appended.</p>
 
-<p>Lets say, we defined the following function (to print the Fibonacci numbers) in the file “fibo.py”:</p>
+</div>
+
+<div class="">
+
+  <h3 id="the-import-system">The import system</h3>
+
+  <p>Lets say, we defined the following function (to print the Fibonacci numbers) in the file “fibo.py”:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
@@ -1131,7 +1199,11 @@ In generall it is possible to change the value of a global variable from inside 
     <span class="k">print</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p>Now we want to use this function in another script. To import the definitions from a module into a script, you can use the <code class="highlighter-rouge">import</code> statement:</p>
+<div class="">
+
+  <p>Now we want to use this function in another script. To import the definitions from a module into a script, you can use the <code class="highlighter-rouge">import</code> statement:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">fibo</span> <span class="c"># Import the fibo-module (fibo.py)</span>
 
@@ -1142,7 +1214,11 @@ In generall it is possible to change the value of a global variable from inside 
 
 </code></pre></div></div>
 
-<p>You can also assign an alias to the imported module via:</p>
+<div class="">
+
+  <p>You can also assign an alias to the imported module via:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">fibo</span> <span class="k">as</span> <span class="n">fb</span>
 
@@ -1153,78 +1229,106 @@ In generall it is possible to change the value of a global variable from inside 
 
 </code></pre></div></div>
 
-<p>This is common practice as module names are sometimes long and coders like short module names in their code.</p>
+<div class="">
 
-<div class="alert info">
+  <p>This is common practice as module names are sometimes long and coders like short module names in their code.</p>
 
-  <p>Sometimes you will see something like</p>
+</div>
 
-  <pre><code class="language-Python">from fibo import *
+<div class="">
+
+  <div class="alert info">
+
+    <p>Sometimes you will see something like</p>
+
+    <pre><code class="language-Python">from fibo import *
 </code></pre>
-  <p>which would import all functions from the fibo module. This is considered bad practice because it is not concrete and specific (it violates rule 2 of the <a href="https://www.python.org/dev/peps/pep-0020/"><strong>The Zen of Python</strong></a> ;-) ) and should not be done.</p>
+    <p>which would import all functions from the fibo module. This is considered bad practice because it is not concrete and specific (it violates rule 2 of the <a href="https://www.python.org/dev/peps/pep-0020/"><strong>The Zen of Python</strong></a> ;-) ) and should not be done.</p>
+
+  </div>
 
 </div>
 
-<p>There are many modules with usefull functions out there which can be installed and used similarly to the way with our own modules shown above. We get to know some of the most common ones in later chapters of the course.</p>
+<div class="">
 
-<div class="alert task">
-
-  <p><strong>Task:</strong></p>
-
-  <ol>
-    <li>Write a function <code class="highlighter-rouge">add5(x)</code> that adds 5 to the given number <code class="highlighter-rouge">x</code> and returns the result. Save this function in the file “mathe.py”.</li>
-    <li>Start an interactive python shell in the same directory where you saved the “mathe.py” file.</li>
-    <li>Import the function <code class="highlighter-rouge">add5(x)</code>, call it with some random arguments and print the results.</li>
-    <li>Try out “import this”.</li>
-  </ol>
+  <p>There are many modules with usefull functions out there which can be installed and used similarly to the way with our own modules shown above. We get to know some of the most common ones in later chapters of the course.</p>
 
 </div>
 
-<div class="alert solution">
+<div class="">
 
-  <p><strong>Solution</strong></p>
+  <div class="alert task">
 
-  <ol>
-    <li>
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">add5</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <p><strong>Task:</strong></p>
+
+    <ol>
+      <li>Write a function <code class="highlighter-rouge">add5(x)</code> that adds 5 to the given number <code class="highlighter-rouge">x</code> and returns the result. Save this function in the file “mathe.py”.</li>
+      <li>Start an interactive python shell in the same directory where you saved the “mathe.py” file.</li>
+      <li>Import the function <code class="highlighter-rouge">add5(x)</code>, call it with some random arguments and print the results.</li>
+      <li>Try out “import this”.</li>
+    </ol>
+
+  </div>
+
+</div>
+
+<div class="">
+
+  <div class="alert solution">
+
+    <p><strong>Solution</strong></p>
+
+    <ol>
+      <li>
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">add5</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
  <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">5</span>
-</code></pre></div>      </div>
-    </li>
-    <li>
-      <p>Start the shell</p>
-    </li>
-    <li>
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">mathe</span> <span class="kn">import</span> <span class="n">add5</span>
+</code></pre></div>        </div>
+      </li>
+      <li>
+        <p>Start the shell</p>
+      </li>
+      <li>
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">mathe</span> <span class="kn">import</span> <span class="n">add5</span>
 <span class="n">res</span> <span class="o">=</span> <span class="n">add5</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
-</code></pre></div>      </div>
-    </li>
-    <li>
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">this</span>
-</code></pre></div>      </div>
-    </li>
-  </ol>
+</code></pre></div>        </div>
+      </li>
+      <li>
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">this</span>
+</code></pre></div>        </div>
+      </li>
+    </ol>
+
+  </div>
 
 </div>
 
-<h2 id="working-with-files">Working with files</h2>
+<div class="">
 
-<p>Sometimes we need to access files on disk in our scripts. This can be done using the <code class="highlighter-rouge">open(filename, access_mode)</code> function. The access mode is one of:</p>
-<ul>
-  <li><code class="highlighter-rouge">r</code>: read only</li>
-  <li><code class="highlighter-rouge">w</code>: write only</li>
-  <li><code class="highlighter-rouge">a</code>: appending to a file</li>
-  <li><code class="highlighter-rouge">r+</code>: special mode to handle reading and writing</li>
-</ul>
+  <h2 id="working-with-files">Working with files</h2>
 
-<h3 id="reading-and-writing-text-files">Reading and writing text files</h3>
-<p>The simplest file we can access are text files and there are some conveniant methods which help us writing to them:</p>
-<ul>
-  <li><code class="highlighter-rouge">write()</code>: writes a line to a file</li>
-  <li><code class="highlighter-rouge">writelines()</code>: given a list writes each item as a line</li>
-</ul>
+  <p>Sometimes we need to access files on disk in our scripts. This can be done using the <code class="highlighter-rouge">open(filename, access_mode)</code> function. The access mode is one of:</p>
+  <ul>
+    <li><code class="highlighter-rouge">r</code>: read only</li>
+    <li><code class="highlighter-rouge">w</code>: write only</li>
+    <li><code class="highlighter-rouge">a</code>: appending to a file</li>
+    <li><code class="highlighter-rouge">r+</code>: special mode to handle reading and writing</li>
+  </ul>
 
-<p>Using the <code class="highlighter-rouge">with</code> syntax we don’t have to worry about closing the file connection once we are done.</p>
+</div>
+
+<div class="">
+
+  <h3 id="reading-and-writing-text-files">Reading and writing text files</h3>
+  <p>The simplest file we can access are text files and there are some conveniant methods which help us writing to them:</p>
+  <ul>
+    <li><code class="highlighter-rouge">write()</code>: writes a line to a file</li>
+    <li><code class="highlighter-rouge">writelines()</code>: given a list writes each item as a line</li>
+  </ul>
+
+  <p>Using the <code class="highlighter-rouge">with</code> syntax we don’t have to worry about closing the file connection once we are done.</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#Writing a shopping list to a text file</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">"shopping_list.txt"</span><span class="p">,</span> <span class="s">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="nb">file</span><span class="p">:</span>
@@ -1233,12 +1337,16 @@ In generall it is possible to change the value of a global variable from inside 
     <span class="nb">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">"Pizza</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>Similarly there are functions to read from a file:</p>
-<ul>
-  <li><code class="highlighter-rouge">read(n)</code>: if n is given reads the first n characters from the file otherwise reads the entire file</li>
-  <li><code class="highlighter-rouge">readline(n)</code>: if n is given reads the n’th line from the file otherwise reads the first line</li>
-  <li><code class="highlighter-rouge">readlines()</code>: reads the entire file line by line and returns them as a list</li>
-</ul>
+<div class="">
+
+  <p>Similarly there are functions to read from a file:</p>
+  <ul>
+    <li><code class="highlighter-rouge">read(n)</code>: if n is given reads the first n characters from the file otherwise reads the entire file</li>
+    <li><code class="highlighter-rouge">readline(n)</code>: if n is given reads the n’th line from the file otherwise reads the first line</li>
+    <li><code class="highlighter-rouge">readlines()</code>: reads the entire file line by line and returns them as a list</li>
+  </ul>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#Reading our list</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">"shopping_list.txt"</span><span class="p">,</span> <span class="s">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="nb">file</span><span class="p">:</span>
@@ -1251,24 +1359,36 @@ In generall it is possible to change the value of a global variable from inside 
 
 </code></pre></div></div>
 
-<div class="alert task">
+<div class="">
 
-  <p><strong>Task:</strong></p>
+  <div class="alert task">
 
-  <p>Notice the “\n” at the end of each line.</p>
-  <ol>
-    <li>Find out what the “\n” is all about (Hint: Try the code without it)</li>
-    <li>Find out how to get rid of the “\n” when reading the file again.</li>
-  </ol>
+    <p><strong>Task:</strong></p>
+
+    <p>Notice the “\n” at the end of each line.</p>
+    <ol>
+      <li>Find out what the “\n” is all about (Hint: Try the code without it)</li>
+      <li>Find out how to get rid of the “\n” when reading the file again.</li>
+    </ol>
+
+  </div>
 
 </div>
 
-<h3 id="file-pathes-and-directories">File pathes and directories</h3>
+<div class="">
 
-<p>Beyond writing to text files other interactions with the filesystem like creating, deleting files and directories or just creation of system compatible pathes is often needed. All of this and more can be achieved with the <code class="highlighter-rouge">Path</code> function of the <a href="https://docs.python.org/3/library/pathlib.html">pathlib</a> module which ships with every Python 3 installation.</p>
+  <h3 id="file-pathes-and-directories">File pathes and directories</h3>
 
-<h4 id="create-pathes">Create pathes</h4>
-<p>Instead of creating pathes by concatenating strings with the <code class="highlighter-rouge">+</code> operator it can be conveniantly be done like:</p>
+  <p>Beyond writing to text files other interactions with the filesystem like creating, deleting files and directories or just creation of system compatible pathes is often needed. All of this and more can be achieved with the <code class="highlighter-rouge">Path</code> function of the <a href="https://docs.python.org/3/library/pathlib.html">pathlib</a> module which ships with every Python 3 installation.</p>
+
+</div>
+
+<div class="">
+
+  <h4 id="create-pathes">Create pathes</h4>
+  <p>Instead of creating pathes by concatenating strings with the <code class="highlighter-rouge">+</code> operator it can be conveniantly be done like:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span> <span class="c">#first import the Path "function" from the module</span>
 
@@ -1286,7 +1406,11 @@ user/data/subdirectory
 
 </code></pre></div></div>
 
-<h4 id="check-existance-of--create--delete-directories">Check existance of / create / delete directories</h4>
+<div class="">
+
+  <h4 id="check-existance-of--create--delete-directories">Check existance of / create / delete directories</h4>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># check if path exists</span>
 <span class="n">dir_exists</span> <span class="o">=</span> <span class="n">subdir</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
@@ -1306,7 +1430,11 @@ Directory exists after deletion: False
 
 </code></pre></div></div>
 
-<h4 id="list-files-and-directories">List files and directories</h4>
+<div class="">
+
+  <h4 id="list-files-and-directories">List files and directories</h4>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">img_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s">"images"</span><span class="p">)</span>
 
@@ -1326,7 +1454,11 @@ Recursive png file list:
 
 </code></pre></div></div>
 
-<h4 id="other-usefull-things">Other usefull things</h4>
+<div class="">
+
+  <h4 id="other-usefull-things">Other usefull things</h4>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># is it a file or directory?</span>
 <span class="n">img_dir</span><span class="o">.</span><span class="n">is_file</span><span class="p">()</span>
@@ -1362,55 +1494,87 @@ Recursive png file list:
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PosixPath('images/S01E03')
 </code></pre></div></div>
 
-<div class="alert info">
+<div class="">
 
-  <p><strong>Info</strong></p>
+  <div class="alert info">
+
+    <p><strong>Info</strong></p>
+    <ul>
+      <li>always use “/” in path strings. pathlib will convert those to “\” on Windows</li>
+      <li>be carefull when deleting you will not be asked if you really want to delete</li>
+      <li>in older scripts you might encounter <code class="highlighter-rouge">os.path</code> functions because <code class="highlighter-rouge">pathlib</code> is only available in Python 3 (a comparison is given in the documentation linked above</li>
+    </ul>
+
+  </div>
+
+</div>
+
+<div class="">
+
+  <h2 id="classes-and-objects">Classes and objects</h2>
+
+  <p>In the examples on the previous slides we used functions with a weird “dot”-notation. In addition it looks like sometimes you need brackets when calling a function and sometimes you don’t.</p>
+
+  <p>This has something to do with <strong>object oriented programming</strong> which is a paradigm tightly coupled with Python.</p>
+
+  <p>While we won’t go into the details, it is important to understand the concept and terminology.
+It will help to grasp whats going on in the above examples and it makes it easier to understand explanations and solutions you might find online</p>
+
+</div>
+
+<div class="">
+
+  <p>The basic idea about <strong>object oriented programming</strong> is to group data and functions which can interact with that data into an <strong>object</strong></p>
+
+  <p>This programming style can make it easier to:</p>
   <ul>
-    <li>always use “/” in path strings. pathlib will convert those to “\” on Windows</li>
-    <li>be carefull when deleting you will not be asked if you really want to delete</li>
-    <li>in older scripts you might encounter <code class="highlighter-rouge">os.path</code> functions because <code class="highlighter-rouge">pathlib</code> is only available in Python 3 (a comparison is given in the documentation linked above</li>
+    <li>structure big and complex software</li>
+    <li>write reusable code</li>
+    <li>maintain code</li>
+  </ul>
+
+  <p>Two important concepts are:</p>
+  <ul>
+    <li><strong>classes</strong> which are like a blueprint</li>
+    <li><strong>objects</strong> which are <strong>instances</strong>, the actual realisation, of the corresponding class</li>
   </ul>
 
 </div>
 
-<h2 id="classes-and-objects">Classes and objects</h2>
+<div class="">
 
-<p>In the examples on the previous slides we used functions with a weird “dot”-notation. In addition it looks like sometimes you need brackets when calling a function and sometimes you don’t.</p>
+  <p><img src="images/S01E03/classes_objects.jpeg" alt="" /></p>
 
-<p>This has something to do with <strong>object oriented programming</strong> which is a paradigm tightly coupled with Python.</p>
+  <p><small>(adapted after https://www.slideshare.net/ArslanArshad9/object-oriented-programming-with-python slide 3)</small></p>
 
-<p>While we won’t go into the details, it is important to understand the concept and terminology.
-It will help to grasp whats going on in the above examples and it makes it easier to understand explanations and solutions you might find online</p>
+</div>
 
-<p>The basic idea about <strong>object oriented programming</strong> is to group data and functions which can interact with that data into an <strong>object</strong></p>
+<div class="">
 
-<p>This programming style can make it easier to:</p>
-<ul>
-  <li>structure big and complex software</li>
-  <li>write reusable code</li>
-  <li>maintain code</li>
-</ul>
+  <h3 id="connecting-the-dots">Connecting the dots</h3>
 
-<p>Two important concepts are:</p>
-<ul>
-  <li><strong>classes</strong> which are like a blueprint</li>
-  <li><strong>objects</strong> which are <strong>instances</strong>, the actual realisation, of the corresponding class</li>
-</ul>
+  <p>So what has that to do with the “dot”-notation in the examples?</p>
 
-<p><img src="images/S01E03/classes_objects.jpeg" alt="" /></p>
+</div>
 
-<p><small>(adapted after https://www.slideshare.net/ArslanArshad9/object-oriented-programming-with-python slide 3)</small></p>
+<div class="">
 
-<h3 id="connecting-the-dots">Connecting the dots</h3>
+  <p><img src="images/S01E03/classes_objects_explanation.png" alt="" /></p>
 
-<p>So what has that to do with the “dot”-notation in the examples?</p>
+</div>
 
-<p><img src="images/S01E03/classes_objects_explanation.png" alt="" /></p>
+<div class="">
 
-<h2 id="errors-and-exceptions">Errors and Exceptions</h2>
+  <h2 id="errors-and-exceptions">Errors and Exceptions</h2>
 
-<p>When an error occurs in a Python script, it will stop and generate an error message.
+</div>
+
+<div class="">
+
+  <p>When an error occurs in a Python script, it will stop and generate an error message.
 This happens, e.g., when you try to read a non-existing or corrupt file:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">"non_existing_file.txt"</span><span class="p">)</span> <span class="k">as</span> <span class="nb">file</span><span class="p">:</span>
     <span class="n">content</span> <span class="o">=</span> <span class="nb">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
@@ -1431,33 +1595,53 @@ This happens, e.g., when you try to read a non-existing or corrupt file:</p>
 
 </code></pre></div></div>
 
-<p>These errors (or “exceptions”) can be handled using a try-except block:</p>
+<div class="">
 
-<pre><code class="language-Python">try:
+  <p>These errors (or “exceptions”) can be handled using a try-except block:</p>
+
+</div>
+
+<div class="">
+
+  <pre><code class="language-Python">try:
     #code which possibly gives an error
 except:
     #code to execute in case of error
 </code></pre>
 
-<p>If an exception occurs and the <code class="highlighter-rouge">except</code> block has run the script does not stop but continues to run.</p>
+</div>
 
-<div class="alert info">
+<div class="">
 
-  <p><strong>Note:</strong></p>
-
-  <p>While the length of the <code class="highlighter-rouge">try</code> block is not limited as soon as an Error is encountered the block will stop (i.e. other code after the line with the error will be skipped)!</p>
+  <p>If an exception occurs and the <code class="highlighter-rouge">except</code> block has run the script does not stop but continues to run.</p>
 
 </div>
 
-<p>Some best practice rules to keep in mind when writing try-except blocks are:</p>
+<div class="">
 
-<ul>
-  <li>always handle specific errors =&gt; don’t catch <code class="highlighter-rouge">Exception</code> because it silently hides all errors (most of the time you know what might break so catch it specifically)</li>
-  <li>give the user the stack trace in addition to custom text (for example with the built in <a href="https://docs.python.org/3/library/traceback.html">traceback module</a>, because it contains information where the exception occurred</li>
-  <li>if different errors might come up you can have multiple exception blocks to handle them differently</li>
-</ul>
+  <div class="alert info">
 
-<p>applied to the example above a refactored code might look like this:</p>
+    <p><strong>Note:</strong></p>
+
+    <p>While the length of the <code class="highlighter-rouge">try</code> block is not limited as soon as an Error is encountered the block will stop (i.e. other code after the line with the error will be skipped)!</p>
+
+  </div>
+
+</div>
+
+<div class="">
+
+  <p>Some best practice rules to keep in mind when writing try-except blocks are:</p>
+
+  <ul>
+    <li>always handle specific errors =&gt; don’t catch <code class="highlighter-rouge">Exception</code> because it silently hides all errors (most of the time you know what might break so catch it specifically)</li>
+    <li>give the user the stack trace in addition to custom text (for example with the built in <a href="https://docs.python.org/3/library/traceback.html">traceback module</a>, because it contains information where the exception occurred</li>
+    <li>if different errors might come up you can have multiple exception blocks to handle them differently</li>
+  </ul>
+
+  <p>applied to the example above a refactored code might look like this:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">traceback</span>
 
@@ -1479,26 +1663,32 @@ Script continues after catching exception instead of exiting!
 
 </code></pre></div></div>
 
-<div class="alert task">
+<div class="">
 
-  <p><strong>Task:</strong></p>
+  <div class="alert task">
 
-  <ol>
-    <li>Have a look at Pythons built in exceptions <a href="https://docs.python.org/3/library/exceptions.html">here</a> and find the one you can use in the next task.</li>
-    <li>Re-write your <code class="highlighter-rouge">add5(x)</code>-function so that it does not kill the program when a wrong argument is passed (e.g. a string like “zehn”) and
+    <p><strong>Task:</strong></p>
+
+    <ol>
+      <li>Have a look at Pythons built in exceptions <a href="https://docs.python.org/3/library/exceptions.html">here</a> and find the one you can use in the next task.</li>
+      <li>Re-write your <code class="highlighter-rouge">add5(x)</code>-function so that it does not kill the program when a wrong argument is passed (e.g. a string like “zehn”) and
 inform the caller of the function about a raised exception so that she/he can react accordingly.</li>
-  </ol>
+    </ol>
+
+  </div>
 
 </div>
 
-<div class="alert solution">
+<div class="">
 
-  <p><strong>Solution</strong></p>
+  <div class="alert solution">
 
-  <ol>
-    <li>Since a value of 5 can not be added to a string the appropiate exception type would be <code class="highlighter-rouge">python TypeError</code></li>
-    <li>
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">traceback</span>
+    <p><strong>Solution</strong></p>
+
+    <ol>
+      <li>Since a value of 5 can not be added to a string the appropiate exception type would be <code class="highlighter-rouge">python TypeError</code></li>
+      <li>
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">traceback</span>
 <span class="k">def</span> <span class="nf">add5</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
  <span class="k">try</span><span class="p">:</span>
      <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">5</span>
@@ -1506,20 +1696,26 @@ inform the caller of the function about a raised exception so that she/he can re
      <span class="k">print</span><span class="p">(</span><span class="s">"The input to the function has the wrong data type."</span><span class="p">)</span>
      <span class="k">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
      <span class="n">traceback</span><span class="o">.</span><span class="n">print_exec</span><span class="p">()</span>
-</code></pre></div>      </div>
-    </li>
-  </ol>
+</code></pre></div>        </div>
+      </li>
+    </ol>
+
+  </div>
 
 </div>
 
-<div class="alert task">
+<div class="">
 
-  <h2 id="exercise-3">Exercise 3</h2>
+  <div class="alert task">
 
-  <ul>
-    <li>Complete the third assignment and push your results until tuesday 14:00 next week</li>
-    <li>Assignment link: <a href="https://classroom.github.com/a/kRdKEeyg">https://classroom.github.com/a/kRdKEeyg</a></li>
-  </ul>
+    <h2 id="exercise-3">Exercise 3</h2>
+
+    <ul>
+      <li>Complete the third assignment and push your results until tuesday 14:00 next week</li>
+      <li>Assignment link: <a href="https://classroom.github.com/a/kRdKEeyg">https://classroom.github.com/a/kRdKEeyg</a></li>
+    </ul>
+
+  </div>
 
 </div>
 

@@ -29,9 +29,9 @@
   "headline":
     "Remote Sensing I",
   "datePublished":
-    "2019-06-06T13:46:11+00:00",
+    "2019-06-06T13:58:33+00:00",
   "dateModified":
-    "2019-06-06T13:46:11+00:00",
+    "2019-06-06T13:58:33+00:00",
   "description":
     "",
   "author": {
@@ -899,44 +899,80 @@ initFunction(initQuery);
 
             <div class="c-textbook__content">
               
-<h1 id="remote-sensing-i">Remote Sensing I</h1>
+<div class="">
 
-<h2 id="satpy">SatPy</h2>
+  <h1 id="remote-sensing-i">Remote Sensing I</h1>
 
-<p>A Python Library for Weather Satellite Processing</p>
+</div>
 
-<p><img src="https://avatars1.githubusercontent.com/u/13004956?s=200&amp;v=4" alt="" /></p>
+<div class="">
 
-<p>From the <a href="https://satpy.readthedocs.io/en/latest/index.html">documentation</a>:</p>
+  <h2 id="satpy">SatPy</h2>
 
-<p>SatPy is a python library for <strong>reading</strong> and <strong>manipulating</strong> meteorological remote sensing data and <strong>writing</strong> it to various image and data file formats.</p>
+  <p>A Python Library for Weather Satellite Processing</p>
 
-<p>SatPy comes with the ability to make various <strong>RGB composites</strong> directly from satellite instrument channel data or higher level processing output.</p>
+</div>
 
-<p>The pyresample package is used to <strong>resample data</strong> to different uniform areas or grids.</p>
+<div class="">
 
-<p>Various <strong>atmospheric corrections</strong> and <strong>visual enhancements</strong> are also provided, either directly in Satpy or from those in the PySpectral and TrollImage packages.</p>
+  <p><img src="https://avatars1.githubusercontent.com/u/13004956?s=200&amp;v=4" alt="" /></p>
 
-<h3 id="load--view-msg-data">Load &amp; view MSG data</h3>
+</div>
 
-<p>SatPy is well suited for working with data of Meteosat Second Generation Satellites:</p>
+<div class="">
+
+  <p>From the <a href="https://satpy.readthedocs.io/en/latest/index.html">documentation</a>:</p>
+
+  <p>SatPy is a python library for <strong>reading</strong> and <strong>manipulating</strong> meteorological remote sensing data and <strong>writing</strong> it to various image and data file formats.</p>
+
+  <p>SatPy comes with the ability to make various <strong>RGB composites</strong> directly from satellite instrument channel data or higher level processing output.</p>
+
+  <p>The pyresample package is used to <strong>resample data</strong> to different uniform areas or grids.</p>
+
+  <p>Various <strong>atmospheric corrections</strong> and <strong>visual enhancements</strong> are also provided, either directly in Satpy or from those in the PySpectral and TrollImage packages.</p>
+
+</div>
+
+<div class="">
+
+  <h3 id="load--view-msg-data">Load &amp; view MSG data</h3>
+
+</div>
+
+<div class="">
+
+  <p>SatPy is well suited for working with data of Meteosat Second Generation Satellites:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">satpy</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 </code></pre></div></div>
 
-<p>First, we specify the file(s) of the scene we want to open together with the reader of the respective file type (in our case we use the netcdf reader for the SEVIRI instrument):</p>
+<div class="">
+
+  <p>First, we specify the file(s) of the scene we want to open together with the reader of the respective file type (in our case we use the netcdf reader for the SEVIRI instrument):</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dateien</span> <span class="o">=</span> <span class="p">[</span><span class="s">"../data/W_XX-EUMETSAT-Darmstadt,VIS+IR+HRV+IMAGERY,MSG1+SEVIRI_C_EUMG_20060117120009.nc"</span><span class="p">]</span>
 <span class="n">files</span> <span class="o">=</span> <span class="p">{</span><span class="s">'seviri_l1b_nc'</span> <span class="p">:</span> <span class="n">dateien</span><span class="p">}</span>
 </code></pre></div></div>
 
-<p>Then we instantiate a Scene object with the given files:</p>
+<div class="">
+
+  <p>Then we instantiate a Scene object with the given files:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">scn</span> <span class="o">=</span> <span class="n">satpy</span><span class="o">.</span><span class="n">Scene</span><span class="p">(</span><span class="n">filenames</span><span class="o">=</span><span class="n">files</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>The scene attributes tell us what instrument we are dealing with and the start- and end-times of the scene scan:</p>
+<div class="">
+
+  <p>The scene attributes tell us what instrument we are dealing with and the start- and end-times of the scene scan:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">scn</span><span class="o">.</span><span class="n">attrs</span>
 </code></pre></div></div>
@@ -946,7 +982,11 @@ initFunction(initQuery);
  'end_time': datetime.datetime(2006, 1, 17, 12, 15, 9, 137000)}
 </code></pre></div></div>
 
-<p>To get an overview of all available datasets (=channels/bands) of the scene, we can call the <code class="highlighter-rouge">all_dataset_names()</code> function:</p>
+<div class="">
+
+  <p>To get an overview of all available datasets (=channels/bands) of the scene, we can call the <code class="highlighter-rouge">all_dataset_names()</code> function:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">scn</span><span class="o">.</span><span class="n">all_dataset_names</span><span class="p">()</span>
 </code></pre></div></div>
@@ -965,29 +1005,45 @@ initFunction(initQuery);
  'WV_073']
 </code></pre></div></div>
 
-<div class="alert info">
+<div class="">
 
-  <p>To be precise, <code class="highlighter-rouge">scn.all_dataset_names()</code> lists all data sets which the respective reader is able to load from the scene file. However, if any of these data sets are missing in the scene file, they consequently also cannot be loaded, although they are listed by this method.</p>
+  <div class="alert info">
+
+    <p>To be precise, <code class="highlighter-rouge">scn.all_dataset_names()</code> lists all data sets which the respective reader is able to load from the scene file. However, if any of these data sets are missing in the scene file, they consequently also cannot be loaded, although they are listed by this method.</p>
+
+  </div>
 
 </div>
 
-<p>Before we are able to work with the datasets, we first have to load the bands we are actually interested in. Let’s say, we are only interested in the visible wavelength at 0.6µm:</p>
+<div class="">
+
+  <p>Before we are able to work with the datasets, we first have to load the bands we are actually interested in. Let’s say, we are only interested in the visible wavelength at 0.6µm:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">scn</span><span class="o">.</span><span class="n">load</span><span class="p">([</span><span class="s">"VIS006"</span><span class="p">])</span> <span class="c"># Note that we have to pass a list to the load function, even if we only want to work with one band.</span>
 </code></pre></div></div>
 
-<div class="alert info">
+<div class="">
 
-  <p>You can also load bands by passing the specific wavelength you are interested in, e.g.:</p>
+  <div class="alert info">
 
-  <pre><code class="language-Python">scn.load([12.5])
+    <p>You can also load bands by passing the specific wavelength you are interested in, e.g.:</p>
+
+    <pre><code class="language-Python">scn.load([12.5])
 </code></pre>
 
-  <p>which, in this case, would load the band “IR_120” which covers the wavelength region from 11.0µm to 13.0µm.</p>
+    <p>which, in this case, would load the band “IR_120” which covers the wavelength region from 11.0µm to 13.0µm.</p>
+
+  </div>
 
 </div>
 
-<p>We can have a look at all loaded bands by printing out the keys:</p>
+<div class="">
+
+  <p>We can have a look at all loaded bands by printing out the keys:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">scn</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
 </code></pre></div></div>
@@ -995,31 +1051,43 @@ initFunction(initQuery);
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[DatasetID(name='VIS006', wavelength=(0.56, 0.635, 0.71), resolution=3000.403165817, polarization=None, calibration='reflectance', level=None, modifiers=())]
 </code></pre></div></div>
 
-<p>Let’s have a first look at what we are dealing with:</p>
+<div class="">
+
+  <p>Let’s have a first look at what we are dealing with:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">scn</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s">"VIS006"</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p class="output output_png"><img src="../images/units/S01E06_22_0.png" alt="png" /></p>
 
-<div class="alert task">
+<div class="">
 
-  <p><strong>Task</strong></p>
+  <div class="alert task">
 
-  <ol>
-    <li>Download the MSG data at https://box.uni-marburg.de/index.php/s/pXhB2Tw4k6ymk4i</li>
-    <li>Read the data set with satpy and create a Scene object</li>
-    <li>Plot the bands at 0.6μm and at 6.2μm.</li>
-    <li>Why can you see the full disk only at 6.2μm?</li>
-  </ol>
+    <p><strong>Task</strong></p>
+
+    <ol>
+      <li>Download the MSG data at https://box.uni-marburg.de/index.php/s/pXhB2Tw4k6ymk4i</li>
+      <li>Read the data set with satpy and create a Scene object</li>
+      <li>Plot the bands at 0.6μm and at 6.2μm.</li>
+      <li>Why can you see the full disk only at 6.2μm?</li>
+    </ol>
+
+  </div>
 
 </div>
 
-<p>Ok, thats nice :)</p>
+<div class="">
 
-<p>However, SatPy’s <code class="highlighter-rouge">show()</code> function doesn’t offer the option to depict a colorbar (so that we get an impression of the value range of the depicted colors).</p>
+  <p>Ok, thats nice :)</p>
 
-<p>Fortunately, we can easily achieve this by using the <code class="highlighter-rouge">imshow()</code> function from the matplotlib module:</p>
+  <p>However, SatPy’s <code class="highlighter-rouge">show()</code> function doesn’t offer the option to depict a colorbar (so that we get an impression of the value range of the depicted colors).</p>
+
+  <p>Fortunately, we can easily achieve this by using the <code class="highlighter-rouge">imshow()</code> function from the matplotlib module:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 
@@ -1033,9 +1101,13 @@ initFunction(initQuery);
 
 <p class="output output_png"><img src="../images/units/S01E06_26_0.png" alt="png" /></p>
 
-<p>It seems as if we are dealing with reflectance values here (range goes from 0% to 100%). Let’s go sure…</p>
+<div class="">
 
-<p>To get an overview of the metadata of a loaded band, you can just use the <code class="highlighter-rouge">print()</code> function on the band:</p>
+  <p>It seems as if we are dealing with reflectance values here (range goes from 0% to 100%). Let’s go sure…</p>
+
+  <p>To get an overview of the metadata of a loaded band, you can just use the <code class="highlighter-rouge">print()</code> function on the band:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">scn</span><span class="p">[</span><span class="s">"VIS006"</span><span class="p">])</span>
 </code></pre></div></div>
@@ -1074,20 +1146,32 @@ Attributes:
 
 </code></pre></div></div>
 
-<p>This shows us some valuable information about the data:</p>
+<div class="">
 
-<ul>
-  <li>The data is stored within an <code class="highlighter-rouge">xarray.DataArray</code> (which itself uses a <code class="highlighter-rouge">dask.array</code> to store the sensor data)</li>
-  <li>The band has 2 dimensions x and y (it is an image)</li>
-  <li>Over both dimensions, the image spreads over 3712 pixels</li>
-  <li>Pixel values are stored as float32</li>
-  <li>Values are already converted to “reflectance” between 0% and 100%. So SatPy already converted the original raw counts to reflectance values.</li>
-  <li>And a lot more (like satellite and sensor name, resolution, …)</li>
-</ul>
+  <p>This shows us some valuable information about the data:</p>
 
-<h4 id="calibration">Calibration</h4>
+  <ul>
+    <li>The data is stored within an <code class="highlighter-rouge">xarray.DataArray</code> (which itself uses a <code class="highlighter-rouge">dask.array</code> to store the sensor data)</li>
+    <li>The band has 2 dimensions x and y (it is an image)</li>
+    <li>Over both dimensions, the image spreads over 3712 pixels</li>
+    <li>Pixel values are stored as float32</li>
+    <li>Values are already converted to “reflectance” between 0% and 100%. So SatPy already converted the original raw counts to reflectance values.</li>
+    <li>And a lot more (like satellite and sensor name, resolution, …)</li>
+  </ul>
 
-<p>By default Satpy will provide the version of the dataset with the highest resolution and the highest level of calibration (brightness temperature or reflectance over radiance). It is also possible to request one or more of these exact versions of a dataset by specifying the calibration argument of the <code class="highlighter-rouge">load()</code> function:</p>
+</div>
+
+<div class="">
+
+  <h4 id="calibration">Calibration</h4>
+
+</div>
+
+<div class="">
+
+  <p>By default Satpy will provide the version of the dataset with the highest resolution and the highest level of calibration (brightness temperature or reflectance over radiance). It is also possible to request one or more of these exact versions of a dataset by specifying the calibration argument of the <code class="highlighter-rouge">load()</code> function:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># This loads the band at 10.8μm as radiances (in mW m-2 sr-1(cm-1)-1):</span>
 <span class="n">scn</span><span class="o">.</span><span class="n">load</span><span class="p">([</span><span class="mf">10.8</span><span class="p">],</span> <span class="n">calibration</span><span class="o">=</span><span class="p">[</span><span class="s">'radiance'</span><span class="p">])</span>
@@ -1112,13 +1196,21 @@ Attributes:
 
 <p class="output output_png"><img src="../images/units/S01E06_33_0.png" alt="png" /></p>
 
-<h4 id="coordinates">Coordinates</h4>
+<div class="">
 
-<p>Let’s go back to the visible band at 0.6μm: From the metadata above, we can also derive that there is coordinate information provided with the data:</p>
+  <h4 id="coordinates">Coordinates</h4>
 
-<p><code class="highlighter-rouge">lat</code> and <code class="highlighter-rouge">lon</code> are coordinate variables, each consisting of a full 3712x3712 layer, spanning along the dimensions <code class="highlighter-rouge">x</code> and <code class="highlighter-rouge">y</code>.</p>
+</div>
 
-<p>We can have a closer look at the coordinate layers by printing them to the console:</p>
+<div class="">
+
+  <p>Let’s go back to the visible band at 0.6μm: From the metadata above, we can also derive that there is coordinate information provided with the data:</p>
+
+  <p><code class="highlighter-rouge">lat</code> and <code class="highlighter-rouge">lon</code> are coordinate variables, each consisting of a full 3712x3712 layer, spanning along the dimensions <code class="highlighter-rouge">x</code> and <code class="highlighter-rouge">y</code>.</p>
+
+  <p>We can have a closer look at the coordinate layers by printing them to the console:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">scn</span><span class="p">[</span><span class="s">"VIS006"</span><span class="p">]</span><span class="o">.</span><span class="n">lat</span>
 </code></pre></div></div>
@@ -1140,9 +1232,17 @@ Attributes:
     units:                degrees_north
 </code></pre></div></div>
 
-<p>So here we see, that <code class="highlighter-rouge">lat</code> is given in units of “degrees_north” and that valid values are between -90° and +90°.</p>
+<div class="">
 
-<p>For the sake of completeness we can also plot the coordinate layers:</p>
+  <p>So here we see, that <code class="highlighter-rouge">lat</code> is given in units of “degrees_north” and that valid values are between -90° and +90°.</p>
+
+</div>
+
+<div class="">
+
+  <p>For the sake of completeness we can also plot the coordinate layers:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
 
@@ -1160,22 +1260,34 @@ Attributes:
 
 <p class="output output_png"><img src="../images/units/S01E06_39_0.png" alt="png" /></p>
 
-<div class="alert task">
+<div class="">
 
-  <p><strong>Quick question:</strong></p>
+  <div class="alert task">
 
-  <ol>
-    <li>Why are <code class="highlighter-rouge">lat</code> and <code class="highlighter-rouge">lon</code> provided as 2-dimensional data? (and not 1-dimensional)</li>
-    <li>What do the values of dimensions <code class="highlighter-rouge">x</code> and <code class="highlighter-rouge">y</code> mean?</li>
-  </ol>
+    <p><strong>Quick question:</strong></p>
+
+    <ol>
+      <li>Why are <code class="highlighter-rouge">lat</code> and <code class="highlighter-rouge">lon</code> provided as 2-dimensional data? (and not 1-dimensional)</li>
+      <li>What do the values of dimensions <code class="highlighter-rouge">x</code> and <code class="highlighter-rouge">y</code> mean?</li>
+    </ol>
+
+  </div>
 
 </div>
 
-<h3 id="composites">Composites</h3>
+<div class="">
 
-<p>SatPy comes with many built-in utility functions to create composite images of the data.</p>
+  <h3 id="composites">Composites</h3>
 
-<p>To get an overview of all available composites, you can do:</p>
+</div>
+
+<div class="">
+
+  <p>SatPy comes with many built-in utility functions to create composite images of the data.</p>
+
+  <p>To get an overview of all available composites, you can do:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">scn</span><span class="o">.</span><span class="n">available_composite_names</span><span class="p">()</span>
 </code></pre></div></div>
@@ -1206,7 +1318,11 @@ Attributes:
  'vis_sharpened_ir']
 </code></pre></div></div>
 
-<p>As with the single bands, you have to load a composite into the Scene object first, if you want to work with it:</p>
+<div class="">
+
+  <p>As with the single bands, you have to load a composite into the Scene object first, if you want to work with it:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">scn</span><span class="o">.</span><span class="n">load</span><span class="p">([</span><span class="s">"natural_color"</span><span class="p">])</span>
 <span class="n">scn</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s">"natural_color"</span><span class="p">)</span>
@@ -1214,7 +1330,11 @@ Attributes:
 
 <p class="output output_png"><img src="../images/units/S01E06_46_0.png" alt="png" /></p>
 
-<p>Let’s have a look at the metadata of the composite:</p>
+<div class="">
+
+  <p>Let’s have a look at the metadata of the composite:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">scn</span><span class="p">[</span><span class="s">"natural_color"</span><span class="p">])</span>
 </code></pre></div></div>
@@ -1253,46 +1373,74 @@ Attributes:
 
 </code></pre></div></div>
 
-<ul>
-  <li>We see, that the composite consists of 3 bands, stored in a dask-array with the shape (3, 3712, 3712)</li>
-  <li>Each band has 2 dimensions x and y</li>
-  <li>Over both dimensions, the images spread over 3712 pixels</li>
-  <li>Pixel values are stored as float32</li>
-  <li>We also see, that the 3 bands correspond to the red, green and blue layers of the image that we plottetd above.</li>
-  <li>These bands are: IR_016, VIS008 and VIS006 (prerequisites)</li>
-</ul>
+<div class="">
 
-<p>Guides on how to interpret these composites can be found on the Eumetsat website:</p>
+  <ul>
+    <li>We see, that the composite consists of 3 bands, stored in a dask-array with the shape (3, 3712, 3712)</li>
+    <li>Each band has 2 dimensions x and y</li>
+    <li>Over both dimensions, the images spread over 3712 pixels</li>
+    <li>Pixel values are stored as float32</li>
+    <li>We also see, that the 3 bands correspond to the red, green and blue layers of the image that we plottetd above.</li>
+    <li>These bands are: IR_016, VIS008 and VIS006 (prerequisites)</li>
+  </ul>
 
-<p>https://www.eumetsat.int/website/home/Data/Training/TrainingLibrary/DAT_2044069.html</p>
+</div>
 
-<p>Let’s load all available bands (except HRV) and the natural color composite so we can work with these data sets later on:</p>
+<div class="">
+
+  <p>Guides on how to interpret these composites can be found on the Eumetsat website:</p>
+
+  <p>https://www.eumetsat.int/website/home/Data/Training/TrainingLibrary/DAT_2044069.html</p>
+
+</div>
+
+<div class="">
+
+  <p>Let’s load all available bands (except HRV) and the natural color composite so we can work with these data sets later on:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">scn</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">scn</span><span class="o">.</span><span class="n">all_dataset_names</span><span class="p">()[</span><span class="mi">1</span><span class="p">:])</span>
 <span class="n">scn</span><span class="o">.</span><span class="n">load</span><span class="p">([</span><span class="s">"natural_color"</span><span class="p">])</span>
 </code></pre></div></div>
 
-<div class="alert task">
+<div class="">
 
-  <p><strong>Task</strong></p>
+  <div class="alert task">
 
-  <p>Plot a composite that is useful for interpreting the microphysical properties of clouds at daytime using the 06:00 UTC scene.</p>
+    <p><strong>Task</strong></p>
+
+    <p>Plot a composite that is useful for interpreting the microphysical properties of clouds at daytime using the 06:00 UTC scene.</p>
+
+  </div>
 
 </div>
 
-<h3 id="user-defined-composites">User-defined composites</h3>
+<div class="">
 
-<p>Additionally to the many built-in composites, you can define your own composites using the Compositer classes of SatPy.</p>
+  <h3 id="user-defined-composites">User-defined composites</h3>
 
-<p>Let’s create an infrared overview using the bands at 3.9μm, 10.8μm and 12.0μm:</p>
+</div>
+
+<div class="">
+
+  <p>Additionally to the many built-in composites, you can define your own composites using the Compositer classes of SatPy.</p>
+
+  <p>Let’s create an infrared overview using the bands at 3.9μm, 10.8μm and 12.0μm:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">compositor</span> <span class="o">=</span> <span class="n">satpy</span><span class="o">.</span><span class="n">composites</span><span class="o">.</span><span class="n">GenericCompositor</span><span class="p">(</span><span class="s">"Übersicht"</span><span class="p">)</span>
 <span class="n">composite</span> <span class="o">=</span> <span class="n">compositor</span><span class="p">([</span><span class="n">scn</span><span class="p">[</span><span class="mf">3.9</span><span class="p">],</span><span class="n">scn</span><span class="p">[</span><span class="mf">10.8</span><span class="p">],</span><span class="n">scn</span><span class="p">[</span><span class="mf">12.0</span><span class="p">]])</span>
 </code></pre></div></div>
 
-<p>That’s it.</p>
+<div class="">
 
-<p>However, a composite itself is just defined as a special dataset which may have several bands (like R, G and B bands). The data isn’t stretched, or clipped or gamma filtered until an image is generated. To get an image out of the above composite, you have to convert it to an image object and tweak it’s display properties:</p>
+  <p>That’s it.</p>
+
+  <p>However, a composite itself is just defined as a special dataset which may have several bands (like R, G and B bands). The data isn’t stretched, or clipped or gamma filtered until an image is generated. To get an image out of the above composite, you have to convert it to an image object and tweak it’s display properties:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">img</span> <span class="o">=</span> <span class="n">satpy</span><span class="o">.</span><span class="n">writers</span><span class="o">.</span><span class="n">to_image</span><span class="p">(</span><span class="n">composite</span><span class="p">)</span>
 <span class="n">img</span><span class="o">.</span><span class="n">invert</span><span class="p">([</span><span class="bp">True</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="bp">True</span><span class="p">])</span>
@@ -1303,22 +1451,30 @@ Attributes:
 
 <p class="output output_png"><img src="../images/units/S01E06_59_0.png" alt="png" /></p>
 
-<div class="alert task">
+<div class="">
 
-  <p><strong>Task:</strong></p>
+  <div class="alert task">
 
-  <ol>
-    <li>Familiarize yourselves with SatPy’s <a href="https://satpy.readthedocs.io/en/latest/composites.html#daynightcompositor">DayNightCompositor</a></li>
-    <li>Create a composite that shows microphysical information for both, day and night regions of the 06:00 UTC scene.</li>
-  </ol>
+    <p><strong>Task:</strong></p>
+
+    <ol>
+      <li>Familiarize yourselves with SatPy’s <a href="https://satpy.readthedocs.io/en/latest/composites.html#daynightcompositor">DayNightCompositor</a></li>
+      <li>Create a composite that shows microphysical information for both, day and night regions of the 06:00 UTC scene.</li>
+    </ol>
+
+  </div>
 
 </div>
 
-<h3 id="cropping">Cropping</h3>
+<div class="">
 
-<p>Often, you are only interested in a specific region of the fulldisk.</p>
+  <h3 id="cropping">Cropping</h3>
 
-<p>Let’s say we want to take a closer look at Greece. We can crop the fulldisk to a specific region using the <code class="highlighter-rouge">crop()</code> function of SatPy’s Scene class:</p>
+  <p>Often, you are only interested in a specific region of the fulldisk.</p>
+
+  <p>Let’s say we want to take a closer look at Greece. We can crop the fulldisk to a specific region using the <code class="highlighter-rouge">crop()</code> function of SatPy’s Scene class:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Crop to a region via lat/lon values (lon_min, lat_min, lon_max, lat_max)</span>
 <span class="n">scn_cropped</span> <span class="o">=</span> <span class="n">scn</span><span class="o">.</span><span class="n">crop</span><span class="p">(</span><span class="n">ll_bbox</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">45</span><span class="p">))</span>
@@ -1335,7 +1491,11 @@ Attributes:
 
 <p class="output output_png"><img src="../images/units/S01E06_64_0.png" alt="png" /></p>
 
-<p>The cropped scene keeps all original metadata. Only the bands, composites and coordinates/dimensions are cropped to the specified extents:</p>
+<div class="">
+
+  <p>The cropped scene keeps all original metadata. Only the bands, composites and coordinates/dimensions are cropped to the specified extents:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">scn_cropped</span><span class="p">[</span><span class="s">"natural_color"</span><span class="p">])</span>
 </code></pre></div></div>
@@ -1374,21 +1534,35 @@ Attributes:
 
 </code></pre></div></div>
 
-<h3 id="resampling">Resampling</h3>
+<div class="">
 
-<p>Cropping is nice and all, but due to the satellite viewing angle, the cropped scene can look very distorted, especially when we are working with the margin regions of the scene. To get a better looking view of the domain of interest, you can use the resampling utilities of SatPy (or pyresample).</p>
+  <h3 id="resampling">Resampling</h3>
 
-<p>To resample the data to a specific area and projection, you can specify one of the many predefined areas of SatPy. All predefined areas can be found in SatPy’s <code class="highlighter-rouge">satpy/etc/areas.yaml</code> file.</p>
+</div>
 
-<p>For example, let’s take libya:</p>
+<div class="">
+
+  <p>Cropping is nice and all, but due to the satellite viewing angle, the cropped scene can look very distorted, especially when we are working with the margin regions of the scene. To get a better looking view of the domain of interest, you can use the resampling utilities of SatPy (or pyresample).</p>
+
+  <p>To resample the data to a specific area and projection, you can specify one of the many predefined areas of SatPy. All predefined areas can be found in SatPy’s <code class="highlighter-rouge">satpy/etc/areas.yaml</code> file.</p>
+
+</div>
+
+<div class="">
+
+  <p>For example, let’s take libya:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">local_scn</span> <span class="o">=</span> <span class="n">scn</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s">"libya"</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>This resamples the scene and all loaded bands/composites to the extents of the “libya” area.
+<div class="">
+
+  <p>This resamples the scene and all loaded bands/composites to the extents of the “libya” area.
 If you look into the <code class="highlighter-rouge">areas.yaml</code> file, you see how it is defined:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>libya:
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>libya:
   description: libya area
   projection:
     proj: merc
@@ -1402,20 +1576,30 @@ If you look into the <code class="highlighter-rouge">areas.yaml</code> file, you
     lower_left_xy: [-1921632.0902750609, 1725320.2028891125]
     upper_right_xy: [1918367.9097249391, 4797320.202889113]
     units: m
-</code></pre></div></div>
+</code></pre></div>  </div>
 
-<p>Let’s plot the natural color composite again, to get an overview of where we are:</p>
+</div>
+
+<div class="">
+
+  <p>Let’s plot the natural color composite again, to get an overview of where we are:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">local_scn</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s">"natural_color"</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p class="output output_png"><img src="../images/units/S01E06_73_0.png" alt="png" /></p>
 
-<p>Nice, but let’s go back to Greece!</p>
+<div class="">
 
-<p>Unfortunately, there is no predefined area definition in the yaml-File for Greece.</p>
+  <p>Nice, but let’s go back to Greece!</p>
 
-<p>Luckily, we can also define our own area of interest! So, let’s resample the data using the <a href="https://proj4.org/operations/projections/merc.html">Mercator</a> projection:</p>
+  <p>Unfortunately, there is no predefined area definition in the yaml-File for Greece.</p>
+
+  <p>Luckily, we can also define our own area of interest! So, let’s resample the data using the <a href="https://proj4.org/operations/projections/merc.html">Mercator</a> projection:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pyresample.geometry</span> <span class="kn">import</span> <span class="n">AreaDefinition</span>
 
@@ -1441,25 +1625,33 @@ If you look into the <code class="highlighter-rouge">areas.yaml</code> file, you
 
 <p class="output output_png"><img src="../images/units/S01E06_75_0.png" alt="png" /></p>
 
-<p>For more information on resampling, visit the <a href="https://pyresample.readthedocs.io/en/stable/">pyresample</a> and  <a href="https://proj4.org/index.html">PROJ.4</a> documentations.</p>
+<div class="">
 
-<div class="alert task">
+  <p>For more information on resampling, visit the <a href="https://pyresample.readthedocs.io/en/stable/">pyresample</a> and  <a href="https://proj4.org/index.html">PROJ.4</a> documentations.</p>
 
-  <p><strong>Task:</strong></p>
+</div>
 
-  <ol>
-    <li>Crop the fulldisk to Central Europe (lat: -10 to 20, lon: 35 to 63) and plot a quicklook of the natural color composite.</li>
-    <li>
-      <p>Resample the fulldisk to Central Europe by defining your own area in Lambert Azimuthal Equal Area and plot a quicklook of the natural color composite. Use the following settings:</p>
+<div class="">
 
-      <ul>
-        <li>lat and lon of origin: 49/10</li>
-        <li>width and height of the resulting domain: 750px</li>
-        <li>projection x/y coordinates of lower left: -18E5</li>
-        <li>projection x/y coordinates of upper right: 18E5</li>
-      </ul>
-    </li>
-  </ol>
+  <div class="alert task">
+
+    <p><strong>Task:</strong></p>
+
+    <ol>
+      <li>Crop the fulldisk to Central Europe (lat: -10 to 20, lon: 35 to 63) and plot a quicklook of the natural color composite.</li>
+      <li>
+        <p>Resample the fulldisk to Central Europe by defining your own area in Lambert Azimuthal Equal Area and plot a quicklook of the natural color composite. Use the following settings:</p>
+
+        <ul>
+          <li>lat and lon of origin: 49/10</li>
+          <li>width and height of the resulting domain: 750px</li>
+          <li>projection x/y coordinates of lower left: -18E5</li>
+          <li>projection x/y coordinates of upper right: 18E5</li>
+        </ul>
+      </li>
+    </ol>
+
+  </div>
 
 </div>
 

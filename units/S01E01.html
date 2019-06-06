@@ -29,9 +29,9 @@
   "headline":
     "Python Basics I",
   "datePublished":
-    "2019-06-06T13:46:11+00:00",
+    "2019-06-06T13:58:33+00:00",
   "dateModified":
-    "2019-06-06T13:46:11+00:00",
+    "2019-06-06T13:58:33+00:00",
   "description":
     "",
   "author": {
@@ -899,15 +899,35 @@ initFunction(initQuery);
 
             <div class="c-textbook__content">
               
-<h1 id="python-basics-i">Python Basics I</h1>
+<div class="">
 
-<p><img src="images/S01E02/python_interpreter.png" alt="" /></p>
+  <h1 id="python-basics-i">Python Basics I</h1>
 
-<p>Image source: https://indianpythonista.wordpress.com/2018/01/04/how-python-runs/</p>
+</div>
 
-<h2 id="hello-world">Hello world!</h2>
+<div class="">
 
-<p>The obligatory “Hello world!” program. As you can see, it is very short in Python:</p>
+  <p><img src="images/S01E02/python_interpreter.png" alt="" /></p>
+
+</div>
+
+<div class="">
+
+  <p>Image source: https://indianpythonista.wordpress.com/2018/01/04/how-python-runs/</p>
+
+</div>
+
+<div class="">
+
+  <h2 id="hello-world">Hello world!</h2>
+
+</div>
+
+<div class="">
+
+  <p>The obligatory “Hello world!” program. As you can see, it is very short in Python:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">"Hello world!"</span><span class="p">)</span>
 </code></pre></div></div>
@@ -916,34 +936,50 @@ initFunction(initQuery);
 
 </code></pre></div></div>
 
-<p>The string <code class="highlighter-rouge">"Hello world!"</code> is passed to the method <code class="highlighter-rouge">print()</code> which prints the given argument to the output stream.
+<div class="">
+
+  <p>The string <code class="highlighter-rouge">"Hello world!"</code> is passed to the method <code class="highlighter-rouge">print()</code> which prints the given argument to the output stream.
 This is normally the console. In this case, however, the output stream is redirected to this browser window (below the cell).</p>
 
-<div class="alert task">
+</div>
 
-  <p><strong>Task</strong></p>
+<div class="">
 
-  <ol>
-    <li>Start the interactive python shell</li>
-    <li>Print your name to the console</li>
-  </ol>
+  <div class="alert task">
+
+    <p><strong>Task</strong></p>
+
+    <ol>
+      <li>Start the interactive python shell</li>
+      <li>Print your name to the console</li>
+    </ol>
+
+  </div>
 
 </div>
 
-<div class="alert solution">
+<div class="">
 
-  <p><strong>Solution</strong></p>
+  <div class="alert solution">
 
-  <ol>
-    <li>
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">"My Name"</span><span class="p">)</span>
-</code></pre></div>      </div>
-    </li>
-  </ol>
+    <p><strong>Solution</strong></p>
+
+    <ol>
+      <li>
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">"My Name"</span><span class="p">)</span>
+</code></pre></div>        </div>
+      </li>
+    </ol>
+
+  </div>
 
 </div>
 
-<h2 id="comments">Comments</h2>
+<div class="">
+
+  <h2 id="comments">Comments</h2>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># This is a comment and it is not interpreted by the compiler.</span>
 </code></pre></div></div>
@@ -955,11 +991,19 @@ This is normally the console. In this case, however, the output stream is redire
 
 </code></pre></div></div>
 
-<h2 id="variables--datatypes">Variables &amp; datatypes</h2>
+<div class="">
 
-<p>In the following snippet, the string <code class="highlighter-rouge">"Hello world!"</code> is assigned to the variable <code class="highlighter-rouge">x</code> (using <code class="highlighter-rouge">=</code>).
+  <h2 id="variables--datatypes">Variables &amp; datatypes</h2>
+
+</div>
+
+<div class="">
+
+  <p>In the following snippet, the string <code class="highlighter-rouge">"Hello world!"</code> is assigned to the variable <code class="highlighter-rouge">x</code> (using <code class="highlighter-rouge">=</code>).
 This means, that the string object <code class="highlighter-rouge">"Hello world!"</code> is stored in the PC’s working memory and that the variable <code class="highlighter-rouge">x</code> points to this string object.
 <code class="highlighter-rouge">x</code> is then printed.</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="s">"Hello world!"</span>
 <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -969,7 +1013,11 @@ This means, that the string object <code class="highlighter-rouge">"Hello world!
 
 </code></pre></div></div>
 
-<p>Variables can also point to numbers:</p>
+<div class="">
+
+  <p>Variables can also point to numbers:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mi">42</span>
 <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -979,7 +1027,11 @@ This means, that the string object <code class="highlighter-rouge">"Hello world!
 
 </code></pre></div></div>
 
-<p>In Python, there are basically 2 types of numbers: Integers (3,4,5,…) and floats (3.1415, 7.904532, …):</p>
+<div class="">
+
+  <p>In Python, there are basically 2 types of numbers: Integers (3,4,5,…) and floats (3.1415, 7.904532, …):</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mf">3.1415</span>
 <span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="c"># The function "type()" returns the datatype of the variable that was passed to it</span>
@@ -991,7 +1043,11 @@ This means, that the string object <code class="highlighter-rouge">"Hello world!
 
 </code></pre></div></div>
 
-<p>Floats can also be written in scientific notation:</p>
+<div class="">
+
+  <p>Floats can also be written in scientific notation:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mf">4.08E+10</span>
 <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -1001,11 +1057,19 @@ This means, that the string object <code class="highlighter-rouge">"Hello world!
 
 </code></pre></div></div>
 
-<p>Python automatically converts between these types, if necessary, so you don’t have to worry too much about it (for now).
+<div class="">
+
+  <p>Python automatically converts between these types, if necessary, so you don’t have to worry too much about it (for now).
 The differences between these datatypes will be explained in later sections.
 Important to know, is that integers generally take much less memory space than floats (which gets critical as soon as we work with big data (satellite data))</p>
 
-<p>Variable assignments can be done “simultaneously” on more than one variable :</p>
+</div>
+
+<div class="">
+
+  <p>Variable assignments can be done “simultaneously” on more than one variable :</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">4.78</span><span class="p">,</span> <span class="s">"Geographie"</span>
 <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>      <span class="c"># The function "print()" accepts multiple arguments and prints them out separated by a " " (blank space)</span>
@@ -1015,7 +1079,11 @@ Important to know, is that integers generally take much less memory space than f
 
 </code></pre></div></div>
 
-<p>Variables can also be assigned to each other. When one variable is assigned to another variable, that means that it points to the same space in memory.</p>
+<div class="">
+
+  <p>Variables can also be assigned to each other. When one variable is assigned to another variable, that means that it points to the same space in memory.</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mi">42</span> <span class="c"># x points to the object 42 in memory</span>
 <span class="n">y</span> <span class="o">=</span> <span class="mi">10</span> <span class="c"># y points to the object 10 in memory</span>
@@ -1028,7 +1096,11 @@ Important to know, is that integers generally take much less memory space than f
 
 </code></pre></div></div>
 
-<p>When one variable is changed, other variables are not affected:</p>
+<div class="">
+
+  <p>When one variable is changed, other variables are not affected:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mi">42</span> <span class="c"># x points to the object 42 in memory</span>
 <span class="n">y</span> <span class="o">=</span> <span class="mi">10</span> <span class="c"># y points to the object 10 in memory</span>
@@ -1042,7 +1114,11 @@ Important to know, is that integers generally take much less memory space than f
 
 </code></pre></div></div>
 
-<p>Another simple datatype is the boolean datatype. It can only store two values: <code class="highlighter-rouge">True</code> and <code class="highlighter-rouge">False</code>. It is used reasonably, when a variable can only take two states, e.g. to model the state of a light switch (on and off).</p>
+<div class="">
+
+  <p>Another simple datatype is the boolean datatype. It can only store two values: <code class="highlighter-rouge">True</code> and <code class="highlighter-rouge">False</code>. It is used reasonably, when a variable can only take two states, e.g. to model the state of a light switch (on and off).</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="bp">True</span>
 <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -1052,7 +1128,11 @@ Important to know, is that integers generally take much less memory space than f
 
 </code></pre></div></div>
 
-<p>Also important is the <code class="highlighter-rouge">None</code> value of the built-in NoneType:</p>
+<div class="">
+
+  <p>Also important is the <code class="highlighter-rouge">None</code> value of the built-in NoneType:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="bp">None</span>
 <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -1062,17 +1142,25 @@ Important to know, is that integers generally take much less memory space than f
 
 </code></pre></div></div>
 
-<p>This value is frequently used to represent the absence of a value, e.g. missing data points.</p>
+<div class="">
 
-<p><strong>Naming conventions:</strong> Variable names can consist of more than just one character. The following rules apply:</p>
+  <p>This value is frequently used to represent the absence of a value, e.g. missing data points.</p>
 
-<ul>
-  <li>They must begin with a letter (a - z, A - Z) or underscore (<code class="highlighter-rouge">_</code>)</li>
-  <li>Other characters can be letters, numbers or an underscore</li>
-  <li>They are case sensitive</li>
-  <li>You cannot use some reserved words as a variable name because Python uses them for other things (e.g. <code class="highlighter-rouge">def</code>, <code class="highlighter-rouge">str</code>, <code class="highlighter-rouge">print</code>, …)</li>
-  <li>Words are normally separated by an underscore</li>
-</ul>
+</div>
+
+<div class="">
+
+  <p><strong>Naming conventions:</strong> Variable names can consist of more than just one character. The following rules apply:</p>
+
+  <ul>
+    <li>They must begin with a letter (a - z, A - Z) or underscore (<code class="highlighter-rouge">_</code>)</li>
+    <li>Other characters can be letters, numbers or an underscore</li>
+    <li>They are case sensitive</li>
+    <li>You cannot use some reserved words as a variable name because Python uses them for other things (e.g. <code class="highlighter-rouge">def</code>, <code class="highlighter-rouge">str</code>, <code class="highlighter-rouge">print</code>, …)</li>
+    <li>Words are normally separated by an underscore</li>
+  </ul>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_name</span> <span class="o">=</span> <span class="s">"Marie"</span>
 <span class="n">last_name</span> <span class="o">=</span> <span class="s">"Curie"</span>
@@ -1084,50 +1172,70 @@ Important to know, is that integers generally take much less memory space than f
 
 </code></pre></div></div>
 
-<p>Now you know the basic datatypes of Python (string, int, float, bool). There are more complex datatypes which will be covered later.</p>
+<div class="">
 
-<div class="alert task">
-
-  <p><strong>Task</strong></p>
-
-  <ol>
-    <li>Create two variables called <code class="highlighter-rouge">Vorname</code> and  <code class="highlighter-rouge">Nachname</code> and assign your first/last name to them as strings.</li>
-    <li>Create another variable called <code class="highlighter-rouge">Lieblingszahl</code> and assign it your favourite number.</li>
-    <li>Print all three variables in one call.</li>
-  </ol>
+  <p>Now you know the basic datatypes of Python (string, int, float, bool). There are more complex datatypes which will be covered later.</p>
 
 </div>
 
-<div class="alert solution">
+<div class="">
 
-  <p><strong>Solution</strong></p>
+  <div class="alert task">
 
-  <ol>
-    <li>
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Vorname</span> <span class="o">=</span> <span class="s">"Peter"</span>
+    <p><strong>Task</strong></p>
+
+    <ol>
+      <li>Create two variables called <code class="highlighter-rouge">Vorname</code> and  <code class="highlighter-rouge">Nachname</code> and assign your first/last name to them as strings.</li>
+      <li>Create another variable called <code class="highlighter-rouge">Lieblingszahl</code> and assign it your favourite number.</li>
+      <li>Print all three variables in one call.</li>
+    </ol>
+
+  </div>
+
+</div>
+
+<div class="">
+
+  <div class="alert solution">
+
+    <p><strong>Solution</strong></p>
+
+    <ol>
+      <li>
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Vorname</span> <span class="o">=</span> <span class="s">"Peter"</span>
 <span class="n">Nachname</span> <span class="o">=</span> <span class="s">"Zwegat"</span>
-</code></pre></div>      </div>
-    </li>
-    <li>
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Lieblingszahl</span> <span class="o">=</span> <span class="mi">42</span>
-</code></pre></div>      </div>
-    </li>
-    <li>
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">Vorname</span><span class="p">,</span> <span class="n">Nachname</span><span class="p">,</span> <span class="n">Lieblingszahl</span><span class="p">)</span>
-</code></pre></div>      </div>
-    </li>
-  </ol>
+</code></pre></div>        </div>
+      </li>
+      <li>
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Lieblingszahl</span> <span class="o">=</span> <span class="mi">42</span>
+</code></pre></div>        </div>
+      </li>
+      <li>
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">Vorname</span><span class="p">,</span> <span class="n">Nachname</span><span class="p">,</span> <span class="n">Lieblingszahl</span><span class="p">)</span>
+</code></pre></div>        </div>
+      </li>
+    </ol>
+
+  </div>
 
 </div>
 
-<h1 id="operators">Operators</h1>
-<h2 id="arithmetic-operators">Arithmetic operators</h2>
+<div class="">
 
-<p>Most statements (logical lines) that you write will contain expressions. A simple example of an expression is <code class="highlighter-rouge">5 + 9</code>. An expression can be broken down into operators and operands.</p>
+  <h1 id="operators">Operators</h1>
+  <h2 id="arithmetic-operators">Arithmetic operators</h2>
 
-<p>In Python, you can use four basic arithmetic operators: <code class="highlighter-rouge">+</code>, <code class="highlighter-rouge">-</code>, <code class="highlighter-rouge">*</code> and <code class="highlighter-rouge">/</code>. There are many more operators, which will be covered later.</p>
+</div>
 
-<p>Operators perform a specific computation. They require data to operate on. Such data is called operands, in this case, <code class="highlighter-rouge">5</code> and <code class="highlighter-rouge">9</code> are the operands.</p>
+<div class="">
+
+  <p>Most statements (logical lines) that you write will contain expressions. A simple example of an expression is <code class="highlighter-rouge">5 + 9</code>. An expression can be broken down into operators and operands.</p>
+
+  <p>In Python, you can use four basic arithmetic operators: <code class="highlighter-rouge">+</code>, <code class="highlighter-rouge">-</code>, <code class="highlighter-rouge">*</code> and <code class="highlighter-rouge">/</code>. There are many more operators, which will be covered later.</p>
+
+  <p>Operators perform a specific computation. They require data to operate on. Such data is called operands, in this case, <code class="highlighter-rouge">5</code> and <code class="highlighter-rouge">9</code> are the operands.</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">5</span> <span class="o">+</span> <span class="mi">9</span> <span class="c"># This is an expression. It's return value is the result of the expression (=14 in this case)</span>
 </code></pre></div></div>
@@ -1135,7 +1243,11 @@ Important to know, is that integers generally take much less memory space than f
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>14
 </code></pre></div></div>
 
-<p>You can also use <code class="highlighter-rouge">+</code> between strings, which just appends the first to the second:</p>
+<div class="">
+
+  <p>You can also use <code class="highlighter-rouge">+</code> between strings, which just appends the first to the second:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="s">"Py"</span>
 <span class="n">b</span> <span class="o">=</span> <span class="s">"thon"</span>
@@ -1146,7 +1258,11 @@ Important to know, is that integers generally take much less memory space than f
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Python'
 </code></pre></div></div>
 
-<p>However, if you mix strings and numbers using the <code class="highlighter-rouge">+</code> operator, be careful:</p>
+<div class="">
+
+  <p>However, if you mix strings and numbers using the <code class="highlighter-rouge">+</code> operator, be careful:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">+</span><span class="mi">3</span>
 </code></pre></div></div>
@@ -1165,7 +1281,11 @@ Important to know, is that integers generally take much less memory space than f
 
 </code></pre></div></div>
 
-<p>If you want to concatenate strings and numbers, you have to convert the numbers to strings using the <code class="highlighter-rouge">str()</code> method:</p>
+<div class="">
+
+  <p>If you want to concatenate strings and numbers, you have to convert the numbers to strings using the <code class="highlighter-rouge">str()</code> method:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </code></pre></div></div>
@@ -1173,7 +1293,11 @@ Important to know, is that integers generally take much less memory space than f
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Python3'
 </code></pre></div></div>
 
-<p>Normally expressions are assigned to variables:</p>
+<div class="">
+
+  <p>Normally expressions are assigned to variables:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">meine_lieblingszahl</span> <span class="o">=</span> <span class="mi">9</span> <span class="o">-</span> <span class="mi">5</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">-</span> <span class="mi">10</span> <span class="o">*</span> <span class="mi">4</span> <span class="o">/</span> <span class="mi">8</span> <span class="o">+</span> <span class="mi">39</span>
 <span class="n">meine_lieblingszahl</span>
@@ -1182,7 +1306,11 @@ Important to know, is that integers generally take much less memory space than f
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>42.0
 </code></pre></div></div>
 
-<p>You can also use brackets:</p>
+<div class="">
+
+  <p>You can also use brackets:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="mi">4</span> <span class="o">+</span> <span class="mi">5</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span>
 <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -1196,7 +1324,11 @@ Important to know, is that integers generally take much less memory space than f
 
 </code></pre></div></div>
 
-<p>Of course, you can also use variables within expressions:</p>
+<div class="">
+
+  <p>Of course, you can also use variables within expressions:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mi">4</span>
 <span class="n">b</span> <span class="o">=</span> <span class="mi">3</span>
@@ -1208,7 +1340,11 @@ Important to know, is that integers generally take much less memory space than f
 
 </code></pre></div></div>
 
-<p>And you can use one variable on the left- and righthand side of an expression. The right side gets evaluated (as always) and the result is written to the variable on the left side (as always):</p>
+<div class="">
+
+  <p>And you can use one variable on the left- and righthand side of an expression. The right side gets evaluated (as always) and the result is written to the variable on the left side (as always):</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">5</span>
@@ -1219,51 +1355,67 @@ Important to know, is that integers generally take much less memory space than f
 
 </code></pre></div></div>
 
-<div class="alert task">
+<div class="">
 
-  <p><strong>Task</strong></p>
+  <div class="alert task">
 
-  <ol>
-    <li>Print the variables from above (Vorname, Nachname, Lieblingszahl) in the following manner:</li>
-  </ol>
+    <p><strong>Task</strong></p>
 
-  <blockquote>
-    <p>Die Lieblingszahl von Benjamin Rösner ist 42.</p>
-  </blockquote>
+    <ol>
+      <li>Print the variables from above (Vorname, Nachname, Lieblingszahl) in the following manner:</li>
+    </ol>
 
-  <ol>
-    <li>Let Python calculate the sum of 44 and 124 and divide the result by 76 (all in one line). What is your result?</li>
-    <li>Let Python calculate the product of 0.3 and 3. Is the result what you expected?</li>
-  </ol>
+    <blockquote>
+      <p>Die Lieblingszahl von Benjamin Rösner ist 42.</p>
+    </blockquote>
 
-</div>
+    <ol>
+      <li>Let Python calculate the sum of 44 and 124 and divide the result by 76 (all in one line). What is your result?</li>
+      <li>Let Python calculate the product of 0.3 and 3. Is the result what you expected?</li>
+    </ol>
 
-<div class="alert solution">
-
-  <p><strong>Solution</strong></p>
-
-  <ol>
-    <li>
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">"Die Lieblingszahl von "</span> <span class="o">+</span> <span class="n">Vorname</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">Nachname</span> <span class="o">+</span> <span class="s">" ist "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">Lieblingszahl</span><span class="p">)</span> <span class="o">+</span> <span class="s">"."</span>
-</code></pre></div>      </div>
-    </li>
-    <li>
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="mi">44</span><span class="o">+</span><span class="mi">124</span><span class="p">)</span><span class="o">/</span><span class="mi">76</span>
-</code></pre></div>      </div>
-    </li>
-    <li>
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mf">0.3</span><span class="o">*</span><span class="mi">3</span>
-</code></pre></div>      </div>
-    </li>
-  </ol>
-
-  <p>The result is not 0.9 because of the floating point number conversion problem between decimal and binary system.</p>
+  </div>
 
 </div>
 
-<h2 id="comparison-operators">Comparison operators</h2>
+<div class="">
 
-<p>Another operator is the double <code class="highlighter-rouge">==</code>. It is used to compare two variables and it returns <code class="highlighter-rouge">True</code>, if both variables have the same value, otherwise <code class="highlighter-rouge">False</code>:</p>
+  <div class="alert solution">
+
+    <p><strong>Solution</strong></p>
+
+    <ol>
+      <li>
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">"Die Lieblingszahl von "</span> <span class="o">+</span> <span class="n">Vorname</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">Nachname</span> <span class="o">+</span> <span class="s">" ist "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">Lieblingszahl</span><span class="p">)</span> <span class="o">+</span> <span class="s">"."</span>
+</code></pre></div>        </div>
+      </li>
+      <li>
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="mi">44</span><span class="o">+</span><span class="mi">124</span><span class="p">)</span><span class="o">/</span><span class="mi">76</span>
+</code></pre></div>        </div>
+      </li>
+      <li>
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mf">0.3</span><span class="o">*</span><span class="mi">3</span>
+</code></pre></div>        </div>
+      </li>
+    </ol>
+
+    <p>The result is not 0.9 because of the floating point number conversion problem between decimal and binary system.</p>
+
+  </div>
+
+</div>
+
+<div class="">
+
+  <h2 id="comparison-operators">Comparison operators</h2>
+
+</div>
+
+<div class="">
+
+  <p>Another operator is the double <code class="highlighter-rouge">==</code>. It is used to compare two variables and it returns <code class="highlighter-rouge">True</code>, if both variables have the same value, otherwise <code class="highlighter-rouge">False</code>:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mi">4</span>
 <span class="n">y</span> <span class="o">=</span> <span class="mi">3</span>
@@ -1274,7 +1426,11 @@ Important to know, is that integers generally take much less memory space than f
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>False
 </code></pre></div></div>
 
-<p>You can also compare two variables/expressions using the <code class="highlighter-rouge">&gt;</code> or <code class="highlighter-rouge">&lt;</code> operators (and many more).</p>
+<div class="">
+
+  <p>You can also compare two variables/expressions using the <code class="highlighter-rouge">&gt;</code> or <code class="highlighter-rouge">&lt;</code> operators (and many more).</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">y</span> <span class="o">=</span> <span class="mi">5</span>
@@ -1285,15 +1441,23 @@ Important to know, is that integers generally take much less memory space than f
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
 </code></pre></div></div>
 
-<h2 id="logical-operators">Logical operators</h2>
+<div class="">
 
-<p>There are also logical operators, like <code class="highlighter-rouge">and</code>, <code class="highlighter-rouge">or</code> and <code class="highlighter-rouge">not</code>. (Again, there are some more operators but we will not cover all of them)</p>
+  <h2 id="logical-operators">Logical operators</h2>
 
-<ul>
-  <li><code class="highlighter-rouge">and</code> returns <code class="highlighter-rouge">True</code>, if the left and right operands both result in <code class="highlighter-rouge">True</code>, otherwise <code class="highlighter-rouge">False</code></li>
-  <li><code class="highlighter-rouge">or</code> returns <code class="highlighter-rouge">True</code>, if either the left or the right or both operands result in <code class="highlighter-rouge">True</code>, otherwise <code class="highlighter-rouge">False</code></li>
-  <li><code class="highlighter-rouge">not</code> returns <code class="highlighter-rouge">True</code>, if the right operand results in <code class="highlighter-rouge">Flase</code>, otherwise <code class="highlighter-rouge">True</code></li>
-</ul>
+</div>
+
+<div class="">
+
+  <p>There are also logical operators, like <code class="highlighter-rouge">and</code>, <code class="highlighter-rouge">or</code> and <code class="highlighter-rouge">not</code>. (Again, there are some more operators but we will not cover all of them)</p>
+
+  <ul>
+    <li><code class="highlighter-rouge">and</code> returns <code class="highlighter-rouge">True</code>, if the left and right operands both result in <code class="highlighter-rouge">True</code>, otherwise <code class="highlighter-rouge">False</code></li>
+    <li><code class="highlighter-rouge">or</code> returns <code class="highlighter-rouge">True</code>, if either the left or the right or both operands result in <code class="highlighter-rouge">True</code>, otherwise <code class="highlighter-rouge">False</code></li>
+    <li><code class="highlighter-rouge">not</code> returns <code class="highlighter-rouge">True</code>, if the right operand results in <code class="highlighter-rouge">Flase</code>, otherwise <code class="highlighter-rouge">True</code></li>
+  </ul>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sun_is_shining</span> <span class="o">=</span> <span class="bp">True</span>
 <span class="n">my_friends_are_here</span> <span class="o">=</span> <span class="bp">True</span>
@@ -1311,54 +1475,74 @@ False
 
 </code></pre></div></div>
 
-<p>A good overview over all standard operators in Python is given <a href="https://www.w3schools.com/python/python_operators.asp">here</a>.</p>
+<div class="">
 
-<div class="alert task">
+  <p>A good overview over all standard operators in Python is given <a href="https://www.w3schools.com/python/python_operators.asp">here</a>.</p>
 
-  <p><strong>Task</strong></p>
+</div>
 
-  <ol>
-    <li>What is the result of the following expressions? (Try to get the correct results before checking with Python)
-      <ul>
-        <li><code class="highlighter-rouge">Python 
+<div class="">
+
+  <div class="alert task">
+
+    <p><strong>Task</strong></p>
+
+    <ol>
+      <li>What is the result of the following expressions? (Try to get the correct results before checking with Python)
+        <ul>
+          <li><code class="highlighter-rouge">Python 
  False and False</code></li>
-        <li><code class="highlighter-rouge">Python 
+          <li><code class="highlighter-rouge">Python 
  True and False</code></li>
-        <li><code class="highlighter-rouge">Python 
+          <li><code class="highlighter-rouge">Python 
  True or False</code></li>
-        <li><code class="highlighter-rouge">Python 
+          <li><code class="highlighter-rouge">Python 
  not True</code></li>
-      </ul>
-    </li>
-    <li>Why does the following code block return <code class="highlighter-rouge">False</code>?
+        </ul>
+      </li>
+      <li>Why does the following code block return <code class="highlighter-rouge">False</code>?
 <code class="highlighter-rouge">Python
 a = 1.8
 b = 0.6 + 0.6 + 0.6
 a == b</code></li>
-  </ol>
+    </ol>
+
+  </div>
 
 </div>
 
-<div class="alert solution">
+<div class="">
 
-  <p><strong>Solution</strong></p>
+  <div class="alert solution">
 
-  <ol>
-    <li>
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="bp">False</span>
+    <p><strong>Solution</strong></p>
+
+    <ol>
+      <li>
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="bp">False</span>
 <span class="bp">False</span>
 <span class="bp">True</span>
 <span class="bp">False</span>
-</code></pre></div>      </div>
-    </li>
-    <li>The code block returns false because <code class="highlighter-rouge">b</code> doesn’t evaluate to <code class="highlighter-rouge">1.8</code> due to the floating point number conversion problem between decimal and binary system.</li>
-  </ol>
+</code></pre></div>        </div>
+      </li>
+      <li>The code block returns false because <code class="highlighter-rouge">b</code> doesn’t evaluate to <code class="highlighter-rouge">1.8</code> due to the floating point number conversion problem between decimal and binary system.</li>
+    </ol>
+
+  </div>
 
 </div>
 
-<h2 id="formatted-printing">Formatted printing</h2>
+<div class="">
 
-<p>Often, you want to print stuff to the console in a specific format. For example, you are not interested in the 10th decimal of a floating point number when you are calculating with euros and cents. For that, you can use formatted printing:</p>
+  <h2 id="formatted-printing">Formatted printing</h2>
+
+</div>
+
+<div class="">
+
+  <p>Often, you want to print stuff to the console in a specific format. For example, you are not interested in the 10th decimal of a floating point number when you are calculating with euros and cents. For that, you can use formatted printing:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mf">321.14159265359</span>
 <span class="n">y</span> <span class="o">=</span> <span class="mf">0.489</span>
@@ -1382,9 +1566,13 @@ a == b</code></li>
 
 </code></pre></div></div>
 
-<p>You can also pass multiple arguments to the format-function.
+<div class="">
+
+  <p>You can also pass multiple arguments to the format-function.
 The digit before the <code class="highlighter-rouge">:</code> references the index of the argument.
 Only text within <code class="highlighter-rouge">{</code> and <code class="highlighter-rouge">}</code> is interpreted:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">res</span> <span class="o">=</span> <span class="mf">3000.00</span>
 <span class="n">unit</span> <span class="o">=</span> <span class="s">"meters"</span>
@@ -1398,11 +1586,23 @@ Only text within <code class="highlighter-rouge">{</code> and <code class="highl
 
 </code></pre></div></div>
 
-<p>For more information about formatting and its possibilities, have a look at <a href="https://pyformat.info/">https://pyformat.info/</a></p>
+<div class="">
 
-<h2 id="input">Input</h2>
+  <p>For more information about formatting and its possibilities, have a look at <a href="https://pyformat.info/">https://pyformat.info/</a></p>
 
-<p>If the input(prompt)-function is called during a program run, the program sequence is stopped until the user makes an entry via the keyboard and closes it with the Return key. The string of the parameter “prompt” is displayed if it is passed. In this way you can show the user what he is expected to enter.</p>
+</div>
+
+<div class="">
+
+  <h2 id="input">Input</h2>
+
+</div>
+
+<div class="">
+
+  <p>If the input(prompt)-function is called during a program run, the program sequence is stopped until the user makes an entry via the keyboard and closes it with the Return key. The string of the parameter “prompt” is displayed if it is passed. In this way you can show the user what he is expected to enter.</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"What is your name? "</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Hello "</span> <span class="o">+</span> <span class="n">x</span> <span class="o">+</span> <span class="s">"!"</span><span class="p">)</span>
@@ -1413,47 +1613,59 @@ Hello Benjamin!
 
 </code></pre></div></div>
 
-<div class="alert task">
+<div class="">
 
-  <p><strong>Task</strong></p>
+  <div class="alert task">
 
-  <ol>
-    <li>Write a script that asks the user to input her/his age.</li>
-    <li>Ask the user what year it is.</li>
-    <li>Tell the user how old she/he was in the year 2000.</li>
-  </ol>
+    <p><strong>Task</strong></p>
+
+    <ol>
+      <li>Write a script that asks the user to input her/his age.</li>
+      <li>Ask the user what year it is.</li>
+      <li>Tell the user how old she/he was in the year 2000.</li>
+    </ol>
+
+  </div>
 
 </div>
 
-<div class="alert solution">
+<div class="">
 
-  <p><strong>Solution</strong></p>
+  <div class="alert solution">
 
-  <ol>
-    <li>
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">age</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"Please enter your age: "</span><span class="p">))</span>
-</code></pre></div>      </div>
-    </li>
-    <li>
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">year</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"What year is it? "</span><span class="p">))</span>
-</code></pre></div>      </div>
-    </li>
-    <li>
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">age_in_2000</span> <span class="o">=</span> <span class="n">age</span><span class="o">-</span><span class="p">(</span><span class="n">year</span><span class="o">-</span><span class="mi">2000</span><span class="p">)</span>
+    <p><strong>Solution</strong></p>
+
+    <ol>
+      <li>
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">age</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"Please enter your age: "</span><span class="p">))</span>
+</code></pre></div>        </div>
+      </li>
+      <li>
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">year</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"What year is it? "</span><span class="p">))</span>
+</code></pre></div>        </div>
+      </li>
+      <li>
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">age_in_2000</span> <span class="o">=</span> <span class="n">age</span><span class="o">-</span><span class="p">(</span><span class="n">year</span><span class="o">-</span><span class="mi">2000</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"In the year 2000 you were {0:01d} years old."</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">age_in_2000</span><span class="p">))</span>
-</code></pre></div>      </div>
-    </li>
-  </ol>
+</code></pre></div>        </div>
+      </li>
+    </ol>
+
+  </div>
 
 </div>
 
-<div class="alert task">
+<div class="">
 
-  <h2 id="exercise-1">Exercise 1</h2>
+  <div class="alert task">
 
-  <ul>
-    <li>Complete the first assignment and push your results until tuesday 14:00 next week: https://classroom.github.com/a/FtbnHqzA</li>
-  </ul>
+    <h2 id="exercise-1">Exercise 1</h2>
+
+    <ul>
+      <li>Complete the first assignment and push your results until tuesday 14:00 next week: https://classroom.github.com/a/FtbnHqzA</li>
+    </ul>
+
+  </div>
 
 </div>
 

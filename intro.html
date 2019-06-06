@@ -29,9 +29,9 @@
   "headline":
     "Introduction",
   "datePublished":
-    "2019-06-06T13:46:11+00:00",
+    "2019-06-06T13:58:33+00:00",
   "dateModified":
-    "2019-06-06T13:46:11+00:00",
+    "2019-06-06T13:58:33+00:00",
   "description":
     "",
   "author": {
@@ -899,91 +899,119 @@ initFunction(initQuery);
 
             <div class="c-textbook__content">
               
-<p><img src="images/logo/logo.png" alt="" /></p>
+<div class="">
 
-<h1 id="welcome-to-the-course">Welcome to the course!</h1>
+  <p><img src="images/logo/logo.png" alt="" /></p>
 
-<h2 id="lecturers">Lecturers</h2>
+  <h1 id="welcome-to-the-course">Welcome to the course!</h1>
 
-<ul>
-  <li>Benjamin Roesner: benjamin.roesner@geo.uni-marburg.de</li>
-  <li>Sebastian Egli:   sebastian.egli@geo.uni-marburg.de</li>
-</ul>
+</div>
 
-<h2 id="organizational-matters">Organizational matters</h2>
+<div class="">
 
-<ul>
-  <li><strong>3 ECTS</strong> credits are awarded for successfully completing this course.</li>
-  <li>Course materials are made available here: <a href="https://python-kurs.github.io/sommersemester_2019/intro.html">https://python-kurs.github.io/sommersemester_2019/intro.html</a></li>
-  <li>Weekly exercises are distributed via <strong>github classroom</strong> and must also be submitted there.</li>
-  <li>To pass the course, at least <strong>50%</strong> of the weekly exercises must have been correctly completed.</li>
-</ul>
+  <h2 id="lecturers">Lecturers</h2>
 
-<h2 id="version-control">Version control</h2>
+  <ul>
+    <li>Benjamin Roesner: benjamin.roesner@geo.uni-marburg.de</li>
+    <li>Sebastian Egli:   sebastian.egli@geo.uni-marburg.de</li>
+  </ul>
 
-<ul>
-  <li><a href="https://git-scm.com/">git</a>
-    <ul>
-      <li>open git BASH and enter the following commands:</li>
-    </ul>
+</div>
 
-    <pre><code class="language-SHELL">  git config --global user.name 'Firstname Lastname'
+<div class="">
+
+  <h2 id="organizational-matters">Organizational matters</h2>
+
+  <ul>
+    <li><strong>3 ECTS</strong> credits are awarded for successfully completing this course.</li>
+    <li>Course materials are made available here: <a href="https://python-kurs.github.io/sommersemester_2019/intro.html">https://python-kurs.github.io/sommersemester_2019/intro.html</a></li>
+    <li>Weekly exercises are distributed via <strong>github classroom</strong> and must also be submitted there.</li>
+    <li>To pass the course, at least <strong>50%</strong> of the weekly exercises must have been correctly completed.</li>
+  </ul>
+
+</div>
+
+<div class="">
+
+  <h2 id="version-control">Version control</h2>
+
+  <ul>
+    <li><a href="https://git-scm.com/">git</a>
+      <ul>
+        <li>open git BASH and enter the following commands:</li>
+      </ul>
+
+      <pre><code class="language-SHELL">  git config --global user.name 'Firstname Lastname'
   git config --global user.email 'your@email.com'
   git config --global --list
 </code></pre>
-  </li>
-</ul>
+    </li>
+  </ul>
 
-<h3 id="git-workflow-simplified">git workflow (simplified):</h3>
-<p><img src="images/intro/git_workflow_simple.png" alt="" />
+</div>
+
+<div class="">
+
+  <h3 id="git-workflow-simplified">git workflow (simplified):</h3>
+  <p><img src="images/intro/git_workflow_simple.png" alt="" />
 Source: https://dev.to/mollynem/git-github–workflow-fundamentals-5496</p>
 
-<h3 id="github-classroom">GitHub Classroom</h3>
+</div>
 
-<ul>
-  <li>Create an account at github.com: <a href="https://github.com/">https://github.com/</a>
-    <ul>
-      <li>Plan: Free</li>
-      <li>Verify email address</li>
-      <li>Accept first assignment: <a href="https://classroom.github.com/a/d3nKHTFf">https://classroom.github.com/a/d3nKHTFf</a></li>
-      <li>Clone (download) the assigned repository to your local machine:</li>
-    </ul>
+<div class="">
 
-    <pre><code class="language-SHELL">  git clone https://github.com/python-kurs/exercise-0-[yourname].git
+  <h3 id="github-classroom">GitHub Classroom</h3>
+
+  <ul>
+    <li>Create an account at github.com: <a href="https://github.com/">https://github.com/</a>
+      <ul>
+        <li>Plan: Free</li>
+        <li>Verify email address</li>
+        <li>Accept first assignment: <a href="https://classroom.github.com/a/d3nKHTFf">https://classroom.github.com/a/d3nKHTFf</a></li>
+        <li>Clone (download) the assigned repository to your local machine:</li>
+      </ul>
+
+      <pre><code class="language-SHELL">  git clone https://github.com/python-kurs/exercise-0-[yourname].git
 </code></pre>
-    <ul>
-      <li>Complete the given task and push your results back to github</li>
-    </ul>
+      <ul>
+        <li>Complete the given task and push your results back to github</li>
+      </ul>
 
-    <pre><code class="language-SHELL">  git add --all
+      <pre><code class="language-SHELL">  git add --all
   git commit -m "Beliebige Commit-Message"
   git push
 </code></pre>
-  </li>
-</ul>
+    </li>
+  </ul>
 
-<h2 id="software-requirements">Software requirements</h2>
+</div>
 
-<ul>
-  <li><a href="https://docs.conda.io/en/latest/miniconda.html">miniconda</a>
-    <ul>
-      <li>create a new environment based on this yaml-file: <a href="https://github.com/python-kurs/sommersemester_2019/blob/master/environment.yaml">https://github.com/python-kurs/sommersemester_2019/blob/master/environment.yaml</a></li>
-    </ul>
+<div class="">
 
-    <pre><code class="language-SHELL">  conda env create -f environment.yaml
+  <h2 id="software-requirements">Software requirements</h2>
+
+  <ul>
+    <li><a href="https://docs.conda.io/en/latest/miniconda.html">miniconda</a>
+      <ul>
+        <li>create a new environment based on this yaml-file: <a href="https://github.com/python-kurs/sommersemester_2019/blob/master/environment.yaml">https://github.com/python-kurs/sommersemester_2019/blob/master/environment.yaml</a></li>
+      </ul>
+
+      <pre><code class="language-SHELL">  conda env create -f environment.yaml
 </code></pre>
-    <p>This installs all packages in an environment called “python-kurs”, which we will be using
+      <p>This installs all packages in an environment called “python-kurs”, which we will be using
   throughout this course.</p>
 
-    <ul>
-      <li>The environment can be activated via:
-        <pre><code class="language-SHELL">  conda activate python_kurs
+      <ul>
+        <li>The environment can be activated via:
+          <pre><code class="language-SHELL">  conda activate python_kurs
 </code></pre>
-      </li>
-    </ul>
-  </li>
-  <li>Install a an editor of your choice (for example <a href="https://www.spyder-ide.org/">Spyder</a>), if you not already have one.</li>
-</ul>
+        </li>
+      </ul>
+    </li>
+    <li>Install a an editor of your choice (for example <a href="https://www.spyder-ide.org/">Spyder</a>), if you not already have one.</li>
+  </ul>
+
+</div>
 
 
               <nav class="c-page__nav">

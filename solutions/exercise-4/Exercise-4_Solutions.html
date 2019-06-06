@@ -29,9 +29,9 @@
   "headline":
     "Exercise IV",
   "datePublished":
-    "2019-06-06T13:46:11+00:00",
+    "2019-06-06T13:58:33+00:00",
   "dateModified":
-    "2019-06-06T13:46:11+00:00",
+    "2019-06-06T13:58:33+00:00",
   "description":
     "",
   "author": {
@@ -882,34 +882,58 @@ initFunction(initQuery);
 
             <div class="c-textbook__content">
               
-<h1 id="exercise-4---solutions">Exercise 4 - Solutions</h1>
+<div class="">
 
-<p>Import all necessary libraries:</p>
+  <h1 id="exercise-4---solutions">Exercise 4 - Solutions</h1>
+
+</div>
+
+<div class="">
+
+  <p>Import all necessary libraries:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <span class="kn">import</span> <span class="nn">matplotlib.dates</span> <span class="k">as</span> <span class="n">mdates</span>
 </code></pre></div></div>
 
-<p>Import the climate data files using pandas:</p>
+<div class="">
+
+  <p>Import the climate data files using pandas:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">garmisch</span>  <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"data/produkt_klima_tag_20171010_20190412_01550.txt"</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s">";"</span><span class="p">,</span><span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s">'MESS_DATUM'</span><span class="p">],</span><span class="n">index_col</span><span class="o">=</span><span class="s">"MESS_DATUM"</span><span class="p">)</span>
 <span class="n">zugspitze</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"data/produkt_klima_tag_20171010_20190412_05792.txt"</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s">";"</span><span class="p">,</span><span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s">'MESS_DATUM'</span><span class="p">],</span><span class="n">index_col</span><span class="o">=</span><span class="s">"MESS_DATUM"</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>Clip the data to the year 2018:</p>
+<div class="">
+
+  <p>Clip the data to the year 2018:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">garmisch</span>  <span class="o">=</span> <span class="n">garmisch</span><span class="p">[</span><span class="s">"2018"</span><span class="p">]</span>
 <span class="n">zugspitze</span> <span class="o">=</span> <span class="n">zugspitze</span><span class="p">[</span><span class="s">"2018"</span><span class="p">]</span>
 </code></pre></div></div>
 
-<p>Resample temperature values to monthly averages:</p>
+<div class="">
+
+  <p>Resample temperature values to monthly averages:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">garmisch_agg</span>  <span class="o">=</span> <span class="n">garmisch</span><span class="p">[[</span><span class="s">" TMK"</span><span class="p">,</span> <span class="s">" RSK"</span><span class="p">]]</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s">'1m'</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s">" TMK"</span><span class="p">:</span> <span class="s">"mean"</span><span class="p">,</span> <span class="s">" RSK"</span><span class="p">:</span> <span class="s">"sum"</span><span class="p">})</span>
 <span class="n">zugspitze_agg</span> <span class="o">=</span> <span class="n">zugspitze</span><span class="p">[[</span><span class="s">" TMK"</span><span class="p">,</span> <span class="s">" RSK"</span><span class="p">]]</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s">'1m'</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s">" TMK"</span><span class="p">:</span> <span class="s">"mean"</span><span class="p">,</span> <span class="s">" RSK"</span><span class="p">:</span> <span class="s">"sum"</span><span class="p">})</span>
 </code></pre></div></div>
 
-<p>Create the plotting function:</p>
+<div class="">
+
+  <p>Create the plotting function:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">create_climate_diagram</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">temp_col</span><span class="p">,</span> <span class="n">prec_col</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">temp_min</span><span class="o">=-</span><span class="mi">15</span><span class="p">,</span> <span class="n">temp_max</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">prec_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">prec_max</span><span class="o">=</span><span class="mi">370</span><span class="p">):</span>
     <span class="s">"""

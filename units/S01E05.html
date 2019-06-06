@@ -29,9 +29,9 @@
   "headline":
     "Data science II",
   "datePublished":
-    "2019-06-06T13:46:11+00:00",
+    "2019-06-06T13:58:33+00:00",
   "dateModified":
-    "2019-06-06T13:46:11+00:00",
+    "2019-06-06T13:58:33+00:00",
   "description":
     "",
   "author": {
@@ -918,31 +918,43 @@ initFunction(initQuery);
 
             <div class="c-textbook__content">
               
-<h1 id="data-science-ii">Data science II</h1>
+<div class="">
 
-<h1 id="numpy"><a href="https://www.numpy.org/">Numpy</a>…</h1>
+  <h1 id="data-science-ii">Data science II</h1>
 
-<ul>
-  <li>lets us create N-dimensional arrays</li>
-  <li>lets us efficiantly work with those arrays</li>
-  <li>integrates with or is the basis for many other usefull packages like scipy, pandas, xarray, etc.</li>
-</ul>
-
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/NumPy_logo.svg" width="400px" /></p>
-
-<div style="width:400px">
-  <p><img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/NumPy_logo.svg" /></p>
 </div>
 
-<h2 id="what-are-arrays">What are arrays?</h2>
+<div class="">
 
-<ul>
-  <li>like lists</li>
-  <li>can have more dimensions that 1 (kind of like a list of lists when thinking about 2 dimensions)</li>
-  <li>are easier to work with than list of lists</li>
-</ul>
+  <h1 id="numpy"><a href="https://www.numpy.org/">Numpy</a>…</h1>
 
-<h3 id="create-arrays">Create arrays</h3>
+  <p><img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/NumPy_logo.svg" width="400px" /></p>
+
+  <ul>
+    <li>lets us create N-dimensional arrays</li>
+    <li>lets us efficiantly work with those arrays</li>
+    <li>integrates with or is the basis for many other usefull packages like scipy, pandas, xarray, etc.</li>
+  </ul>
+
+</div>
+
+<div class="">
+
+  <h2 id="what-are-arrays">What are arrays?</h2>
+
+  <ul>
+    <li>like lists</li>
+    <li>can have more dimensions that 1 (kind of like a list of lists when thinking about 2 dimensions)</li>
+    <li>are easier to work with than list of lists</li>
+  </ul>
+
+</div>
+
+<div class="">
+
+  <h3 id="create-arrays">Create arrays</h3>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
@@ -954,9 +966,13 @@ initFunction(initQuery);
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([3., 6., 8., 7., 9., 4., 1., 6., 4., 4., 8.])
 </code></pre></div></div>
 
-<p>Arrays have some attributes like:</p>
+<div class="">
 
-<p>A dimension</p>
+  <p>Arrays have some attributes like:</p>
+
+  <p>A dimension</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="o">.</span><span class="n">ndim</span>
 </code></pre></div></div>
@@ -964,7 +980,11 @@ initFunction(initQuery);
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
 </code></pre></div></div>
 
-<p>A shape</p>
+<div class="">
+
+  <p>A shape</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="o">.</span><span class="n">shape</span>
 </code></pre></div></div>
@@ -972,7 +992,11 @@ initFunction(initQuery);
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(11,)
 </code></pre></div></div>
 
-<p>and of course a data type</p>
+<div class="">
+
+  <p>and of course a data type</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="o">.</span><span class="n">dtype</span>
 </code></pre></div></div>
@@ -980,7 +1004,11 @@ initFunction(initQuery);
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dtype('float64')
 </code></pre></div></div>
 
-<p>To create arrays with more dimensions we use list of lists as the first argument to <code class="highlighter-rouge">np.array</code></p>
+<div class="">
+
+  <p>To create arrays with more dimensions we use list of lists as the first argument to <code class="highlighter-rouge">np.array</code></p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">smile</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
                   <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
@@ -998,9 +1026,13 @@ initFunction(initQuery);
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E05_15_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E05_13_0.png" alt="png" /></p>
 
-<p>This arrays attributes are:</p>
+<div class="">
+
+  <p>This arrays attributes are:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">smile</span><span class="o">.</span><span class="n">ndim</span>
 </code></pre></div></div>
@@ -1020,22 +1052,30 @@ initFunction(initQuery);
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dtype('int64')
 </code></pre></div></div>
 
-<div class="alert info">
+<div class="">
 
-  <p><strong>Info</strong></p>
+  <div class="alert info">
 
-  <p>There are more attributes for example</p>
-  <ul>
-    <li>size: gives the total number of elements</li>
-    <li>itemsize: gives the memory size of one element</li>
-    <li>nbytes: gives the total memory size of the array</li>
-  </ul>
+    <p><strong>Info</strong></p>
+
+    <p>There are more attributes for example</p>
+    <ul>
+      <li>size: gives the total number of elements</li>
+      <li>itemsize: gives the memory size of one element</li>
+      <li>nbytes: gives the total memory size of the array</li>
+    </ul>
+
+  </div>
 
 </div>
 
-<p>Notice that by default numpy creates data types of 64 bit size. To create other types you need to specify the <code class="highlighter-rouge">dtype</code> argument in the array initalisation which takes one of the many data types listed in the documentation <a href="https://docs.scipy.org/doc/numpy/reference/arrays.scalars.html#arrays-scalars-built-in">here</a></p>
+<div class="">
 
-<p>You can also always cast to a different data type later on:</p>
+  <p>Notice that by default numpy creates data types of 64 bit size. To create other types you need to specify the <code class="highlighter-rouge">dtype</code> argument in the array initalisation which takes one of the many data types listed in the documentation <a href="https://docs.scipy.org/doc/numpy/reference/arrays.scalars.html#arrays-scalars-built-in">here</a></p>
+
+  <p>You can also always cast to a different data type later on:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
 <span class="n">a</span><span class="o">.</span><span class="n">dtype</span>
@@ -1044,14 +1084,22 @@ initFunction(initQuery);
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dtype('int32')
 </code></pre></div></div>
 
-<h3 id="array-shape">Array shape</h3>
+<div class="">
 
-<h3 id="other-ways-to-create-arrays">Other ways to create arrays</h3>
+  <h3 id="array-shape">Array shape</h3>
 
-<p>Most of the time we don’t want to create arrays with specific values by hand but need to initialize arrays of a certain shape to populate them with values later.
+</div>
+
+<div class="">
+
+  <h3 id="other-ways-to-create-arrays">Other ways to create arrays</h3>
+
+  <p>Most of the time we don’t want to create arrays with specific values by hand but need to initialize arrays of a certain shape to populate them with values later.
 While there are more the following two are the most used ones.</p>
 
-<p>Create array with zeros:</p>
+  <p>Create array with zeros:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 </code></pre></div></div>
@@ -1063,7 +1111,11 @@ While there are more the following two are the most used ones.</p>
        [0., 0., 0., 0., 0.]])
 </code></pre></div></div>
 
-<p>Create an array with zeros based on the shape and dtype of another array:</p>
+<div class="">
+
+  <p>Create an array with zeros based on the shape and dtype of another array:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">smile</span><span class="p">)</span>
 </code></pre></div></div>
@@ -1080,7 +1132,11 @@ While there are more the following two are the most used ones.</p>
        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]])
 </code></pre></div></div>
 
-<p>Create array with ones:</p>
+<div class="">
+
+  <p>Create array with ones:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 </code></pre></div></div>
@@ -1092,36 +1148,56 @@ While there are more the following two are the most used ones.</p>
        [1., 1., 1., 1., 1.]], dtype=float32)
 </code></pre></div></div>
 
-<p>Similarly to the zeros case there is a function <code class="highlighter-rouge">np.ones_like</code>.<br />
+<div class="">
+
+  <p>Similarly to the zeros case there is a function <code class="highlighter-rouge">np.ones_like</code>.<br />
 Notice that additionally we can specify a dtype other than the default of np.float64.</p>
 
-<div class="alert task">
+</div>
 
-  <p><strong>Task</strong></p>
+<div class="">
 
-  <p>Two more conveniant functions are <code class="highlighter-rouge">np.arange(start, stop, n)</code> and <code class="highlighter-rouge">np.linspace(start, stop, n)</code>.</p>
-  <ul>
-    <li>Try them both and find out what they are each doing</li>
-  </ul>
+  <div class="alert task">
+
+    <p><strong>Task</strong></p>
+
+    <p>Two more conveniant functions are <code class="highlighter-rouge">np.arange(start, stop, n)</code> and <code class="highlighter-rouge">np.linspace(start, stop, n)</code>.</p>
+    <ul>
+      <li>Try them both and find out what they are each doing</li>
+    </ul>
+
+  </div>
 
 </div>
 
-<div class="alert solution">
+<div class=" hidecode">
 
-  <p><strong>Solution</strong></p>
+  <div class="alert solution">
 
-  <p>np.arange(start, stop, step) creates a sequence of numbers from start to stop with increment step<br />
+    <p><strong>Solution</strong></p>
+
+    <p>np.arange(start, stop, step) creates a sequence of numbers from start to stop with increment step<br />
 np.linspace(start, stop, n) creates a sequence of n evenly spaced numbers from start to stop.</p>
 
+  </div>
+
 </div>
 
-<h3 id="accessing-elements-indexing">Accessing elements (indexing)</h3>
+<div class="">
 
-<p>Array elements can be accessed similar to lists with the bracket notation.<br />
+  <h3 id="accessing-elements-indexing">Accessing elements (indexing)</h3>
+
+  <p>Array elements can be accessed similar to lists with the bracket notation.<br />
 For higher dimensional arrays we need to know which index accesses a certain dimension or <strong>axis</strong>.
-&lt;img src=”https://www.oreilly.com/library/view/elegant-scipy/9781491922927/assets/elsp_0105.png” width=900&gt;</p>
+<img src="https://www.oreilly.com/library/view/elegant-scipy/9781491922927/assets/elsp_0105.png" width="900px" /></p>
 
-<p>The following accesses the left eye of the smiley which is located in row 2 and column 3 (counts start at 0).</p>
+</div>
+
+<div class="">
+
+  <p>The following accesses the left eye of the smiley which is located in row 2 and column 3 (counts start at 0).</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">smile</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
 </code></pre></div></div>
@@ -1129,7 +1205,11 @@ For higher dimensional arrays we need to know which index accesses a certain dim
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5
 </code></pre></div></div>
 
-<p>This can also be used to assign new values</p>
+<div class="">
+
+  <p>This can also be used to assign new values</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">smile</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 </code></pre></div></div>
@@ -1138,14 +1218,18 @@ For higher dimensional arrays we need to know which index accesses a certain dim
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E05_38_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E05_36_0.png" alt="png" /></p>
 
-<h3 id="slicing">Slicing</h3>
+<div class="">
 
-<p>Additionally to indexing slicing (again simillar to lists) is possible to select more than one lement.<br />
+  <h3 id="slicing">Slicing</h3>
+
+  <p>Additionally to indexing slicing (again simillar to lists) is possible to select more than one lement.<br />
 The general syntax is <code class="highlighter-rouge">[start:stop:step]</code>.</p>
 
-<p>The following selects only the smile part of the smiley:</p>
+  <p>The following selects only the smile part of the smiley:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mouth</span> <span class="o">=</span> <span class="n">smile</span><span class="p">[</span><span class="mi">6</span><span class="p">:,</span> <span class="p">:]</span>
 
@@ -1153,9 +1237,13 @@ The general syntax is <code class="highlighter-rouge">[start:stop:step]</code>.<
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E05_40_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E05_38_0.png" alt="png" /></p>
 
-<p>Or we can select every other element</p>
+<div class="">
+
+  <p>Or we can select every other element</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="p">[::</span><span class="mi">2</span><span class="p">]</span>
 </code></pre></div></div>
@@ -1163,17 +1251,25 @@ The general syntax is <code class="highlighter-rouge">[start:stop:step]</code>.<
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([3, 8, 9, 1, 4, 8], dtype=int32)
 </code></pre></div></div>
 
-<p>Notice that we omitted the stop index while selecting rows and both start and stop index with the columns as well as the step size.<br />
+<div class="">
+
+  <p>Notice that we omitted the stop index while selecting rows and both start and stop index with the columns as well as the step size.<br />
 By default numpy if an index is omitted slicing</p>
-<ul>
-  <li><strong>starts at 0 (start omitted)</strong>,</li>
-  <li><strong>reaches to the end (stop is omitted)</strong></li>
-  <li>and uses a <strong>step size of 1 (step omitted)</strong>.</li>
-</ul>
+  <ul>
+    <li><strong>starts at 0 (start omitted)</strong>,</li>
+    <li><strong>reaches to the end (stop is omitted)</strong></li>
+    <li>and uses a <strong>step size of 1 (step omitted)</strong>.</li>
+  </ul>
 
-<p>We can also combine indexing and slicing.</p>
+</div>
 
-<p>The following “blindfolds” our smiley:</p>
+<div class="">
+
+  <p>We can also combine indexing and slicing.</p>
+
+  <p>The following “blindfolds” our smiley:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">smile</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">9</span><span class="p">]</span> <span class="o">=</span> <span class="mi">9</span>
 
@@ -1181,42 +1277,54 @@ By default numpy if an index is omitted slicing</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E05_45_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E05_43_0.png" alt="png" /></p>
 
-<div class="alert task">
+<div class="">
 
-  <p><strong>Task</strong></p>
+  <div class="alert task">
 
-  <ol>
-    <li>Copy the smile array init code from above so you don’t have to type it yourself</li>
-    <li>Give the smiley a nose 2x2 elements big using the same value used for the eyes and mouth</li>
-    <li>What happens when you select a value of -1 for the step index while slicing (Hint: try it on both axis)?</li>
-  </ol>
+    <p><strong>Task</strong></p>
+
+    <ol>
+      <li>Copy the smile array init code from above so you don’t have to type it yourself</li>
+      <li>Give the smiley a nose 2x2 elements big using the same value used for the eyes and mouth</li>
+      <li>What happens when you select a value of -1 for the step index while slicing (Hint: try it on both axis)?</li>
+    </ol>
+
+  </div>
 
 </div>
 
-<div class="alert solution">
+<div class=" hidecode">
 
-  <p><strong>Solution</strong></p>
+  <div class="alert solution">
 
-  <p>The nose:</p>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">smile</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
+    <p><strong>Solution</strong></p>
+
+    <p>The nose:</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">smile</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">smile</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre></div>  </div>
-  <p>Reverting array:</p>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">smile</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">,:])</span>
+</code></pre></div>    </div>
+    <p>Reverting array:</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">smile</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">,:])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre></div>  </div>
+</code></pre></div>    </div>
+
+  </div>
 
 </div>
 
-<h3 id="reshaping">Reshaping</h3>
+<div class="">
 
-<p>Sometimes data needs to be converted to another shape which can be done with the <code class="highlighter-rouge">reshape</code> method.</p>
+  <h3 id="reshaping">Reshaping</h3>
 
-<p>For example creating a 2d array from a 1d array</p>
+  <p>Sometimes data needs to be converted to another shape which can be done with the <code class="highlighter-rouge">reshape</code> method.</p>
+
+  <p>For example creating a 2d array from a 1d array</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">b</span>
@@ -1233,7 +1341,11 @@ By default numpy if an index is omitted slicing</p>
        [7, 8, 9]])
 </code></pre></div></div>
 
-<p>While in the special case of converting a 1D array to a vector can also be accomplished using <code class="highlighter-rouge">reshape</code> it is easier to use the following since no knowledge of the exact shape is necessary.</p>
+<div class="">
+
+  <p>While in the special case of converting a 1D array to a vector can also be accomplished using <code class="highlighter-rouge">reshape</code> it is easier to use the following since no knowledge of the exact shape is necessary.</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span>
 </code></pre></div></div>
@@ -1247,9 +1359,13 @@ By default numpy if an index is omitted slicing</p>
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(11, 1)
 </code></pre></div></div>
 
-<h4 id="flatten-vs-ravel">Flatten vs. Ravel</h4>
+<div class="">
 
-<p>The opposite direction of creating a 1d array from a higher dimensional array can be done using either</p>
+  <h4 id="flatten-vs-ravel">Flatten vs. Ravel</h4>
+
+  <p>The opposite direction of creating a 1d array from a higher dimensional array can be done using either</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">smile</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
 </code></pre></div></div>
@@ -1261,7 +1377,11 @@ By default numpy if an index is omitted slicing</p>
        0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0])
 </code></pre></div></div>
 
-<p>or</p>
+<div class="">
+
+  <p>or</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">smile</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
 </code></pre></div></div>
@@ -1273,24 +1393,40 @@ By default numpy if an index is omitted slicing</p>
        0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0])
 </code></pre></div></div>
 
-<p>The difference between the two is <code class="highlighter-rouge">flatten</code> returns a <strong>copy</strong> while <code class="highlighter-rouge">ravel</code> returns a <strong>view</strong> of the array.</p>
+<div class="">
 
-<h3 id="views-vs-copies">Views vs. copies</h3>
+  <p>The difference between the two is <code class="highlighter-rouge">flatten</code> returns a <strong>copy</strong> while <code class="highlighter-rouge">ravel</code> returns a <strong>view</strong> of the array.</p>
 
-<p>Remember our smiley</p>
+</div>
+
+<div class="">
+
+  <h3 id="views-vs-copies">Views vs. copies</h3>
+
+  <p>Remember our smiley</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">smile</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E05_60_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E05_58_0.png" alt="png" /></p>
 
-<p>Lets say we want to do some calculations on the mouth area of the array. A common workflow would be to select the corresponding part of the array first</p>
+<div class="">
+
+  <p>Lets say we want to do some calculations on the mouth area of the array. A common workflow would be to select the corresponding part of the array first</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nose</span> <span class="o">=</span> <span class="n">smile</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">9</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="mi">8</span><span class="p">]</span>
 </code></pre></div></div>
 
-<p>To be able to differentiate between the nose and the mouth we assign a new value to the nose</p>
+<div class="">
+
+  <p>To be able to differentiate between the nose and the mouth we assign a new value to the nose</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nose</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">20</span>
 <span class="n">nose</span>
@@ -1303,52 +1439,72 @@ By default numpy if an index is omitted slicing</p>
        [ 1,  1,  5,  5,  1,  1]])
 </code></pre></div></div>
 
-<p>Now we could calculate for example occurance of each value in the array.</p>
+<div class="">
 
-<p>Later on we want to keep working on the original array but notice</p>
+  <p>Now we could calculate for example occurance of each value in the array.</p>
+
+</div>
+
+<div class="">
+
+  <p>Later on we want to keep working on the original array but notice</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">smile</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E05_67_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E05_65_0.png" alt="png" /></p>
 
-<h5 id="what-happend">What happend?</h5>
+<div class="">
 
-<p>Slicing returned a so called <strong>view</strong> of the array which points to the same memory and therefore if changed, changes the values in the original array too.</p>
+  <h5 id="what-happend">What happend?</h5>
 
-<p>This is different to normal python lists where slicing returns a copy.</p>
+  <p>Slicing returned a so called <strong>view</strong> of the array which points to the same memory and therefore if changed, changes the values in the original array too.</p>
 
-<p>In order to keep a real copy of the array for later use you need to use the <code class="highlighter-rouge">np.copy()</code> method (which can also be used on slices):</p>
+  <p>This is different to normal python lists where slicing returns a copy.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">backup</span> <span class="o">=</span> <span class="n">smile</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-</code></pre></div></div>
+  <p>In order to keep a real copy of the array for later use you need to use the <code class="highlighter-rouge">np.copy()</code> method (which can also be used on slices):</p>
 
-<p><a href="https://www.jessicayung.com/numpy-views-vs-copies-avoiding-costly-mistakes/">Here</a>, for example, you can find more information around advantages of copies and views</p>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">backup</span> <span class="o">=</span> <span class="n">smile</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</code></pre></div>  </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>View</th>
-      <th>Copy</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>a[1,:]</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>np.ravel()</td>
-      <td>np.flatten()</td>
-    </tr>
-  </tbody>
-</table>
+  <p><a href="https://www.jessicayung.com/numpy-views-vs-copies-avoiding-costly-mistakes/">Here</a>, for example, you can find more information around advantages of copies and views</p>
 
-<h3 id="boolean-operations">Boolean operations</h3>
+</div>
 
-<p>Using boolean operators we can test an array on where a certain condition is met.</p>
+<div class="">
+
+  <table>
+    <thead>
+      <tr>
+        <th>View</th>
+        <th>Copy</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>a[1,:]</td>
+        <td> </td>
+      </tr>
+      <tr>
+        <td>np.ravel()</td>
+        <td>np.flatten()</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<div class="">
+
+  <h3 id="boolean-operations">Boolean operations</h3>
+
+  <p>Using boolean operators we can test an array on where a certain condition is met.</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">smile</span> <span class="o">&gt;</span> <span class="mi">8</span>
 </code></pre></div></div>
@@ -1375,7 +1531,11 @@ By default numpy if an index is omitted slicing</p>
         False]])
 </code></pre></div></div>
 
-<p>We can also use this array as a mask to select the corresponding elements from the array</p>
+<div class="">
+
+  <p>We can also use this array as a mask to select the corresponding elements from the array</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">smile</span><span class="p">[</span><span class="n">smile</span> <span class="o">&gt;</span> <span class="mi">8</span><span class="p">]</span>
 </code></pre></div></div>
@@ -1383,7 +1543,11 @@ By default numpy if an index is omitted slicing</p>
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 9,  9,  9,  9,  9,  9,  9,  9, 20, 20, 20, 20])
 </code></pre></div></div>
 
-<p>or assign new values to those locations</p>
+<div class="">
+
+  <p>or assign new values to those locations</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">smile</span><span class="p">[</span><span class="n">smile</span> <span class="o">&gt;</span> <span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">5</span>
 
@@ -1392,11 +1556,15 @@ By default numpy if an index is omitted slicing</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E05_75_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E05_73_0.png" alt="png" /></p>
 
-<h4 id="missing-values">Missing values</h4>
+<div class="">
 
-<p>In arrays with data type float missing values are assigned <code class="highlighter-rouge">np.nan</code></p>
+  <h4 id="missing-values">Missing values</h4>
+
+  <p>In arrays with data type float missing values are assigned <code class="highlighter-rouge">np.nan</code></p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">missing</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">5.</span><span class="p">)</span>
 <span class="n">missing</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
@@ -1406,7 +1574,11 @@ By default numpy if an index is omitted slicing</p>
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 1., nan, nan,  4.])
 </code></pre></div></div>
 
-<p>To handle these we can use boolean masks together with the <code class="highlighter-rouge">np.isnan</code> method</p>
+<div class="">
+
+  <p>To handle these we can use boolean masks together with the <code class="highlighter-rouge">np.isnan</code> method</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">missing</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">missing</span><span class="p">)]</span>
 </code></pre></div></div>
@@ -1414,7 +1586,11 @@ By default numpy if an index is omitted slicing</p>
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([nan, nan])
 </code></pre></div></div>
 
-<p>Selecting all value which are not nan is also possible</p>
+<div class="">
+
+  <p>Selecting all value which are not nan is also possible</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">missing</span><span class="p">[</span><span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">missing</span><span class="p">)]</span>
 </code></pre></div></div>
@@ -1422,9 +1598,13 @@ By default numpy if an index is omitted slicing</p>
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1., 4.])
 </code></pre></div></div>
 
-<h3 id="aggregating">Aggregating</h3>
+<div class="">
 
-<p>Numpy has many built in functions to calculate basic statistics for example the min (max), mean or standard deviation</p>
+  <h3 id="aggregating">Aggregating</h3>
+
+  <p>Numpy has many built in functions to calculate basic statistics for example the min (max), mean or standard deviation</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="nb">max</span><span class="p">(</span><span class="n">smile</span><span class="p">)</span>
 </code></pre></div></div>
@@ -1432,7 +1612,11 @@ By default numpy if an index is omitted slicing</p>
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5
 </code></pre></div></div>
 
-<p>These functions can be used together with the <code class="highlighter-rouge">axis</code> argument to calculate these statistics for any given axis</p>
+<div class="">
+
+  <p>These functions can be used together with the <code class="highlighter-rouge">axis</code> argument to calculate these statistics for any given axis</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">smile</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div></div>
@@ -1447,8 +1631,12 @@ By default numpy if an index is omitted slicing</p>
        2.74954542, 1.6       , 1.74355958, 1.8547237 , 0.48989795])
 </code></pre></div></div>
 
-<p>These functions are very fast and should not be confused with other python built in function which might do the same,
+<div class="">
+
+  <p>These functions are very fast and should not be confused with other python built in function which might do the same,
 for example sum.</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">big_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1000000</span><span class="p">)</span>
 <span class="o">%</span><span class="n">timeit</span> <span class="nb">sum</span><span class="p">(</span><span class="n">big_array</span><span class="p">)</span>
@@ -1460,61 +1648,73 @@ for example sum.</p>
 
 </code></pre></div></div>
 
-<div class="alert task">
+<div class="">
 
-  <p><strong>Task</strong></p>
+  <div class="alert task">
 
-  <ol>
-    <li>Assign the following array to a new variable: <code class="highlighter-rouge">np.array([[1., np.nan, 7., 30., -4.], [-7., 18., 11., np.nan, 3.]])</code></li>
-    <li>Select all but the last column and assign it to a new variable, keeping the old array as backup</li>
-    <li>Assign a new value to all nan’s in the selection created in task 2</li>
-    <li>Try to calculate the median for the original array over the rows</li>
-    <li>Go to the numpy documentation <a href="https://docs.scipy.org/doc/numpy/reference/routines.statistics.html">here</a> and find a function which gets around the problem you encountered in task 4</li>
-  </ol>
+    <p><strong>Task</strong></p>
 
-</div>
+    <ol>
+      <li>Assign the following array to a new variable: <code class="highlighter-rouge">np.array([[1., np.nan, 7., 30., -4.], [-7., 18., 11., np.nan, 3.]])</code></li>
+      <li>Select all but the last column and assign it to a new variable, keeping the old array as backup</li>
+      <li>Assign a new value to all nan’s in the selection created in task 2</li>
+      <li>Try to calculate the median for the original array over the rows</li>
+      <li>Go to the numpy documentation <a href="https://docs.scipy.org/doc/numpy/reference/routines.statistics.html">here</a> and find a function which gets around the problem you encountered in task 4</li>
+    </ol>
 
-<div class="alert solution">
-
-  <p><strong>Solution</strong></p>
-
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mf">7.</span><span class="p">,</span> <span class="mf">30.</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">7.</span><span class="p">,</span> <span class="mf">18.</span><span class="p">,</span> <span class="mf">11.</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mf">3.</span><span class="p">]])</span>
-</code></pre></div>  </div>
-
-  <p>Remove the last column and make a copy to new variable b</p>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:,:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-</code></pre></div>  </div>
-
-  <p>Assign all <code class="highlighter-rouge">np.nan</code>s the value -99</p>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">b</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">b</span><span class="p">)]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">99</span>
-</code></pre></div>  </div>
-
-  <p>The standard median function included <code class="highlighter-rouge">np.nan</code> values when calculating</p>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</code></pre></div>  </div>
-
-  <p>To ignore <code class="highlighter-rouge">np.nan</code> values most aggregation functions have an equivalent which is prepended with “nan”</p>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">nanmedian</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</code></pre></div>  </div>
+  </div>
 
 </div>
 
-<h3 id="ufuncs">Ufuncs</h3>
+<div class=" hidecode">
 
-<p>Next to functions to aggregate the values in an array there are functions which operate on arrays in an element-by-element fashion. These “vectorized” functions are called universal functions (ufuncs).</p>
+  <div class="alert solution">
 
-<p>All basic arithmetic operations like</p>
-<ul>
-  <li>addition,</li>
-  <li>subtraction,</li>
-  <li>multiplication,</li>
-  <li>division as well as</li>
-  <li>exponentiation and</li>
-  <li>modulus</li>
-  <li>(and more)</li>
-</ul>
+    <p><strong>Solution</strong></p>
 
-<p>are implemented. These can be used with the usual operators we already know.</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mf">7.</span><span class="p">,</span> <span class="mf">30.</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">7.</span><span class="p">,</span> <span class="mf">18.</span><span class="p">,</span> <span class="mf">11.</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mf">3.</span><span class="p">]])</span>
+</code></pre></div>    </div>
+
+    <p>Remove the last column and make a copy to new variable b</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:,:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</code></pre></div>    </div>
+
+    <p>Assign all <code class="highlighter-rouge">np.nan</code>s the value -99</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">b</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">b</span><span class="p">)]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">99</span>
+</code></pre></div>    </div>
+
+    <p>The standard median function included <code class="highlighter-rouge">np.nan</code> values when calculating</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>    </div>
+
+    <p>To ignore <code class="highlighter-rouge">np.nan</code> values most aggregation functions have an equivalent which is prepended with “nan”</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">nanmedian</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>    </div>
+
+  </div>
+
+</div>
+
+<div class="">
+
+  <h3 id="ufuncs">Ufuncs</h3>
+
+  <p>Next to functions to aggregate the values in an array there are functions which operate on arrays in an element-by-element fashion. These “vectorized” functions are called universal functions (ufuncs).</p>
+
+  <p>All basic arithmetic operations like</p>
+  <ul>
+    <li>addition,</li>
+    <li>subtraction,</li>
+    <li>multiplication,</li>
+    <li>division as well as</li>
+    <li>exponentiation and</li>
+    <li>modulus</li>
+    <li>(and more)</li>
+  </ul>
+
+  <p>are implemented. These can be used with the usual operators we already know.</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">a</span>
@@ -1534,7 +1734,11 @@ for example sum.</p>
        [18.7, 23.2, 28.3]])
 </code></pre></div></div>
 
-<p>These can not only be used with scalars but also with arrays</p>
+<div class="">
+
+  <p>These can not only be used with scalars but also with arrays</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
 
@@ -1546,9 +1750,17 @@ for example sum.</p>
        [2.67142857, 2.9       , 3.14444444]])
 </code></pre></div></div>
 
-<p>These common operators are wrappers for the corresponding numpy functions. For example <code class="highlighter-rouge">+</code> wraps <code class="highlighter-rouge">np.sum()</code>.</p>
+<div class="">
 
-<p>The above functions all operated on two arguments. Functions like <code class="highlighter-rouge">np.abs()</code> which returns the absolute value take only one argument. There are many functions like this implemented in numpy for example the sine function</p>
+  <p>These common operators are wrappers for the corresponding numpy functions. For example <code class="highlighter-rouge">+</code> wraps <code class="highlighter-rouge">np.sum()</code>.</p>
+
+</div>
+
+<div class="">
+
+  <p>The above functions all operated on two arguments. Functions like <code class="highlighter-rouge">np.abs()</code> which returns the absolute value take only one argument. There are many functions like this implemented in numpy for example the sine function</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
 <span class="n">res</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
@@ -1557,22 +1769,30 @@ for example sum.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E05_98_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E05_96_0.png" alt="png" /></p>
 
-<div class="alert info">
+<div class="">
 
-  <p><strong>Info</strong></p>
+  <div class="alert info">
 
-  <ul>
-    <li>Have a look at the <a href="https://docs.scipy.org/doc/scipy/reference/special.html">scipy.special</a> library if you need a very special function.</li>
-    <li>Many of the ufuncs have a special <code class="highlighter-rouge">out</code> parameter to which you can supply an output array (even slices work). Using it especially for very large arrays unecessary copies can be avoided saving memory.</li>
-  </ul>
+    <p><strong>Info</strong></p>
+
+    <ul>
+      <li>Have a look at the <a href="https://docs.scipy.org/doc/scipy/reference/special.html">scipy.special</a> library if you need a very special function.</li>
+      <li>Many of the ufuncs have a special <code class="highlighter-rouge">out</code> parameter to which you can supply an output array (even slices work). Using it especially for very large arrays unecessary copies can be avoided saving memory.</li>
+    </ul>
+
+  </div>
 
 </div>
 
-<h3 id="broadcasting">Broadcasting</h3>
+<div class="">
 
-<p>Above we saw that operations on same shape arrays operated element wise</p>
+  <h3 id="broadcasting">Broadcasting</h3>
+
+  <p>Above we saw that operations on same shape arrays operated element wise</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
@@ -1585,7 +1805,11 @@ for example sum.</p>
        [14, 16, 18]])
 </code></pre></div></div>
 
-<p>Iterestingly, even though, the arguments are not of the same shape, the following also worked</p>
+<div class="">
+
+  <p>Iterestingly, even though, the arguments are not of the same shape, the following also worked</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">+</span> <span class="mi">5</span>
 </code></pre></div></div>
@@ -1595,7 +1819,11 @@ for example sum.</p>
        [12, 13, 14]])
 </code></pre></div></div>
 
-<p>Even more interesting is the following</p>
+<div class="">
+
+  <p>Even more interesting is the following</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
 <span class="n">c</span>
@@ -1612,26 +1840,42 @@ for example sum.</p>
        [ 8, 10, 12]])
 </code></pre></div></div>
 
-<p>This behaviour is called <strong>broadcasting</strong> and is a very powerfull feature. You can thinkg of it as numpy automatically duplicating the values to the correct size. The advantage is that no actuall copying memory wise is done.</p>
+<div class="">
 
-<p>The following picture makes this a little clearer.</p>
+  <p>This behaviour is called <strong>broadcasting</strong> and is a very powerfull feature. You can thinkg of it as numpy automatically duplicating the values to the correct size. The advantage is that no actuall copying memory wise is done.</p>
 
-<p>&lt;img src=”https://scipy-lectures.org/_images/numpy_broadcasting.png” width=700&gt;<br />
+  <p>The following picture makes this a little clearer.</p>
+
+</div>
+
+<div class="">
+
+  <p><img src="https://scipy-lectures.org/_images/numpy_broadcasting.png" width="700px" /><br />
 <small>Source: https://scipy-lectures.org/_images/numpy_broadcasting.png</small></p>
 
-<h3 id="broadcasting-rules">Broadcasting rules</h3>
+</div>
 
-<ol>
-  <li>If the number of dimensions differ, the one with fewer dimensions is padded with ones on its left side.</li>
-  <li>If the shape does not match in any dimension, the array with shape equal to 1 in that dimension is stretched to match the other shape.</li>
-  <li>If in any dimension the sizes disagree and neither is equal to 1, an error is raised.</li>
-</ol>
+<div class="">
 
-<h3 id="fancy-indexing">Fancy indexing</h3>
+  <h3 id="broadcasting-rules">Broadcasting rules</h3>
 
-<p>Up to now we used single indices to select elements or slices to select continous (parts) of columns and/or rows.</p>
+  <ol>
+    <li>If the number of dimensions differ, the one with fewer dimensions is padded with ones on its left side.</li>
+    <li>If the shape does not match in any dimension, the array with shape equal to 1 in that dimension is stretched to match the other shape.</li>
+    <li>If in any dimension the sizes disagree and neither is equal to 1, an error is raised.</li>
+  </ol>
 
-<p><strong>Fancy indexing</strong> allows us to select multiple elements with different indices in a noncontinous fashion by passing a list or array of indices.</p>
+</div>
+
+<div class="">
+
+  <h3 id="fancy-indexing">Fancy indexing</h3>
+
+  <p>Up to now we used single indices to select elements or slices to select continous (parts) of columns and/or rows.</p>
+
+  <p><strong>Fancy indexing</strong> allows us to select multiple elements with different indices in a noncontinous fashion by passing a list or array of indices.</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span>
 <span class="n">a</span>
@@ -1647,7 +1891,11 @@ for example sum.</p>
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([3, 6, 8])
 </code></pre></div></div>
 
-<p>The shape of the result depends on the shape of the index array</p>
+<div class="">
+
+  <p>The shape of the result depends on the shape of the index array</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
                 <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">]])</span>
@@ -1665,7 +1913,11 @@ for example sum.</p>
        [ 8, 10]])
 </code></pre></div></div>
 
-<p>This also works for higher dimensional arrays</p>
+<div class="">
+
+  <p>This also works for higher dimensional arrays</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
 <span class="n">a</span>
@@ -1685,9 +1937,17 @@ for example sum.</p>
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 1, 12])
 </code></pre></div></div>
 
-<p>How the indices are combined is determined by the same rules as for broadcasting.</p>
+<div class="">
 
-<p>Fancy indexing can also be combined normal indexing and slicing</p>
+  <p>How the indices are combined is determined by the same rules as for broadcasting.</p>
+
+</div>
+
+<div class="">
+
+  <p>Fancy indexing can also be combined normal indexing and slicing</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">"Array:</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Column indices:</span><span class="se">\n</span><span class="s"> "</span><span class="p">,</span> <span class="n">cind</span><span class="p">)</span>
@@ -1719,24 +1979,36 @@ Column indices:
        [ 9, 10, 11, 12]])
 </code></pre></div></div>
 
-<p><img src="https://xarray.pydata.org/en/stable/_static/dataset-diagram-logo.png" alt="" /></p>
+<div class="">
 
-<h1 id="xarray">xarray</h1>
+  <h1 id="xarray">xarray</h1>
 
-<ul>
-  <li>combines and extends the core strength of numpy and pandas</li>
-  <li>enables use of dimension names instead of axis labels for selection and operations</li>
-  <li>enables writing of less and more readable code</li>
-</ul>
+  <p><img src="https://xarray.pydata.org/en/stable/_static/dataset-diagram-logo.png" alt="" /></p>
 
-<h3 id="datastructures">Datastructures</h3>
+  <ul>
+    <li>combines and extends the core strength of numpy and pandas</li>
+    <li>enables use of dimension names instead of axis labels for selection and operations</li>
+    <li>enables writing of less and more readable code</li>
+  </ul>
 
-<ul>
-  <li><code class="highlighter-rouge">DataArray</code> is like a <code class="highlighter-rouge">pandas.Series</code> but for N dimensions</li>
-  <li><code class="highlighter-rouge">Dataset</code> is a container of any number of <code class="highlighter-rouge">DataArray</code>s which share dimensions and compares to a <code class="highlighter-rouge">pandas.DataFrame</code> but for N dimensions</li>
-</ul>
+</div>
 
-<h4 id="dataarray">DataArray</h4>
+<div class="">
+
+  <h3 id="datastructures">Datastructures</h3>
+
+  <ul>
+    <li><code class="highlighter-rouge">DataArray</code> is like a <code class="highlighter-rouge">pandas.Series</code> but for N dimensions</li>
+    <li><code class="highlighter-rouge">Dataset</code> is a container of any number of <code class="highlighter-rouge">DataArray</code>s which share dimensions and compares to a <code class="highlighter-rouge">pandas.DataFrame</code> but for N dimensions</li>
+  </ul>
+
+</div>
+
+<div class="">
+
+  <h4 id="dataarray">DataArray</h4>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
 <span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="n">xr</span>
@@ -1763,9 +2035,13 @@ Coordinates:
   * cities   (cities) &lt;U9 'Marburg' 'Giessen' 'Frankfurt'
 </code></pre></div></div>
 
-<h4 id="attributes">Attributes</h4>
+<div class="">
 
-<p>Attributes can be used for informational purposes. Xarray does not interpret them in any way and they are only propagated in calculations when it is unambigous.</p>
+  <h4 id="attributes">Attributes</h4>
+
+  <p>Attributes can be used for informational purposes. Xarray does not interpret them in any way and they are only propagated in calculations when it is unambigous.</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">city_temp</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">"city_temperatures"</span>
 <span class="n">city_temp</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s">"Description"</span><span class="p">]</span> <span class="o">=</span>  <span class="s">"Monthly temperature values for the cities of Marburg, Giessen and Frankfurt."</span>
@@ -1786,16 +2062,20 @@ Attributes:
     units:        Degrees Celsius
 </code></pre></div></div>
 
-<h3 id="dataset">Dataset</h3>
+<div class="">
 
-<p>A <code class="highlighter-rouge">xr.Dataset</code> can be created by supplying dictionaries for the parameters <code class="highlighter-rouge">data_vars</code>, <code class="highlighter-rouge">coords</code> and <code class="highlighter-rouge">attrs</code>. It is always good to provide some descriptive attributes even though the parameter <code class="highlighter-rouge">attrs</code> is optional.</p>
+  <h3 id="dataset">Dataset</h3>
 
-<p>The <code class="highlighter-rouge">data_vars</code> dictionary keys are the names of the variables while the values are either:</p>
-<ul>
-  <li><code class="highlighter-rouge">DataArray</code>s</li>
-  <li>pandas objects, which will be converted to <code class="highlighter-rouge">DataArray</code>s</li>
-  <li>a tuple of the form (dim, data) where dim is a list of dimension names and data a <code class="highlighter-rouge">np.array</code> (see <a href="https://xarray.pydata.org/en/stable/data-structures.html#creating-a-dataset">documentation</a> for more details)</li>
-</ul>
+  <p>A <code class="highlighter-rouge">xr.Dataset</code> can be created by supplying dictionaries for the parameters <code class="highlighter-rouge">data_vars</code>, <code class="highlighter-rouge">coords</code> and <code class="highlighter-rouge">attrs</code>. It is always good to provide some descriptive attributes even though the parameter <code class="highlighter-rouge">attrs</code> is optional.</p>
+
+  <p>The <code class="highlighter-rouge">data_vars</code> dictionary keys are the names of the variables while the values are either:</p>
+  <ul>
+    <li><code class="highlighter-rouge">DataArray</code>s</li>
+    <li>pandas objects, which will be converted to <code class="highlighter-rouge">DataArray</code>s</li>
+    <li>a tuple of the form (dim, data) where dim is a list of dimension names and data a <code class="highlighter-rouge">np.array</code> (see <a href="https://xarray.pydata.org/en/stable/data-structures.html#creating-a-dataset">documentation</a> for more details)</li>
+  </ul>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 
@@ -1807,7 +2087,11 @@ Attributes:
 <span class="n">city_precip</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">coords</span><span class="o">=</span><span class="p">[</span><span class="n">times</span><span class="p">,</span> <span class="n">locs</span><span class="p">],</span> <span class="n">dims</span><span class="o">=</span><span class="p">[</span><span class="s">"time"</span><span class="p">,</span> <span class="s">"cities"</span><span class="p">],</span> <span class="n">attrs</span><span class="o">=</span><span class="n">precip_attrs</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">"city_precipitation"</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>When we create a <code class="highlighter-rouge">Dataset</code> from <code class="highlighter-rouge">DataArrays</code> we can also omit the <code class="highlighter-rouge">coords</code> parameter as long as all of them share the same dimensions.</p>
+<div class="">
+
+  <p>When we create a <code class="highlighter-rouge">Dataset</code> from <code class="highlighter-rouge">DataArrays</code> we can also omit the <code class="highlighter-rouge">coords</code> parameter as long as all of them share the same dimensions.</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">city_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">({</span><span class="s">"Temperature"</span><span class="p">:</span> <span class="n">city_temp</span><span class="p">,</span> <span class="s">"Precipitation"</span><span class="p">:</span> <span class="n">city_precip</span><span class="p">})</span>
 <span class="n">city_ds</span>
@@ -1823,7 +2107,11 @@ Data variables:
     Precipitation  (time, cities) float64 nan nan nan ... 0.4795 0.8928 0.7285
 </code></pre></div></div>
 
-<p><code class="highlighter-rouge">Datasets</code> can also have descriptive attributes</p>
+<div class="">
+
+  <p><code class="highlighter-rouge">Datasets</code> can also have descriptive attributes</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">city_ds</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s">"Description"</span><span class="p">]</span> <span class="o">=</span> <span class="s">"Measurements of Temperature and Precipitation"</span>
 <span class="n">city_ds</span>
@@ -1841,7 +2129,11 @@ Attributes:
     Description:  Measurements of Temperature and Precipitation
 </code></pre></div></div>
 
-<p>When we access one of the variables we see that they can have separate attributes describing only this specific variable.</p>
+<div class="">
+
+  <p>When we access one of the variables we see that they can have separate attributes describing only this specific variable.</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">city_ds</span><span class="p">[</span><span class="s">"Temperature"</span><span class="p">]</span>
 </code></pre></div></div>
@@ -1865,7 +2157,11 @@ Attributes:
     units:        Degrees Celsius
 </code></pre></div></div>
 
-<p>Xarray has some conveniant functions to create <code class="highlighter-rouge">DataArray</code>s and <code class="highlighter-rouge">Dataset</code>s from pandas series or dataframes respectively.</p>
+<div class="">
+
+  <p>Xarray has some conveniant functions to create <code class="highlighter-rouge">DataArray</code>s and <code class="highlighter-rouge">Dataset</code>s from pandas series or dataframes respectively.</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
@@ -1882,7 +2178,11 @@ Attributes:
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 9.3,  9.2, 10.6, ..., -4.9, -7.5, -8. ])
 </code></pre></div></div>
 
-<p>After setting the index the conversion of any of the columns (series) of the pandas dataframe  to a <code class="highlighter-rouge">xr.DataArray</code> is easy</p>
+<div class="">
+
+  <p>After setting the index the conversion of any of the columns (series) of the pandas dataframe  to a <code class="highlighter-rouge">xr.DataArray</code> is easy</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">kt_da</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="o">.</span><span class="n">from_series</span><span class="p">(</span><span class="n">klima_tag</span><span class="p">[</span><span class="s">" TMK"</span><span class="p">])</span>
 <span class="n">kt_da</span>
@@ -1896,7 +2196,11 @@ Coordinates:
   * MESS_DATUM   (MESS_DATUM) datetime64[ns] 2017-10-10 ... 2019-04-12
 </code></pre></div></div>
 
-<p>If we want to use all variables (columns) in the dataframe we can directly convert it to a <code class="highlighter-rouge">xr.Dataset</code> without the detour of converting every column to a <code class="highlighter-rouge">xr.DataArray</code> like above.</p>
+<div class="">
+
+  <p>If we want to use all variables (columns) in the dataframe we can directly convert it to a <code class="highlighter-rouge">xr.Dataset</code> without the detour of converting every column to a <code class="highlighter-rouge">xr.DataArray</code> like above.</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">kt_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">from_dataframe</span><span class="p">(</span><span class="n">klima_tag</span><span class="p">)</span>
 <span class="n">kt_ds</span>
@@ -1927,24 +2231,28 @@ Data variables:
     eor          (STATIONS_ID, MESS_DATUM) object 'eor' 'eor' ... 'eor' 'eor'
 </code></pre></div></div>
 
-<h4 id="properties-of-datasets-and-dataarrays">Properties of Datasets and DataArrays</h4>
+<div class="">
 
-<p>Any of the properties can be accessed seperately and values and attrs can be modified in place
+  <h4 id="properties-of-datasets-and-dataarrays">Properties of Datasets and DataArrays</h4>
+
+  <p>Any of the properties can be accessed seperately and values and attrs can be modified in place
 For <code class="highlighter-rouge">DataArray</code></p>
-<ul>
-  <li>values</li>
-  <li>coords</li>
-  <li>dims</li>
-  <li>attrs</li>
-  <li>name</li>
-</ul>
+  <ul>
+    <li>values</li>
+    <li>coords</li>
+    <li>dims</li>
+    <li>attrs</li>
+    <li>name</li>
+  </ul>
 
-<p>For <code class="highlighter-rouge">Dataset</code></p>
-<ul>
-  <li>data_vars</li>
-  <li>coords</li>
-  <li>attrs</li>
-</ul>
+  <p>For <code class="highlighter-rouge">Dataset</code></p>
+  <ul>
+    <li>data_vars</li>
+    <li>coords</li>
+    <li>attrs</li>
+  </ul>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">kt_da</span><span class="o">.</span><span class="n">values</span>
 </code></pre></div></div>
@@ -1953,23 +2261,31 @@ For <code class="highlighter-rouge">DataArray</code></p>
        [-4.5, -1.3, -1.2, ..., -4.9, -7.5, -8. ]])
 </code></pre></div></div>
 
-<div class="alert task">
+<div class="">
 
-  <p><strong>Task</strong></p>
+  <div class="alert task">
 
-  <ol>
-    <li>You should already have the two csv’s used above on your computer. If not download them again.</li>
-    <li>Read them and create a Dataset from them like shown above.</li>
-    <li>Look at the properties. Give them some descriptive attributes.</li>
-  </ol>
+    <p><strong>Task</strong></p>
+
+    <ol>
+      <li>You should already have the two csv’s used above on your computer. If not download them again.</li>
+      <li>Read them and create a Dataset from them like shown above.</li>
+      <li>Look at the properties. Give them some descriptive attributes.</li>
+    </ol>
+
+  </div>
 
 </div>
 
-<h3 id="indexing-and-selecting-data">Indexing and selecting data</h3>
+<div class="">
 
-<p>Data selection in xarray is very flexible.</p>
+  <h3 id="indexing-and-selecting-data">Indexing and selecting data</h3>
 
-<p>For <code class="highlighter-rouge">DataArray</code>s you can select by positional index like numpy:</p>
+  <p>Data selection in xarray is very flexible.</p>
+
+  <p>For <code class="highlighter-rouge">DataArray</code>s you can select by positional index like numpy:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">city_temp</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span>
 </code></pre></div></div>
@@ -1984,7 +2300,11 @@ Attributes:
     units:        Degrees Celsius
 </code></pre></div></div>
 
-<p>by position with label like in pandas:</p>
+<div class="">
+
+  <p>by position with label like in pandas:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">city_temp</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s">"Marburg"</span><span class="p">]</span>
 </code></pre></div></div>
@@ -1999,7 +2319,11 @@ Attributes:
     units:        Degrees Celsius
 </code></pre></div></div>
 
-<p>by dimension name with index:</p>
+<div class="">
+
+  <p>by dimension name with index:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">city_temp</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">cities</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div></div>
@@ -2014,7 +2338,11 @@ Attributes:
     units:        Degrees Celsius
 </code></pre></div></div>
 
-<p>or dimension name with label:</p>
+<div class="">
+
+  <p>or dimension name with label:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">city_temp</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">cities</span><span class="o">=</span><span class="s">"Marburg"</span><span class="p">)</span>
 </code></pre></div></div>
@@ -2029,7 +2357,11 @@ Attributes:
     units:        Degrees Celsius
 </code></pre></div></div>
 
-<p>The last two selection methods work for <code class="highlighter-rouge">Datasets</code> too.</p>
+<div class="">
+
+  <p>The last two selection methods work for <code class="highlighter-rouge">Datasets</code> too.</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">city_ds</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">cities</span><span class="o">=</span><span class="s">"Marburg"</span><span class="p">)</span>
 </code></pre></div></div>
@@ -2046,7 +2378,11 @@ Attributes:
     Description:  Measurements of Temperature and Precipitation
 </code></pre></div></div>
 
-<p>The <code class="highlighter-rouge">sel</code> selection methods accept an additional parameter <code class="highlighter-rouge">method</code> which you can use to do inexact nearest-neighbour lookups.</p>
+<div class="">
+
+  <p>The <code class="highlighter-rouge">sel</code> selection methods accept an additional parameter <code class="highlighter-rouge">method</code> which you can use to do inexact nearest-neighbour lookups.</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">city_ds</span><span class="p">[</span><span class="s">"time"</span><span class="p">]</span>
 </code></pre></div></div>
@@ -2077,22 +2413,34 @@ Attributes:
     Description:  Measurements of Temperature and Precipitation
 </code></pre></div></div>
 
-<p>In addition to these basic selection methods there are more advanced methods available for example masking or vectorized indexing with <code class="highlighter-rouge">DataArrays</code> which you can read about in the <a href="https://xarray.pydata.org/en/stable/indexing.html#">documentation</a></p>
+<div class="">
 
-<div class="alert task">
-
-  <p><strong>Task</strong></p>
-
-  <ol>
-    <li>Select the daily maximum Temperature (TNX) and daily minimum temperature (TNK) from the dataset.</li>
-    <li>Select only one month of data.</li>
-  </ol>
+  <p>In addition to these basic selection methods there are more advanced methods available for example masking or vectorized indexing with <code class="highlighter-rouge">DataArrays</code> which you can read about in the <a href="https://xarray.pydata.org/en/stable/indexing.html#">documentation</a></p>
 
 </div>
 
-<h3 id="computations">Computations</h3>
+<div class="">
 
-<p>All numpy ufuncs are supported for calculations on <code class="highlighter-rouge">DataArray</code>s.</p>
+  <div class="alert task">
+
+    <p><strong>Task</strong></p>
+
+    <ol>
+      <li>Select the daily maximum Temperature (TNX) and daily minimum temperature (TNK) from the dataset.</li>
+      <li>Select only one month of data.</li>
+    </ol>
+
+  </div>
+
+</div>
+
+<div class="">
+
+  <h3 id="computations">Computations</h3>
+
+  <p>All numpy ufuncs are supported for calculations on <code class="highlighter-rouge">DataArray</code>s.</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">city_temp</span> <span class="o">*</span> <span class="mi">5</span>
 </code></pre></div></div>
@@ -2122,7 +2470,11 @@ Coordinates:
   * cities   (cities) &lt;U9 'Marburg' 'Giessen' 'Frankfurt'
 </code></pre></div></div>
 
-<p>Arithmetic operations on <code class="highlighter-rouge">Dataset</code>s automatically loop over all variables</p>
+<div class="">
+
+  <p>Arithmetic operations on <code class="highlighter-rouge">Dataset</code>s automatically loop over all variables</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">city_ds</span> <span class="o">&gt;</span> <span class="mf">0.5</span>
 </code></pre></div></div>
@@ -2139,7 +2491,11 @@ Attributes:
     Description:  Measurements of Temperature and Precipitation
 </code></pre></div></div>
 
-<p>Similar to numpy you can do aggregations but instead of supplying an index for <code class="highlighter-rouge">axis</code> you can use dimension names directly.</p>
+<div class="">
+
+  <p>Similar to numpy you can do aggregations but instead of supplying an index for <code class="highlighter-rouge">axis</code> you can use dimension names directly.</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">city_ds</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s">"time"</span><span class="p">)</span>
 </code></pre></div></div>
@@ -2153,9 +2509,13 @@ Data variables:
     Precipitation  (cities) float64 0.537 0.6516 0.4181
 </code></pre></div></div>
 
-<h3 id="timeseries">Timeseries</h3>
+<div class="">
 
-<p>As seen above xarray supports indexing with datetimes. Moreover similar to pandas using the <code class="highlighter-rouge">.dt</code> datetime accessor datetime components can easily be accessed.</p>
+  <h3 id="timeseries">Timeseries</h3>
+
+  <p>As seen above xarray supports indexing with datetimes. Moreover similar to pandas using the <code class="highlighter-rouge">.dt</code> datetime accessor datetime components can easily be accessed.</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">city_ds</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span>
 </code></pre></div></div>
@@ -2166,7 +2526,11 @@ Coordinates:
   * time     (time) datetime64[ns] 2018-12-31 2019-01-31 ... 2019-11-30
 </code></pre></div></div>
 
-<p>Additionally these datetime components can also be used as “virtual coordinates” (again similar to pandas with the addition that xarray also implements “seasons”).</p>
+<div class="">
+
+  <p>Additionally these datetime components can also be used as “virtual coordinates” (again similar to pandas with the addition that xarray also implements “seasons”).</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">city_ds</span><span class="p">[</span><span class="s">"time.month"</span><span class="p">]</span>
 </code></pre></div></div>
@@ -2187,9 +2551,13 @@ Coordinates:
   * time     (time) datetime64[ns] 2018-12-31 2019-01-31 ... 2019-11-30
 </code></pre></div></div>
 
-<h3 id="groupby">GroupBy</h3>
+<div class="">
 
-<p>Aggregation in combination with “group by” operations similar to pandas make it easy to do complex analysis. If combined with the above datetime functionality we can do aggregations like the following:</p>
+  <h3 id="groupby">GroupBy</h3>
+
+  <p>Aggregation in combination with “group by” operations similar to pandas make it easy to do complex analysis. If combined with the above datetime functionality we can do aggregations like the following:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">city_ds</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">"time.season"</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s">"time"</span><span class="p">)</span>
 </code></pre></div></div>
@@ -2204,20 +2572,28 @@ Data variables:
     Precipitation  (season, cities) float64 nan nan nan ... 0.5279 0.7563 0.4739
 </code></pre></div></div>
 
-<div class="alert task">
+<div class="">
 
-  <p><strong>Task</strong></p>
+  <div class="alert task">
 
-  <ol>
-    <li>Calculate seasonal means for the variables selected in task 2.</li>
-    <li>Go to the <a href="https://xarray.pydata.org/en/stable/index.html">xarray</a> documentation and find out about the plotting functionality. Make a quick plot of the seasonal means.</li>
-  </ol>
+    <p><strong>Task</strong></p>
+
+    <ol>
+      <li>Calculate seasonal means for the variables selected in task 2.</li>
+      <li>Go to the <a href="https://xarray.pydata.org/en/stable/index.html">xarray</a> documentation and find out about the plotting functionality. Make a quick plot of the seasonal means.</li>
+    </ol>
+
+  </div>
 
 </div>
 
-<h3 id="conversion-to-dataframe">Conversion to dataframe</h3>
+<div class="">
 
-<p>In addition to the conversion from xarray also implements function to convert <code class="highlighter-rouge">Dataset</code>s back to pandas dataframes:</p>
+  <h3 id="conversion-to-dataframe">Conversion to dataframe</h3>
+
+  <p>In addition to the conversion from xarray also implements function to convert <code class="highlighter-rouge">Dataset</code>s back to pandas dataframes:</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">city_ds</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div></div>
@@ -2284,14 +2660,22 @@ Data variables:
 </div>
 </div>
 
-<h3 id="writing-data-toreading-data-from-disk">Writing data to/reading data from disk</h3>
+<div class="">
 
-<p>xarray supports writing to many different formats for example netcdf.</p>
+  <h3 id="writing-data-toreading-data-from-disk">Writing data to/reading data from disk</h3>
+
+  <p>xarray supports writing to many different formats for example netcdf.</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">city_ds</span><span class="o">.</span><span class="n">to_netcdf</span><span class="p">(</span><span class="s">"output/city_measurements.nc"</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>Compatible files can be read from disk. Notice that xarray properly encoded the time dimension during writing and decodes them automatically again when reading.</p>
+<div class="">
+
+  <p>Compatible files can be read from disk. Notice that xarray properly encoded the time dimension during writing and decodes them automatically again when reading.</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">new_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s">"output/city_measurements.nc"</span><span class="p">)</span>
 <span class="n">new_ds</span>
@@ -2307,9 +2691,13 @@ Data variables:
     Precipitation  (time, cities) float64 ...
 </code></pre></div></div>
 
-<h3 id="reading-multiple-files">Reading multiple files</h3>
+<div class="">
 
-<p>If you have multiple large files, for example one for every month, like below</p>
+  <h3 id="reading-multiple-files">Reading multiple files</h3>
+
+  <p>If you have multiple large files, for example one for every month, like below</p>
+
+</div>
 
 <div class="language-bash input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%%bash
 <span class="nb">ls </span>output/multiple
@@ -2328,7 +2716,11 @@ city_measurements_201911.nc
 
 </code></pre></div></div>
 
-<p>There is no need to write loops for reading and concatenating the files. xarray encourages the use of the inbuilt function <code class="highlighter-rouge">open_mfdataset</code>.</p>
+<div class="">
+
+  <p>There is no need to write loops for reading and concatenating the files. xarray encourages the use of the inbuilt function <code class="highlighter-rouge">open_mfdataset</code>.</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">t</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span><span class="s">"output/multiple/*.nc"</span><span class="p">,</span> <span class="n">concat_dim</span><span class="o">=</span><span class="s">"time"</span><span class="p">)</span>
 <span class="n">t</span>
@@ -2346,9 +2738,13 @@ Attributes:
     Description:  Measurements of Temperature and Precipitation
 </code></pre></div></div>
 
-<h3 id="dask">Dask</h3>
+<div class="">
 
-<p>On the last slide the print out of the dataset looked different from the output when we open a single dataset.</p>
+  <h3 id="dask">Dask</h3>
+
+  <p>On the last slide the print out of the dataset looked different from the output when we open a single dataset.</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">new_ds</span>
 </code></pre></div></div>
@@ -2378,11 +2774,15 @@ Attributes:
     Description:  Measurements of Temperature and Precipitation
 </code></pre></div></div>
 
-<p>The reason is that the function to load multiple datasets uses <strong><a href="https://dask.org/">Dask</a></strong> in the background.</p>
+<div class="">
 
-<p>Therefore instead of a normal array you get a Dask array. As they say on the website “Dask provides advanced parallelism for analytics…”. Meaning by xarray being able to use dask in the background you can easily achieve parallelism and analyze datasets which are to big for memory.</p>
+  <p>The reason is that the function to load multiple datasets uses <strong><a href="https://dask.org/">Dask</a></strong> in the background.</p>
 
-<p>Dask uses chunks for that. Each chunk in this case being a separate array which only gets loaded (lazy loading) when it is needed by a computation (lazy evaluation) or requested by the user.</p>
+  <p>Therefore instead of a normal array you get a Dask array. As they say on the website “Dask provides advanced parallelism for analytics…”. Meaning by xarray being able to use dask in the background you can easily achieve parallelism and analyze datasets which are to big for memory.</p>
+
+  <p>Dask uses chunks for that. Each chunk in this case being a separate array which only gets loaded (lazy loading) when it is needed by a computation (lazy evaluation) or requested by the user.</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">t</span>
 </code></pre></div></div>
@@ -2399,11 +2799,15 @@ Attributes:
     Description:  Measurements of Temperature and Precipitation
 </code></pre></div></div>
 
-<p>Unfortunately we don’t have time to cover Dask functionallity but for the basic things we don’t need to know much about how Dask works since xarray can use it in the background without us noticing.</p>
+<div class="">
 
-<h4 id="performance-example">Performance example</h4>
+  <p>Unfortunately we don’t have time to cover Dask functionallity but for the basic things we don’t need to know much about how Dask works since xarray can use it in the background without us noticing.</p>
 
-<p>Without Dask</p>
+  <h4 id="performance-example">Performance example</h4>
+
+  <p>Without Dask</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
@@ -2431,14 +2835,18 @@ Wall time: 255 ms
 
 </code></pre></div></div>
 
-<div class="alert task">
+<div class="">
 
-  <h2 id="exercise-5">Exercise 5</h2>
+  <div class="alert task">
 
-  <ul>
-    <li>Complete the fifth assignment and push your results until tuesday 14:00 next week</li>
-    <li>Assignment link: <a href="https://classroom.github.com/a/OjslpEAv">https://classroom.github.com/a/OjslpEAv</a></li>
-  </ul>
+    <h2 id="exercise-5">Exercise 5</h2>
+
+    <ul>
+      <li>Complete the fifth assignment and push your results until tuesday 14:00 next week</li>
+      <li>Assignment link: <a href="https://classroom.github.com/a/OjslpEAv">https://classroom.github.com/a/OjslpEAv</a></li>
+    </ul>
+
+  </div>
 
 </div>
 

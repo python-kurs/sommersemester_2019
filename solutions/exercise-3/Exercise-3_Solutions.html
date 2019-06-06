@@ -29,9 +29,9 @@
   "headline":
     "Exercise III",
   "datePublished":
-    "2019-06-06T13:46:11+00:00",
+    "2019-06-06T13:58:33+00:00",
   "dateModified":
-    "2019-06-06T13:46:11+00:00",
+    "2019-06-06T13:58:33+00:00",
   "description":
     "from pathlib import Pathfrom utils import count_items",
   "author": {
@@ -885,9 +885,13 @@ initFunction(initQuery);
 <span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">count_items</span>
 </code></pre></div></div>
 
-<ol>
-  <li>Contstruct the path to the text file in the data directory using the <code class="highlighter-rouge">pathlib</code> module</li>
-</ol>
+<div class="">
+
+  <ol>
+    <li>Contstruct the path to the text file in the data directory using the <code class="highlighter-rouge">pathlib</code> module</li>
+  </ol>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">data_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s">"data"</span><span class="p">)</span>
 <span class="n">output_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s">"solution"</span><span class="p">)</span>
@@ -896,9 +900,13 @@ initFunction(initQuery);
 <span class="n">text_file</span> <span class="o">=</span> <span class="n">data_dir</span> <span class="o">/</span> <span class="s">"cars.txt"</span>
 </code></pre></div></div>
 
-<ol>
-  <li>Read the text file</li>
-</ol>
+<div class="">
+
+  <ol>
+    <li>Read the text file</li>
+  </ol>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">text_file</span><span class="p">,</span> <span class="s">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="nb">file</span><span class="p">:</span>
     <span class="c"># .read() : read the whole file</span>
@@ -907,11 +915,15 @@ initFunction(initQuery);
     <span class="n">data</span> <span class="o">=</span> <span class="nb">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()[</span><span class="mi">1</span><span class="p">:]</span>
 </code></pre></div></div>
 
-<ol>
-  <li>Count the occurences of each item in the text file</li>
-</ol>
+<div class="">
 
-<p>Count items with imported function. To see what the function looks like click the <strong><em>+</em></strong> sign.</p>
+  <ol>
+    <li>Count the occurences of each item in the text file</li>
+  </ol>
+
+  <p>Count items with imported function. To see what the function looks like click the <strong><em>+</em></strong> sign.</p>
+
+</div>
 
 <div class="language-python input_area hidecode highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">count_items</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="s">"""
@@ -947,27 +959,39 @@ initFunction(initQuery);
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">counts</span> <span class="o">=</span> <span class="n">count_items</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </code></pre></div></div>
 
-<ol>
-  <li>Using <code class="highlighter-rouge">pathlib</code> check if a directory with name <code class="highlighter-rouge">solution</code> exists and if not create it</li>
-</ol>
+<div class="">
+
+  <ol>
+    <li>Using <code class="highlighter-rouge">pathlib</code> check if a directory with name <code class="highlighter-rouge">solution</code> exists and if not create it</li>
+  </ol>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="ow">not</span> <span class="n">output_dir</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
     <span class="n">output_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p>Construct path to output file</p>
+<div class="">
+
+  <p>Construct path to output file</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">out_file</span> <span class="o">=</span> <span class="n">output_dir</span> <span class="o">/</span> <span class="s">"counts.csv"</span>
 </code></pre></div></div>
 
-<ol>
-  <li>Write the counts to the file <code class="highlighter-rouge">counts.csv</code> in the <code class="highlighter-rouge">solution</code> directory in the format (first line is the header)</li>
-</ol>
+<div class="">
 
-<p>item, count<br />
+  <ol>
+    <li>Write the counts to the file <code class="highlighter-rouge">counts.csv</code> in the <code class="highlighter-rouge">solution</code> directory in the format (first line is the header)</li>
+  </ol>
+
+  <p>item, count<br />
 item_name_1, item_count_1<br />
 item_name_2, item_count_2<br />
 …</p>
+
+</div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">out_file</span><span class="p">,</span> <span class="s">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="nb">file</span><span class="p">:</span>
     <span class="c"># Write header line</span>
