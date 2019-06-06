@@ -29,9 +29,9 @@
   "headline":
     "Exercise IV",
   "datePublished":
-    "2019-06-06T14:12:43+00:00",
+    "2019-06-06T15:53:34+00:00",
   "dateModified":
-    "2019-06-06T14:12:43+00:00",
+    "2019-06-06T15:53:34+00:00",
   "description":
     "",
   "author": {
@@ -882,13 +882,13 @@ initFunction(initQuery);
 
             <div class="c-textbook__content">
               
-<div class="">
+<div class="markdown_area ">
 
   <h1 id="exercise-4---solutions">Exercise 4 - Solutions</h1>
 
 </div>
 
-<div class="">
+<div class="markdown_area ">
 
   <p>Import all necessary libraries:</p>
 
@@ -899,7 +899,7 @@ initFunction(initQuery);
 <span class="kn">import</span> <span class="nn">matplotlib.dates</span> <span class="k">as</span> <span class="n">mdates</span>
 </code></pre></div></div>
 
-<div class="">
+<div class="markdown_area ">
 
   <p>Import the climate data files using pandas:</p>
 
@@ -909,7 +909,7 @@ initFunction(initQuery);
 <span class="n">zugspitze</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"data/produkt_klima_tag_20171010_20190412_05792.txt"</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s">";"</span><span class="p">,</span><span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s">'MESS_DATUM'</span><span class="p">],</span><span class="n">index_col</span><span class="o">=</span><span class="s">"MESS_DATUM"</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="">
+<div class="markdown_area ">
 
   <p>Clip the data to the year 2018:</p>
 
@@ -919,7 +919,7 @@ initFunction(initQuery);
 <span class="n">zugspitze</span> <span class="o">=</span> <span class="n">zugspitze</span><span class="p">[</span><span class="s">"2018"</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="">
+<div class="markdown_area ">
 
   <p>Resample temperature values to monthly averages:</p>
 
@@ -929,7 +929,7 @@ initFunction(initQuery);
 <span class="n">zugspitze_agg</span> <span class="o">=</span> <span class="n">zugspitze</span><span class="p">[[</span><span class="s">" TMK"</span><span class="p">,</span> <span class="s">" RSK"</span><span class="p">]]</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s">'1m'</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s">" TMK"</span><span class="p">:</span> <span class="s">"mean"</span><span class="p">,</span> <span class="s">" RSK"</span><span class="p">:</span> <span class="s">"sum"</span><span class="p">})</span>
 </code></pre></div></div>
 
-<div class="">
+<div class="markdown_area ">
 
   <p>Create the plotting function:</p>
 

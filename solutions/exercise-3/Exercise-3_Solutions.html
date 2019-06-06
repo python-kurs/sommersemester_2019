@@ -29,9 +29,9 @@
   "headline":
     "Exercise III",
   "datePublished":
-    "2019-06-06T14:12:43+00:00",
+    "2019-06-06T15:53:34+00:00",
   "dateModified":
-    "2019-06-06T14:12:43+00:00",
+    "2019-06-06T15:53:34+00:00",
   "description":
     "from pathlib import Pathfrom utils import count_items",
   "author": {
@@ -885,7 +885,7 @@ initFunction(initQuery);
 <span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">count_items</span>
 </code></pre></div></div>
 
-<div class="">
+<div class="markdown_area ">
 
   <ol>
     <li>Contstruct the path to the text file in the data directory using the <code class="highlighter-rouge">pathlib</code> module</li>
@@ -900,7 +900,7 @@ initFunction(initQuery);
 <span class="n">text_file</span> <span class="o">=</span> <span class="n">data_dir</span> <span class="o">/</span> <span class="s">"cars.txt"</span>
 </code></pre></div></div>
 
-<div class="">
+<div class="markdown_area ">
 
   <ol>
     <li>Read the text file</li>
@@ -915,7 +915,7 @@ initFunction(initQuery);
     <span class="n">data</span> <span class="o">=</span> <span class="nb">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()[</span><span class="mi">1</span><span class="p">:]</span>
 </code></pre></div></div>
 
-<div class="">
+<div class="markdown_area ">
 
   <ol>
     <li>Count the occurences of each item in the text file</li>
@@ -959,7 +959,7 @@ initFunction(initQuery);
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">counts</span> <span class="o">=</span> <span class="n">count_items</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="">
+<div class="markdown_area ">
 
   <ol>
     <li>Using <code class="highlighter-rouge">pathlib</code> check if a directory with name <code class="highlighter-rouge">solution</code> exists and if not create it</li>
@@ -971,7 +971,7 @@ initFunction(initQuery);
     <span class="n">output_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">()</span>
 </code></pre></div></div>
 
-<div class="">
+<div class="markdown_area ">
 
   <p>Construct path to output file</p>
 
@@ -980,7 +980,7 @@ initFunction(initQuery);
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">out_file</span> <span class="o">=</span> <span class="n">output_dir</span> <span class="o">/</span> <span class="s">"counts.csv"</span>
 </code></pre></div></div>
 
-<div class="">
+<div class="markdown_area ">
 
   <ol>
     <li>Write the counts to the file <code class="highlighter-rouge">counts.csv</code> in the <code class="highlighter-rouge">solution</code> directory in the format (first line is the header)</li>

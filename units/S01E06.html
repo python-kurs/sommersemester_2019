@@ -29,9 +29,9 @@
   "headline":
     "Remote Sensing I",
   "datePublished":
-    "2019-06-06T14:12:43+00:00",
+    "2019-06-06T15:53:34+00:00",
   "dateModified":
-    "2019-06-06T14:12:43+00:00",
+    "2019-06-06T15:53:34+00:00",
   "description":
     "",
   "author": {
@@ -899,13 +899,13 @@ initFunction(initQuery);
 
             <div class="c-textbook__content">
               
-<div class="">
+<div class="markdown_area ">
 
   <h1 id="remote-sensing-i">Remote Sensing I</h1>
 
 </div>
 
-<div class="">
+<div class="markdown_area ">
 
   <h2 id="satpy">SatPy</h2>
 
@@ -913,13 +913,13 @@ initFunction(initQuery);
 
 </div>
 
-<div class="">
+<div class="markdown_area ">
 
   <p><img src="https://avatars1.githubusercontent.com/u/13004956?s=200&amp;v=4" alt="" /></p>
 
 </div>
 
-<div class="">
+<div class="markdown_area ">
 
   <p>From the <a href="https://satpy.readthedocs.io/en/latest/index.html">documentation</a>:</p>
 
@@ -933,13 +933,13 @@ initFunction(initQuery);
 
 </div>
 
-<div class="">
+<div class="markdown_area ">
 
   <h3 id="load--view-msg-data">Load &amp; view MSG data</h3>
 
 </div>
 
-<div class="">
+<div class="markdown_area ">
 
   <p>SatPy is well suited for working with data of Meteosat Second Generation Satellites:</p>
 
@@ -949,7 +949,7 @@ initFunction(initQuery);
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 </code></pre></div></div>
 
-<div class="">
+<div class="markdown_area ">
 
   <p>First, we specify the file(s) of the scene we want to open together with the reader of the respective file type (in our case we use the netcdf reader for the SEVIRI instrument):</p>
 
@@ -959,7 +959,7 @@ initFunction(initQuery);
 <span class="n">files</span> <span class="o">=</span> <span class="p">{</span><span class="s">'seviri_l1b_nc'</span> <span class="p">:</span> <span class="n">dateien</span><span class="p">}</span>
 </code></pre></div></div>
 
-<div class="">
+<div class="markdown_area ">
 
   <p>Then we instantiate a Scene object with the given files:</p>
 
@@ -968,7 +968,7 @@ initFunction(initQuery);
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">scn</span> <span class="o">=</span> <span class="n">satpy</span><span class="o">.</span><span class="n">Scene</span><span class="p">(</span><span class="n">filenames</span><span class="o">=</span><span class="n">files</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="">
+<div class="markdown_area ">
 
   <p>The scene attributes tell us what instrument we are dealing with and the start- and end-times of the scene scan:</p>
 
@@ -982,7 +982,7 @@ initFunction(initQuery);
  'end_time': datetime.datetime(2006, 1, 17, 12, 15, 9, 137000)}
 </code></pre></div></div>
 
-<div class="">
+<div class="markdown_area ">
 
   <p>To get an overview of all available datasets (=channels/bands) of the scene, we can call the <code class="highlighter-rouge">all_dataset_names()</code> function:</p>
 
@@ -1005,7 +1005,7 @@ initFunction(initQuery);
  'WV_073']
 </code></pre></div></div>
 
-<div class="">
+<div class="markdown_area ">
 
   <div class="alert info">
 
@@ -1015,7 +1015,7 @@ initFunction(initQuery);
 
 </div>
 
-<div class="">
+<div class="markdown_area ">
 
   <p>Before we are able to work with the datasets, we first have to load the bands we are actually interested in. Let’s say, we are only interested in the visible wavelength at 0.6µm:</p>
 
@@ -1024,7 +1024,7 @@ initFunction(initQuery);
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">scn</span><span class="o">.</span><span class="n">load</span><span class="p">([</span><span class="s">"VIS006"</span><span class="p">])</span> <span class="c"># Note that we have to pass a list to the load function, even if we only want to work with one band.</span>
 </code></pre></div></div>
 
-<div class="">
+<div class="markdown_area ">
 
   <div class="alert info">
 
@@ -1039,7 +1039,7 @@ initFunction(initQuery);
 
 </div>
 
-<div class="">
+<div class="markdown_area ">
 
   <p>We can have a look at all loaded bands by printing out the keys:</p>
 
@@ -1051,7 +1051,7 @@ initFunction(initQuery);
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[DatasetID(name='VIS006', wavelength=(0.56, 0.635, 0.71), resolution=3000.403165817, polarization=None, calibration='reflectance', level=None, modifiers=())]
 </code></pre></div></div>
 
-<div class="">
+<div class="markdown_area ">
 
   <p>Let’s have a first look at what we are dealing with:</p>
 
@@ -1062,7 +1062,7 @@ initFunction(initQuery);
 
 <p class="output output_png"><img src="../images/units/S01E06_22_0.png" alt="png" /></p>
 
-<div class="">
+<div class="markdown_area ">
 
   <div class="alert task">
 
@@ -1079,7 +1079,7 @@ initFunction(initQuery);
 
 </div>
 
-<div class="">
+<div class="markdown_area ">
 
   <p>Ok, thats nice :)</p>
 
@@ -1101,7 +1101,7 @@ initFunction(initQuery);
 
 <p class="output output_png"><img src="../images/units/S01E06_26_0.png" alt="png" /></p>
 
-<div class="">
+<div class="markdown_area ">
 
   <p>It seems as if we are dealing with reflectance values here (range goes from 0% to 100%). Let’s go sure…</p>
 
@@ -1146,7 +1146,7 @@ Attributes:
 
 </code></pre></div></div>
 
-<div class="">
+<div class="markdown_area ">
 
   <p>This shows us some valuable information about the data:</p>
 
@@ -1161,13 +1161,13 @@ Attributes:
 
 </div>
 
-<div class="">
+<div class="markdown_area ">
 
   <h4 id="calibration">Calibration</h4>
 
 </div>
 
-<div class="">
+<div class="markdown_area ">
 
   <p>By default Satpy will provide the version of the dataset with the highest resolution and the highest level of calibration (brightness temperature or reflectance over radiance). It is also possible to request one or more of these exact versions of a dataset by specifying the calibration argument of the <code class="highlighter-rouge">load()</code> function:</p>
 
@@ -1196,13 +1196,13 @@ Attributes:
 
 <p class="output output_png"><img src="../images/units/S01E06_33_0.png" alt="png" /></p>
 
-<div class="">
+<div class="markdown_area ">
 
   <h4 id="coordinates">Coordinates</h4>
 
 </div>
 
-<div class="">
+<div class="markdown_area ">
 
   <p>Let’s go back to the visible band at 0.6μm: From the metadata above, we can also derive that there is coordinate information provided with the data:</p>
 
@@ -1232,13 +1232,13 @@ Attributes:
     units:                degrees_north
 </code></pre></div></div>
 
-<div class="">
+<div class="markdown_area ">
 
   <p>So here we see, that <code class="highlighter-rouge">lat</code> is given in units of “degrees_north” and that valid values are between -90° and +90°.</p>
 
 </div>
 
-<div class="">
+<div class="markdown_area ">
 
   <p>For the sake of completeness we can also plot the coordinate layers:</p>
 
@@ -1260,7 +1260,7 @@ Attributes:
 
 <p class="output output_png"><img src="../images/units/S01E06_39_0.png" alt="png" /></p>
 
-<div class="">
+<div class="markdown_area ">
 
   <div class="alert task">
 
@@ -1275,13 +1275,13 @@ Attributes:
 
 </div>
 
-<div class="">
+<div class="markdown_area ">
 
   <h3 id="composites">Composites</h3>
 
 </div>
 
-<div class="">
+<div class="markdown_area ">
 
   <p>SatPy comes with many built-in utility functions to create composite images of the data.</p>
 
@@ -1318,7 +1318,7 @@ Attributes:
  'vis_sharpened_ir']
 </code></pre></div></div>
 
-<div class="">
+<div class="markdown_area ">
 
   <p>As with the single bands, you have to load a composite into the Scene object first, if you want to work with it:</p>
 
@@ -1330,7 +1330,7 @@ Attributes:
 
 <p class="output output_png"><img src="../images/units/S01E06_46_0.png" alt="png" /></p>
 
-<div class="">
+<div class="markdown_area ">
 
   <p>Let’s have a look at the metadata of the composite:</p>
 
@@ -1373,7 +1373,7 @@ Attributes:
 
 </code></pre></div></div>
 
-<div class="">
+<div class="markdown_area ">
 
   <ul>
     <li>We see, that the composite consists of 3 bands, stored in a dask-array with the shape (3, 3712, 3712)</li>
@@ -1386,7 +1386,7 @@ Attributes:
 
 </div>
 
-<div class="">
+<div class="markdown_area ">
 
   <p>Guides on how to interpret these composites can be found on the Eumetsat website:</p>
 
@@ -1394,7 +1394,7 @@ Attributes:
 
 </div>
 
-<div class="">
+<div class="markdown_area ">
 
   <p>Let’s load all available bands (except HRV) and the natural color composite so we can work with these data sets later on:</p>
 
@@ -1404,7 +1404,7 @@ Attributes:
 <span class="n">scn</span><span class="o">.</span><span class="n">load</span><span class="p">([</span><span class="s">"natural_color"</span><span class="p">])</span>
 </code></pre></div></div>
 
-<div class="">
+<div class="markdown_area ">
 
   <div class="alert task">
 
@@ -1416,13 +1416,13 @@ Attributes:
 
 </div>
 
-<div class="">
+<div class="markdown_area ">
 
   <h3 id="user-defined-composites">User-defined composites</h3>
 
 </div>
 
-<div class="">
+<div class="markdown_area ">
 
   <p>Additionally to the many built-in composites, you can define your own composites using the Compositer classes of SatPy.</p>
 
@@ -1434,7 +1434,7 @@ Attributes:
 <span class="n">composite</span> <span class="o">=</span> <span class="n">compositor</span><span class="p">([</span><span class="n">scn</span><span class="p">[</span><span class="mf">3.9</span><span class="p">],</span><span class="n">scn</span><span class="p">[</span><span class="mf">10.8</span><span class="p">],</span><span class="n">scn</span><span class="p">[</span><span class="mf">12.0</span><span class="p">]])</span>
 </code></pre></div></div>
 
-<div class="">
+<div class="markdown_area ">
 
   <p>That’s it.</p>
 
@@ -1451,7 +1451,7 @@ Attributes:
 
 <p class="output output_png"><img src="../images/units/S01E06_59_0.png" alt="png" /></p>
 
-<div class="">
+<div class="markdown_area ">
 
   <div class="alert task">
 
@@ -1466,7 +1466,7 @@ Attributes:
 
 </div>
 
-<div class="">
+<div class="markdown_area ">
 
   <h3 id="cropping">Cropping</h3>
 
@@ -1491,7 +1491,7 @@ Attributes:
 
 <p class="output output_png"><img src="../images/units/S01E06_64_0.png" alt="png" /></p>
 
-<div class="">
+<div class="markdown_area ">
 
   <p>The cropped scene keeps all original metadata. Only the bands, composites and coordinates/dimensions are cropped to the specified extents:</p>
 
@@ -1534,13 +1534,13 @@ Attributes:
 
 </code></pre></div></div>
 
-<div class="">
+<div class="markdown_area ">
 
   <h3 id="resampling">Resampling</h3>
 
 </div>
 
-<div class="">
+<div class="markdown_area ">
 
   <p>Cropping is nice and all, but due to the satellite viewing angle, the cropped scene can look very distorted, especially when we are working with the margin regions of the scene. To get a better looking view of the domain of interest, you can use the resampling utilities of SatPy (or pyresample).</p>
 
@@ -1548,7 +1548,7 @@ Attributes:
 
 </div>
 
-<div class="">
+<div class="markdown_area ">
 
   <p>For example, let’s take libya:</p>
 
@@ -1557,7 +1557,7 @@ Attributes:
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">local_scn</span> <span class="o">=</span> <span class="n">scn</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s">"libya"</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="">
+<div class="markdown_area ">
 
   <p>This resamples the scene and all loaded bands/composites to the extents of the “libya” area.
 If you look into the <code class="highlighter-rouge">areas.yaml</code> file, you see how it is defined:</p>
@@ -1580,7 +1580,7 @@ If you look into the <code class="highlighter-rouge">areas.yaml</code> file, you
 
 </div>
 
-<div class="">
+<div class="markdown_area ">
 
   <p>Let’s plot the natural color composite again, to get an overview of where we are:</p>
 
@@ -1591,7 +1591,7 @@ If you look into the <code class="highlighter-rouge">areas.yaml</code> file, you
 
 <p class="output output_png"><img src="../images/units/S01E06_73_0.png" alt="png" /></p>
 
-<div class="">
+<div class="markdown_area ">
 
   <p>Nice, but let’s go back to Greece!</p>
 
@@ -1625,13 +1625,13 @@ If you look into the <code class="highlighter-rouge">areas.yaml</code> file, you
 
 <p class="output output_png"><img src="../images/units/S01E06_75_0.png" alt="png" /></p>
 
-<div class="">
+<div class="markdown_area ">
 
   <p>For more information on resampling, visit the <a href="https://pyresample.readthedocs.io/en/stable/">pyresample</a> and  <a href="https://proj4.org/index.html">PROJ.4</a> documentations.</p>
 
 </div>
 
-<div class="">
+<div class="markdown_area ">
 
   <div class="alert task">
 
