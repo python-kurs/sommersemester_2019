@@ -29,9 +29,9 @@
   "headline":
     "Data science II",
   "datePublished":
-    "2019-06-06T14:04:40+00:00",
+    "2019-06-06T14:12:43+00:00",
   "dateModified":
-    "2019-06-06T14:04:40+00:00",
+    "2019-06-06T14:12:43+00:00",
   "description":
     "",
   "author": {
@@ -960,6 +960,10 @@ initFunction(initQuery);
 
 </div>
 
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s">'figure.figsize'</span><span class="p">]</span> <span class="o">=</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.5</span>
+</code></pre></div></div>
+
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 
@@ -1030,7 +1034,7 @@ initFunction(initQuery);
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E05_13_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E05_14_0.png" alt="png" /></p>
 
 <div class="">
 
@@ -1187,7 +1191,7 @@ np.linspace(start, stop, n) creates a sequence of n evenly spaced numbers from s
 
   <p>Array elements can be accessed similar to lists with the bracket notation.<br />
 For higher dimensional arrays we need to know which index accesses a certain dimension or <strong>axis</strong>.
-<img src="https://www.oreilly.com/library/view/elegant-scipy/9781491922927/assets/elsp_0105.png" width="900px" /></p>
+<img src="https://www.oreilly.com/library/view/elegant-scipy/9781491922927/assets/elsp_0105.png" width="700px" /></p>
 
 </div>
 
@@ -1216,7 +1220,7 @@ For higher dimensional arrays we need to know which index accesses a certain dim
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E05_35_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E05_36_0.png" alt="png" /></p>
 
 <div class="">
 
@@ -1235,7 +1239,7 @@ The general syntax is <code class="highlighter-rouge">[start:stop:step]</code>.<
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E05_37_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E05_38_0.png" alt="png" /></p>
 
 <div class="">
 
@@ -1275,7 +1279,7 @@ By default numpy if an index is omitted slicing</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E05_42_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E05_43_0.png" alt="png" /></p>
 
 <div class="">
 
@@ -1348,7 +1352,7 @@ By default numpy if an index is omitted slicing</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span>
 </code></pre></div></div>
 
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(11,)
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([3, 6, 8, 7, 9, 4, 1, 6, 4, 4, 8], dtype=int32)
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
@@ -1409,7 +1413,7 @@ By default numpy if an index is omitted slicing</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E05_57_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E05_58_0.png" alt="png" /></p>
 
 <div class="">
 
@@ -1454,7 +1458,7 @@ By default numpy if an index is omitted slicing</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E05_64_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E05_65_0.png" alt="png" /></p>
 
 <div class="">
 
@@ -1554,7 +1558,7 @@ By default numpy if an index is omitted slicing</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E05_72_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E05_73_0.png" alt="png" /></p>
 
 <div class="">
 
@@ -1619,14 +1623,14 @@ By default numpy if an index is omitted slicing</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">smile</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 0.4,  0.6,  1.6,  1. , -0.8, -0.8,  1.8,  1.6,  1.4,  0.4])
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 0.4,  0.6, -4. ,  1. , -0.2, -0.2,  1.8,  1.6,  1.4,  0.4])
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">smile</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.48989795, 0.48989795, 1.74355958, 0.        , 2.74954542,
-       2.74954542, 1.6       , 1.74355958, 1.8547237 , 0.48989795])
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.48989795, 0.48989795, 2.        , 0.        , 2.4       ,
+       2.4       , 1.6       , 1.74355958, 1.8547237 , 0.48989795])
 </code></pre></div></div>
 
 <div class="">
@@ -1641,8 +1645,8 @@ for example sum.</p>
 <span class="o">%</span><span class="n">timeit</span> <span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">big_array</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>81.9 ms ± 1.76 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
-501 µs ± 14.9 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>90.6 ms ± 2.15 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
+670 µs ± 31.6 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 
 </code></pre></div></div>
 
@@ -1767,7 +1771,7 @@ for example sum.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E05_95_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E05_96_0.png" alt="png" /></p>
 
 <div class="">
 
@@ -2024,10 +2028,10 @@ Column indices:
 </code></pre></div></div>
 
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;xarray.DataArray (time: 4, cities: 3)&gt;
-array([[0.820618, 0.83036 , 0.926957],
-       [0.15065 , 0.483171, 0.86758 ],
-       [0.228138, 0.159374, 0.071591],
-       [0.29914 , 0.083829, 0.521104]])
+array([[0.054996, 0.497724, 0.108762],
+       [0.906699, 0.864184, 0.46195 ],
+       [0.16275 , 0.878591, 0.227763],
+       [0.448234, 0.17405 , 0.206242]])
 Coordinates:
   * time     (time) datetime64[ns] 2018-12-31 2019-01-31 2019-02-28 2019-03-31
   * cities   (cities) &lt;U9 'Marburg' 'Giessen' 'Frankfurt'
@@ -2048,10 +2052,10 @@ Coordinates:
 </code></pre></div></div>
 
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;xarray.DataArray 'city_temperatures' (time: 4, cities: 3)&gt;
-array([[0.820618, 0.83036 , 0.926957],
-       [0.15065 , 0.483171, 0.86758 ],
-       [0.228138, 0.159374, 0.071591],
-       [0.29914 , 0.083829, 0.521104]])
+array([[0.054996, 0.497724, 0.108762],
+       [0.906699, 0.864184, 0.46195 ],
+       [0.16275 , 0.878591, 0.227763],
+       [0.448234, 0.17405 , 0.206242]])
 Coordinates:
   * time     (time) datetime64[ns] 2018-12-31 2019-01-31 2019-02-28 2019-03-31
   * cities   (cities) &lt;U9 'Marburg' 'Giessen' 'Frankfurt'
@@ -2101,8 +2105,8 @@ Coordinates:
   * time           (time) datetime64[ns] 2018-12-31 2019-01-31 ... 2019-11-30
   * cities         (cities) &lt;U9 'Marburg' 'Giessen' 'Frankfurt'
 Data variables:
-    Temperature    (time, cities) float64 0.8206 0.8304 0.927 ... nan nan nan
-    Precipitation  (time, cities) float64 nan nan nan ... 0.4795 0.8928 0.7285
+    Temperature    (time, cities) float64 0.055 0.4977 0.1088 ... nan nan nan
+    Precipitation  (time, cities) float64 nan nan nan ... 0.6049 0.904 0.8905
 </code></pre></div></div>
 
 <div class="">
@@ -2121,8 +2125,8 @@ Coordinates:
   * time           (time) datetime64[ns] 2018-12-31 2019-01-31 ... 2019-11-30
   * cities         (cities) &lt;U9 'Marburg' 'Giessen' 'Frankfurt'
 Data variables:
-    Temperature    (time, cities) float64 0.8206 0.8304 0.927 ... nan nan nan
-    Precipitation  (time, cities) float64 nan nan nan ... 0.4795 0.8928 0.7285
+    Temperature    (time, cities) float64 0.055 0.4977 0.1088 ... nan nan nan
+    Precipitation  (time, cities) float64 nan nan nan ... 0.6049 0.904 0.8905
 Attributes:
     Description:  Measurements of Temperature and Precipitation
 </code></pre></div></div>
@@ -2137,10 +2141,10 @@ Attributes:
 </code></pre></div></div>
 
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;xarray.DataArray 'Temperature' (time: 10, cities: 3)&gt;
-array([[0.820618, 0.83036 , 0.926957],
-       [0.15065 , 0.483171, 0.86758 ],
-       [0.228138, 0.159374, 0.071591],
-       [0.29914 , 0.083829, 0.521104],
+array([[0.054996, 0.497724, 0.108762],
+       [0.906699, 0.864184, 0.46195 ],
+       [0.16275 , 0.878591, 0.227763],
+       [0.448234, 0.17405 , 0.206242],
        [     nan,      nan,      nan],
        [     nan,      nan,      nan],
        [     nan,      nan,      nan],
@@ -2289,7 +2293,7 @@ For <code class="highlighter-rouge">DataArray</code></p>
 </code></pre></div></div>
 
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;xarray.DataArray 'city_temperatures' (time: 4)&gt;
-array([0.926957, 0.86758 , 0.071591, 0.521104])
+array([0.108762, 0.46195 , 0.227763, 0.206242])
 Coordinates:
   * time     (time) datetime64[ns] 2018-12-31 2019-01-31 2019-02-28 2019-03-31
     cities   &lt;U9 'Frankfurt'
@@ -2308,7 +2312,7 @@ Attributes:
 </code></pre></div></div>
 
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;xarray.DataArray 'city_temperatures' (time: 4)&gt;
-array([0.820618, 0.15065 , 0.228138, 0.29914 ])
+array([0.054996, 0.906699, 0.16275 , 0.448234])
 Coordinates:
   * time     (time) datetime64[ns] 2018-12-31 2019-01-31 2019-02-28 2019-03-31
     cities   &lt;U9 'Marburg'
@@ -2327,7 +2331,7 @@ Attributes:
 </code></pre></div></div>
 
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;xarray.DataArray 'city_temperatures' (time: 4)&gt;
-array([0.83036 , 0.483171, 0.159374, 0.083829])
+array([0.497724, 0.864184, 0.878591, 0.17405 ])
 Coordinates:
   * time     (time) datetime64[ns] 2018-12-31 2019-01-31 2019-02-28 2019-03-31
     cities   &lt;U9 'Giessen'
@@ -2346,7 +2350,7 @@ Attributes:
 </code></pre></div></div>
 
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;xarray.DataArray 'city_temperatures' (time: 4)&gt;
-array([0.820618, 0.15065 , 0.228138, 0.29914 ])
+array([0.054996, 0.906699, 0.16275 , 0.448234])
 Coordinates:
   * time     (time) datetime64[ns] 2018-12-31 2019-01-31 2019-02-28 2019-03-31
     cities   &lt;U9 'Marburg'
@@ -2370,8 +2374,8 @@ Coordinates:
   * time           (time) datetime64[ns] 2018-12-31 2019-01-31 ... 2019-11-30
     cities         &lt;U9 'Marburg'
 Data variables:
-    Temperature    (time) float64 0.8206 0.1507 0.2281 0.2991 ... nan nan nan
-    Precipitation  (time) float64 nan nan nan nan ... 0.2114 0.2962 0.808 0.4795
+    Temperature    (time) float64 0.055 0.9067 0.1628 0.4482 ... nan nan nan nan
+    Precipitation  (time) float64 nan nan nan nan ... 0.2772 0.1527 0.6049
 Attributes:
     Description:  Measurements of Temperature and Precipitation
 </code></pre></div></div>
@@ -2405,7 +2409,7 @@ Coordinates:
     time           datetime64[ns] 2019-03-31
   * cities         (cities) &lt;U9 'Marburg' 'Giessen' 'Frankfurt'
 Data variables:
-    Temperature    (cities) float64 0.2991 0.08383 0.5211
+    Temperature    (cities) float64 0.4482 0.174 0.2062
     Precipitation  (cities) float64 nan nan nan
 Attributes:
     Description:  Measurements of Temperature and Precipitation
@@ -2444,10 +2448,10 @@ Attributes:
 </code></pre></div></div>
 
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;xarray.DataArray 'city_temperatures' (time: 4, cities: 3)&gt;
-array([[4.103089, 4.151798, 4.634783],
-       [0.753252, 2.415853, 4.337899],
-       [1.140689, 0.796868, 0.357957],
-       [1.495699, 0.419143, 2.605518]])
+array([[0.274978, 2.488622, 0.543809],
+       [4.533496, 4.320922, 2.309751],
+       [0.813752, 4.392957, 1.138813],
+       [2.241172, 0.870248, 1.031211]])
 Coordinates:
   * time     (time) datetime64[ns] 2018-12-31 2019-01-31 2019-02-28 2019-03-31
   * cities   (cities) &lt;U9 'Marburg' 'Giessen' 'Frankfurt'
@@ -2457,12 +2461,12 @@ Coordinates:
 </code></pre></div></div>
 
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;xarray.DataArray 'city_precipitation' (time: 6, cities: 3)&gt;
-array([[2.243584, 1.550343, 1.241306],
-       [1.857082, 2.043417, 2.123389],
-       [1.235452, 1.628662, 1.124934],
-       [1.344738, 2.175229, 1.45625 ],
-       [2.243358, 1.820405, 1.373336],
-       [1.615321, 2.441847, 2.072027]])
+array([[1.130138, 1.583483, 1.59783 ],
+       [1.083835, 1.505042, 1.058204],
+       [1.231393, 2.009836, 1.469973],
+       [1.319417, 1.066185, 2.529094],
+       [1.164983, 1.353107, 1.093537],
+       [1.831109, 2.469384, 2.436273]])
 Coordinates:
   * time     (time) datetime64[ns] 2019-06-30 2019-07-31 ... 2019-11-30
   * cities   (cities) &lt;U9 'Marburg' 'Giessen' 'Frankfurt'
@@ -2483,8 +2487,8 @@ Coordinates:
   * cities         (cities) &lt;U9 'Marburg' 'Giessen' 'Frankfurt'
   * time           (time) datetime64[ns] 2018-12-31 2019-01-31 ... 2019-11-30
 Data variables:
-    Temperature    (time, cities) bool True True True ... False False False
-    Precipitation  (time, cities) bool False False False ... False True True
+    Temperature    (time, cities) bool False False False ... False False False
+    Precipitation  (time, cities) bool False False False ... True True True
 Attributes:
     Description:  Measurements of Temperature and Precipitation
 </code></pre></div></div>
@@ -2503,8 +2507,8 @@ Dimensions:        (cities: 3)
 Coordinates:
   * cities         (cities) &lt;U9 'Marburg' 'Giessen' 'Frankfurt'
 Data variables:
-    Temperature    (cities) float64 0.3746 0.3892 0.5968
-    Precipitation  (cities) float64 0.537 0.6516 0.4181
+    Temperature    (cities) float64 0.3932 0.6036 0.2512
+    Precipitation  (cities) float64 0.241 0.4728 0.4697
 </code></pre></div></div>
 
 <div class="">
@@ -2566,8 +2570,8 @@ Coordinates:
   * cities         (cities) &lt;U9 'Marburg' 'Giessen' 'Frankfurt'
   * season         (season) object 'DJF' 'JJA' 'MAM' 'SON'
 Data variables:
-    Temperature    (season, cities) float64 0.3998 0.491 0.622 ... nan nan nan
-    Precipitation  (season, cities) float64 nan nan nan ... 0.5279 0.7563 0.4739
+    Temperature    (season, cities) float64 0.3748 0.7468 0.2662 ... nan nan nan
+    Precipitation  (season, cities) float64 nan nan nan ... 0.3449 0.4235 0.6359
 </code></pre></div></div>
 
 <div class="">
@@ -2630,28 +2634,28 @@ Data variables:
     <tr>
       <th rowspan="5" valign="top">Marburg</th>
       <th>2018-12-31</th>
-      <td>0.820618</td>
+      <td>0.054996</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>2019-01-31</th>
-      <td>0.150650</td>
+      <td>0.906699</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>2019-02-28</th>
-      <td>0.228138</td>
+      <td>0.162750</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>2019-03-31</th>
-      <td>0.299140</td>
+      <td>0.448234</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>2019-06-30</th>
       <td>NaN</td>
-      <td>0.808075</td>
+      <td>0.12234</td>
     </tr>
   </tbody>
 </table>
@@ -2682,11 +2686,13 @@ Data variables:
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;xarray.Dataset&gt;
 Dimensions:        (cities: 3, time: 10)
 Coordinates:
-  * time           (time) datetime64[ns] 2018-12-01 2018-12-02 ... 2019-06-06
+  * time           (time) datetime64[ns] 2018-12-31 2019-01-31 ... 2019-11-30
   * cities         (cities) object 'Marburg' 'Giessen' 'Frankfurt'
 Data variables:
     Temperature    (time, cities) float64 ...
     Precipitation  (time, cities) float64 ...
+Attributes:
+    Description:  Measurements of Temperature and Precipitation
 </code></pre></div></div>
 
 <div class="">
@@ -2750,11 +2756,13 @@ Attributes:
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;xarray.Dataset&gt;
 Dimensions:        (cities: 3, time: 10)
 Coordinates:
-  * time           (time) datetime64[ns] 2018-12-01 2018-12-02 ... 2019-06-06
+  * time           (time) datetime64[ns] 2018-12-31 2019-01-31 ... 2019-11-30
   * cities         (cities) object 'Marburg' 'Giessen' 'Frankfurt'
 Data variables:
     Temperature    (time, cities) float64 ...
     Precipitation  (time, cities) float64 ...
+Attributes:
+    Description:  Measurements of Temperature and Precipitation
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">t</span>
@@ -2814,8 +2822,8 @@ Attributes:
 <span class="o">%</span><span class="n">time</span> <span class="n">_</span> <span class="o">=</span> <span class="n">array1</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="s">"time"</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CPU times: user 250 ms, sys: 266 ms, total: 517 ms
-Wall time: 523 ms
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CPU times: user 227 ms, sys: 286 ms, total: 512 ms
+Wall time: 513 ms
 
 </code></pre></div></div>
 
@@ -2828,8 +2836,8 @@ Wall time: 523 ms
 <div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;xarray.DataArray (place: 1000, time: 100000)&gt;
 dask.array&lt;shape=(1000, 100000), dtype=float64, chunksize=(10, 100000)&gt;
 Dimensions without coordinates: place, time
-CPU times: user 727 ms, sys: 0 ns, total: 727 ms
-Wall time: 255 ms
+CPU times: user 771 ms, sys: 37.8 ms, total: 809 ms
+Wall time: 348 ms
 
 </code></pre></div></div>
 
