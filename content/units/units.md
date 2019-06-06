@@ -1,4 +1,4 @@
-# Syllabus
+# Sessions
 
 **Introduction & Orga** (17.04.2019)
 - Organizational matters
@@ -35,20 +35,26 @@
 - numpy  (unlabeled nd-arrays)
 - xarray (labeled nd-arrays)
 
-**SatPy I** (12.06.2019)
+**Remote Sensing I** (12.06.2019)
+- Introduction to SatPy
 - Read satellite scenes (Meteosat)
-- Print and interpret scene properties
-- Visualize data
+- Analyze scene properties
+- Generate composites
+- Cropping and resampling
+- Simple visualizations
+
+**Remote Sensing II** (19.06.2019)
+- Advanced visualizations (CartoPy)
+- Create band combinations
+- Process complex computations on bands
+- Handling multiple scenes
+- Integration of multiple satellite formats (MODIS, Meteosat, ...)
 - Write data to disk
 
-**SatPy II** (19.06.2019)
-- Reproject satellite data (resampling)
-- Create band combinations
-- Integration of multiple satellite formats (MODIS, Meteosat, ...)
-
-**Visualization** (26.06.2019)
-- Image plots
-- Map plots with CartoPy (of georeferenced data)
+**Algorithm development** (26.06.2019)
+- From problem to algorithm to solution
+- Defining modules and interfaces
+- Teamwork
 
 **Data science III** (03.07.2019)
 - scipy
