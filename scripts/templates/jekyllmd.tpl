@@ -42,7 +42,7 @@
 {{ super() }}
 </div>
 {% else %}
-    {{ super() }}
+{{ super() }}
 {% endif %}
 {% endif %}
 {::options parse_block_html="true" /}
