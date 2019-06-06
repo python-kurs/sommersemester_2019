@@ -68,12 +68,12 @@
   - title: Data science I
     url: /units/S01E04
     not_numbered: true
-  - title: Data science II
-    url: /units/S01E05
-    not_numbered: true
-  - title: Remote Sensing I
-    url: /units/S01E06
-    not_numbered: true
+  #- title: Data science II
+  #  url: /units/S01E05
+  #  not_numbered: true
+  #- title: SatPy I
+  #  url: /units/S01E06
+  #  not_numbered: true
 
 - divider: true
 
@@ -91,12 +91,12 @@
   - title: Exercise III
     url: /solutions/exercise-3/Exercise-3_Solutions
     not_numbered: true
-  - title: Exercise IV
-    url: /solutions/exercise-4/Exercise-4_Solutions
-    not_numbered: true
 
 - divider: true
 
 - title: Results
   url: /results
+  not_numbered: true
+- title: Allgemeine Hinweise
+  url: /allgemeine_hinweise
   not_numbered: true
