@@ -29,9 +29,9 @@
   "headline":
     "Search the site",
   "datePublished":
-    "2019-06-06T15:53:34+00:00",
+    "2019-06-06T17:23:43+00:00",
   "dateModified":
-    "2019-06-06T15:53:34+00:00",
+    "2019-06-06T17:23:43+00:00",
   "description":
     "course course-materials geography remote-sensing marburg-open-educational-resource  physical-geography environmental-science python",
   "author": {
@@ -668,40 +668,6 @@ initFunction(initQuery);
               </li>
               
             
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/sommersemester_2019/units/S01E05.html"
-                >
-                  
-                  Data science II
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/sommersemester_2019/units/S01E06.html"
-                >
-                  
-                  Remote Sensing I
-                </a>
-
-                
-                
-
-              </li>
-              
-            
           </ul>
         
       </li>
@@ -790,23 +756,6 @@ initFunction(initQuery);
               </li>
               
             
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/sommersemester_2019/solutions/exercise-4/Exercise-4_Solutions.html"
-                >
-                  
-                  Exercise IV
-                </a>
-
-                
-                
-
-              </li>
-              
-            
           </ul>
         
       </li>
@@ -831,6 +780,27 @@ initFunction(initQuery);
         >
           
           Results
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/sommersemester_2019/allgemeine_hinweise.html"
+        >
+          
+          Allgemeine Hinweise
         </a>
 
         
@@ -876,6 +846,14 @@ initFunction(initQuery);
         "categories": [],
         "tags": [],
         "url": "https://python-kurs.github.io/sommersemester_2019/about.html",
+        "teaser":null},{
+        "title": "Allgemeine Hinweise",
+        
+        "excerpt":
+            "Ziele der Übungen Einüben der gelernten Inhalte Entwicklung von Problemlösungsfähigkeiten beim Programmieren Was ist zu tun -&gt; Wie kann/sollte/muss der Code dazu aussehen? Erkennen wo Probleme/Fehler auftreten könnten und wie diese vermieden werden können? (e.g. falsche Ergebnisse) Abstraktion, wiederverwendbarer (“sauberer”) Code Einhaltung von Standards und Best-Pratice Empfehlungen Code Style und Syntax Dokumentation Lesbarkeit Allgemeine Auffälligkeiten Oft gute/funktionierende Lösungen aber es hakt häufig im Detail… Was sollte in der Lösung enthalten sein? Alle für die Lösung notwendigen/geforderten Dateien und Verzeichnisse, nicht mehr und nicht weniger. notwendig: die Lösung muss funktionieren (Bsp. wenn eine Datei “extra_funktion.py” eine in der Lösung verwendete Funktion...",
+        "categories": [],
+        "tags": [],
+        "url": "https://python-kurs.github.io/sommersemester_2019/allgemeine_hinweise.html",
         "teaser":null},{
         "title": "Introduction",
         
@@ -925,14 +903,6 @@ initFunction(initQuery);
         "tags": [],
         "url": "https://python-kurs.github.io/sommersemester_2019/solutions/exercise-3/Exercise-3_Solutions.html",
         "teaser":null},{
-        "title": "Exercise IV",
-        
-        "excerpt":
-            "Exercise 4 - Solutions Import all necessary libraries: import pandas as pd import matplotlib.pyplot as plt import matplotlib.dates as mdates Import the climate data files using pandas: garmisch = pd.read_csv(\"data/produkt_klima_tag_20171010_20190412_01550.txt\",sep=\";\",parse_dates=['MESS_DATUM'],index_col=\"MESS_DATUM\") zugspitze = pd.read_csv(\"data/produkt_klima_tag_20171010_20190412_05792.txt\",sep=\";\",parse_dates=['MESS_DATUM'],index_col=\"MESS_DATUM\") Clip the data to the year 2018: garmisch = garmisch[\"2018\"] zugspitze = zugspitze[\"2018\"] Resample temperature values to monthly averages: garmisch_agg = garmisch[[\" TMK\", \" RSK\"]].resample('1m').agg({\" TMK\": \"mean\", \" RSK\": \"sum\"}) zugspitze_agg = zugspitze[[\" TMK\", \" RSK\"]].resample('1m').agg({\" TMK\": \"mean\", \" RSK\": \"sum\"}) Create the plotting function: def create_climate_diagram(df, temp_col, prec_col, title, filename, temp_min=-15, temp_max=20, prec_min=0, prec_max=370): \"\"\" Draw a climate diagram. Parameters ---------- df : pd.DataFrame Dataframe with...",
-        "categories": [],
-        "tags": [],
-        "url": "https://python-kurs.github.io/sommersemester_2019/solutions/exercise-4/Exercise-4_Solutions.html",
-        "teaser":null},{
         "title": "Solutions",
         
         "excerpt":
@@ -972,22 +942,6 @@ initFunction(initQuery);
         "categories": [],
         "tags": [],
         "url": "https://python-kurs.github.io/sommersemester_2019/units/S01E04.html",
-        "teaser":null},{
-        "title": "Data science II",
-        
-        "excerpt":
-            "Data science II Numpy… lets us create N-dimensional arrays lets us efficiantly work with those arrays integrates with or is the basis for many other usefull packages like scipy, pandas, xarray, etc. What are arrays? like lists can have more dimensions that 1 (kind of like a list of lists when thinking about 2 dimensions) are easier to work with than list of lists Create arrays import matplotlib.pyplot as plt plt.rcParams['figure.figsize'] = 2.5, 2.5 import numpy as np import matplotlib.pyplot as plt a = np.array([3., 6., 8., 7., 9., 4., 1., 6., 4., 4., 8.]) a array([3., 6., 8., 7.,...",
-        "categories": [],
-        "tags": [],
-        "url": "https://python-kurs.github.io/sommersemester_2019/units/S01E05.html",
-        "teaser":null},{
-        "title": "Remote Sensing I",
-        
-        "excerpt":
-            "Remote Sensing I SatPy A Python Library for Weather Satellite Processing From the documentation: SatPy is a python library for reading and manipulating meteorological remote sensing data and writing it to various image and data file formats. SatPy comes with the ability to make various RGB composites directly from satellite instrument channel data or higher level processing output. The pyresample package is used to resample data to different uniform areas or grids. Various atmospheric corrections and visual enhancements are also provided, either directly in Satpy or from those in the PySpectral and TrollImage packages. Load &amp; view MSG data SatPy...",
-        "categories": [],
-        "tags": [],
-        "url": "https://python-kurs.github.io/sommersemester_2019/units/S01E06.html",
         "teaser":null},{
         "title": "Sessions",
         
