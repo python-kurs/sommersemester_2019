@@ -21,6 +21,7 @@
 {% if cell['metadata'].get('tags', []) != '' %}
 {::options parse_block_html="true" /}
 {% if 'remove_cell' not in cell['metadata'].get('tags', []) %}
+<div class="{% if 'hide_input' in cell.metadata.tags or 'hidecode' in cell.metadata.tags %} hidecode{% endif %}" markdown="1">
 {% if 'warning' in cell['metadata'].get('tags', []) %}
 <div class="alert warning">
 {{ super() }}
@@ -44,6 +45,7 @@
 {% else %}
 {{ super() }}
 {% endif %}
+</div>
 {% endif %}
 {::options parse_block_html="true" /}
 {% endif %}
