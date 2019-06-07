@@ -3,6 +3,9 @@
     margin-left: 0px;
 }
 
+table td, table th {
+	font-size: 1.2rem;
+}
 
 
 div.info {
