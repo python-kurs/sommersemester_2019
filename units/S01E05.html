@@ -29,9 +29,9 @@
   "headline":
     "Data science II",
   "datePublished":
-    "2019-06-06T18:12:23+00:00",
+    "2019-06-07T05:16:56+00:00",
   "dateModified":
-    "2019-06-06T18:12:23+00:00",
+    "2019-06-07T05:16:56+00:00",
   "description":
     "",
   "author": {
@@ -810,10 +810,10 @@ initFunction(initQuery);
       
       <li class="c-sidebar__chapter">
         <a class="c-sidebar__entry "
-          href="/sommersemester_2019/results.html"
+          href="/sommersemester_2019/allgemeine_hinweise.html"
         >
           
-          Results
+          Allgemeine Hinweise
         </a>
 
         
@@ -831,10 +831,10 @@ initFunction(initQuery);
       
       <li class="c-sidebar__chapter">
         <a class="c-sidebar__entry "
-          href="/sommersemester_2019/allgemeine_hinweise.html"
+          href="/sommersemester_2019/results.html"
         >
           
-          Allgemeine Hinweise
+          Results
         </a>
 
         
@@ -1481,6 +1481,22 @@ By default numpy if an index is omitted slicing</p>
 
 </div>
 
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%%</span><span class="n">HTML</span> 
+<span class="o">&lt;</span><span class="n">style</span><span class="o">&gt;</span>
+<span class="n">td</span><span class="p">,</span> <span class="n">th</span><span class="p">{</span>
+  <span class="n">font</span><span class="o">-</span><span class="n">size</span><span class="p">:</span> <span class="mi">30</span><span class="n">px</span>
+<span class="p">}</span>
+<span class="o">&lt;/</span><span class="n">style</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<div class="output output_html">
+<style>
+td, th{
+  font-size: 30px
+}
+</style>
+</div>
+
 <div class="markdown_area ">
 
   <table>
@@ -1562,7 +1578,7 @@ By default numpy if an index is omitted slicing</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E05_73_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E05_74_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
 
@@ -1775,7 +1791,7 @@ for example sum.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E05_96_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E05_97_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
 
@@ -1984,6 +2000,33 @@ Column indices:
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[ 1,  2,  3,  4],
        [ 9, 10, 11, 12]])
 </code></pre></div></div>
+
+<div class="markdown_area ">
+
+  <p>Fancy indexing always returns copies.<br /></p>
+
+  <p>Now we can add one more thing to our copies vs. views table:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>View</th>
+        <th>Copy</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>a[1,:]</td>
+        <td>a[:, [0,1]]</td>
+      </tr>
+      <tr>
+        <td>np.ravel()</td>
+        <td>np.flatten()</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
 
 <div class="markdown_area ">
 
