@@ -94,9 +94,9 @@
 
 - divider: true
 
-- title: Results
-  url: /results
-  not_numbered: true
 - title: Allgemeine Hinweise
   url: /allgemeine_hinweise
+  not_numbered: true
+- title: Results
+  url: /results
   not_numbered: true
