@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
-  <title>SatPy I</title>
+  <title>Remote Sensing I</title>
   <meta name="description" content="">
 
   <link rel="canonical" href="https://python-kurs.github.io/sommersemester_2019//units/S01E06.html">
@@ -15,7 +15,7 @@
 
   <meta property="og:url"         content="https://python-kurs.github.io/sommersemester_2019//units/S01E06.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="SatPy I" />
+<meta property="og:title"       content="Remote Sensing I" />
 <meta property="og:description" content="" />
 <meta property="og:image"       content="" />
 
@@ -27,11 +27,11 @@
   "mainEntityOfPage":
     "https://python-kurs.github.io/sommersemester_2019//units/S01E06.html",
   "headline":
-    "SatPy I",
+    "Remote Sensing I",
   "datePublished":
-    "2019-06-07T07:45:44+00:00",
+    "2019-06-07T12:01:15+00:00",
   "dateModified":
-    "2019-06-07T07:45:44+00:00",
+    "2019-06-07T12:01:15+00:00",
   "description":
     "",
   "author": {
@@ -693,7 +693,7 @@ initFunction(initQuery);
                   href="/sommersemester_2019/units/S01E06.html"
                 >
                   
-                  SatPy I
+                  Remote Sensing I
                 </a>
 
                 
@@ -857,15 +857,21 @@ initFunction(initQuery);
     <nav class="onthispage">
       <header><h4 class="nav__title"><i class="fa fa-list"></i>   On this page</h4></header>
       <ul class="toc__menu">
-  <li><a href="#satpy">SatPy</a>
+  <li><a href="#satpy">SatPy</a></li>
+  <li><a href="#load--view-msg-data">Load &amp; view MSG data</a>
     <ul>
-      <li><a href="#load--view-msg-data">Load &amp; view MSG data</a></li>
-      <li><a href="#composites">Composites</a></li>
-      <li><a href="#user-defined-composites">User-defined composites</a></li>
-      <li><a href="#cropping">Cropping</a></li>
-      <li><a href="#resampling">Resampling</a></li>
+      <li><a href="#calibration">Calibration</a></li>
+      <li><a href="#coordinates">Coordinates</a></li>
     </ul>
   </li>
+  <li><a href="#composites">Composites</a>
+    <ul>
+      <li><a href="#built-in-composites">Built-in composites</a></li>
+      <li><a href="#user-defined-composites">User-defined composites</a></li>
+    </ul>
+  </li>
+  <li><a href="#cropping">Cropping</a></li>
+  <li><a href="#resampling">Resampling</a></li>
 </ul>
     </nav>
   </aside>
@@ -919,12 +925,6 @@ initFunction(initQuery);
 
 <div class="markdown_area ">
 
-  <p><img src="https://avatars1.githubusercontent.com/u/13004956?s=200&amp;v=4" alt="" /></p>
-
-</div>
-
-<div class="markdown_area ">
-
   <p>From the <a href="https://satpy.readthedocs.io/en/latest/index.html">documentation</a>:</p>
 
   <p>SatPy is a python library for <strong>reading</strong> and <strong>manipulating</strong> meteorological remote sensing data and <strong>writing</strong> it to various image and data file formats.</p>
@@ -939,7 +939,7 @@ initFunction(initQuery);
 
 <div class="markdown_area ">
 
-  <h3 id="load--view-msg-data">Load &amp; view MSG data</h3>
+  <h2 id="load--view-msg-data">Load &amp; view MSG data</h2>
 
 </div>
 
@@ -1064,7 +1064,7 @@ initFunction(initQuery);
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">scn</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s">"VIS006"</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E06_22_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E06_21_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
 
@@ -1089,7 +1089,28 @@ initFunction(initQuery);
 
   <p>However, SatPy’s <code class="highlighter-rouge">show()</code> function doesn’t offer the option to depict a colorbar (so that we get an impression of the value range of the depicted colors).</p>
 
-  <p>Fortunately, we can easily achieve this by using the <code class="highlighter-rouge">imshow()</code> function from the matplotlib module:</p>
+  <p>Fortunately, we can easily achieve this by using the <code class="highlighter-rouge">imshow()</code> or <code class="highlighter-rouge">pcolormesh()</code> functions from xarray (which are just thin wrappers around the same-named matplotlib functions). For most of our use-cases it’s better to use <code class="highlighter-rouge">imshow()</code> as it is much faster when we are dealing with large data sets.</p>
+
+</div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">scn</span><span class="p">[</span><span class="s">"VIS006"</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">imshow</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.image.AxesImage at 0x7f48541f6f98&gt;
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../images/units/S01E06_25_1.png" alt="png" /></p>
+
+<div class="markdown_area ">
+
+  <p>Well, this is rahter ugly and the colorbar title is misleading (although that’s not xarray’s fault).</p>
+
+</div>
+
+<div class="markdown_area ">
+
+  <p>Like always, if we want to control specific plot elements, we can just use matplotlib itself. 
+We need more lines of code with this approach but the result looks better:</p>
 
 </div>
 
@@ -1103,7 +1124,7 @@ initFunction(initQuery);
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E06_26_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E06_28_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
 
@@ -1167,7 +1188,7 @@ Attributes:
 
 <div class="markdown_area ">
 
-  <h4 id="calibration">Calibration</h4>
+  <h3 id="calibration">Calibration</h3>
 
 </div>
 
@@ -1198,11 +1219,11 @@ Attributes:
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E06_33_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E06_35_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
 
-  <h4 id="coordinates">Coordinates</h4>
+  <h3 id="coordinates">Coordinates</h3>
 
 </div>
 
@@ -1262,7 +1283,7 @@ Attributes:
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E06_39_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E06_41_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
 
@@ -1281,7 +1302,13 @@ Attributes:
 
 <div class="markdown_area ">
 
-  <h3 id="composites">Composites</h3>
+  <h2 id="composites">Composites</h2>
+
+</div>
+
+<div class="markdown_area ">
+
+  <h3 id="built-in-composites">Built-in composites</h3>
 
 </div>
 
@@ -1332,7 +1359,7 @@ Attributes:
 <span class="n">scn</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s">"natural_color"</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E06_46_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E06_49_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
 
@@ -1453,7 +1480,7 @@ Attributes:
 <span class="n">img</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E06_59_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E06_62_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
 
@@ -1472,7 +1499,7 @@ Attributes:
 
 <div class="markdown_area ">
 
-  <h3 id="cropping">Cropping</h3>
+  <h2 id="cropping">Cropping</h2>
 
   <p>Often, you are only interested in a specific region of the fulldisk.</p>
 
@@ -1485,7 +1512,7 @@ Attributes:
 <span class="n">scn_cropped</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s">"natural_color"</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E06_63_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E06_66_0.png" alt="png" /></p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Crop to a region via x/y values in original projection units (x_min, y_min, x_max, y_max)</span>
 <span class="c"># In the case of MSG, the projection units are meters (distance from the nadir)</span>
@@ -1493,7 +1520,7 @@ Attributes:
 <span class="n">scn_cropped</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s">"natural_color"</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E06_64_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E06_67_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
 
@@ -1540,7 +1567,7 @@ Attributes:
 
 <div class="markdown_area ">
 
-  <h3 id="resampling">Resampling</h3>
+  <h2 id="resampling">Resampling</h2>
 
 </div>
 
@@ -1593,7 +1620,7 @@ If you look into the <code class="highlighter-rouge">areas.yaml</code> file, you
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">local_scn</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s">"natural_color"</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E06_73_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E06_76_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
 
@@ -1627,7 +1654,7 @@ If you look into the <code class="highlighter-rouge">areas.yaml</code> file, you
 <span class="n">local_scn</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s">"natural_color"</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E06_75_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E06_78_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
 
