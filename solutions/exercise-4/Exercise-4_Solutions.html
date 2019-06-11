@@ -29,9 +29,9 @@
   "headline":
     "Exercise IV",
   "datePublished":
-    "2019-06-11T08:02:34+00:00",
+    "2019-06-11T08:53:49+00:00",
   "dateModified":
-    "2019-06-11T08:02:34+00:00",
+    "2019-06-11T08:53:49+00:00",
   "description":
     "",
   "author": {
@@ -960,100 +960,6 @@ initFunction(initQuery);
 <span class="n">zugspitze_agg</span> <span class="o">=</span> <span class="n">zugspitze</span><span class="p">[[</span><span class="s">" TMK"</span><span class="p">,</span> <span class="s">" RSK"</span><span class="p">]]</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s">'1m'</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s">" TMK"</span><span class="p">:</span> <span class="s">"mean"</span><span class="p">,</span> <span class="s">" RSK"</span><span class="p">:</span> <span class="s">"sum"</span><span class="p">})</span>
 </code></pre></div></div>
 
-<div class="output output_html">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>TMK</th>
-      <th>RSK</th>
-    </tr>
-    <tr>
-      <th>MESS_DATUM</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>2018-01-31</th>
-      <td>0.806452</td>
-      <td>220.4</td>
-    </tr>
-    <tr>
-      <th>2018-02-28</th>
-      <td>-3.353571</td>
-      <td>55.2</td>
-    </tr>
-    <tr>
-      <th>2018-03-31</th>
-      <td>2.132258</td>
-      <td>50.4</td>
-    </tr>
-    <tr>
-      <th>2018-04-30</th>
-      <td>12.393333</td>
-      <td>34.0</td>
-    </tr>
-    <tr>
-      <th>2018-05-31</th>
-      <td>14.138710</td>
-      <td>114.8</td>
-    </tr>
-    <tr>
-      <th>2018-06-30</th>
-      <td>16.263333</td>
-      <td>152.4</td>
-    </tr>
-    <tr>
-      <th>2018-07-31</th>
-      <td>18.038710</td>
-      <td>99.0</td>
-    </tr>
-    <tr>
-      <th>2018-08-31</th>
-      <td>18.738710</td>
-      <td>199.9</td>
-    </tr>
-    <tr>
-      <th>2018-09-30</th>
-      <td>14.163333</td>
-      <td>118.9</td>
-    </tr>
-    <tr>
-      <th>2018-10-31</th>
-      <td>9.803226</td>
-      <td>65.7</td>
-    </tr>
-    <tr>
-      <th>2018-11-30</th>
-      <td>3.486667</td>
-      <td>11.3</td>
-    </tr>
-    <tr>
-      <th>2018-12-31</th>
-      <td>0.332258</td>
-      <td>166.5</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
 <div class="markdown_area ">
   <!--<div class="">
 </div>-->
@@ -1110,7 +1016,6 @@ initFunction(initQuery);
     
     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     
     <span class="k">return</span> <span class="n">fig</span>
 </code></pre></div></div>

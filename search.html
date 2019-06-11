@@ -29,9 +29,9 @@
   "headline":
     "Search the site",
   "datePublished":
-    "2019-06-11T08:02:34+00:00",
+    "2019-06-11T08:53:49+00:00",
   "dateModified":
-    "2019-06-11T08:02:34+00:00",
+    "2019-06-11T08:53:49+00:00",
   "description":
     "course course-materials geography remote-sensing marburg-open-educational-resource  physical-geography environmental-science python",
   "author": {
@@ -957,7 +957,7 @@ initFunction(initQuery);
         "title": "Exercise IV",
         
         "excerpt":
-            "Exercise 4 - Solutions Import all necessary libraries: import pandas as pd import matplotlib.pyplot as plt import matplotlib.dates as mdates Import the climate data files using pandas: garmisch = pd.read_csv(\"data/produkt_klima_tag_20171010_20190412_01550.txt\",sep=\";\",parse_dates=[\"MESS_DATUM\"],index_col=\"MESS_DATUM\") zugspitze = pd.read_csv(\"data/produkt_klima_tag_20171010_20190412_05792.txt\",sep=\";\",parse_dates=[\"MESS_DATUM\"],index_col=\"MESS_DATUM\") Clip the data to the year 2018: garmisch = garmisch[\"2018\"] zugspitze = zugspitze[\"2018\"] Resample temperature values to monthly averages: garmisch_agg = garmisch[[\" TMK\", \" RSK\"]].resample('1m').agg({\" TMK\": \"mean\", \" RSK\": \"sum\"}) zugspitze_agg = zugspitze[[\" TMK\", \" RSK\"]].resample('1m').agg({\" TMK\": \"mean\", \" RSK\": \"sum\"}) TMK RSK MESS_DATUM 2018-01-31 0.806452 220.4 2018-02-28 -3.353571 55.2 2018-03-31 2.132258 50.4 2018-04-30 12.393333 34.0 2018-05-31 14.138710 114.8 2018-06-30 16.263333 152.4 2018-07-31 18.038710 99.0 2018-08-31 18.738710...",
+            "Exercise 4 - Solutions Import all necessary libraries: import pandas as pd import matplotlib.pyplot as plt import matplotlib.dates as mdates Import the climate data files using pandas: garmisch = pd.read_csv(\"data/produkt_klima_tag_20171010_20190412_01550.txt\",sep=\";\",parse_dates=[\"MESS_DATUM\"],index_col=\"MESS_DATUM\") zugspitze = pd.read_csv(\"data/produkt_klima_tag_20171010_20190412_05792.txt\",sep=\";\",parse_dates=[\"MESS_DATUM\"],index_col=\"MESS_DATUM\") Clip the data to the year 2018: garmisch = garmisch[\"2018\"] zugspitze = zugspitze[\"2018\"] Resample temperature values to monthly averages: garmisch_agg = garmisch[[\" TMK\", \" RSK\"]].resample('1m').agg({\" TMK\": \"mean\", \" RSK\": \"sum\"}) zugspitze_agg = zugspitze[[\" TMK\", \" RSK\"]].resample('1m').agg({\" TMK\": \"mean\", \" RSK\": \"sum\"}) Create the plotting function: def create_climate_diagram(df, temp_col, prec_col, title, filename, temp_min=-15, temp_max=20, prec_min=0, prec_max=370): \"\"\" Draw a climate diagram. Parameters ---------- df : pd.DataFrame Dataframe with...",
         "categories": [],
         "tags": [],
         "url": "https://python-kurs.github.io/sommersemester_2019/solutions/exercise-4/Exercise-4_Solutions.html",
