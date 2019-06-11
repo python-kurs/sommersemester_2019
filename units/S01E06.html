@@ -29,9 +29,9 @@
   "headline":
     "Remote Sensing I",
   "datePublished":
-    "2019-06-10T19:19:34+00:00",
+    "2019-06-11T06:12:19+00:00",
   "dateModified":
-    "2019-06-10T19:19:34+00:00",
+    "2019-06-11T06:12:19+00:00",
   "description":
     "",
   "author": {
@@ -910,12 +910,16 @@ initFunction(initQuery);
             <div class="c-textbook__content">
               
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h1 id="remote-sensing-i">Remote Sensing I</h1>
 
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h2 id="satpy">SatPy</h2>
 
@@ -924,6 +928,8 @@ initFunction(initQuery);
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>From the <a href="https://satpy.readthedocs.io/en/latest/index.html">documentation</a>:</p>
 
@@ -938,12 +944,16 @@ initFunction(initQuery);
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h2 id="load--view-msg-data">Load &amp; view MSG data</h2>
 
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>SatPy is well suited for working with data of Meteosat Second Generation Satellites:</p>
 
@@ -954,6 +964,8 @@ initFunction(initQuery);
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>First, we specify the file(s) of the scene we want to open together with the reader of the respective file type (in our case we use the netcdf reader for the SEVIRI instrument):</p>
 
@@ -964,6 +976,8 @@ initFunction(initQuery);
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>Then we instantiate a Scene object with the given files:</p>
 
@@ -973,6 +987,8 @@ initFunction(initQuery);
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>The scene attributes tell us what instrument we are dealing with and the start- and end-times of the scene scan:</p>
 
@@ -987,6 +1003,8 @@ initFunction(initQuery);
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>To get an overview of all available datasets (=channels/bands) of the scene, we can call the <code class="highlighter-rouge">all_dataset_names()</code> function:</p>
 
@@ -1010,6 +1028,8 @@ initFunction(initQuery);
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="info ">
+</div>-->
 
   <div class="alert info">
 
@@ -1020,6 +1040,8 @@ initFunction(initQuery);
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>Before we are able to work with the datasets, we first have to load the bands we are actually interested in. Let’s say, we are only interested in the visible wavelength at 0.6µm:</p>
 
@@ -1029,6 +1051,8 @@ initFunction(initQuery);
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="info ">
+</div>-->
 
   <div class="alert info">
 
@@ -1044,6 +1068,8 @@ initFunction(initQuery);
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>We can have a look at all loaded bands by printing out the keys:</p>
 
@@ -1056,6 +1082,8 @@ initFunction(initQuery);
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>Let’s have a first look at what we are dealing with:</p>
 
@@ -1067,6 +1095,8 @@ initFunction(initQuery);
 <p class="output output_png"><img src="../images/units/S01E06_21_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
+  <!--<div class="task ">
+</div>-->
 
   <div class="alert task">
 
@@ -1084,6 +1114,8 @@ initFunction(initQuery);
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>Ok, thats nice :)</p>
 
@@ -1102,12 +1134,16 @@ initFunction(initQuery);
 <p class="output output_png"><img src="../images/units/S01E06_25_1.png" alt="png" /></p>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>Well, this is rahter ugly and the colorbar title is misleading (although that’s not xarray’s fault).</p>
 
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>Like always, if we want to control specific plot elements, we can just use matplotlib itself. 
 We need more lines of code with this approach but the result looks better:</p>
@@ -1127,6 +1163,8 @@ We need more lines of code with this approach but the result looks better:</p>
 <p class="output output_png"><img src="../images/units/S01E06_28_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>It seems as if we are dealing with reflectance values here (range goes from 0% to 100%). Let’s go sure…</p>
 
@@ -1172,6 +1210,8 @@ Attributes:
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>This shows us some valuable information about the data:</p>
 
@@ -1187,12 +1227,16 @@ Attributes:
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h3 id="calibration">Calibration</h3>
 
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>By default Satpy will provide the version of the dataset with the highest resolution and the highest level of calibration (brightness temperature or reflectance over radiance). It is also possible to request one or more of these exact versions of a dataset by specifying the calibration argument of the <code class="highlighter-rouge">load()</code> function:</p>
 
@@ -1222,12 +1266,16 @@ Attributes:
 <p class="output output_png"><img src="../images/units/S01E06_35_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h3 id="coordinates">Coordinates</h3>
 
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>Let’s go back to the visible band at 0.6μm: From the metadata above, we can also derive that there is coordinate information provided with the data:</p>
 
@@ -1258,12 +1306,16 @@ Attributes:
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>So here we see, that <code class="highlighter-rouge">lat</code> is given in units of “degrees_north” and that valid values are between -90° and +90°.</p>
 
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>For the sake of completeness we can also plot the coordinate layers:</p>
 
@@ -1286,6 +1338,8 @@ Attributes:
 <p class="output output_png"><img src="../images/units/S01E06_41_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
+  <!--<div class="task ">
+</div>-->
 
   <div class="alert task">
 
@@ -1301,18 +1355,24 @@ Attributes:
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h2 id="composites">Composites</h2>
 
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h3 id="built-in-composites">Built-in composites</h3>
 
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>SatPy comes with many built-in utility functions to create composite images of the data.</p>
 
@@ -1350,6 +1410,8 @@ Attributes:
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>As with the single bands, you have to load a composite into the Scene object first, if you want to work with it:</p>
 
@@ -1362,6 +1424,8 @@ Attributes:
 <p class="output output_png"><img src="../images/units/S01E06_49_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>Let’s have a look at the metadata of the composite:</p>
 
@@ -1405,6 +1469,8 @@ Attributes:
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <ul>
     <li>We see, that the composite consists of 3 bands, stored in a dask-array with the shape (3, 3712, 3712)</li>
@@ -1418,6 +1484,8 @@ Attributes:
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>Guides on how to interpret these composites can be found on the Eumetsat website:</p>
 
@@ -1426,6 +1494,8 @@ Attributes:
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>Let’s load all available bands (except HRV) and the natural color composite so we can work with these data sets later on:</p>
 
@@ -1436,6 +1506,8 @@ Attributes:
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="task ">
+</div>-->
 
   <div class="alert task">
 
@@ -1448,12 +1520,16 @@ Attributes:
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h3 id="user-defined-composites">User-defined composites</h3>
 
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>Additionally to the many built-in composites, you can define your own composites using the Compositer classes of SatPy.</p>
 
@@ -1466,6 +1542,8 @@ Attributes:
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>That’s it.</p>
 
@@ -1483,6 +1561,8 @@ Attributes:
 <p class="output output_png"><img src="../images/units/S01E06_62_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
+  <!--<div class="task ">
+</div>-->
 
   <div class="alert task">
 
@@ -1498,6 +1578,8 @@ Attributes:
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h2 id="cropping">Cropping</h2>
 
@@ -1523,6 +1605,8 @@ Attributes:
 <p class="output output_png"><img src="../images/units/S01E06_67_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>The cropped scene keeps all original metadata. Only the bands, composites and coordinates/dimensions are cropped to the specified extents:</p>
 
@@ -1566,12 +1650,16 @@ Attributes:
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h2 id="resampling">Resampling</h2>
 
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>Cropping is nice and all, but due to the satellite viewing angle, the cropped scene can look very distorted, especially when we are working with the margin regions of the scene. To get a better looking view of the domain of interest, you can use the resampling utilities of SatPy (or pyresample).</p>
 
@@ -1580,6 +1668,8 @@ Attributes:
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>For example, let’s take libya:</p>
 
@@ -1589,6 +1679,8 @@ Attributes:
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>This resamples the scene and all loaded bands/composites to the extents of the “libya” area.
 If you look into the <code class="highlighter-rouge">areas.yaml</code> file, you see how it is defined:</p>
@@ -1612,6 +1704,8 @@ If you look into the <code class="highlighter-rouge">areas.yaml</code> file, you
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>Let’s plot the natural color composite again, to get an overview of where we are:</p>
 
@@ -1623,6 +1717,8 @@ If you look into the <code class="highlighter-rouge">areas.yaml</code> file, you
 <p class="output output_png"><img src="../images/units/S01E06_76_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>Nice, but let’s go back to Greece!</p>
 
@@ -1657,12 +1753,16 @@ If you look into the <code class="highlighter-rouge">areas.yaml</code> file, you
 <p class="output output_png"><img src="../images/units/S01E06_78_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>For more information on resampling, visit the <a href="https://pyresample.readthedocs.io/en/stable/">pyresample</a> and  <a href="https://proj4.org/index.html">PROJ.4</a> documentations.</p>
 
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="task ">
+</div>-->
 
   <div class="alert task">
 

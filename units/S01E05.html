@@ -29,9 +29,9 @@
   "headline":
     "Data science II",
   "datePublished":
-    "2019-06-10T19:19:34+00:00",
+    "2019-06-11T06:12:19+00:00",
   "dateModified":
-    "2019-06-10T19:19:34+00:00",
+    "2019-06-11T06:12:19+00:00",
   "description":
     "",
   "author": {
@@ -927,12 +927,16 @@ initFunction(initQuery);
             <div class="c-textbook__content">
               
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h1 id="data-science-ii">Data science II</h1>
 
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h2 id="numpy"><a href="https://www.numpy.org/">Numpy</a>…</h2>
 
@@ -947,6 +951,8 @@ initFunction(initQuery);
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h3 id="what-are-arrays">What are arrays?</h3>
 
@@ -959,6 +965,8 @@ initFunction(initQuery);
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h3 id="create-arrays">Create arrays</h3>
 
@@ -979,6 +987,8 @@ initFunction(initQuery);
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>Arrays have some attributes like:</p>
 
@@ -993,6 +1003,8 @@ initFunction(initQuery);
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>A shape</p>
 
@@ -1005,6 +1017,8 @@ initFunction(initQuery);
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>and of course a data type</p>
 
@@ -1017,6 +1031,8 @@ initFunction(initQuery);
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>To create arrays with more dimensions we use list of lists as the first argument to <code class="highlighter-rouge">np.array</code></p>
 
@@ -1041,6 +1057,8 @@ initFunction(initQuery);
 <p class="output output_png"><img src="../images/units/S01E05_14_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>This arrays attributes are:</p>
 
@@ -1065,6 +1083,8 @@ initFunction(initQuery);
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="info ">
+</div>-->
 
   <div class="alert info">
 
@@ -1082,6 +1102,8 @@ initFunction(initQuery);
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>Notice that by default numpy creates data types of 64 bit size. To create other types you need to specify the <code class="highlighter-rouge">dtype</code> argument in the array initalisation which takes one of the many data types listed in the documentation <a href="https://docs.scipy.org/doc/numpy/reference/arrays.scalars.html#arrays-scalars-built-in">here</a></p>
 
@@ -1097,6 +1119,8 @@ initFunction(initQuery);
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h3 id="other-ways-to-create-arrays">Other ways to create arrays</h3>
 
@@ -1118,6 +1142,8 @@ While there are more the following two are the most used ones.</p>
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>Create an array with zeros based on the shape and dtype of another array:</p>
 
@@ -1139,6 +1165,8 @@ While there are more the following two are the most used ones.</p>
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>Create array with ones:</p>
 
@@ -1155,6 +1183,8 @@ While there are more the following two are the most used ones.</p>
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>Similarly to the zeros case there is a function <code class="highlighter-rouge">np.ones_like</code>.<br />
 Notice that additionally we can specify a dtype other than the default of np.float64.</p>
@@ -1162,6 +1192,8 @@ Notice that additionally we can specify a dtype other than the default of np.flo
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="task ">
+</div>-->
 
   <div class="alert task">
 
@@ -1177,6 +1209,8 @@ Notice that additionally we can specify a dtype other than the default of np.flo
 </div>
 
 <div class="markdown_area hidecode">
+  <!--<div class="solution hidecode hide_input ">
+</div>-->
 
   <div class="alert solution">
 
@@ -1190,6 +1224,8 @@ np.linspace(start, stop, n) creates a sequence of n evenly spaced numbers from s
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h3 id="accessing-elements-indexing">Accessing elements (indexing)</h3>
 
@@ -1200,6 +1236,8 @@ For higher dimensional arrays we need to know which index accesses a certain dim
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>The following accesses the left eye of the smiley which is located in row 2 and column 3 (counts start at 0).</p>
 
@@ -1212,6 +1250,8 @@ For higher dimensional arrays we need to know which index accesses a certain dim
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>This can also be used to assign new values</p>
 
@@ -1227,6 +1267,8 @@ For higher dimensional arrays we need to know which index accesses a certain dim
 <p class="output output_png"><img src="../images/units/S01E05_36_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h3 id="slicing">Slicing</h3>
 
@@ -1246,6 +1288,8 @@ The general syntax is <code class="highlighter-rouge">[start:stop:step]</code>.<
 <p class="output output_png"><img src="../images/units/S01E05_38_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>Or we can select every other element</p>
 
@@ -1258,6 +1302,8 @@ The general syntax is <code class="highlighter-rouge">[start:stop:step]</code>.<
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>Notice that we omitted the stop index while selecting rows and both start and stop index with the columns as well as the step size.<br />
 By default numpy if an index is omitted slicing</p>
@@ -1270,6 +1316,8 @@ By default numpy if an index is omitted slicing</p>
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>We can also combine indexing and slicing.</p>
 
@@ -1286,6 +1334,8 @@ By default numpy if an index is omitted slicing</p>
 <p class="output output_png"><img src="../images/units/S01E05_43_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
+  <!--<div class="task ">
+</div>-->
 
   <div class="alert task">
 
@@ -1302,6 +1352,8 @@ By default numpy if an index is omitted slicing</p>
 </div>
 
 <div class="markdown_area hidecode">
+  <!--<div class="solution hidecode hide_input ">
+</div>-->
 
   <div class="alert solution">
 
@@ -1323,6 +1375,8 @@ By default numpy if an index is omitted slicing</p>
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h3 id="reshaping">Reshaping</h3>
 
@@ -1348,6 +1402,8 @@ By default numpy if an index is omitted slicing</p>
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>While in the special case of converting a 1D array to a vector can also be accomplished using <code class="highlighter-rouge">reshape</code> it is easier to use the following since no knowledge of the exact shape is necessary.</p>
 
@@ -1366,6 +1422,8 @@ By default numpy if an index is omitted slicing</p>
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h4 id="flatten-vs-ravel">Flatten vs. Ravel</h4>
 
@@ -1384,6 +1442,8 @@ By default numpy if an index is omitted slicing</p>
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>or</p>
 
@@ -1400,12 +1460,16 @@ By default numpy if an index is omitted slicing</p>
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>The difference between the two is <code class="highlighter-rouge">flatten</code> returns a <strong>copy</strong> while <code class="highlighter-rouge">ravel</code> returns a <strong>view</strong> of the array.</p>
 
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h3 id="views-vs-copies">Views vs. copies</h3>
 
@@ -1420,6 +1484,8 @@ By default numpy if an index is omitted slicing</p>
 <p class="output output_png"><img src="../images/units/S01E05_58_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>Lets say we want to do some calculations on the mouth area of the array. A common workflow would be to select the corresponding part of the array first</p>
 
@@ -1429,6 +1495,8 @@ By default numpy if an index is omitted slicing</p>
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>To be able to differentiate between the nose and the mouth we assign a new value to the nose</p>
 
@@ -1446,12 +1514,16 @@ By default numpy if an index is omitted slicing</p>
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>Now we could calculate for example occurance of each value in the array.</p>
 
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>Later on we want to keep working on the original array but notice</p>
 
@@ -1465,6 +1537,8 @@ By default numpy if an index is omitted slicing</p>
 <p class="output output_png"><img src="../images/units/S01E05_65_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h5 id="what-happend">What happend?</h5>
 
@@ -1482,6 +1556,8 @@ By default numpy if an index is omitted slicing</p>
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <style>
 td, th{
@@ -1511,6 +1587,8 @@ td, th{
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h3 id="boolean-operations">Boolean operations</h3>
 
@@ -1544,6 +1622,8 @@ td, th{
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>We can also use this array as a mask to select the corresponding elements from the array</p>
 
@@ -1556,6 +1636,8 @@ td, th{
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>or assign new values to those locations</p>
 
@@ -1571,6 +1653,8 @@ td, th{
 <p class="output output_png"><img src="../images/units/S01E05_73_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h4 id="missing-values">Missing values</h4>
 
@@ -1587,6 +1671,8 @@ td, th{
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>To handle these we can use boolean masks together with the <code class="highlighter-rouge">np.isnan</code> method</p>
 
@@ -1599,6 +1685,8 @@ td, th{
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>Selecting all value which are not nan is also possible</p>
 
@@ -1611,6 +1699,8 @@ td, th{
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h3 id="aggregating">Aggregating</h3>
 
@@ -1625,6 +1715,8 @@ td, th{
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>These functions can be used together with the <code class="highlighter-rouge">axis</code> argument to calculate these statistics for any given axis</p>
 
@@ -1644,6 +1736,8 @@ td, th{
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>These functions are very fast and should not be confused with other python built in function which might do the same,
 for example sum.</p>
@@ -1661,6 +1755,8 @@ for example sum.</p>
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="task ">
+</div>-->
 
   <div class="alert task">
 
@@ -1679,6 +1775,8 @@ for example sum.</p>
 </div>
 
 <div class="markdown_area hidecode">
+  <!--<div class="solution hidecode hide_input ">
+</div>-->
 
   <div class="alert solution">
 
@@ -1708,6 +1806,8 @@ for example sum.</p>
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h3 id="ufuncs">Ufuncs</h3>
 
@@ -1747,6 +1847,8 @@ for example sum.</p>
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>These can not only be used with scalars but also with arrays</p>
 
@@ -1763,12 +1865,16 @@ for example sum.</p>
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>These common operators are wrappers for the corresponding numpy functions. For example <code class="highlighter-rouge">+</code> wraps <code class="highlighter-rouge">np.sum()</code>.</p>
 
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>The above functions all operated on two arguments. Functions like <code class="highlighter-rouge">np.abs()</code> which returns the absolute value take only one argument. There are many functions like this implemented in numpy for example the sine function</p>
 
@@ -1784,6 +1890,8 @@ for example sum.</p>
 <p class="output output_png"><img src="../images/units/S01E05_96_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
+  <!--<div class="info ">
+</div>-->
 
   <div class="alert info">
 
@@ -1799,6 +1907,8 @@ for example sum.</p>
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h3 id="broadcasting">Broadcasting</h3>
 
@@ -1818,6 +1928,8 @@ for example sum.</p>
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>Iterestingly, even though, the arguments are not of the same shape, the following also worked</p>
 
@@ -1832,6 +1944,8 @@ for example sum.</p>
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>Even more interesting is the following</p>
 
@@ -1853,6 +1967,8 @@ for example sum.</p>
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>This behaviour is called <strong>broadcasting</strong> and is a very powerfull feature. You can thinkg of it as numpy automatically duplicating the values to the correct size. The advantage is that no actuall copying memory wise is done.</p>
 
@@ -1861,6 +1977,8 @@ for example sum.</p>
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p><img src="https://scipy-lectures.org/_images/numpy_broadcasting.png" width="700px" /><br />
 <small>Source: https://scipy-lectures.org/_images/numpy_broadcasting.png</small></p>
@@ -1868,6 +1986,8 @@ for example sum.</p>
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h3 id="broadcasting-rules">Broadcasting rules</h3>
 
@@ -1880,6 +2000,8 @@ for example sum.</p>
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h3 id="fancy-indexing">Fancy indexing</h3>
 
@@ -1904,6 +2026,8 @@ for example sum.</p>
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>The shape of the result depends on the shape of the index array</p>
 
@@ -1926,6 +2050,8 @@ for example sum.</p>
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>This also works for higher dimensional arrays</p>
 
@@ -1950,12 +2076,16 @@ for example sum.</p>
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>How the indices are combined is determined by the same rules as for broadcasting.</p>
 
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>Fancy indexing can also be combined normal indexing and slicing</p>
 
@@ -1992,6 +2122,8 @@ Column indices:
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>Fancy indexing always returns copies.<br /></p>
 
@@ -2019,6 +2151,8 @@ Column indices:
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h2 id="xarray">xarray</h2>
 
@@ -2033,6 +2167,8 @@ Column indices:
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h3 id="datastructures">Datastructures</h3>
 
@@ -2044,6 +2180,8 @@ Column indices:
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h4 id="dataarray">DataArray</h4>
 
@@ -2075,6 +2213,8 @@ Coordinates:
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h4 id="attributes">Attributes</h4>
 
@@ -2102,6 +2242,8 @@ Attributes:
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h3 id="dataset">Dataset</h3>
 
@@ -2127,6 +2269,8 @@ Attributes:
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>When we create a <code class="highlighter-rouge">Dataset</code> from <code class="highlighter-rouge">DataArrays</code> we can also omit the <code class="highlighter-rouge">coords</code> parameter as long as all of them share the same dimensions.</p>
 
@@ -2147,6 +2291,8 @@ Data variables:
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p><code class="highlighter-rouge">Datasets</code> can also have descriptive attributes</p>
 
@@ -2169,6 +2315,8 @@ Attributes:
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>When we access one of the variables we see that they can have separate attributes describing only this specific variable.</p>
 
@@ -2197,6 +2345,8 @@ Attributes:
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>Xarray has some conveniant functions to create <code class="highlighter-rouge">DataArray</code>s and <code class="highlighter-rouge">Dataset</code>s from pandas series or dataframes respectively.</p>
 
@@ -2218,6 +2368,8 @@ Attributes:
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>After setting the index the conversion of any of the columns (series) of the pandas dataframe  to a <code class="highlighter-rouge">xr.DataArray</code> is easy</p>
 
@@ -2236,6 +2388,8 @@ Coordinates:
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>If we want to use all variables (columns) in the dataframe we can directly convert it to a <code class="highlighter-rouge">xr.Dataset</code> without the detour of converting every column to a <code class="highlighter-rouge">xr.DataArray</code> like above.</p>
 
@@ -2271,6 +2425,8 @@ Data variables:
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h4 id="properties-of-datasets-and-dataarrays">Properties of Datasets and DataArrays</h4>
 
@@ -2301,6 +2457,8 @@ For <code class="highlighter-rouge">DataArray</code></p>
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="task ">
+</div>-->
 
   <div class="alert task">
 
@@ -2317,6 +2475,8 @@ For <code class="highlighter-rouge">DataArray</code></p>
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h3 id="indexing-and-selecting-data">Indexing and selecting data</h3>
 
@@ -2340,6 +2500,8 @@ Attributes:
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>by position with label like in pandas:</p>
 
@@ -2359,6 +2521,8 @@ Attributes:
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>by dimension name with index:</p>
 
@@ -2378,6 +2542,8 @@ Attributes:
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>or dimension name with label:</p>
 
@@ -2397,6 +2563,8 @@ Attributes:
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>The last two selection methods work for <code class="highlighter-rouge">Datasets</code> too.</p>
 
@@ -2418,6 +2586,8 @@ Attributes:
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>The <code class="highlighter-rouge">sel</code> selection methods accept an additional parameter <code class="highlighter-rouge">method</code> which you can use to do inexact nearest-neighbour lookups.</p>
 
@@ -2453,12 +2623,16 @@ Attributes:
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>In addition to these basic selection methods there are more advanced methods available for example masking or vectorized indexing with <code class="highlighter-rouge">DataArrays</code> which you can read about in the <a href="https://xarray.pydata.org/en/stable/indexing.html#">documentation</a></p>
 
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="task ">
+</div>-->
 
   <div class="alert task">
 
@@ -2474,6 +2648,8 @@ Attributes:
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h3 id="computations">Computations</h3>
 
@@ -2510,6 +2686,8 @@ Coordinates:
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>Arithmetic operations on <code class="highlighter-rouge">Dataset</code>s automatically loop over all variables</p>
 
@@ -2531,6 +2709,8 @@ Attributes:
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>Similar to numpy you can do aggregations but instead of supplying an index for <code class="highlighter-rouge">axis</code> you can use dimension names directly.</p>
 
@@ -2549,6 +2729,8 @@ Data variables:
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h3 id="timeseries">Timeseries</h3>
 
@@ -2566,6 +2748,8 @@ Coordinates:
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>Additionally these datetime components can also be used as “virtual coordinates” (again similar to pandas with the addition that xarray also implements “seasons”).</p>
 
@@ -2591,6 +2775,8 @@ Coordinates:
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h3 id="groupby">GroupBy</h3>
 
@@ -2612,6 +2798,8 @@ Data variables:
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="task ">
+</div>-->
 
   <div class="alert task">
 
@@ -2627,6 +2815,8 @@ Data variables:
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h3 id="conversion-to-dataframe">Conversion to dataframe</h3>
 
@@ -2700,6 +2890,8 @@ Data variables:
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h3 id="writing-data-toreading-data-from-disk">Writing data to/reading data from disk</h3>
 
@@ -2711,6 +2903,8 @@ Data variables:
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>Compatible files can be read from disk. Notice that xarray properly encoded the time dimension during writing and decodes them automatically again when reading.</p>
 
@@ -2733,6 +2927,8 @@ Attributes:
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h3 id="reading-multiple-files">Reading multiple files</h3>
 
@@ -2758,6 +2954,8 @@ city_measurements_201911.nc
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>There is no need to write loops for reading and concatenating the files. xarray encourages the use of the inbuilt function <code class="highlighter-rouge">open_mfdataset</code>.</p>
 
@@ -2780,6 +2978,8 @@ Attributes:
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h3 id="dask">Dask</h3>
 
@@ -2818,6 +3018,8 @@ Attributes:
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>The reason is that the function to load multiple datasets uses <strong><a href="https://dask.org/">Dask</a></strong> in the background.</p>
 
@@ -2843,6 +3045,8 @@ Attributes:
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>Unfortunately we don’t have time to cover Dask functionallity but for the basic things we don’t need to know much about how Dask works since xarray can use it in the background without us noticing.</p>
 
@@ -2879,6 +3083,8 @@ Wall time: 348 ms
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="task ">
+</div>-->
 
   <div class="alert task">
 

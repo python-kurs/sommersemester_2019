@@ -29,9 +29,9 @@
   "headline":
     "Data science I",
   "datePublished":
-    "2019-06-10T19:19:34+00:00",
+    "2019-06-11T06:12:19+00:00",
   "dateModified":
-    "2019-06-10T19:19:34+00:00",
+    "2019-06-11T06:12:19+00:00",
   "description":
     "",
   "author": {
@@ -917,24 +917,32 @@ initFunction(initQuery);
             <div class="c-textbook__content">
               
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h1 id="data-science-i">Data science I</h1>
 
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h2 id="pandas">pandas</h2>
 
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p><img src="https://pandas.pydata.org/_static/pandas_logo.png" alt="" /></p>
 
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <blockquote>
     <p>pandas is an open source, BSD-licensed library providing high-performance, easy-to-use data structures and data analysis tools for the Python programming language (<a href="https://pandas.pydata.org/index.html">pandas-website</a>).</p>
@@ -943,6 +951,8 @@ initFunction(initQuery);
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>Let’s say we want to investigate the weather data recorded at the Frankfurt International Airport from the year 2015. The data is available in the tabular CSV format:</p>
 
@@ -951,12 +961,16 @@ initFunction(initQuery);
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h3 id="read-data">Read data</h3>
 
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>First, we want to read the data:</p>
 
@@ -967,6 +981,8 @@ initFunction(initQuery);
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>The pandas function <code class="highlighter-rouge">pd.read_csv(...)</code> opens the csv file and reads its contents.</p>
 
@@ -986,6 +1002,8 @@ initFunction(initQuery);
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h3 id="dataframe">DataFrame</h3>
 
@@ -998,6 +1016,8 @@ initFunction(initQuery);
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>For a first glimps at the data, you can call the <code class="highlighter-rouge">head()</code> function which prints out the first 5 rows of the table:</p>
 
@@ -1108,6 +1128,8 @@ initFunction(initQuery);
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>To get an <strong>overview</strong> of the value distributions of the variables within <code class="highlighter-rouge">tabelle</code>, you can call the <code class="highlighter-rouge">describe()</code> function. It generates descriptive statistics that summarize the central tendency, dispersion and shape of a dataset’s distribution, excluding NaN values:</p>
 
@@ -1202,6 +1224,8 @@ initFunction(initQuery);
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>The <code class="highlighter-rouge">dtypes</code> field of <code class="highlighter-rouge">tabelle</code> shows you all column names and the <strong>data type</strong> of the respective column:</p>
 
@@ -1219,6 +1243,8 @@ Length: 8, dtype: object
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>If you want to know, how many columns and lines the table consists of, use the <code class="highlighter-rouge">shape</code> attribute:</p>
 
@@ -1231,6 +1257,8 @@ Length: 8, dtype: object
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>Let’s say, you want to <strong>sort</strong> this table by visibility values in descending order.</p>
 
@@ -1343,12 +1371,16 @@ Length: 8, dtype: object
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h3 id="selection-by-label">Selection by label</h3>
 
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>Let’s assume, we are not interested in the complete year 2015 but only in August. We can select the respective rows with the <code class="highlighter-rouge">loc</code> attribute.</p>
 
@@ -1461,6 +1493,8 @@ Length: 8, dtype: object
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>If you want to select a specific date range, you can do so by providing a start and end date (notice that the specific dates do not have to match the date values in the “time” column):</p>
 
@@ -1572,6 +1606,8 @@ Length: 8, dtype: object
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>What if we are only interested in the measurements between 12:00 and 15:00 for each day?
 Unfortunately, for this task we cannot use the <code class="highlighter-rouge">loc</code> attribute. However, the <code class="highlighter-rouge">between_time()</code> function helps us:</p>
@@ -1684,6 +1720,8 @@ Unfortunately, for this task we cannot use the <code class="highlighter-rouge">l
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>Now we know, how to select rows in time series (=measurements). But what if we are only interested in one specific variable, e.g. cloud height?</p>
 
@@ -1704,6 +1742,8 @@ Name: cloud_height, Length: 17520, dtype: float64
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>Note that selecting a single column returns a <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html"><strong>Series</strong></a> object and not just the column as a list for example. In principle, a Series is a one-dimensional DataFrame and it provides more or less the same functionality.</p>
 
@@ -1718,12 +1758,16 @@ Name: cloud_height, Length: 17520, dtype: float64
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>As you can see, the returned value of <code class="highlighter-rouge">10210</code> is smaller than the total table row count of <code class="highlighter-rouge">17520</code> because NaN values are excluded automatically.</p>
 
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>There are many more methods provided with the Series class but we will not go into further detail here.</p>
 
@@ -1738,6 +1782,8 @@ Name: cloud_height, Length: 17520, dtype: float64
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>You can <strong>select</strong> multiple <strong>columns</strong> by:</p>
 
@@ -1807,6 +1853,8 @@ Name: cloud_height, Length: 17520, dtype: float64
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>You can also <strong>select columns and rows</strong> together within one call:</p>
 
@@ -1876,6 +1924,8 @@ Name: cloud_height, Length: 17520, dtype: float64
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h3 id="selection-by-position-index">Selection by position (index)</h3>
 
@@ -1931,6 +1981,8 @@ Name: cloud_height, Length: 17520, dtype: float64
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="task ">
+</div>-->
 
   <div class="alert task">
 
@@ -1956,6 +2008,8 @@ Name: cloud_height, Length: 17520, dtype: float64
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="solution ">
+</div>-->
 
   <div class="alert solution">
 
@@ -1978,12 +2032,16 @@ Name: cloud_height, Length: 17520, dtype: float64
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h3 id="boolean-indexing">Boolean indexing</h3>
 
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>What if you don’t want to clip the table to specific times but to other conditions? Let’s assume you want to select all rows, where visibility was measured to be below 1000m.</p>
 
@@ -2097,6 +2155,8 @@ Name: cloud_height, Length: 17520, dtype: float64
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>You can also use multiple columns to select data after specific criteria. Let’s say we are only interested in rows with visibility values below 1000m and temperature values above 5 °C:</p>
 
@@ -2208,6 +2268,8 @@ Name: cloud_height, Length: 17520, dtype: float64
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h3 id="operations">Operations</h3>
 
@@ -2227,6 +2289,8 @@ Length: 7, dtype: float64
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>You can do the same for single columns (<code class="highlighter-rouge">Series</code>):</p>
 
@@ -2239,6 +2303,8 @@ Length: 7, dtype: float64
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>And of course, you can combine all of the above:</p>
 
@@ -2251,6 +2317,8 @@ Length: 7, dtype: float64
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>If you want to apply specific operations to your data that are not covered by the standard functions of pandas, you can do so by using the <code class="highlighter-rouge">apply()</code> method. This works for single Series or along an axis of a DataFrame object:</p>
 
@@ -2286,6 +2354,8 @@ Name: air_temperature, Length: 17520, dtype: float64
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>But what if we want to do an operation on multiple columns at the same time and save the result in a new column?</p>
 
@@ -2408,6 +2478,8 @@ Name: air_temperature, Length: 17520, dtype: float64
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h3 id="treating-missing-nan-values">Treating missing (NaN) values</h3>
 
@@ -2418,6 +2490,8 @@ Name: air_temperature, Length: 17520, dtype: float64
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="task ">
+</div>-->
 
   <div class="alert task">
 
@@ -2440,6 +2514,8 @@ Name: air_temperature, Length: 17520, dtype: float64
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="solution ">
+</div>-->
 
   <div class="alert solution">
 
@@ -2469,6 +2545,8 @@ Name: air_temperature, Length: 17520, dtype: float64
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h3 id="resampling">Resampling</h3>
 
@@ -2586,6 +2664,8 @@ Name: air_temperature, Length: 17520, dtype: float64
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>But we are not limited to calculating the mean over these intervals. We can also calculate the sum or any other function we like:</p>
 
@@ -2697,6 +2777,8 @@ Name: air_temperature, Length: 17520, dtype: float64
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p><code class="highlighter-rouge">.sum()</code> and <code class="highlighter-rouge">.mean()</code> are convenient to calculate the same statistic for all columns of the data frame. Let’s say we want to calculate the mean of the temperature but the maximum of the cloud height. Instead of selecting each column into a new variable and applying the corresponding function to each we can use the <code class="highlighter-rouge">.agg()</code> method of the data frame.</p>
 
@@ -2765,6 +2847,8 @@ Name: air_temperature, Length: 17520, dtype: float64
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="info ">
+</div>-->
 
   <div class="alert info">
 
@@ -2784,6 +2868,8 @@ Name: air_temperature, Length: 17520, dtype: float64
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>We can also resample to a higher temporal resolution than the original data set and provide an interpolation technique for time steps between known measurement points:</p>
 
@@ -2902,6 +2988,8 @@ Name: air_temperature, Length: 17520, dtype: float64
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h3 id="write-data">Write data</h3>
 
@@ -2914,6 +3002,8 @@ Name: air_temperature, Length: 17520, dtype: float64
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="task ">
+</div>-->
 
   <div class="alert task">
 
@@ -2931,6 +3021,8 @@ Name: air_temperature, Length: 17520, dtype: float64
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="solution ">
+</div>-->
 
   <div class="alert solution">
 
@@ -2957,6 +3049,8 @@ Name: air_temperature, Length: 17520, dtype: float64
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>So far, you have learned how to read, manipulate and write data in tabular shape. But what if you want to get a visual representation of your data?</p>
 
@@ -2967,12 +3061,16 @@ Name: air_temperature, Length: 17520, dtype: float64
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h2 id="matplotlib">matplotlib</h2>
 
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p><img src="https://matplotlib.org/_static/logo2.png" alt="" /></p>
 
@@ -2987,6 +3085,8 @@ Name: air_temperature, Length: 17520, dtype: float64
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p><img src="images/S01E04/matplotlib_structure.png" style="width: 500px" /></p>
 
@@ -2995,6 +3095,8 @@ Name: air_temperature, Length: 17520, dtype: float64
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p><img src="images/S01E04/anatomy.png" style="width: 500px" /></p>
 
@@ -3003,6 +3105,8 @@ Name: air_temperature, Length: 17520, dtype: float64
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h3 id="line-plots">Line plots</h3>
 
@@ -3019,6 +3123,8 @@ Name: air_temperature, Length: 17520, dtype: float64
 <p class="output output_png"><img src="../images/units/S01E04_80_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>This gives us a nice little line plot with the temperature time series depicted as blue line. However, the plot is a little small, the axes are not labeled and there is no legend. Let’s fix that…</p>
 
@@ -3038,12 +3144,16 @@ Name: air_temperature, Length: 17520, dtype: float64
 <p class="output output_png"><img src="../images/units/S01E04_82_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>This looks better. We can see that we do not have to worry about the details of the <code class="highlighter-rouge">axes</code> and <code class="highlighter-rouge">axis</code> of the plot since <code class="highlighter-rouge">pyplot</code> takes care of it for us. Each time we do a function of <code class="highlighter-rouge">pyplot</code> it just reuses the <code class="highlighter-rouge">axes</code> from the first plot call.</p>
 
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>However, let’s say we are not interested in the daily temperature fluctuations.</p>
 
@@ -3094,6 +3204,8 @@ Name: air_temperature, Length: 17520, dtype: float64
 <p class="output output_png"><img src="../images/units/S01E04_85_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>You can also put multiple lines into one plot:</p>
 
@@ -3123,6 +3235,8 @@ Name: air_temperature, Length: 17520, dtype: float64
 <p class="output output_png"><img src="../images/units/S01E04_87_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>And if we don’t like the colors or the line types, we can choose different ones by providing the <code class="highlighter-rouge">c</code> and <code class="highlighter-rouge">linestyle</code> arguments to the plotting function:</p>
 
@@ -3149,6 +3263,8 @@ Name: air_temperature, Length: 17520, dtype: float64
 <p class="output output_png"><img src="../images/units/S01E04_89_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>What if we want to plot 2 variables in the same plot that have different units, e.g. temperature and air pressure values?</p>
 
@@ -3182,6 +3298,8 @@ Name: air_temperature, Length: 17520, dtype: float64
 <p class="output output_png"><img src="../images/units/S01E04_91_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>Normally, subplots are, however, used to plot multiple figures next to each other in one plot. For example, we can create 2 subplots “ax1” and “ax2”, that depict temperature and wind speeds next to each other:</p>
 
@@ -3216,6 +3334,8 @@ Name: air_temperature, Length: 17520, dtype: float64
 <p class="output output_png"><img src="../images/units/S01E04_93_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>If you want to save your figure, you can simply call the <code class="highlighter-rouge">savefig()</code> function instead of <code class="highlighter-rouge">show()</code>:</p>
 
@@ -3231,6 +3351,8 @@ Name: air_temperature, Length: 17520, dtype: float64
 <p class="output output_png"><img src="../images/units/S01E04_95_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h3 id="histograms">Histograms</h3>
 
@@ -3245,6 +3367,8 @@ Name: air_temperature, Length: 17520, dtype: float64
 <p class="output output_png"><img src="../images/units/S01E04_97_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>Again, this plot is nice and simple but we can do better…</p>
 
@@ -3263,6 +3387,8 @@ Name: air_temperature, Length: 17520, dtype: float64
 <p class="output output_png"><img src="../images/units/S01E04_99_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>We can also plot multiple histograms within one chart, e.g. the temperature values separated into January and August:</p>
 
@@ -3283,6 +3409,8 @@ Name: air_temperature, Length: 17520, dtype: float64
 <p class="output output_png"><img src="../images/units/S01E04_101_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>And we can draw multiple plot types within one plot. Let’s plot the winter and summer temperature counts as lines and the total temperature counts as bars:</p>
 
@@ -3310,6 +3438,8 @@ Name: air_temperature, Length: 17520, dtype: float64
 <p class="output output_png"><img src="../images/units/S01E04_103_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h3 id="scatterplots">Scatterplots</h3>
 
@@ -3329,6 +3459,8 @@ Name: air_temperature, Length: 17520, dtype: float64
 <p class="output output_png"><img src="../images/units/S01E04_105_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>We can also plot multiple scatterplots on top of each other to depict more information within one plot.</p>
 
@@ -3352,6 +3484,8 @@ Name: air_temperature, Length: 17520, dtype: float64
 <p class="output output_png"><img src="../images/units/S01E04_107_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>There are many more options that you can tweak in order to get a nice looking ready to print plot. 
 And of course, there are many more plot types (e.g. bar plots, box plots, 3d plots, …)
@@ -3362,6 +3496,8 @@ We won’t cover all of them here but you can have a look at the <a href="https:
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h3 id="windroses">Windroses</h3>
 
@@ -3380,6 +3516,8 @@ We won’t cover all of them here but you can have a look at the <a href="https:
 <p class="output output_png"><img src="../images/units/S01E04_110_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
+  <!--<div class="task ">
+</div>-->
 
   <div class="alert task">
 
@@ -3395,6 +3533,8 @@ We won’t cover all of them here but you can have a look at the <a href="https:
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="solution ">
+</div>-->
 
   <div class="alert solution">
 
@@ -3416,6 +3556,8 @@ We won’t cover all of them here but you can have a look at the <a href="https:
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p><strong>Info</strong></p>
 
@@ -3436,6 +3578,8 @@ We won’t cover all of them here but you can have a look at the <a href="https:
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="task ">
+</div>-->
 
   <div class="alert task">
 

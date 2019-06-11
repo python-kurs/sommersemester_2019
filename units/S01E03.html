@@ -29,9 +29,9 @@
   "headline":
     "Python Basics III",
   "datePublished":
-    "2019-06-10T19:19:34+00:00",
+    "2019-06-11T06:12:19+00:00",
   "dateModified":
-    "2019-06-10T19:19:34+00:00",
+    "2019-06-11T06:12:19+00:00",
   "description":
     "",
   "author": {
@@ -924,12 +924,16 @@ initFunction(initQuery);
             <div class="c-textbook__content">
               
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h1 id="python-basics-iii">Python Basics III</h1>
 
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h2 id="functions">Functions</h2>
 
@@ -955,6 +959,8 @@ initFunction(initQuery);
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>Now this does not save very much code because if we wanted to congratulate Sally we would need to write another quite similar function. To make this function more generic we can use <strong>Parameters</strong>.</p>
 
@@ -971,6 +977,8 @@ initFunction(initQuery);
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>Functions can have any number of parameters which can also have a default value assigned to them, making them optional in the function call.
 Additionally a <strong>return</strong> value can be specified.</p>
@@ -990,6 +998,8 @@ Additionally a <strong>return</strong> value can be specified.</p>
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h3 id="documentation">Documentation</h3>
   <p>While this is still an easy example where it’s pretty clear what is done in general it is important to document functions (and all other code structures that is). While normal inline comments like you already know can be used there are special “comments” called <a href="https://www.python.org/dev/peps/pep-0257/"><strong>docstrings</strong></a> which can be inserted as a first statement in a function and are a standardized way of documenting.</p>
@@ -1016,6 +1026,8 @@ Additionally a <strong>return</strong> value can be specified.</p>
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>The first line should contain a short one line description. Following a blank line a more detailed description of what the function is doing can be given (omitted in this example).</p>
 
@@ -1024,6 +1036,8 @@ Additionally a <strong>return</strong> value can be specified.</p>
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>Documenting can be a lot of work but the advantages pay off quickly:</p>
   <ul>
@@ -1036,6 +1050,8 @@ Additionally a <strong>return</strong> value can be specified.</p>
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h3 id="built-in-functions">Built in functions</h3>
 
@@ -1044,6 +1060,8 @@ Additionally a <strong>return</strong> value can be specified.</p>
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="task ">
+</div>-->
 
   <div class="alert task">
 
@@ -1071,6 +1089,8 @@ for i, num in enumerate(numbers):
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="solution ">
+</div>-->
 
   <div class="alert solution">
 
@@ -1108,6 +1128,8 @@ For example:
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h2 id="variable-scope---global-vs-local">Variable scope - global vs. local</h2>
 
@@ -1122,6 +1144,8 @@ For example:
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>What will happen if we call <code class="highlighter-rouge">very_usefull_function()</code>?</p>
 
@@ -1135,6 +1159,8 @@ For example:
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>Now consider the following change to the function and think about what will happen when we first call the function and then print out <code class="highlighter-rouge">a</code> again afterwards.</p>
 
@@ -1157,6 +1183,8 @@ Foo
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>This shows the difference between global and local variables.</p>
 
@@ -1166,6 +1194,8 @@ In generall it is possible to change the value of a global variable from inside 
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h3 id="constants">Constants</h3>
   <p>Often in other programming languages special variables can be defined which can not be changed and therefore be used for constants for example. In Python this is not possible. So a widely used convention is to mark constants with all upper case variable names.</p>
@@ -1176,6 +1206,8 @@ In generall it is possible to change the value of a global variable from inside 
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h2 id="python-modules">Python modules</h2>
 
@@ -1188,6 +1220,8 @@ In generall it is possible to change the value of a global variable from inside 
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h3 id="the-import-system">The import system</h3>
 
@@ -1204,6 +1238,8 @@ In generall it is possible to change the value of a global variable from inside 
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>Now we want to use this function in another script. To import the definitions from a module into a script, you can use the <code class="highlighter-rouge">import</code> statement:</p>
 
@@ -1219,6 +1255,8 @@ In generall it is possible to change the value of a global variable from inside 
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>You can also assign an alias to the imported module via:</p>
 
@@ -1234,12 +1272,16 @@ In generall it is possible to change the value of a global variable from inside 
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>This is common practice as module names are sometimes long and coders like short module names in their code.</p>
 
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="info ">
+</div>-->
 
   <div class="alert info">
 
@@ -1254,12 +1296,16 @@ In generall it is possible to change the value of a global variable from inside 
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>There are many modules with usefull functions out there which can be installed and used similarly to the way with our own modules shown above. We get to know some of the most common ones in later chapters of the course.</p>
 
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="task ">
+</div>-->
 
   <div class="alert task">
 
@@ -1277,6 +1323,8 @@ In generall it is possible to change the value of a global variable from inside 
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="solution ">
+</div>-->
 
   <div class="alert solution">
 
@@ -1308,6 +1356,8 @@ In generall it is possible to change the value of a global variable from inside 
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h2 id="working-with-files">Working with files</h2>
 
@@ -1322,6 +1372,8 @@ In generall it is possible to change the value of a global variable from inside 
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h3 id="reading-and-writing-text-files">Reading and writing text files</h3>
   <p>The simplest file we can access are text files and there are some conveniant methods which help us writing to them:</p>
@@ -1342,6 +1394,8 @@ In generall it is possible to change the value of a global variable from inside 
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>Similarly there are functions to read from a file:</p>
   <ul>
@@ -1364,6 +1418,8 @@ In generall it is possible to change the value of a global variable from inside 
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="task ">
+</div>-->
 
   <div class="alert task">
 
@@ -1380,6 +1436,8 @@ In generall it is possible to change the value of a global variable from inside 
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h3 id="file-pathes-and-directories">File pathes and directories</h3>
 
@@ -1388,6 +1446,8 @@ In generall it is possible to change the value of a global variable from inside 
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h4 id="create-pathes">Create pathes</h4>
   <p>Instead of creating pathes by concatenating strings with the <code class="highlighter-rouge">+</code> operator it can be conveniantly be done like:</p>
@@ -1411,6 +1471,8 @@ user/data/subdirectory
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h4 id="check-existance-of--create--delete-directories">Check existance of / create / delete directories</h4>
 
@@ -1435,6 +1497,8 @@ Directory exists after deletion: False
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h4 id="list-files-and-directories">List files and directories</h4>
 
@@ -1459,6 +1523,8 @@ Recursive png file list:
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h4 id="other-usefull-things">Other usefull things</h4>
 
@@ -1499,6 +1565,8 @@ Recursive png file list:
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="info ">
+</div>-->
 
   <div class="alert info">
 
@@ -1514,6 +1582,8 @@ Recursive png file list:
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h2 id="classes-and-objects">Classes and objects</h2>
 
@@ -1527,6 +1597,8 @@ It will help to grasp whats going on in the above examples and it makes it easie
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>The basic idea about <strong>object oriented programming</strong> is to group data and functions which can interact with that data into an <strong>object</strong></p>
 
@@ -1546,6 +1618,8 @@ It will help to grasp whats going on in the above examples and it makes it easie
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p><img src="images/S01E03/classes_objects.jpeg" alt="" /></p>
 
@@ -1554,6 +1628,8 @@ It will help to grasp whats going on in the above examples and it makes it easie
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h3 id="connecting-the-dots">Connecting the dots</h3>
 
@@ -1562,18 +1638,24 @@ It will help to grasp whats going on in the above examples and it makes it easie
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p><img src="images/S01E03/classes_objects_explanation.png" alt="" /></p>
 
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <h2 id="errors-and-exceptions">Errors and Exceptions</h2>
 
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>When an error occurs in a Python script, it will stop and generate an error message.
 This happens, e.g., when you try to read a non-existing or corrupt file:</p>
@@ -1600,12 +1682,16 @@ This happens, e.g., when you try to read a non-existing or corrupt file:</p>
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>These errors (or “exceptions”) can be handled using a try-except block:</p>
 
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <pre><code class="language-Python">try:
     #code which possibly gives an error
@@ -1616,12 +1702,16 @@ except:
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>If an exception occurs and the <code class="highlighter-rouge">except</code> block has run the script does not stop but continues to run.</p>
 
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="info ">
+</div>-->
 
   <div class="alert info">
 
@@ -1634,6 +1724,8 @@ except:
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="">
+</div>-->
 
   <p>Some best practice rules to keep in mind when writing try-except blocks are:</p>
 
@@ -1668,6 +1760,8 @@ Script continues after catching exception instead of exiting!
 </code></pre></div></div>
 
 <div class="markdown_area ">
+  <!--<div class="task ">
+</div>-->
 
   <div class="alert task">
 
@@ -1684,6 +1778,8 @@ inform the caller of the function about a raised exception so that she/he can re
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="solution ">
+</div>-->
 
   <div class="alert solution">
 
@@ -1709,6 +1805,8 @@ inform the caller of the function about a raised exception so that she/he can re
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="task ">
+</div>-->
 
   <div class="alert task">
 
