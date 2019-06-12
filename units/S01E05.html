@@ -29,9 +29,9 @@
   "headline":
     "Data science II",
   "datePublished":
-    "2019-06-12T09:12:29+00:00",
+    "2019-06-12T09:57:42+00:00",
   "dateModified":
-    "2019-06-12T09:12:29+00:00",
+    "2019-06-12T09:57:42+00:00",
   "description":
     "",
   "author": {
@@ -2991,7 +2991,8 @@ Coordinates:
 
 </div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">city_ds</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">"time.season"</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s">"time"</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">season_mean</span> <span class="o">=</span> <span class="n">city_ds</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">"time.season"</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s">"time"</span><span class="p">)</span>
+<span class="n">season_mean</span>
 </code></pre></div></div>
 
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;xarray.Dataset&gt;
@@ -3000,8 +3001,8 @@ Coordinates:
   * cities         (cities) &lt;U9 'Marburg' 'Giessen' 'Frankfurt'
   * season         (season) object 'DJF' 'JJA' 'MAM' 'SON'
 Data variables:
-    Temperature    (season, cities) float64 0.3748 0.7468 0.2662 ... nan nan nan
-    Precipitation  (season, cities) float64 nan nan nan ... 0.3449 0.4235 0.6359
+    Temperature    (season, cities) float64 0.6426 0.434 0.1258 ... nan nan nan
+    Precipitation  (season, cities) float64 nan nan nan ... 0.3788 0.4617 0.5453
 </code></pre></div></div>
 
 <div class="markdown_area ">
@@ -3014,7 +3015,7 @@ Data variables:
 
     <ol>
       <li>Calculate seasonal means for the variables selected in task 2.</li>
-      <li>Go to the <a href="https://xarray.pydata.org/en/stable/index.html">xarray</a> documentation and find out about the plotting functionality. Make a quick plot of the seasonal means.</li>
+      <li>Go to the <a href="https://xarray.pydata.org/en/stable/index.html">xarray</a> documentation and find out about the plotting functionality. Make a quick plot of the monthly means of the Temperature.</li>
     </ol>
 
   </div>
