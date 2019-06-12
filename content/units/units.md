@@ -31,11 +31,11 @@
 - pandas (csv-import, Datasets)
 - matplotlib (visualization)
 
-**Data science II** (05.06.2019)
+**Data science II** (05.06.2019 & 12.06.2019)
 - numpy  (unlabeled nd-arrays)
 - xarray (labeled nd-arrays)
 
-**Remote Sensing I** (12.06.2019)
+**Remote Sensing I** (19.06.2019)
 - Introduction to SatPy
 - Read satellite scenes (Meteosat)
 - Analyze scene properties
@@ -43,7 +43,7 @@
 - Cropping and resampling
 - Simple visualizations
 
-**Remote Sensing II** (19.06.2019)
+**Remote Sensing II** (26.06.2019)
 - Advanced visualizations (CartoPy)
 - Create band combinations
 - Process complex computations on bands
@@ -51,16 +51,14 @@
 - Integration of multiple satellite formats (MODIS, Meteosat, ...)
 - Write data to disk
 
-**Algorithm development** (26.06.2019)
+**Algorithm development** (03.07.2019)
 - From problem to algorithm to solution
 - Defining modules and interfaces
 - Teamwork
 
-**Data science III** (03.07.2019)
+**Data science III** (10.07.2019)
 - scipy
 - scikit-learn
-
-**???** (10.07.2019)
 
 **Wrap-Up** (17.07.2019)
 - Feedback
