@@ -29,9 +29,9 @@
   "headline":
     "Data science II",
   "datePublished":
-    "2019-06-11T08:53:49+00:00",
+    "2019-06-12T09:12:29+00:00",
   "dateModified":
-    "2019-06-11T08:53:49+00:00",
+    "2019-06-12T09:12:29+00:00",
   "description":
     "",
   "author": {
@@ -2220,10 +2220,10 @@ Column indices:
 </code></pre></div></div>
 
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;xarray.DataArray (time: 4, cities: 3)&gt;
-array([[0.054996, 0.497724, 0.108762],
-       [0.906699, 0.864184, 0.46195 ],
-       [0.16275 , 0.878591, 0.227763],
-       [0.448234, 0.17405 , 0.206242]])
+array([[7.899251e-01, 2.555974e-01, 4.508836e-04],
+       [1.764407e-01, 1.824940e-01, 3.305773e-01],
+       [9.613692e-01, 8.639625e-01, 4.628597e-02],
+       [5.449813e-01, 2.402334e-01, 9.979851e-01]])
 Coordinates:
   * time     (time) datetime64[ns] 2018-12-31 2019-01-31 2019-02-28 2019-03-31
   * cities   (cities) &lt;U9 'Marburg' 'Giessen' 'Frankfurt'
@@ -2246,10 +2246,10 @@ Coordinates:
 </code></pre></div></div>
 
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;xarray.DataArray 'city_temperatures' (time: 4, cities: 3)&gt;
-array([[0.054996, 0.497724, 0.108762],
-       [0.906699, 0.864184, 0.46195 ],
-       [0.16275 , 0.878591, 0.227763],
-       [0.448234, 0.17405 , 0.206242]])
+array([[7.899251e-01, 2.555974e-01, 4.508836e-04],
+       [1.764407e-01, 1.824940e-01, 3.305773e-01],
+       [9.613692e-01, 8.639625e-01, 4.628597e-02],
+       [5.449813e-01, 2.402334e-01, 9.979851e-01]])
 Coordinates:
   * time     (time) datetime64[ns] 2018-12-31 2019-01-31 2019-02-28 2019-03-31
   * cities   (cities) &lt;U9 'Marburg' 'Giessen' 'Frankfurt'
@@ -2303,8 +2303,8 @@ Coordinates:
   * time           (time) datetime64[ns] 2018-12-31 2019-01-31 ... 2019-11-30
   * cities         (cities) &lt;U9 'Marburg' 'Giessen' 'Frankfurt'
 Data variables:
-    Temperature    (time, cities) float64 0.055 0.4977 0.1088 ... nan nan nan
-    Precipitation  (time, cities) float64 nan nan nan ... 0.6049 0.904 0.8905
+    Temperature    (time, cities) float64 0.7899 0.2556 0.0004509 ... nan nan
+    Precipitation  (time, cities) float64 nan nan nan ... 0.3304 0.6635 0.4167
 </code></pre></div></div>
 
 <div class="markdown_area ">
@@ -2325,8 +2325,8 @@ Coordinates:
   * time           (time) datetime64[ns] 2018-12-31 2019-01-31 ... 2019-11-30
   * cities         (cities) &lt;U9 'Marburg' 'Giessen' 'Frankfurt'
 Data variables:
-    Temperature    (time, cities) float64 0.055 0.4977 0.1088 ... nan nan nan
-    Precipitation  (time, cities) float64 nan nan nan ... 0.6049 0.904 0.8905
+    Temperature    (time, cities) float64 0.7899 0.2556 0.0004509 ... nan nan
+    Precipitation  (time, cities) float64 nan nan nan ... 0.3304 0.6635 0.4167
 Attributes:
     Description:  Measurements of Temperature and Precipitation
 </code></pre></div></div>
@@ -2343,16 +2343,16 @@ Attributes:
 </code></pre></div></div>
 
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;xarray.DataArray 'Temperature' (time: 10, cities: 3)&gt;
-array([[0.054996, 0.497724, 0.108762],
-       [0.906699, 0.864184, 0.46195 ],
-       [0.16275 , 0.878591, 0.227763],
-       [0.448234, 0.17405 , 0.206242],
-       [     nan,      nan,      nan],
-       [     nan,      nan,      nan],
-       [     nan,      nan,      nan],
-       [     nan,      nan,      nan],
-       [     nan,      nan,      nan],
-       [     nan,      nan,      nan]])
+array([[7.899251e-01, 2.555974e-01, 4.508836e-04],
+       [1.764407e-01, 1.824940e-01, 3.305773e-01],
+       [9.613692e-01, 8.639625e-01, 4.628597e-02],
+       [5.449813e-01, 2.402334e-01, 9.979851e-01],
+       [         nan,          nan,          nan],
+       [         nan,          nan,          nan],
+       [         nan,          nan,          nan],
+       [         nan,          nan,          nan],
+       [         nan,          nan,          nan],
+       [         nan,          nan,          nan]])
 Coordinates:
   * time     (time) datetime64[ns] 2018-12-31 2019-01-31 ... 2019-11-30
   * cities   (cities) &lt;U9 'Marburg' 'Giessen' 'Frankfurt'
@@ -2369,20 +2369,181 @@ Attributes:
 
 </div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
 <span class="n">garmisch</span>  <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"../data/produkt_klima_tag_20171010_20190412_01550.txt"</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s">"MESS_DATUM"</span><span class="p">],</span> <span class="n">sep</span><span class="o">=</span><span class="s">";"</span><span class="p">)</span>
 <span class="n">zugspitze</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"../data/produkt_klima_tag_20171010_20190412_05792.txt"</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s">"MESS_DATUM"</span><span class="p">],</span> <span class="n">sep</span><span class="o">=</span><span class="s">";"</span><span class="p">)</span>
 
 <span class="n">klima_tag</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">garmisch</span><span class="p">,</span> <span class="n">zugspitze</span><span class="p">])</span>
 <span class="n">klima_tag</span> <span class="o">=</span> <span class="n">klima_tag</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s">"STATIONS_ID"</span><span class="p">,</span> <span class="s">"MESS_DATUM"</span><span class="p">])</span>
 <span class="n">klima_tag</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-
-<span class="n">klima_tag</span><span class="p">[</span><span class="s">" TMK"</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 </code></pre></div></div>
 
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 9.3,  9.2, 10.6, ..., -4.9, -7.5, -8. ])
-</code></pre></div></div>
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>QN_3</th>
+      <th>FX</th>
+      <th>FM</th>
+      <th>QN_4</th>
+      <th>RSK</th>
+      <th>RSKF</th>
+      <th>SDK</th>
+      <th>SHK_TAG</th>
+      <th>NM</th>
+      <th>VPM</th>
+      <th>PM</th>
+      <th>TMK</th>
+      <th>UPM</th>
+      <th>TXK</th>
+      <th>TNK</th>
+      <th>TGK</th>
+      <th>eor</th>
+    </tr>
+    <tr>
+      <th>STATIONS_ID</th>
+      <th>MESS_DATUM</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="5" valign="top">1550</th>
+      <th>2017-10-10</th>
+      <td>10</td>
+      <td>5.6</td>
+      <td>1.0</td>
+      <td>3</td>
+      <td>0.0</td>
+      <td>6</td>
+      <td>2.300</td>
+      <td>0</td>
+      <td>7.5</td>
+      <td>9.4</td>
+      <td>937.40</td>
+      <td>9.3</td>
+      <td>82.50</td>
+      <td>15.7</td>
+      <td>4.6</td>
+      <td>3.0</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>2017-10-11</th>
+      <td>10</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>3</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>9.533</td>
+      <td>0</td>
+      <td>2.6</td>
+      <td>9.1</td>
+      <td>938.41</td>
+      <td>9.2</td>
+      <td>81.04</td>
+      <td>18.5</td>
+      <td>2.9</td>
+      <td>1.4</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>2017-10-12</th>
+      <td>10</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>3</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>9.483</td>
+      <td>0</td>
+      <td>1.9</td>
+      <td>9.0</td>
+      <td>941.30</td>
+      <td>10.6</td>
+      <td>75.92</td>
+      <td>22.2</td>
+      <td>3.1</td>
+      <td>1.1</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>2017-10-13</th>
+      <td>10</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>3</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>9.483</td>
+      <td>0</td>
+      <td>3.8</td>
+      <td>10.3</td>
+      <td>944.63</td>
+      <td>10.7</td>
+      <td>82.04</td>
+      <td>19.5</td>
+      <td>4.8</td>
+      <td>2.9</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>2017-10-14</th>
+      <td>10</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>3</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>9.617</td>
+      <td>0</td>
+      <td>0.3</td>
+      <td>9.9</td>
+      <td>944.99</td>
+      <td>11.2</td>
+      <td>78.67</td>
+      <td>21.4</td>
+      <td>3.9</td>
+      <td>1.9</td>
+      <td>eor</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
 
 <div class="markdown_area ">
   <!--<div class="">
@@ -2457,6 +2618,12 @@ For <code class="highlighter-rouge">DataArray</code></p>
     <li>name</li>
   </ul>
 
+</div>
+
+<div class="markdown_area ">
+  <!--<div class="">
+</div>-->
+
   <p>For <code class="highlighter-rouge">Dataset</code></p>
   <ul>
     <li>data_vars</li>
@@ -2507,7 +2674,7 @@ For <code class="highlighter-rouge">DataArray</code></p>
 </code></pre></div></div>
 
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;xarray.DataArray 'city_temperatures' (time: 4)&gt;
-array([0.108762, 0.46195 , 0.227763, 0.206242])
+array([4.508836e-04, 3.305773e-01, 4.628597e-02, 9.979851e-01])
 Coordinates:
   * time     (time) datetime64[ns] 2018-12-31 2019-01-31 2019-02-28 2019-03-31
     cities   &lt;U9 'Frankfurt'
@@ -2528,7 +2695,7 @@ Attributes:
 </code></pre></div></div>
 
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;xarray.DataArray 'city_temperatures' (time: 4)&gt;
-array([0.054996, 0.906699, 0.16275 , 0.448234])
+array([0.789925, 0.176441, 0.961369, 0.544981])
 Coordinates:
   * time     (time) datetime64[ns] 2018-12-31 2019-01-31 2019-02-28 2019-03-31
     cities   &lt;U9 'Marburg'
@@ -2549,7 +2716,7 @@ Attributes:
 </code></pre></div></div>
 
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;xarray.DataArray 'city_temperatures' (time: 4)&gt;
-array([0.497724, 0.864184, 0.878591, 0.17405 ])
+array([0.255597, 0.182494, 0.863963, 0.240233])
 Coordinates:
   * time     (time) datetime64[ns] 2018-12-31 2019-01-31 2019-02-28 2019-03-31
     cities   &lt;U9 'Giessen'
@@ -2570,7 +2737,7 @@ Attributes:
 </code></pre></div></div>
 
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;xarray.DataArray 'city_temperatures' (time: 4)&gt;
-array([0.054996, 0.906699, 0.16275 , 0.448234])
+array([0.789925, 0.176441, 0.961369, 0.544981])
 Coordinates:
   * time     (time) datetime64[ns] 2018-12-31 2019-01-31 2019-02-28 2019-03-31
     cities   &lt;U9 'Marburg'
@@ -2596,8 +2763,8 @@ Coordinates:
   * time           (time) datetime64[ns] 2018-12-31 2019-01-31 ... 2019-11-30
     cities         &lt;U9 'Marburg'
 Data variables:
-    Temperature    (time) float64 0.055 0.9067 0.1628 0.4482 ... nan nan nan nan
-    Precipitation  (time) float64 nan nan nan nan ... 0.2772 0.1527 0.6049
+    Temperature    (time) float64 0.7899 0.1764 0.9614 0.545 ... nan nan nan nan
+    Precipitation  (time) float64 nan nan nan nan ... 0.7823 0.425 0.381 0.3304
 Attributes:
     Description:  Measurements of Temperature and Precipitation
 </code></pre></div></div>
@@ -2633,8 +2800,31 @@ Coordinates:
     time           datetime64[ns] 2019-03-31
   * cities         (cities) &lt;U9 'Marburg' 'Giessen' 'Frankfurt'
 Data variables:
-    Temperature    (cities) float64 0.4482 0.174 0.2062
+    Temperature    (cities) float64 0.545 0.2402 0.998
     Precipitation  (cities) float64 nan nan nan
+Attributes:
+    Description:  Measurements of Temperature and Precipitation
+</code></pre></div></div>
+
+<div class="markdown_area ">
+  <!--<div class="">
+</div>-->
+
+  <p>When we use the slice function we don’t need the method keyword because sliceing already returns all values inside the range (inclusive).</p>
+
+</div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">city_ds</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s">"2019-01-05"</span><span class="p">,</span> <span class="s">"2019-05-25"</span><span class="p">),</span> <span class="n">cities</span><span class="o">=</span><span class="s">"Marburg"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;xarray.Dataset&gt;
+Dimensions:        (time: 3)
+Coordinates:
+  * time           (time) datetime64[ns] 2019-01-31 2019-02-28 2019-03-31
+    cities         &lt;U9 'Marburg'
+Data variables:
+    Temperature    (time) float64 0.1764 0.9614 0.545
+    Precipitation  (time) float64 nan nan nan
 Attributes:
     Description:  Measurements of Temperature and Precipitation
 </code></pre></div></div>
@@ -2657,7 +2847,7 @@ Attributes:
 
     <ol>
       <li>Select the daily maximum Temperature (TNX) and daily minimum temperature (TNK) from the dataset.</li>
-      <li>Select only one month of data.</li>
+      <li>Select january and february of 2018</li>
     </ol>
 
   </div>
