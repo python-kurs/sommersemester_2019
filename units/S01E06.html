@@ -29,9 +29,9 @@
   "headline":
     "Remote Sensing I",
   "datePublished":
-    "2019-06-13T13:59:55+00:00",
+    "2019-06-13T14:03:55+00:00",
   "dateModified":
-    "2019-06-13T13:59:55+00:00",
+    "2019-06-13T14:03:55+00:00",
   "description":
     "",
   "author": {
@@ -1040,7 +1040,7 @@ initFunction(initQuery);
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">satpy</span> <span class="kn">import</span> <span class="n">Scene</span><span class="p">,</span> <span class="n">find_files_and_readers</span>
 </code></pre></div>    </div>
 
-    <p>This makes it possible to select appropiate readers and files from a given base directory (most of the time we know what reader we need so supplying it to the function will speed up things because then the function just looks for files for this reader). This function is very handy because we can also specify start and end times to look for and thus don’t have to construct filenames by hand. The result can directly be handed to a <code class="highlighter-rouge">Scene</code>.</p>
+    <p>This makes it possible to select appropiate readers and files from a given base directory (most of the time we know what reader we need so supplying it to the function will speed up things because then the function just looks for files for this reader). This function is very handy because we can also specify start and end times to look for and thus don’t have to construct filenames by hand (see <a href="https://satpy.readthedocs.io/en/latest/api/satpy.readers.html?highlight=find_files#satpy.readers.find_files_and_readers">here</a>). The result can directly be handed to a <code class="highlighter-rouge">Scene</code>.</p>
 
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">files</span> <span class="o">=</span> <span class="n">find_files_and_readers</span><span class="p">(</span><span class="n">base_dir</span><span class="o">=</span><span class="s">"../data"</span><span class="p">,</span> <span class="n">reader</span><span class="o">=</span><span class="s">"seviri_l1b_nc"</span><span class="p">)</span>
 
