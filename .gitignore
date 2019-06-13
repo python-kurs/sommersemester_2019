@@ -37,6 +37,7 @@ content/data/MODIS/MOD06_L2.A2006017.0850.061.2017271195033.hdf
 content/data/MODIS/MOD06_L2.A2006017.0855.061.2017271194536.hdf
 content/data/MODIS/MOD021KM.A2006017.1035.061.2017260222353.hdf
 content/data/MODIS/MOD35_L2.A2006017.1035.061.2017261011202.hdf
+content/data/MODIS/MOD06_L2.A2006017.1035.061.2017271194822.hdf
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
