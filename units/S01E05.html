@@ -29,9 +29,9 @@
   "headline":
     "Data science II",
   "datePublished":
-    "2019-06-13T14:11:43+00:00",
+    "2019-06-13T14:26:03+00:00",
   "dateModified":
-    "2019-06-13T14:11:43+00:00",
+    "2019-06-13T14:26:03+00:00",
   "description":
     "",
   "author": {
@@ -1214,7 +1214,7 @@ Notice that additionally we can specify a dtype other than the default of np.flo
 
   <div class="alert task">
 
-    <h5 id="task"><strong>Task</strong></h5>
+    <h4 id="task"><strong>Task</strong></h4>
 
     <p>Two more conveniant functions are <code class="highlighter-rouge">np.arange(start, stop, n)</code> and <code class="highlighter-rouge">np.linspace(start, stop, n)</code>.</p>
     <ul>
@@ -1231,7 +1231,7 @@ Notice that additionally we can specify a dtype other than the default of np.flo
 
   <div class="alert solution">
 
-    <p><strong>Solution</strong></p>
+    <h4 id="solution"><strong>Solution</strong></h4>
 
     <p>np.arange(start, stop, step) creates a sequence of numbers from start to stop with increment step<br />
 np.linspace(start, stop, n) creates a sequence of n evenly spaced numbers from start to stop.</p>
@@ -1247,7 +1247,7 @@ np.linspace(start, stop, n) creates a sequence of n evenly spaced numbers from s
   <h3 id="accessing-elements-indexing">Accessing elements (indexing)</h3>
 
   <p>Array elements can be accessed similar to lists with the bracket notation.<br />
-For higher dimensional arrays we need to know which index accesses a certain dimension or <strong>axis</strong>.
+For higher dimensional arrays we need to know which index accesses a certain dimension or <strong>axis</strong>.<br />
 <img src="https://www.oreilly.com/library/view/elegant-scipy/9781491922927/assets/elsp_0105.png" width="700px" /></p>
 
 </div>
@@ -1356,7 +1356,7 @@ By default numpy if an index is omitted slicing</p>
 
   <div class="alert task">
 
-    <h5 id="task-1"><strong>Task</strong></h5>
+    <h4 id="task-1"><strong>Task</strong></h4>
 
     <ol>
       <li>Copy the smile array init code from above so you don’t have to type it yourself</li>
@@ -1374,7 +1374,7 @@ By default numpy if an index is omitted slicing</p>
 
   <div class="alert solution">
 
-    <p><strong>Solution</strong></p>
+    <h4 id="solution-1"><strong>Solution</strong></h4>
 
     <p>The nose:</p>
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">smile</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
@@ -1777,7 +1777,7 @@ for example sum.</p>
 
   <div class="alert task">
 
-    <h5 id="task-2"><strong>Task</strong></h5>
+    <h4 id="task-2"><strong>Task</strong></h4>
 
     <ol>
       <li>Assign the following array to a new variable: <code class="highlighter-rouge">np.array([[1., np.nan, 7., 30., -4.], [-7., 18., 11., np.nan, 3.]])</code></li>
@@ -1797,7 +1797,7 @@ for example sum.</p>
 
   <div class="alert solution">
 
-    <p><strong>Solution</strong></p>
+    <h4 id="solution-2"><strong>Solution</strong></h4>
 
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mf">7.</span><span class="p">,</span> <span class="mf">30.</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">7.</span><span class="p">,</span> <span class="mf">18.</span><span class="p">,</span> <span class="mf">11.</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mf">3.</span><span class="p">]])</span>
 </code></pre></div>    </div>
@@ -2646,7 +2646,7 @@ For <code class="highlighter-rouge">DataArray</code></p>
 
   <div class="alert task">
 
-    <h5 id="task-3"><strong>Task</strong></h5>
+    <h4 id="task-3"><strong>Task</strong></h4>
 
     <ol>
       <li>You should already have the two csv’s used above on your computer. If not download them again from <a href="https://github.com/python-kurs/sommersemester_2019/blob/master/content/data/produkt_klima_tag_20171010_20190412_05792.txt">here</a> and <a href="https://github.com/python-kurs/sommersemester_2019/blob/master/content/data/produkt_klima_tag_20171010_20190412_01550.txt">here</a>.</li>
@@ -2664,7 +2664,7 @@ For <code class="highlighter-rouge">DataArray</code></p>
 
   <div class="alert solution">
 
-    <p><strong>Solution</strong></p>
+    <h4 id="solution-3"><strong>Solution</strong></h4>
 
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">garmisch</span>  <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"../data/produkt_klima_tag_20171010_20190412_01550.txt"</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s">"MESS_DATUM"</span><span class="p">],</span> <span class="n">sep</span><span class="o">=</span><span class="s">";"</span><span class="p">)</span>
 <span class="n">zugspitze</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"../data/produkt_klima_tag_20171010_20190412_05792.txt"</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s">"MESS_DATUM"</span><span class="p">],</span> <span class="n">sep</span><span class="o">=</span><span class="s">";"</span><span class="p">)</span>
@@ -2874,7 +2874,7 @@ Attributes:
 
   <div class="alert task">
 
-    <h5 id="task-4"><strong>Task</strong></h5>
+    <h4 id="task-4"><strong>Task</strong></h4>
 
     <ol>
       <li>Select the daily maximum Temperature (TXK) and daily minimum temperature (TNK) from the dataset.</li>
@@ -2891,7 +2891,7 @@ Attributes:
 
   <div class="alert solution">
 
-    <p><strong>Solution</strong></p>
+    <h4 id="solution-4"><strong>Solution</strong></h4>
 
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">kt_ds</span><span class="p">[[</span><span class="s">" TNK"</span><span class="p">,</span> <span class="s">" TXK"</span><span class="p">]]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">MESS_DATUM</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s">"2018-01"</span><span class="p">,</span> <span class="s">"2018-02"</span><span class="p">))</span>
 </code></pre></div>    </div>
@@ -3057,7 +3057,7 @@ Data variables:
 
   <div class="alert task">
 
-    <h5 id="task-5"><strong>Task</strong></h5>
+    <h4 id="task-5"><strong>Task</strong></h4>
 
     <ol>
       <li>Calculate monthly means for the the year 2018 for same variables of task 2.</li>
@@ -3074,7 +3074,7 @@ Data variables:
 
   <div class="alert solution">
 
-    <p><strong>Solution</strong></p>
+    <h4 id="solution-5"><strong>Solution</strong></h4>
 
     <p>Calculate the means</p>
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">kt_mean</span> <span class="o">=</span> <span class="n">kt_ds</span><span class="p">[[</span><span class="s">" TNK"</span><span class="p">,</span> <span class="s">" TXK"</span><span class="p">]]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">"MESS_DATUM.month"</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s">"MESS_DATUM"</span><span class="p">)</span>
