@@ -29,9 +29,9 @@
   "headline":
     "Remote Sensing I",
   "datePublished":
-    "2019-06-13T08:43:54+00:00",
+    "2019-06-13T10:01:09+00:00",
   "dateModified":
-    "2019-06-13T08:43:54+00:00",
+    "2019-06-13T10:01:09+00:00",
   "description":
     "",
   "author": {
@@ -889,6 +889,7 @@ initFunction(initQuery);
   </li>
   <li><a href="#cropping">Cropping</a></li>
   <li><a href="#resampling">Resampling</a></li>
+  <li><a href="#writing-to-disk">Writing to disk</a></li>
   <li><a href="#exercise-6">Exercise 6</a></li>
 </ul>
     </nav>
@@ -1822,6 +1823,66 @@ If you look into the <code class="highlighter-rouge">areas.yaml</code> file, you
   </div>
 
 </div>
+
+<div class="markdown_area ">
+  <!--<div class="">
+</div>-->
+
+  <h2 id="writing-to-disk">Writing to disk</h2>
+
+  <p>SatPy makes it possible to save datasets in multiple formats. Most of the time, the library is used to save the bands or composites of a satellite scene as images (e.g. PNG or TIFF) which are then provided to end users. You can do this using one of the built-in SatPy writers.</p>
+
+  <p>For example, let’s write the resampled band at 0.6μm to a simple greyscale PNG image:</p>
+
+</div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">local_scn</span><span class="o">.</span><span class="n">save_dataset</span><span class="p">(</span><span class="n">dataset_id</span><span class="o">=</span><span class="s">"VIS006"</span><span class="p">,</span>
+                       <span class="n">filename</span><span class="o">=</span><span class="s">'VIS006.png'</span><span class="p">,</span>
+                       <span class="n">writer</span><span class="o">=</span><span class="s">'simple_image'</span><span class="p">,</span>
+                       <span class="n">base_dir</span><span class="o">=</span><span class="s">'../data/output'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="markdown_area ">
+  <!--<div class="">
+</div>-->
+
+  <p>You can also save multiple or all datasets of a scene simultaneously using the <code class="highlighter-rouge">save_datasets()</code> method:</p>
+
+</div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">local_scn</span><span class="o">.</span><span class="n">save_datasets</span><span class="p">(</span><span class="n">writer</span><span class="o">=</span><span class="s">'simple_image'</span><span class="p">,</span>
+                  <span class="n">datasets</span><span class="o">=</span><span class="p">[</span><span class="s">"VIS006"</span><span class="p">,</span><span class="s">"IR_108"</span><span class="p">,</span><span class="s">"natural_color"</span><span class="p">],</span>
+                  <span class="n">filename</span><span class="o">=</span><span class="s">'{name}_{start_time:</span><span class="si">%</span><span class="s">Y</span><span class="si">%</span><span class="s">m</span><span class="si">%</span><span class="s">d_</span><span class="si">%</span><span class="s">H</span><span class="si">%</span><span class="s">M</span><span class="si">%</span><span class="s">S}.png'</span><span class="p">,</span>
+                  <span class="n">base_dir</span><span class="o">=</span><span class="s">'../data/output'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="markdown_area ">
+  <!--<div class="">
+</div>-->
+
+  <p>You can also easily save your data in formats like NetCDF or GeoTIFF for further manipulation in other software tools or for distribution to third parties that are not used to work with satellite data types. So let’s save the “VIS006”, “IR_108” and the “natural_color” bands of the original scene in a netcdf-file:</p>
+
+</div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">scn</span><span class="o">.</span><span class="n">save_datasets</span><span class="p">(</span><span class="n">writer</span><span class="o">=</span><span class="s">'cf'</span><span class="p">,</span>
+                  <span class="n">datasets</span><span class="o">=</span><span class="p">[</span><span class="s">"VIS006"</span><span class="p">,</span><span class="s">"IR_108"</span><span class="p">,</span><span class="s">"natural_color"</span><span class="p">],</span>
+                  <span class="n">filename</span><span class="o">=</span><span class="s">'{start_time:</span><span class="si">%</span><span class="s">Y</span><span class="si">%</span><span class="s">m</span><span class="si">%</span><span class="s">d_</span><span class="si">%</span><span class="s">H</span><span class="si">%</span><span class="s">M</span><span class="si">%</span><span class="s">S}.nc'</span><span class="p">,</span>
+                  <span class="n">base_dir</span><span class="o">=</span><span class="s">'../data/output'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="markdown_area ">
+  <!--<div class="">
+</div>-->
+
+  <p>And in the same way you can also save the data in geotiff files:</p>
+
+</div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">local_scn</span><span class="o">.</span><span class="n">save_datasets</span><span class="p">(</span><span class="n">writer</span><span class="o">=</span><span class="s">'geotiff'</span><span class="p">,</span>
+                  <span class="n">datasets</span><span class="o">=</span><span class="p">[</span><span class="s">"VIS006"</span><span class="p">,</span><span class="s">"IR_108"</span><span class="p">,</span><span class="s">"natural_color"</span><span class="p">],</span>
+                  <span class="n">filename</span><span class="o">=</span><span class="s">'{name}_{start_time:</span><span class="si">%</span><span class="s">Y</span><span class="si">%</span><span class="s">m</span><span class="si">%</span><span class="s">d_</span><span class="si">%</span><span class="s">H</span><span class="si">%</span><span class="s">M</span><span class="si">%</span><span class="s">S}.tif'</span><span class="p">,</span>
+                  <span class="n">base_dir</span><span class="o">=</span><span class="s">'../data/output'</span><span class="p">)</span>
+</code></pre></div></div>
 
 <div class="markdown_area ">
   <!--<div class="">
