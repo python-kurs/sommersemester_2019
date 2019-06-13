@@ -29,9 +29,9 @@
   "headline":
     "Data science II",
   "datePublished":
-    "2019-06-13T11:47:30+00:00",
+    "2019-06-13T13:05:44+00:00",
   "dateModified":
-    "2019-06-13T11:47:30+00:00",
+    "2019-06-13T13:05:44+00:00",
   "description":
     "",
   "author": {
@@ -2659,12 +2659,14 @@ For <code class="highlighter-rouge">DataArray</code></p>
 </div>
 
 <div class="markdown_area ">
-  <!--<div class="">
+  <!--<div class="solution ">
 </div>-->
 
-  <p><strong>Solution</strong></p>
+  <div class="alert solution">
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">garmisch</span>  <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"../data/produkt_klima_tag_20171010_20190412_01550.txt"</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s">"MESS_DATUM"</span><span class="p">],</span> <span class="n">sep</span><span class="o">=</span><span class="s">";"</span><span class="p">)</span>
+    <p><strong>Solution</strong></p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">garmisch</span>  <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"../data/produkt_klima_tag_20171010_20190412_01550.txt"</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s">"MESS_DATUM"</span><span class="p">],</span> <span class="n">sep</span><span class="o">=</span><span class="s">";"</span><span class="p">)</span>
 <span class="n">zugspitze</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"../data/produkt_klima_tag_20171010_20190412_05792.txt"</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s">"MESS_DATUM"</span><span class="p">],</span> <span class="n">sep</span><span class="o">=</span><span class="s">";"</span><span class="p">)</span>
 
 <span class="n">klima_tag</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">garmisch</span><span class="p">,</span> <span class="n">zugspitze</span><span class="p">])</span>
@@ -2681,7 +2683,9 @@ For <code class="highlighter-rouge">DataArray</code></p>
 <span class="n">k_ds</span><span class="p">[</span><span class="s">" TNK"</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s">"Description"</span><span class="p">]</span> <span class="o">=</span> <span class="s">"Daily minimum temperature"</span>
 <span class="n">k_ds</span><span class="p">[</span><span class="s">" TNK"</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s">"Units"</span><span class="p">]</span> <span class="o">=</span> <span class="s">"Degrees Celsius"</span>
 
-</code></pre></div>  </div>
+</code></pre></div>    </div>
+
+  </div>
 
 </div>
 
@@ -2882,13 +2886,17 @@ Attributes:
 </div>
 
 <div class="markdown_area ">
-  <!--<div class="">
+  <!--<div class="solution ">
 </div>-->
 
-  <p><strong>Solution</strong></p>
+  <div class="alert solution">
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">kt_ds</span><span class="p">[[</span><span class="s">" TNK"</span><span class="p">,</span> <span class="s">" TXK"</span><span class="p">]]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">MESS_DATUM</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s">"2018-01"</span><span class="p">,</span> <span class="s">"2018-02"</span><span class="p">))</span>
-</code></pre></div>  </div>
+    <p><strong>Solution</strong></p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">kt_ds</span><span class="p">[[</span><span class="s">" TNK"</span><span class="p">,</span> <span class="s">" TXK"</span><span class="p">]]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">MESS_DATUM</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s">"2018-01"</span><span class="p">,</span> <span class="s">"2018-02"</span><span class="p">))</span>
+</code></pre></div>    </div>
+
+  </div>
 
 </div>
 
@@ -3061,19 +3069,23 @@ Data variables:
 </div>
 
 <div class="markdown_area ">
-  <!--<div class="">
+  <!--<div class="solution ">
 </div>-->
 
-  <p><strong>Solution</strong></p>
+  <div class="alert solution">
 
-  <p>Calculate the means</p>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">kt_mean</span> <span class="o">=</span> <span class="n">kt_ds</span><span class="p">[[</span><span class="s">" TNK"</span><span class="p">,</span> <span class="s">" TXK"</span><span class="p">]]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">"MESS_DATUM.month"</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s">"MESS_DATUM"</span><span class="p">)</span>
-</code></pre></div>  </div>
+    <p><strong>Solution</strong></p>
 
-  <p>Unfortunatelly the thin wrapper xarray has around matplotlib does not support plotting a dataset directly as a facet grid so we plot each variable separately to get a quick impression of what the data looks like.</p>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">kt_mean</span><span class="p">[</span><span class="s">" TNK"</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"month"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">"STATIONS_ID"</span><span class="p">)</span>
+    <p>Calculate the means</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">kt_mean</span> <span class="o">=</span> <span class="n">kt_ds</span><span class="p">[[</span><span class="s">" TNK"</span><span class="p">,</span> <span class="s">" TXK"</span><span class="p">]]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">"MESS_DATUM.month"</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s">"MESS_DATUM"</span><span class="p">)</span>
+</code></pre></div>    </div>
+
+    <p>Unfortunatelly the thin wrapper xarray has around matplotlib does not support plotting a dataset directly as a facet grid so we plot each variable separately to get a quick impression of what the data looks like.</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">kt_mean</span><span class="p">[</span><span class="s">" TNK"</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"month"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">"STATIONS_ID"</span><span class="p">)</span>
 <span class="n">kt_mean</span><span class="p">[</span><span class="s">" TXK"</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"month"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">"STATIONS_ID"</span><span class="p">)</span>
-</code></pre></div>  </div>
+</code></pre></div>    </div>
+
+  </div>
 
 </div>
 
