@@ -29,9 +29,9 @@
   "headline":
     "Remote Sensing I",
   "datePublished":
-    "2019-06-19T13:54:43+00:00",
+    "2019-06-23T08:38:05+00:00",
   "dateModified":
-    "2019-06-19T13:54:43+00:00",
+    "2019-06-23T08:38:05+00:00",
   "description":
     "",
   "author": {
@@ -998,7 +998,7 @@ initFunction(initQuery);
 
 </div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">satpy</span> <span class="kn">import</span> <span class="n">Scene</span><span class="p">,</span> <span class="n">find_files_and_readers</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">satpy</span> <span class="kn">import</span> <span class="n">Scene</span><span class="p">,</span> <span class="n">find_files_and_readers</span><span class="p">,</span> <span class="n">writers</span><span class="p">,</span> <span class="n">composites</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 </code></pre></div></div>
 
@@ -1012,9 +1012,6 @@ initFunction(initQuery);
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dateien</span> <span class="o">=</span> <span class="p">[</span><span class="s">"../data/W_XX-EUMETSAT-Darmstadt,VIS+IR+HRV+IMAGERY,MSG1+SEVIRI_C_EUMG_20060117120009.nc"</span><span class="p">]</span>
 <span class="n">files</span> <span class="o">=</span> <span class="p">{</span><span class="s">"seviri_l1b_nc"</span> <span class="p">:</span> <span class="n">dateien</span><span class="p">}</span>
-</code></pre></div></div>
-
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'seviri_l1b_nc': ['../data/W_XX-EUMETSAT-Darmstadt,VIS+IR+IMAGERY,MSG3+SEVIRI_C_EUMG_20180112120010.nc']}
 </code></pre></div></div>
 
 <div class="markdown_area ">
