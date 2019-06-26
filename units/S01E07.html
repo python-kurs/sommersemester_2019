@@ -1,0 +1,1619 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+
+  <title>Remote Sensing II</title>
+  <meta name="description" content="">
+
+  <link rel="canonical" href="https://python-kurs.github.io/sommersemester_2019//units/S01E07.html">
+  <link rel="alternate" type="application/rss+xml" title="Sommersemester 2019" href="https://python-kurs.github.io/sommersemester_2019//feed.xml">
+
+  <meta property="og:url"         content="https://python-kurs.github.io/sommersemester_2019//units/S01E07.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Remote Sensing II" />
+<meta property="og:description" content="" />
+<meta property="og:image"       content="" />
+
+
+  <script type="application/ld+json">
+  {
+  "@context": "http://schema.org",
+  "@type": "NewsArticle",
+  "mainEntityOfPage":
+    "https://python-kurs.github.io/sommersemester_2019//units/S01E07.html",
+  "headline":
+    "Remote Sensing II",
+  "datePublished":
+    "2019-06-26T20:17:29+00:00",
+  "dateModified":
+    "2019-06-26T20:17:29+00:00",
+  "description":
+    "",
+  "author": {
+    "@type": "Person",
+    "name": "Sebastian Egli, Benjamin Rösner"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Data 100 at UC Berkeley",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://python-kurs.github.io/sommersemester_2019/",
+      "width": 60,
+      "height": 60
+    }
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://python-kurs.github.io/sommersemester_2019/",
+    "height": 60,
+    "width": 60
+  }
+}
+
+  </script>
+  <link rel="stylesheet" href="/sommersemester_2019/assets/css/styles.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css ">
+  <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+
+  <!-- <link rel="manifest" href="/manifest.json"> -->
+  <!-- <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#efae0a"> -->
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+  <meta name="theme-color" content="#233947">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="/sommersemester_2019/images/logo/favicon.ico">
+
+  <!-- MathJax Config -->
+  <!-- Allow inline math using $ and automatically break long math lines -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true,
+        processEnvironments: true
+    },
+    CommonHTML: {
+        linebreaks: {
+            automatic: true,
+        },
+    },
+});
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML' async></script>
+
+  <!-- DOM updating function -->
+  <script>
+const runWhenDOMLoaded = cb => {
+  if (document.readyState != 'loading') {
+    cb()
+  } else if (document.addEventListener) {
+    document.addEventListener('DOMContentLoaded', cb)
+  } else {
+    document.attachEvent('onreadystatechange', function() {
+      if (document.readyState == 'complete') cb()
+    })
+  }
+}
+
+// Helper function to init things quickly
+initFunction = function(myfunc) {
+  runWhenDOMLoaded(myfunc);
+  document.addEventListener('turbolinks:load', myfunc);
+};
+</script>
+
+  <!-- Define some javascript variables that will be useful in other javascript -->
+  <script>
+    const site_basename = '/sommersemester_2019/';
+  </script>
+
+  <!-- Add AnchorJS to let headers be linked -->
+  <script src="/sommersemester_2019/assets/js/anchor.min.js"  type="text/javascript"></script>
+  <script>
+
+initFunction(function () {
+    anchors.add("main h1, main h2, main h3, main h4")
+});
+
+</script>
+
+  <!-- Include Turbolinks to make page loads fast -->
+  <!-- https://github.com/turbolinks/turbolinks -->
+  <script src="/sommersemester_2019/assets/js/turbolinks.js" async></script>
+  <meta name="turbolinks-cache-control" content="no-cache">
+
+  <!-- Load nbinteract for widgets -->
+  <script src="https://unpkg.com/nbinteract-core" async></script>
+
+  <!-- Load Thebelab for interactive widgets -->
+  <!-- Include Thebelab for interactive code if it's enabled -->
+
+<script type="text/x-thebe-config">
+    {
+      requestKernel: true,
+      binderOptions: {
+        repo: 'YOUR-ORG/YOUR-REPO',
+        ref: 'master',
+      },
+      kernelOptions: {
+        name: 'python3',
+      }
+    }
+</script>
+<script src="https://unpkg.com/thebelab@0.3.3/lib/index.js"></script>
+<script>
+    /**
+     * Add attributes to Thebelab blocks
+     */
+
+    const initThebelab = () => {
+        const addThebelabToCodeCells = () => {
+            console.log("Adding thebelab to code cells...");
+            // If Thebelab hasn't loaded, wait a bit and try again. This
+            // happens because we load ClipboardJS asynchronously.
+            if (window.thebelab === undefined) {
+                setTimeout(addThebelabToCodeCells, 250)
+            return
+            }
+
+            // If we already detect a Thebelab cell, don't re-run
+            if (document.querySelectorAll('div.thebelab-cell').length > 0) {
+                return;
+            }
+
+            // Find all code cells, replace with Thebelab interactive code cells
+            const codeCells = document.querySelectorAll('.input_area pre')
+            codeCells.forEach((codeCell, index) => {
+                const id = codeCellId(index)
+                codeCell.setAttribute('data-executable', 'true')
+
+                // Figure out the language it uses and add this too
+                var parentDiv = codeCell.parentElement.parentElement;
+                var arrayLength = parentDiv.classList.length;
+                for (var ii = 0; ii < arrayLength; ii++) {
+                    var parts = parentDiv.classList[ii].split('language-');
+                    if (parts.length === 2) {
+                        // If found, assign dataLanguage and break the loop
+                        var dataLanguage = parts[1];
+                        break;
+                    }
+                }
+                codeCell.setAttribute('data-language', dataLanguage)
+
+                // If the code cell is hidden, show it
+                var inputCheckbox = document.querySelector(`input#hidebtn${codeCell.id}`);
+                if (inputCheckbox !== null) {
+                    setCodeCellVisibility(inputCheckbox, 'visible');
+                }
+            });
+
+            // Remove the event listener from the page so keyboard press doesn't
+            // Change page
+            document.removeEventListener('keydown', initPageNav)
+            keyboardListener = false;
+
+            // Init thebelab
+            thebelab.bootstrap();
+
+            // Remove copy buttons since they won't work anymore
+            const copyButtons = document.querySelectorAll('.copybtn')
+            copyButtons.forEach((copyButton, index) => {
+                copyButton.remove();
+            });
+
+            // Remove outputs since they'll be stale
+            const outputs = document.querySelectorAll('.output *, .output')
+            outputs.forEach((output, index) => {
+                output.remove();
+            });
+        }
+
+        // Add event listener for the function to modify code cells
+        const thebelabButton = document.getElementById('interact-button-thebelab');
+        if (thebelabButton === null) {
+            setTimeout(initThebelab, 250)
+        return
+        };
+        thebelabButton.addEventListener('click', addThebelabToCodeCells);
+    }
+
+    // Initialize Thebelab
+    initFunction(initThebelab);
+</script>
+
+
+  <!-- Google analytics -->
+  <script src="/sommersemester_2019/assets/js/ga.js" async></script>
+
+  <!-- Clipboard copy button -->
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" async></script>
+
+  <!-- Load JS that depends on site variables -->
+  <script>
+/**
+ * Set up copy/paste for code blocks
+ */
+const codeCellId = index => `codecell${index}`
+
+const clipboardButton = id =>
+  `<a class="btn copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#${id}">
+    <img src="/sommersemester_2019/assets/images/copy-button.svg" alt="Copy to clipboard">
+  </a>`
+
+// Clears selected text since ClipboardJS will select the text when copying
+const clearSelection = () => {
+  if (window.getSelection) {
+    window.getSelection().removeAllRanges()
+  } else if (document.selection) {
+    document.selection.empty()
+  }
+}
+
+// Changes tooltip text for two seconds, then changes it back
+const temporarilyChangeTooltip = (el, newText) => {
+  const oldText = el.getAttribute('data-tooltip')
+  el.setAttribute('data-tooltip', newText)
+  setTimeout(() => el.setAttribute('data-tooltip', oldText), 2000)
+}
+
+const addCopyButtonToCodeCells = () => {
+  // If ClipboardJS hasn't loaded, wait a bit and try again. This
+  // happens because we load ClipboardJS asynchronously.
+  if (window.ClipboardJS === undefined) {
+    setTimeout(addCopyButtonToCodeCells, 250)
+    return
+  }
+
+  const codeCells = document.querySelectorAll('div.highlighter-rouge:not(.output) pre')
+  codeCells.forEach((codeCell, index) => {
+    const id = codeCellId(index)
+    codeCell.setAttribute('id', id)
+    if (document.querySelector(`pre#${id} + a`) == null) {
+      codeCell.insertAdjacentHTML('afterend', clipboardButton(id));
+    }
+  })
+
+  const clipboard = new ClipboardJS('.copybtn')
+  clipboard.on('success', event => {
+    clearSelection()
+    temporarilyChangeTooltip(event.trigger, 'Copied!')
+  })
+
+  clipboard.on('error', event => {
+    temporarilyChangeTooltip(event.trigger, 'Failed to copy')
+  })
+
+  // Get rid of clipboard before the next page visit to avoid memory leak
+  document.addEventListener('turbolinks:before-visit', () =>
+    clipboard.destroy()
+  )
+}
+
+initFunction(addCopyButtonToCodeCells);
+</script>
+
+  <!-- Hide cell code -->
+  
+<script>
+/**
+Add buttons to hide code cells
+*/
+
+
+var setCodeCellVisibility = function(inputField, kind) {
+    // Update the image and class for hidden
+    var id = inputField.getAttribute('data-id');
+    var codeCell = document.querySelector(`#${id}`);
+
+    if (kind === "visible") {
+        codeCell.classList.remove('hidden');
+        inputField.checked = true;
+    } else {
+        codeCell.classList.add('hidden');
+        inputField.checked = false;
+    }
+}
+
+var toggleCodeCellVisibility = function (event) {
+    // The label is clicked, and now we decide what to do based on the input field's clicked status
+    if (event.target.tagName === "LABEL") {
+        var inputField = event.target.previousElementSibling;
+    } else {
+        // It is the span inside the target
+        var inputField = event.target.parentElement.previousElementSibling;
+    }
+
+    if (inputField.checked === true) {
+        setCodeCellVisibility(inputField, "visible");
+    } else {
+        setCodeCellVisibility(inputField, "hidden");
+    }
+}
+
+
+// Button constructor
+const hideCodeButton = id => `<input class="hidebtn" type="checkbox" id="hidebtn${id}" data-id="${id}"><label title="Toggle cell" for="hidebtn${id}" class="plusminus"><span class="pm_h"></span><span class="pm_v"></span></label>`
+
+var addHideButton = function () {
+  // If a hide button is already added, don't add another
+  if (document.querySelector('div.hidecode input') !== null) {
+      return;
+  }
+
+  // Find the input cells and add a hide button
+  document.querySelectorAll('div.input_area div.highlight').forEach(function (item, index) {
+    if (!item.parentElement.classList.contains("hidecode")) {
+        // Skip the cell if it doesn't have a hidecode class
+        return;
+    }
+
+    const id = codeCellId(index)
+    item.setAttribute('id', id);
+    item.insertAdjacentHTML('afterend', hideCodeButton(id))
+
+    // Set up the visibility toggle
+    hideLink = document.querySelector(`#${id} + input + label`);
+    hideLink.addEventListener('click', toggleCodeCellVisibility)
+  });
+}
+
+
+// Initialize the hide buttos
+var initHiddenCells = function () {
+    // Add hide buttons to the cells
+    addHideButton();
+
+    // Toggle the code cells that should be hidden
+    document.querySelectorAll('div.hidecode input').forEach(function (item) {
+        setCodeCellVisibility(item, 'hidden');
+        item.checked = true;
+    })
+}
+
+initFunction(initHiddenCells);
+
+</script>
+
+
+  <!-- Load custom website scripts -->
+  <script src="/sommersemester_2019/assets/js/scripts.js" async></script>
+
+  <!-- Load custom user CSS and JS  -->
+  <script src="/sommersemester_2019/assets/custom/custom.js" async></script>
+  <link rel="stylesheet" href="/sommersemester_2019/assets/custom/custom.css">
+
+  <!-- Update interact links w/ REST param, is defined in includes so we can use templates -->
+  
+
+  <!-- Lunr search code - will only be executed on the /search page -->
+  <script src="/sommersemester_2019/assets/js/lunr/lunr.min.js" type="text/javascript"></script>
+  <script>var initQuery = function() {
+  // See if we have a search box
+  var searchInput = document.querySelector('input#lunr_search');
+  if (searchInput === null) {
+    return;
+  }
+
+  // Function to parse our lunr cache
+  var idx = lunr(function () {
+    this.field('title')
+    this.field('excerpt')
+    this.field('categories')
+    this.field('tags')
+    this.ref('id')
+
+    this.pipeline.remove(lunr.trimmer)
+
+    for (var item in store) {
+      this.add({
+        title: store[item].title,
+        excerpt: store[item].excerpt,
+        categories: store[item].categories,
+        tags: store[item].tags,
+        id: item
+      })
+    }
+  });
+
+  // Run search upon keyup
+  searchInput.addEventListener('keyup', function () {
+    var resultdiv = document.querySelector('#results');
+    var query = document.querySelector("input#lunr_search").value.toLowerCase();
+    var result =
+      idx.query(function (q) {
+        query.split(lunr.tokenizer.separator).forEach(function (term) {
+          q.term(term, { boost: 100 })
+          if(query.lastIndexOf(" ") != query.length-1){
+            q.term(term, {  usePipeline: false, wildcard: lunr.Query.wildcard.TRAILING, boost: 10 })
+          }
+          if (term != ""){
+            q.term(term, {  usePipeline: false, editDistance: 1, boost: 1 })
+          }
+        })
+      });
+
+      // Empty the results div
+      while (resultdiv.firstChild) {
+        resultdiv.removeChild(resultdiv.firstChild);
+      }
+
+    resultdiv.insertAdjacentHTML('afterbegin', '<p class="results__found">'+result.length+' Result(s) found</p>');
+    for (var item in result) {
+      var ref = result[item].ref;
+      if(store[ref].teaser){
+        var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<div class="archive__item-teaser">'+
+                '<img src="'+store[ref].teaser+'" alt="">'+
+              '</div>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      else{
+    	  var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      resultdiv.insertAdjacentHTML('beforeend', searchitem);
+    }
+  });
+};
+
+initFunction(initQuery);
+</script>
+</head>
+
+  <body>
+    <!-- .js-show-sidebar shows sidebar by default -->
+    <div id="js-textbook" class="c-textbook js-show-sidebar">
+      
+
+
+
+<nav id="js-sidebar" class="c-textbook__sidebar">
+  <a href="https://python-kurs.github.io/sommersemester_2019/intro.html"><img src="/sommersemester_2019/images/logo/logo.png" class="textbook_logo" id="sidebar-logo" data-turbolinks-permanent/></a>
+  <h2 class="c-sidebar__title">Sommersemester 2019</h2>
+  <ul class="c-sidebar__chapters">
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/sommersemester_2019/intro.html"
+        >
+          
+          Introduction
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/sommersemester_2019/motivation.html"
+        >
+          
+          Motivation
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/sommersemester_2019/about.html"
+        >
+          
+          About
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+        <li class="c-sidebar__chapter"><a class="c-sidebar__entry" href="/sommersemester_2019/search.html">Search</a></li>
+        
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/sommersemester_2019/units/units.html"
+        >
+          
+          Sessions
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections ">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/sommersemester_2019/units/S01E01.html"
+                >
+                  
+                  Python Basics I
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/sommersemester_2019/units/S01E02.html"
+                >
+                  
+                  Python Basics II
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/sommersemester_2019/units/S01E03.html"
+                >
+                  
+                  Python Basics III
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/sommersemester_2019/units/S01E04.html"
+                >
+                  
+                  Data science I
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/sommersemester_2019/units/S01E05.html"
+                >
+                  
+                  Data science II
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/sommersemester_2019/units/S01E06.html"
+                >
+                  
+                  Remote Sensing I
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry c-sidebar__entry--active"
+                  href="/sommersemester_2019/units/S01E07.html"
+                >
+                  
+                  Remote Sensing II
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/sommersemester_2019/solutions/solutions.html"
+        >
+          
+          Solutions
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections ">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/sommersemester_2019/solutions/exercise-1/Exercise-1_Solutions.html"
+                >
+                  
+                  Exercise I
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/sommersemester_2019/solutions/exercise-2/Exercise-2_Solutions.html"
+                >
+                  
+                  Exercise II
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/sommersemester_2019/solutions/exercise-3/Exercise-3_Solutions.html"
+                >
+                  
+                  Exercise III
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/sommersemester_2019/solutions/exercise-4/Exercise-4_Solutions.html"
+                >
+                  
+                  Exercise IV
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/sommersemester_2019/allgemeine_hinweise.html"
+        >
+          
+          Allgemeine Hinweise
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/sommersemester_2019/results.html"
+        >
+          
+          Results
+        </a>
+
+        
+      </li>
+
+      
+    
+  </ul>
+  <p class="sidebar_footer">Powered by <a href="https://github.com/jupyter/jupyter-book">Jupyter Book</a></p>
+</nav>
+
+      
+      <!-- Shamelessly copied from minimal mistakes -->
+
+
+<!-- TOC will only show up if it has at least one item -->
+
+
+  <aside class="sidebar__right">
+    <nav class="onthispage">
+      <header><h4 class="nav__title"><i class="fa fa-list"></i>   On this page</h4></header>
+      <ul class="toc__menu">
+  <li><a href="#advanced-plotting-methods">Advanced plotting methods</a></li>
+  <li><a href="#working-with-multiple-scenes-time-series">Working with multiple scenes (time series)</a></li>
+  <li><a href="#loading-modis-data">Loading MODIS data</a>
+    <ul>
+      <li><a href="#mod021km">MOD021KM</a></li>
+      <li><a href="#mod06l2">MOD06_L2</a></li>
+    </ul>
+  </li>
+  <li><a href="#band-calculations">Band calculations</a></li>
+</ul>
+    </nav>
+  </aside>
+
+
+      
+      <main class="c-textbook__page" tabindex="-1">
+          <div class="o-wrapper">
+            <div class="c-sidebar-toggle">
+  <!-- We show the sidebar by default so we use .is-active -->
+  <button
+    id="js-sidebar-toggle"
+    class="hamburger hamburger--arrowalt is-active"
+  >
+    <span class="hamburger-box">
+      <span class="hamburger-inner"></span>
+    </span>
+    <span class="c-sidebar-toggle__label">Toggle Sidebar</span>
+  </button>
+</div>
+
+            
+<div class="buttons">
+<a href="/sommersemester_2019/content/units/S01E07.ipynb" download>
+<button id="interact-button-download" class="interact-button">Download</button>
+</a>
+
+<button id="interact-button-thebelab" class="interact-button">Interact</button>
+
+
+
+
+</div>
+
+
+            <div class="c-textbook__content">
+              
+<div class="markdown_area ">
+  <!--<div class="">
+</div>-->
+
+  <h1 id="remote-sensing-ii">Remote Sensing II</h1>
+
+</div>
+
+<div class="markdown_area ">
+  <!--<div class="">
+</div>-->
+
+  <h2 id="advanced-plotting-methods">Advanced plotting methods</h2>
+
+</div>
+
+<div class="markdown_area ">
+  <!--<div class="">
+</div>-->
+
+  <p>In the last session, we only plotted the satellite data of MSG itself. Unfortunately, we have to follow our instincts (and duty) as Geographers and add some spatial context to the plots so that the viewer knows what exactly she or he sees.</p>
+
+</div>
+
+<div class="markdown_area ">
+  <!--<div class="">
+</div>-->
+
+  <p>So lets start with the natural color composite of Greece.</p>
+
+  <p>First, we load MSG data again and resample the scene to our area definition of Greece and its surroundings:</p>
+
+</div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">satpy</span> <span class="kn">import</span> <span class="n">Scene</span><span class="p">,</span> <span class="n">MultiScene</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="nn">pyresample</span> <span class="kn">import</span> <span class="n">geometry</span>
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dateien</span> <span class="o">=</span> <span class="p">[</span><span class="s">"../data/W_XX-EUMETSAT-Darmstadt,VIS+IR+HRV+IMAGERY,MSG1+SEVIRI_C_EUMG_20060117084508.nc"</span><span class="p">]</span>
+<span class="n">files</span> <span class="o">=</span> <span class="p">{</span><span class="s">"seviri_l1b_nc"</span> <span class="p">:</span> <span class="n">dateien</span><span class="p">}</span>
+
+<span class="n">scn</span> <span class="o">=</span> <span class="n">Scene</span><span class="p">(</span><span class="n">filenames</span><span class="o">=</span><span class="n">files</span><span class="p">)</span>
+<span class="n">scn</span><span class="o">.</span><span class="n">load</span><span class="p">([</span><span class="s">"natural_color"</span><span class="p">])</span>
+<span class="n">scn</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">scn</span><span class="o">.</span><span class="n">all_dataset_names</span><span class="p">()[</span><span class="mi">1</span><span class="p">:])</span>
+
+<span class="n">area_id</span> <span class="o">=</span> <span class="s">"Griechenland"</span>
+<span class="n">description</span> <span class="o">=</span> <span class="s">"Griechenland und Umgebung in Mercator-Projektion"</span>
+<span class="n">proj_id</span> <span class="o">=</span> <span class="s">"Griechenland"</span>
+<span class="n">proj_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s">"proj"</span><span class="p">:</span> <span class="s">"merc"</span><span class="p">,</span> <span class="s">"lat_ts"</span><span class="p">:</span> <span class="mi">38</span><span class="p">,</span> <span class="s">'lon_0'</span><span class="p">:</span> <span class="mi">25</span><span class="p">}</span>
+
+<span class="n">width</span> <span class="o">=</span> <span class="mi">800</span>    <span class="c"># width of the result domain in pixels</span>
+<span class="n">height</span> <span class="o">=</span> <span class="mi">800</span>   <span class="c"># height of the result domain in pixels</span>
+
+<span class="n">llx</span> <span class="o">=</span> <span class="o">-</span><span class="mf">10E5</span>   <span class="c"># projection x coordinate of lower left corner of lower left pixel</span>
+<span class="n">lly</span> <span class="o">=</span>  <span class="mf">27E5</span>   <span class="c"># projection y coordinate of lower left corner of lower left pixel</span>
+<span class="n">urx</span> <span class="o">=</span>  <span class="mf">10E5</span>   <span class="c"># projection x coordinate of upper right corner of upper right pixel</span>
+<span class="n">ury</span> <span class="o">=</span>  <span class="mf">47E5</span>   <span class="c"># projection y coordinate of upper right corner of upper right pixel</span>
+
+<span class="n">area_extent</span> <span class="o">=</span> <span class="p">(</span><span class="n">llx</span><span class="p">,</span><span class="n">lly</span><span class="p">,</span><span class="n">urx</span><span class="p">,</span><span class="n">ury</span><span class="p">)</span>
+<span class="n">area_def_greece</span> <span class="o">=</span> <span class="n">geometry</span><span class="o">.</span><span class="n">AreaDefinition</span><span class="p">(</span><span class="n">area_id</span><span class="p">,</span> <span class="n">proj_id</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">proj_dict</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">area_extent</span><span class="p">)</span>
+
+<span class="n">local_scn</span> <span class="o">=</span> <span class="n">scn</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">area_def_greece</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="markdown_area ">
+  <!--<div class="">
+</div>-->
+
+  <p>Now, we can plot the scene and add some coastlines and a lat/lon grid:</p>
+
+</div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># First, we have to transpose the natural color composite values to a shape that can be interpreted </span>
+<span class="c"># by the imshow method: (M,N,3)</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">local_scn</span><span class="p">[</span><span class="s">"natural_color"</span><span class="p">])</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c"># Then we scale the values to the range between 0 and 1, clipping the lower and upper percentiles</span>
+<span class="c"># so that a potential contrast decrease caused by outliers is eliminated.</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="mi">99</span><span class="p">)),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="c"># Now we "copy" the coordinate reference system of our composite data set...</span>
+<span class="n">crs</span> <span class="o">=</span> <span class="n">local_scn</span><span class="p">[</span><span class="s">"natural_color"</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s">"area"</span><span class="p">]</span><span class="o">.</span><span class="n">to_cartopy_crs</span><span class="p">()</span>
+
+<span class="c"># ... and use it to generate an axes in our figure with the same CRS</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">crs</span><span class="p">)</span>
+
+<span class="c"># Now we can add some coastlines...</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">(</span><span class="n">resolution</span><span class="o">=</span><span class="s">"10m"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">"white"</span><span class="p">)</span>
+
+<span class="c"># ... and a lat/lon grid:</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">gridlines</span><span class="p">(</span><span class="n">xlocs</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span><span class="n">ylocs</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span><span class="mi">55</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="c"># In the end, we can plot our image data...</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">crs</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="n">crs</span><span class="o">.</span><span class="n">bounds</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s">"upper"</span><span class="p">)</span>
+
+<span class="c"># and add a title to our plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">"Natural color composite of Greece and surroundings, recorded by MSG at "</span> <span class="o">+</span> <span class="n">local_scn</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s">"start_time"</span><span class="p">]</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">"</span><span class="si">%</span><span class="s">Y-</span><span class="si">%</span><span class="s">m-</span><span class="si">%</span><span class="s">d </span><span class="si">%</span><span class="s">H:</span><span class="si">%</span><span class="s">M"</span><span class="p">))</span>
+
+<span class="c"># Finally, we can show the plot to the user:</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../images/units/S01E07_7_0.png" alt="png" /></p>
+
+<div class="markdown_area ">
+  <!--<div class="">
+</div>-->
+
+  <p>If you want to add further shapes to the plot, you can do so by using the <code class="highlighter-rouge">feature</code> class of cartopy:</p>
+
+</div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">cartopy.feature</span> <span class="k">as</span> <span class="n">cfeature</span>
+
+<span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">local_scn</span><span class="p">[</span><span class="s">"natural_color"</span><span class="p">])</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="mi">99</span><span class="p">)),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">crs</span> <span class="o">=</span> <span class="n">local_scn</span><span class="p">[</span><span class="s">"natural_color"</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s">"area"</span><span class="p">]</span><span class="o">.</span><span class="n">to_cartopy_crs</span><span class="p">()</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">crs</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">gridlines</span><span class="p">(</span><span class="n">xlocs</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span><span class="n">ylocs</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span><span class="mi">55</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="c"># ===================================================</span>
+<span class="n">states_provinces</span> <span class="o">=</span> <span class="n">cfeature</span><span class="o">.</span><span class="n">NaturalEarthFeature</span><span class="p">(</span>
+        <span class="n">category</span><span class="o">=</span><span class="s">"cultural"</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="s">"admin_0_countries"</span><span class="p">,</span>
+        <span class="n">scale</span><span class="o">=</span><span class="s">"10m"</span><span class="p">,</span>
+        <span class="n">facecolor</span><span class="o">=</span><span class="s">"none"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">states_provinces</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s">"white"</span><span class="p">)</span>
+<span class="c"># ===================================================</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">crs</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="n">crs</span><span class="o">.</span><span class="n">bounds</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s">"upper"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">"Natural color composite of Greece and surroundings, recorded by MSG at "</span> <span class="o">+</span> <span class="n">local_scn</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s">"start_time"</span><span class="p">]</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">"</span><span class="si">%</span><span class="s">Y-</span><span class="si">%</span><span class="s">m-</span><span class="si">%</span><span class="s">d </span><span class="si">%</span><span class="s">H:</span><span class="si">%</span><span class="s">M"</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../images/units/S01E07_9_0.png" alt="png" /></p>
+
+<div class="markdown_area ">
+  <!--<div class="task ">
+</div>-->
+
+  <div class="alert task">
+
+    <h5 id="task"><strong>Task</strong></h5>
+
+    <ol>
+      <li>Download this MSG data set using our usual password: https://box.uni-marburg.de/index.php/s/bCu96BUfVyXtFCg</li>
+      <li>Resample the scene to Algeria and its surroundings using the Mercator projection. Use the following settings:
+        <ul>
+          <li>Latitude of true scale: 28</li>
+          <li>Longitude of projection center: 2</li>
+          <li>Domain size: 1000 x 1000</li>
+          <li>Area extent: [-13E5, 18E5, 12E5, 41E5]</li>
+        </ul>
+      </li>
+      <li>Plot the resampled scene as natural color composite, add a grid and country borders as well as a title.</li>
+    </ol>
+
+  </div>
+
+</div>
+
+<div class="markdown_area ">
+  <!--<div class="">
+</div>-->
+
+  <h2 id="working-with-multiple-scenes-time-series">Working with multiple scenes (time series)</h2>
+
+</div>
+
+<div class="markdown_area ">
+  <!--<div class="">
+</div>-->
+
+  <p>Often, we are interested not only in one specific scene but in the changes over consecutively recorded scenes.</p>
+
+  <p>For this purpose, we can make use of SatPy’s (experimental) <a href="https://satpy.readthedocs.io/en/latest/multiscene.html">MultiScene</a>:</p>
+
+</div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">satpy.multiscene</span> <span class="kn">import</span> <span class="n">timeseries</span>
+
+<span class="c"># Load all files in a given folder:</span>
+<span class="n">dateien</span> <span class="o">=</span> <span class="n">glob</span><span class="p">(</span><span class="s">"../data/W_XX-EUMETSAT-Darmstadt,VIS+IR+HRV+IMAGERY,MSG1+SEVIRI_C_EUMG_*.nc"</span><span class="p">)</span>
+
+<span class="c"># Create a list of scenes</span>
+<span class="n">scenes</span> <span class="o">=</span> <span class="p">[</span><span class="n">Scene</span><span class="p">(</span><span class="n">reader</span><span class="o">=</span><span class="s">"seviri_l1b_nc"</span><span class="p">,</span> <span class="n">filenames</span><span class="o">=</span><span class="p">[</span><span class="n">datei</span><span class="p">])</span> <span class="k">for</span> <span class="n">datei</span> <span class="ow">in</span> <span class="n">dateien</span><span class="p">]</span>
+
+<span class="c"># Create a MultiScene from the given list of scenes</span>
+<span class="n">mscn</span> <span class="o">=</span> <span class="n">MultiScene</span><span class="p">(</span><span class="n">scenes</span><span class="p">)</span>
+
+<span class="c"># Load the 10.8 micrometer band of all scenes within the MultiScene</span>
+<span class="n">mscn</span><span class="o">.</span><span class="n">load</span><span class="p">([</span><span class="s">"IR_108"</span><span class="p">])</span>
+
+<span class="c"># Resample the MultiScene to our Greece domain</span>
+<span class="n">new_mscn</span> <span class="o">=</span> <span class="n">mscn</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">area_def_greece</span><span class="p">)</span>
+
+<span class="c"># Blend the scenes to one single Scene with each dataset/channel extended by the time dimension</span>
+<span class="n">blended_scene</span> <span class="o">=</span> <span class="n">new_mscn</span><span class="o">.</span><span class="n">blend</span><span class="p">(</span><span class="n">blend_function</span><span class="o">=</span><span class="n">timeseries</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="markdown_area ">
+  <!--<div class="">
+</div>-->
+
+  <p>Now we can, for example, plot the loaded band of each scene:</p>
+
+</div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">blended_scene</span><span class="p">[</span><span class="s">"IR_108"</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"x"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"y"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">"time"</span><span class="p">,</span> <span class="n">col_wrap</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;xarray.plot.facetgrid.FacetGrid at 0x7f9553412208&gt;
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../images/units/S01E07_16_1.png" alt="png" /></p>
+
+<div class="markdown_area ">
+  <!--<div class="">
+</div>-->
+
+  <h2 id="loading-modis-data">Loading MODIS data</h2>
+
+</div>
+
+<div class="markdown_area ">
+  <!--<div class="info ">
+</div>-->
+
+  <div class="alert info">
+
+    <p>MODIS data can be obtained at the LAADS DAAC (registration required): https://ladsweb.modaps.eosdis.nasa.gov/search/</p>
+
+  </div>
+
+</div>
+
+<div class="markdown_area ">
+  <!--<div class="">
+</div>-->
+
+  <h3 id="mod021km">MOD021KM</h3>
+
+</div>
+
+<div class="markdown_area ">
+  <!--<div class="">
+</div>-->
+
+  <p>The MODIS <a href="https://ladsweb.modaps.eosdis.nasa.gov/missions-and-measurements/products/MOD021KM">MOD021KM</a> data (Level 1B Calibrated Radiances at 1km resolution) can be read and displayed just like the MSG data using SatPy:</p>
+
+</div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dateien</span> <span class="o">=</span> <span class="p">[</span><span class="s">"../data/MODIS/MOD021KM.A2006017.0855.006.2014218155904.hdf"</span><span class="p">]</span>
+<span class="n">files</span> <span class="o">=</span> <span class="p">{</span><span class="s">"modis_l1b"</span> <span class="p">:</span> <span class="n">dateien</span><span class="p">}</span>
+
+<span class="n">mod02_scn</span> <span class="o">=</span> <span class="n">Scene</span><span class="p">(</span><span class="n">filenames</span><span class="o">=</span><span class="n">files</span><span class="p">)</span>
+<span class="n">mod02_scn</span><span class="o">.</span><span class="n">load</span><span class="p">([</span><span class="s">"natural_color"</span><span class="p">],</span><span class="n">resolution</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">mod02_scn</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s">"natural_color"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../images/units/S01E07_21_0.png" alt="png" /></p>
+
+<div class="markdown_area ">
+  <!--<div class="">
+</div>-->
+
+  <p>This gives us an image of the swath data in original MODIS projection.</p>
+
+  <p>But where are we? To find that out, we can resample the data to a simple world map:</p>
+
+</div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">local_scn</span> <span class="o">=</span> <span class="n">mod02_scn</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s">"worldeqc30km"</span><span class="p">)</span>
+
+<span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">local_scn</span><span class="p">[</span><span class="s">"natural_color"</span><span class="p">])</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="mi">99</span><span class="p">)),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="n">crs</span> <span class="o">=</span> <span class="n">local_scn</span><span class="p">[</span><span class="s">"natural_color"</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s">"area"</span><span class="p">]</span><span class="o">.</span><span class="n">to_cartopy_crs</span><span class="p">()</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">crs</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">(</span><span class="n">resolution</span><span class="o">=</span><span class="s">"10m"</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">"grey"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">crs</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="n">crs</span><span class="o">.</span><span class="n">bounds</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s">"upper"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../images/units/S01E07_23_0.png" alt="png" /></p>
+
+<div class="markdown_area ">
+  <!--<div class="">
+</div>-->
+
+  <p>As MODIS has a very wide aperture angle, the resolution towards the scan margins drops considerably and we can see a lot of distortion at the left and right image borders of the original swath data.</p>
+
+  <p>Most often, however, you will want to reproject MODIS data to another projection that is suitable for the covered domain.</p>
+
+  <p>This can be done exactly like with the MSG data. So lets resample our MODIS scene to the Greece domain that we defined above:</p>
+
+</div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">local_scn</span> <span class="o">=</span> <span class="n">mod02_scn</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">area_def_greece</span><span class="p">)</span>
+<span class="n">local_scn</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s">"natural_color"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../images/units/S01E07_25_0.png" alt="png" /></p>
+
+<div class="markdown_area ">
+  <!--<div class="">
+</div>-->
+
+  <h4 id="stack-swath-data">Stack swath data</h4>
+
+</div>
+
+<div class="markdown_area ">
+  <!--<div class="">
+</div>-->
+
+  <p>Well ok, that only covers parts of the domain. To better fill the domain, we have to load multiple swath sections.</p>
+
+  <p>For this, again, we can use the MultiScene object:</p>
+
+</div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">scenes</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">Scene</span><span class="p">(</span><span class="n">reader</span><span class="o">=</span><span class="s">'modis_l1b'</span><span class="p">,</span> <span class="n">filenames</span><span class="o">=</span><span class="p">[</span><span class="s">"../data/MODIS/MOD021KM.A2006017.0855.006.2014218155904.hdf"</span><span class="p">]),</span>
+    <span class="n">Scene</span><span class="p">(</span><span class="n">reader</span><span class="o">=</span><span class="s">'modis_l1b'</span><span class="p">,</span> <span class="n">filenames</span><span class="o">=</span><span class="p">[</span><span class="s">"../data/MODIS/MOD021KM.A2006017.0850.006.2014218155843.hdf"</span><span class="p">])</span>
+    <span class="p">]</span>
+
+<span class="n">mscn</span> <span class="o">=</span> <span class="n">MultiScene</span><span class="p">(</span><span class="n">scenes</span><span class="p">)</span>
+<span class="n">mscn</span><span class="o">.</span><span class="n">load</span><span class="p">([</span><span class="s">'natural_color'</span><span class="p">],</span><span class="n">resolution</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">mscn_res</span> <span class="o">=</span> <span class="n">mscn</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">area_def_greece</span><span class="p">)</span>
+<span class="n">blended_scene</span> <span class="o">=</span> <span class="n">mscn_res</span><span class="o">.</span><span class="n">blend</span><span class="p">()</span>
+<span class="n">blended_scene</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s">"natural_color"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../images/units/S01E07_28_0.png" alt="png" /></p>
+
+<div class="markdown_area ">
+  <!--<div class="">
+</div>-->
+
+  <p>And again, with some tweaking, we can also add additional information to the image using CartoPy:</p>
+
+</div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">blended_scene</span><span class="p">[</span><span class="s">"natural_color"</span><span class="p">])</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="mi">99</span><span class="p">)),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">crs</span> <span class="o">=</span> <span class="n">blended_scene</span><span class="p">[</span><span class="s">"natural_color"</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s">"area"</span><span class="p">]</span><span class="o">.</span><span class="n">to_cartopy_crs</span><span class="p">()</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">crs</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">gridlines</span><span class="p">(</span><span class="n">xlocs</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span><span class="n">ylocs</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span><span class="mi">55</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">states_provinces</span> <span class="o">=</span> <span class="n">cfeature</span><span class="o">.</span><span class="n">NaturalEarthFeature</span><span class="p">(</span>
+    <span class="n">category</span><span class="o">=</span><span class="s">"cultural"</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s">"admin_0_countries"</span><span class="p">,</span>
+    <span class="n">scale</span><span class="o">=</span><span class="s">"50m"</span><span class="p">,</span>
+    <span class="n">facecolor</span><span class="o">=</span><span class="s">"none"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">states_provinces</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s">"white"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">crs</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="n">crs</span><span class="o">.</span><span class="n">bounds</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s">"upper"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">"Natural color composite of Algeria and surroundings, recorded by MODIS at "</span> <span class="o">+</span> <span class="n">local_scn</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s">"start_time"</span><span class="p">]</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">"</span><span class="si">%</span><span class="s">Y-</span><span class="si">%</span><span class="s">m-</span><span class="si">%</span><span class="s">d </span><span class="si">%</span><span class="s">H:</span><span class="si">%</span><span class="s">M"</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../images/units/S01E07_30_0.png" alt="png" /></p>
+
+<div class="markdown_area ">
+  <!--<div class="task ">
+</div>-->
+
+  <div class="alert task">
+
+    <h5 id="task-1"><strong>Task</strong></h5>
+
+    <ol>
+      <li>Download and read the MOD021KM data at: https://box.uni-marburg.de/index.php/s/9079aAAbGRYWurA</li>
+      <li>Plot the natural color composite in the Algeria domain that you defined before.</li>
+    </ol>
+
+  </div>
+
+</div>
+
+<div class="markdown_area ">
+  <!--<div class="">
+</div>-->
+
+  <h3 id="mod06l2">MOD06_L2</h3>
+
+</div>
+
+<div class="markdown_area ">
+  <!--<div class="">
+</div>-->
+
+  <p>Currently, <a href="https://modis-images.gsfc.nasa.gov/MOD06_L2/index.html">MOD06_L2 data</a> cannot be read by SatPy. Fortunately, we can circumvent this problem and use xarray directly.</p>
+
+  <p>So, let’s open an example data set:</p>
+
+</div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="n">xr</span>
+<span class="n">modis_l2</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s">"../data/MODIS/MOD06_L2.A2006017.0855.061.2017271194536.hdf"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="markdown_area ">
+  <!--<div class="">
+</div>-->
+
+  <p>That’s it. There are many data arrays within this data set that you can list with the <code class="highlighter-rouge">data_vars</code> attribute. But let’s only plot the cloud fraction:</p>
+
+</div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">modis_l2</span><span class="p">[</span><span class="s">"Cloud_Fraction"</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">origin</span><span class="o">=</span><span class="s">"upper"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.image.AxesImage at 0x7f1d61782128&gt;
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../images/units/S01E07_37_1.png" alt="png" /></p>
+
+<div class="markdown_area ">
+  <!--<div class="task ">
+</div>-->
+
+  <div class="alert task">
+
+    <h5 id="task-2"><strong>Task</strong></h5>
+
+    <ol>
+      <li>Download and read the MOD06_L2 data at: https://box.uni-marburg.de/index.php/s/MXrVcvOj9AoFESz</li>
+      <li>Find out the start and end times of the scan.</li>
+      <li>Plot the cloud optical thickness data set</li>
+    </ol>
+
+  </div>
+
+</div>
+
+<div class="markdown_area ">
+  <!--<div class="">
+</div>-->
+
+  <p>Ok, looks like it worked. To resample the data, we now have to use the lat/lon bands that come with the MOD06_L2 data set, create a <a href="https://pyresample.readthedocs.io/en/latest/geo_def.html#swathdefinition">Swath</a> object and use that as area definition in a self-made SatPy Scene object:</p>
+
+</div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># we need to rename dimensions to x,y because satpy expects names to be that way</span>
+<span class="n">new_dim_names</span> <span class="o">=</span> <span class="p">{</span><span class="s">"Cell_Along_Swath_5km:mod06"</span><span class="p">:</span> <span class="s">"y"</span><span class="p">,</span> <span class="s">"Cell_Across_Swath_5km:mod06"</span><span class="p">:</span> <span class="s">"x"</span><span class="p">}</span>
+<span class="n">modis_l2</span> <span class="o">=</span> <span class="n">modis_l2</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">new_dim_names</span><span class="p">)</span>
+
+<span class="c"># For now, we only want to take a look at the cloud fraction</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">modis_l2</span><span class="p">[</span><span class="s">"Cloud_Fraction"</span><span class="p">]</span>
+
+<span class="c"># optionally similar to information found in the mod021km we can assign some more informational attributes</span>
+<span class="n">data</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s">"coordinates"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="s">"longitude"</span><span class="p">,</span> <span class="s">"latitude"</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s">"resolution"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5000</span>
+
+<span class="c"># create a swath area from lon/lats</span>
+<span class="n">lons</span> <span class="o">=</span> <span class="n">modis_l2</span><span class="p">[</span><span class="s">"Longitude"</span><span class="p">]</span>
+<span class="n">lats</span> <span class="o">=</span> <span class="n">modis_l2</span><span class="p">[</span><span class="s">"Latitude"</span><span class="p">]</span>
+<span class="n">swath</span> <span class="o">=</span> <span class="n">geometry</span><span class="o">.</span><span class="n">SwathDefinition</span><span class="p">(</span><span class="n">lons</span><span class="p">,</span><span class="n">lats</span><span class="p">)</span>
+
+<span class="c"># and assign the SwathDefinition to the area attribute of the data array</span>
+<span class="n">data</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s">"area"</span><span class="p">]</span> <span class="o">=</span> <span class="n">swath</span>
+
+<span class="c"># init an empty satpy Scene</span>
+<span class="n">mod06_scn</span> <span class="o">=</span> <span class="n">Scene</span><span class="p">()</span>
+
+<span class="c"># set the start time of the scan (we need it for plotting later)</span>
+<span class="n">mod06_scn</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s">"start_time"</span><span class="p">]</span> <span class="o">=</span> <span class="n">modis_l2</span><span class="o">.</span><span class="n">Scan_Start_Time</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+<span class="c"># assign a new Scene dataset</span>
+<span class="n">mod06_scn</span><span class="p">[</span><span class="s">"cloud_fraction"</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span>
+</code></pre></div></div>
+
+<div class="markdown_area ">
+  <!--<div class="">
+</div>-->
+
+  <p>Now that we have generated a SatPy Scene object, we can use all its functionality, e.g. resampling:</p>
+
+</div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mod06_scn_res</span> <span class="o">=</span> <span class="n">mod06_scn</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">area_def_greece</span><span class="p">,</span><span class="n">resampler</span><span class="o">=</span><span class="s">"nearest"</span><span class="p">,</span><span class="n">radius_of_influence</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="markdown_area ">
+  <!--<div class="">
+</div>-->
+
+  <p>And then we can plot it as usual:</p>
+
+</div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">crs</span> <span class="o">=</span> <span class="n">mod06_scn_res</span><span class="p">[</span><span class="s">"cloud_fraction"</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s">"area"</span><span class="p">]</span><span class="o">.</span><span class="n">to_cartopy_crs</span><span class="p">()</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">crs</span><span class="p">)</span>
+<span class="c">#ax.gridlines(xlocs=range(-15,30,5),ylocs=range(15,47,5))</span>
+<span class="n">states_provinces</span> <span class="o">=</span> <span class="n">cfeature</span><span class="o">.</span><span class="n">NaturalEarthFeature</span><span class="p">(</span>
+    <span class="n">category</span><span class="o">=</span><span class="s">"cultural"</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s">"admin_0_countries"</span><span class="p">,</span>
+    <span class="n">scale</span><span class="o">=</span><span class="s">"50m"</span><span class="p">,</span>
+    <span class="n">facecolor</span><span class="o">=</span><span class="s">"none"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">states_provinces</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s">"black"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">mod06_scn_res</span><span class="p">[</span><span class="s">"cloud_fraction"</span><span class="p">],</span> <span class="n">transform</span><span class="o">=</span><span class="n">crs</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="n">crs</span><span class="o">.</span><span class="n">bounds</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s">"upper"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">"Cloud fraction over Greece and surroundings, recorded by MODIS at "</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">datetime_as_string</span><span class="p">(</span><span class="n">mod06_scn_res</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s">"start_time"</span><span class="p">],</span> <span class="n">timezone</span><span class="o">=</span><span class="s">'UTC'</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../images/units/S01E07_45_0.png" alt="png" /></p>
+
+<div class="markdown_area ">
+  <!--<div class="">
+</div>-->
+
+  <h2 id="band-calculations">Band calculations</h2>
+
+</div>
+
+<div class="markdown_area ">
+  <!--<div class="">
+</div>-->
+
+  <p>As SatPy’s Scene class internally uses the xarray data structure to store its data sets, you can do various calculations on these bands with ease.</p>
+
+  <p>Often, you will need the difference valus of two bands, which help to highlight certain atmospheric features. For example, the difference values between the bands at 10.8μm and 3.9μm help to distinguish low stratus layers from higher clouds at night.</p>
+
+  <p>So, let’s first load the MSG scene at 00:00 UTC on 17. January 2006 and resample it to the area of Greece again:</p>
+
+</div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dateien</span> <span class="o">=</span> <span class="p">[</span><span class="s">"../data/W_XX-EUMETSAT-Darmstadt,VIS+IR+HRV+IMAGERY,MSG1+SEVIRI_C_EUMG_20060117000010.nc"</span><span class="p">]</span>
+<span class="n">files</span> <span class="o">=</span> <span class="p">{</span><span class="s">"seviri_l1b_nc"</span> <span class="p">:</span> <span class="n">dateien</span><span class="p">}</span>
+
+<span class="n">scn</span> <span class="o">=</span> <span class="n">Scene</span><span class="p">(</span><span class="n">filenames</span><span class="o">=</span><span class="n">files</span><span class="p">)</span>
+<span class="n">scn</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">scn</span><span class="o">.</span><span class="n">all_dataset_names</span><span class="p">()[</span><span class="mi">1</span><span class="p">:])</span>
+
+<span class="n">local_scn</span> <span class="o">=</span> <span class="n">scn</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">area_def_greece</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="markdown_area ">
+  <!--<div class="">
+</div>-->
+
+  <p>We can now calculate the difference values by simply subtracting the bands from each other with the <code class="highlighter-rouge">-</code> operator and we can store them in a new data set within the Scene object:</p>
+
+</div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">local_scn</span><span class="p">[</span><span class="s">"band_diff"</span><span class="p">]</span> <span class="o">=</span> <span class="n">local_scn</span><span class="p">[</span><span class="s">"IR_108"</span><span class="p">]</span><span class="o">-</span><span class="n">local_scn</span><span class="p">[</span><span class="s">"IR_039"</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="markdown_area ">
+  <!--<div class="">
+</div>-->
+
+  <p>Let’s see what we got:</p>
+
+</div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">local_scn</span><span class="p">[</span><span class="s">"band_diff"</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">imshow</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.image.AxesImage at 0x7fe77afe56a0&gt;
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../images/units/S01E07_52_1.png" alt="png" /></p>
+
+<div class="markdown_area ">
+  <!--<div class="">
+</div>-->
+
+  <p>High difference values indicate low stratus clouds. This means, the dark-red regions in the plot above are covered by low stratus.</p>
+
+</div>
+
+<div class="markdown_area ">
+  <!--<div class="">
+</div>-->
+
+  <p>By applying a threshold value (~5K), we can generate a low stratus cloud mask for our current scene:</p>
+
+</div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">local_scn</span><span class="p">[</span><span class="s">"stratus_mask"</span><span class="p">]</span> <span class="o">=</span> <span class="n">local_scn</span><span class="p">[</span><span class="s">"band_diff"</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">5</span>
+<span class="n">local_scn</span><span class="p">[</span><span class="s">"stratus_mask"</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s">"Greys_r"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.image.AxesImage at 0x7fe77af30630&gt;
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../images/units/S01E07_55_1.png" alt="png" /></p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c">#####</span>
+<span class="c">#if needed more often the above could be put in a function. maybe do/show that here?</span>
+<span class="c">#maybe even put the Scene init and assignment into that function?</span>
+
+<span class="k">def</span> <span class="nf">satpy_scn_from_xr</span><span class="p">(</span><span class="n">file_or_xr</span><span class="p">,</span> <span class="n">variables</span><span class="p">):</span>
+    <span class="s">"""Creates a satpy Scene from a non supported MODIS product
+    
+    Will try to create a Satpy Scene with all variables as specified
+    in the parameters.
+    
+    Parameters
+    ----------
+    file_or_xr : xr.Dataset or str
+        Either a filename or an xr.Dataset can be given.
+        If filename data will be read using `xr.open_dataset()`.
+    variables : list of string
+        Names of the variable in the MODIS file which to put in the Scene
+    
+    Returns
+    -------
+    satpy.Scene
+    
+    """</span>
+    <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+    <span class="kn">from</span> <span class="nn">satpy</span> <span class="kn">import</span> <span class="n">Scene</span>
+    <span class="kn">from</span> <span class="nn">pyresample</span> <span class="kn">import</span> <span class="n">geometry</span>
+    
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">file_or_xr</span><span class="p">,</span> <span class="n">Path</span><span class="p">):</span>
+        <span class="n">modis_l2</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">file_or_xr</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">modis_l2</span> <span class="o">=</span> <span class="n">file_or_xr</span>
+    
+    <span class="n">new_dim_names</span> <span class="o">=</span> <span class="p">{</span><span class="s">"Cell_Along_Swath_5km:mod06"</span><span class="p">:</span> <span class="s">"y"</span><span class="p">,</span> <span class="s">"Cell_Across_Swath_5km:mod06"</span><span class="p">:</span> <span class="s">"x"</span><span class="p">}</span>
+    <span class="n">modis_l2</span> <span class="o">=</span> <span class="n">modis_l2</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">new_dim_names</span><span class="p">)</span>
+        
+    <span class="n">lons</span> <span class="o">=</span> <span class="n">modis_l2</span><span class="p">[</span><span class="s">"Longitude"</span><span class="p">]</span>
+    <span class="n">lats</span> <span class="o">=</span> <span class="n">modis_l2</span><span class="p">[</span><span class="s">"Latitude"</span><span class="p">]</span>
+    <span class="n">swath_def</span> <span class="o">=</span> <span class="n">geometry</span><span class="o">.</span><span class="n">SwathDefinition</span><span class="p">(</span><span class="n">lons</span><span class="p">,</span><span class="n">lats</span><span class="p">)</span>
+    
+    <span class="c">#init Scene</span>
+    <span class="n">out_scn</span> <span class="o">=</span> <span class="n">Scene</span><span class="p">()</span>
+    <span class="c">#create a Scene dataset for every variable</span>
+    <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">varibles</span><span class="p">:</span>
+        <span class="n">ds</span> <span class="o">=</span> <span class="n">modis_l2</span><span class="p">[</span><span class="n">v</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">lons</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">ds</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
+            <span class="n">ds</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s">"area"</span><span class="p">]</span> <span class="o">=</span> <span class="n">swath_def</span>
+            <span class="n">out_scn</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">ds</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">"The resolution of the lat/lon does not match the shape</span><span class="se">\
+</span><span class="s">                  of the data of variable {1}. Therefore variable {1} was skipped."</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+    
+    <span class="k">return</span> <span class="n">out_scn</span>
+    
+<span class="c">#####</span>
+</code></pre></div></div>
+
+
+              <nav class="c-page__nav">
+  
+    
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/sommersemester_2019/units/S01E06">
+      〈 <span class="u-margin-right-tiny"></span> Remote Sensing I
+    </a>
+  
+
+  
+    
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/sommersemester_2019/solutions/solutions">
+      Solutions <span class="u-margin-right-tiny"></span> 〉
+    </a>
+  
+</nav>
+
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+  </body>
+</html>
