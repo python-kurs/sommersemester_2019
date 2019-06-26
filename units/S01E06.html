@@ -29,9 +29,9 @@
   "headline":
     "Remote Sensing I",
   "datePublished":
-    "2019-06-26T16:27:12+00:00",
+    "2019-06-26T16:31:48+00:00",
   "dateModified":
-    "2019-06-26T16:27:12+00:00",
+    "2019-06-26T16:31:48+00:00",
   "description":
     "",
   "author": {
@@ -963,26 +963,6 @@ initFunction(initQuery);
 </div>
 
 <div class="markdown_area ">
-  <!--<div class="warning ">
-</div>-->
-
-  <div class="alert warning">
-
-    <p>Unfortunately, the EUMETSAT is currently repeatedly changing its MSG data formats and SatPy has trouble following these changes.</p>
-
-    <p>The latest changes in the MSG data format were already adapted in the SatPy scripts (12.06.2019) but these changes did not yet make it into the conda packaging system. So we have to use pip to get the newest SatPy version:</p>
-
-    <ol>
-      <li>Uninstall satpy using conda: <code class="highlighter-rouge">conda uninstall satpy</code></li>
-      <li>Reinstall satpy from the github repository using pip:   <code class="highlighter-rouge">pip install git+https://github.com/pytroll/satpy.git
-</code></li>
-    </ol>
-
-  </div>
-
-</div>
-
-<div class="markdown_area ">
   <!--<div class="">
 </div>-->
 
@@ -1160,7 +1140,7 @@ initFunction(initQuery);
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">scn</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s">"VIS006"</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E06_23_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E06_22_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
   <!--<div class="task ">
@@ -1228,7 +1208,7 @@ initFunction(initQuery);
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.image.AxesImage at 0x7f48541f6f98&gt;
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E06_27_1.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E06_26_1.png" alt="png" /></p>
 
 <div class="markdown_area ">
   <!--<div class="">
@@ -1257,7 +1237,7 @@ We need more lines of code with this approach but the result looks better:</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E06_30_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E06_29_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
   <!--<div class="">
@@ -1362,7 +1342,7 @@ Attributes:
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E06_37_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E06_36_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
   <!--<div class="">
@@ -1436,7 +1416,7 @@ Attributes:
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E06_43_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E06_42_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
   <!--<div class="task ">
@@ -1539,7 +1519,7 @@ Attributes:
 <span class="n">scn</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s">"natural_color"</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E06_51_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E06_50_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
   <!--<div class="">
@@ -1692,7 +1672,7 @@ Attributes:
 <span class="n">img</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E06_64_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E06_63_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
   <!--<div class="task ">
@@ -1754,7 +1734,7 @@ Attributes:
 <span class="n">scn_cropped</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s">"natural_color"</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E06_68_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E06_67_0.png" alt="png" /></p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Crop to a region via x/y values in original projection units (x_min, y_min, x_max, y_max)</span>
 <span class="c"># In the case of MSG, the projection units are meters (distance from the nadir)</span>
@@ -1762,7 +1742,7 @@ Attributes:
 <span class="n">scn_cropped</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s">"natural_color"</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E06_69_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E06_68_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
   <!--<div class="">
@@ -1874,7 +1854,7 @@ If you look into the <code class="highlighter-rouge">areas.yaml</code> file, you
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">local_scn</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s">"natural_color"</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E06_78_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E06_77_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
   <!--<div class="">
@@ -1910,7 +1890,7 @@ If you look into the <code class="highlighter-rouge">areas.yaml</code> file, you
 <span class="n">local_scn</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s">"natural_color"</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E06_80_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E06_79_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
   <!--<div class="">
