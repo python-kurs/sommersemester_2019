@@ -29,9 +29,9 @@
   "headline":
     "Remote Sensing II",
   "datePublished":
-    "2019-06-26T20:17:29+00:00",
+    "2019-06-26T20:39:46+00:00",
   "dateModified":
-    "2019-06-26T20:17:29+00:00",
+    "2019-06-26T20:39:46+00:00",
   "description":
     "",
   "author": {
@@ -1534,63 +1534,6 @@ initFunction(initQuery);
 </code></pre></div></div>
 
 <p class="output output_png"><img src="../images/units/S01E07_55_1.png" alt="png" /></p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="c">#####</span>
-<span class="c">#if needed more often the above could be put in a function. maybe do/show that here?</span>
-<span class="c">#maybe even put the Scene init and assignment into that function?</span>
-
-<span class="k">def</span> <span class="nf">satpy_scn_from_xr</span><span class="p">(</span><span class="n">file_or_xr</span><span class="p">,</span> <span class="n">variables</span><span class="p">):</span>
-    <span class="s">"""Creates a satpy Scene from a non supported MODIS product
-    
-    Will try to create a Satpy Scene with all variables as specified
-    in the parameters.
-    
-    Parameters
-    ----------
-    file_or_xr : xr.Dataset or str
-        Either a filename or an xr.Dataset can be given.
-        If filename data will be read using `xr.open_dataset()`.
-    variables : list of string
-        Names of the variable in the MODIS file which to put in the Scene
-    
-    Returns
-    -------
-    satpy.Scene
-    
-    """</span>
-    <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-    <span class="kn">from</span> <span class="nn">satpy</span> <span class="kn">import</span> <span class="n">Scene</span>
-    <span class="kn">from</span> <span class="nn">pyresample</span> <span class="kn">import</span> <span class="n">geometry</span>
-    
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">file_or_xr</span><span class="p">,</span> <span class="n">Path</span><span class="p">):</span>
-        <span class="n">modis_l2</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">file_or_xr</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">modis_l2</span> <span class="o">=</span> <span class="n">file_or_xr</span>
-    
-    <span class="n">new_dim_names</span> <span class="o">=</span> <span class="p">{</span><span class="s">"Cell_Along_Swath_5km:mod06"</span><span class="p">:</span> <span class="s">"y"</span><span class="p">,</span> <span class="s">"Cell_Across_Swath_5km:mod06"</span><span class="p">:</span> <span class="s">"x"</span><span class="p">}</span>
-    <span class="n">modis_l2</span> <span class="o">=</span> <span class="n">modis_l2</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">new_dim_names</span><span class="p">)</span>
-        
-    <span class="n">lons</span> <span class="o">=</span> <span class="n">modis_l2</span><span class="p">[</span><span class="s">"Longitude"</span><span class="p">]</span>
-    <span class="n">lats</span> <span class="o">=</span> <span class="n">modis_l2</span><span class="p">[</span><span class="s">"Latitude"</span><span class="p">]</span>
-    <span class="n">swath_def</span> <span class="o">=</span> <span class="n">geometry</span><span class="o">.</span><span class="n">SwathDefinition</span><span class="p">(</span><span class="n">lons</span><span class="p">,</span><span class="n">lats</span><span class="p">)</span>
-    
-    <span class="c">#init Scene</span>
-    <span class="n">out_scn</span> <span class="o">=</span> <span class="n">Scene</span><span class="p">()</span>
-    <span class="c">#create a Scene dataset for every variable</span>
-    <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">varibles</span><span class="p">:</span>
-        <span class="n">ds</span> <span class="o">=</span> <span class="n">modis_l2</span><span class="p">[</span><span class="n">v</span><span class="p">]</span>
-        <span class="k">if</span> <span class="n">lons</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">ds</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
-            <span class="n">ds</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s">"area"</span><span class="p">]</span> <span class="o">=</span> <span class="n">swath_def</span>
-            <span class="n">out_scn</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">ds</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="s">"The resolution of the lat/lon does not match the shape</span><span class="se">\
-</span><span class="s">                  of the data of variable {1}. Therefore variable {1} was skipped."</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
-    
-    <span class="k">return</span> <span class="n">out_scn</span>
-    
-<span class="c">#####</span>
-</code></pre></div></div>
 
 
               <nav class="c-page__nav">
