@@ -29,9 +29,9 @@
   "headline":
     "Remote Sensing I",
   "datePublished":
-    "2019-06-26T10:12:55+00:00",
+    "2019-06-26T10:55:29+00:00",
   "dateModified":
-    "2019-06-26T10:12:55+00:00",
+    "2019-06-26T10:55:29+00:00",
   "description":
     "",
   "author": {
@@ -1182,6 +1182,35 @@ initFunction(initQuery);
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="solution ">
+</div>-->
+
+  <div class="alert solution">
+
+    <p><strong>Solution</strong></p>
+
+    <ol>
+      <li>
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dateien</span> <span class="o">=</span> <span class="p">[</span><span class="s">"path/to/file"</span><span class="p">]</span>
+<span class="n">files</span> <span class="o">=</span> <span class="p">{</span><span class="s">"seviri_l1b_nc"</span> <span class="p">:</span> <span class="n">dateien</span><span class="p">}</span>
+<span class="n">scn</span> <span class="o">=</span> <span class="n">Scene</span><span class="p">(</span><span class="n">filenames</span><span class="o">=</span><span class="n">files</span><span class="p">)</span>
+</code></pre></div>        </div>
+      </li>
+      <li>
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">scn</span><span class="o">.</span><span class="n">load</span><span class="p">([</span><span class="s">"VIS006"</span><span class="p">])</span>
+<span class="n">scn</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s">"VIS006"</span><span class="p">)</span>
+<span class="n">scn</span><span class="o">.</span><span class="n">load</span><span class="p">([</span><span class="s">"WV_062"</span><span class="p">])</span>
+<span class="n">scn</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s">"WV_062"</span><span class="p">)</span>
+</code></pre></div>        </div>
+      </li>
+      <li>You can only see the full disk at 6.2μm because in this band the infrared radiation emitted by the Earth is recorded (to be precise: from the upper atmosphere). At 0.6μm we are in the visible wavelength region. Here, only reflected solar radiation is recorded. As it is 06:00 UTC, only half the Earth is illuminated.</li>
+    </ol>
+
+  </div>
+
+</div>
+
+<div class="markdown_area ">
   <!--<div class="">
 </div>-->
 
@@ -1427,6 +1456,23 @@ Attributes:
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="solution ">
+</div>-->
+
+  <div class="alert solution">
+
+    <p><strong>Solution</strong></p>
+
+    <ol>
+      <li><code class="highlighter-rouge">lat</code> and <code class="highlighter-rouge">lon</code> are provided in 2d because the geos-projection of MSG is distorted. Lines of equal latitude/longitude values are not straight.</li>
+      <li>Values of <code class="highlighter-rouge">x</code> and <code class="highlighter-rouge">y</code> are given in units of the geos-projection (= meters distance from the nadir)</li>
+    </ol>
+
+  </div>
+
+</div>
+
+<div class="markdown_area ">
   <!--<div class="">
 </div>-->
 
@@ -1592,6 +1638,22 @@ Attributes:
 </div>
 
 <div class="markdown_area ">
+  <!--<div class="solution ">
+</div>-->
+
+  <div class="alert solution">
+
+    <p><strong>Solution</strong></p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">scn</span><span class="o">.</span><span class="n">load</span><span class="p">([</span><span class="s">"day_microphysics"</span><span class="p">])</span>
+<span class="n">scn</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s">"day_microphysics"</span><span class="p">)</span>
+</code></pre></div>    </div>
+
+  </div>
+
+</div>
+
+<div class="markdown_area ">
   <!--<div class="">
 </div>-->
 
@@ -1644,6 +1706,32 @@ Attributes:
       <li>Familiarize yourselves with SatPy’s <a href="https://satpy.readthedocs.io/en/latest/composites.html#daynightcompositor">DayNightCompositor</a></li>
       <li>Create a composite that shows microphysical information for both, day and night regions of the 06:00 UTC scene.</li>
     </ol>
+
+  </div>
+
+</div>
+
+<div class="markdown_area ">
+  <!--<div class="solution ">
+</div>-->
+
+  <div class="alert solution">
+
+    <p><strong>Solution</strong></p>
+
+    <ol>
+      <li>
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">scn</span><span class="o">.</span><span class="n">load</span><span class="p">([</span><span class="s">"day_microphysics"</span><span class="p">])</span>
+<span class="n">scn</span><span class="o">.</span><span class="n">load</span><span class="p">([</span><span class="s">"night_microphysics"</span><span class="p">])</span>
+<span class="n">compositor</span> <span class="o">=</span> <span class="n">satpy</span><span class="o">.</span><span class="n">composites</span><span class="o">.</span><span class="n">DayNightCompositor</span><span class="p">(</span><span class="s">"day_night_microphysics"</span><span class="p">)</span>
+<span class="n">composite</span> <span class="o">=</span> <span class="n">compositor</span><span class="p">([</span><span class="n">scn</span><span class="p">[</span><span class="s">"day_microphysics"</span><span class="p">],</span> <span class="n">scn</span><span class="p">[</span><span class="s">"night_microphysics"</span><span class="p">]])</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">satpy</span><span class="o">.</span><span class="n">writers</span><span class="o">.</span><span class="n">to_image</span><span class="p">(</span><span class="n">composite</span><span class="p">)</span>
+<span class="n">img</span>
+</code></pre></div>        </div>
+      </li>
+    </ol>
+
+    <p><img src="images/S01E06/day_night_micro.png" alt="" /></p>
 
   </div>
 
@@ -1851,6 +1939,42 @@ If you look into the <code class="highlighter-rouge">areas.yaml</code> file, you
           <li>projection x/y coordinates of lower left: -18E5</li>
           <li>projection x/y coordinates of upper right: 18E5</li>
         </ul>
+      </li>
+    </ol>
+
+  </div>
+
+</div>
+
+<div class="markdown_area ">
+  <!--<div class="solution ">
+</div>-->
+
+  <div class="alert solution">
+
+    <ol>
+      <li>
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">scn</span><span class="o">.</span><span class="n">load</span><span class="p">([</span><span class="s">"ir_overview"</span><span class="p">])</span>
+<span class="n">scn_cropped</span> <span class="o">=</span> <span class="n">scn</span><span class="o">.</span><span class="n">crop</span><span class="p">(</span><span class="n">ll_bbox</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">63</span><span class="p">))</span>
+<span class="n">scn_cropped</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s">"ir_overview"</span><span class="p">)</span>
+</code></pre></div>        </div>
+      </li>
+      <li>
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">area_id</span> <span class="o">=</span> <span class="s">"Europe"</span>
+<span class="n">description</span> <span class="o">=</span> <span class="s">"Europe in Lambert Azimuthal Equal Area projection"</span>
+<span class="n">proj_id</span> <span class="o">=</span> <span class="s">"Europe"</span>
+<span class="n">proj_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s">"proj"</span><span class="p">:</span> <span class="s">"laea"</span><span class="p">,</span> <span class="s">"lat_0"</span><span class="p">:</span> <span class="mi">49</span><span class="p">,</span> <span class="s">"lon_0"</span><span class="p">:</span> <span class="mi">10</span><span class="p">}</span>
+<span class="n">width</span> <span class="o">=</span> <span class="mi">750</span> 
+<span class="n">height</span> <span class="o">=</span> <span class="mi">750</span>
+<span class="n">llx</span> <span class="o">=</span>  <span class="o">-</span><span class="mf">18E5</span>
+<span class="n">lly</span> <span class="o">=</span>  <span class="o">-</span><span class="mf">18E5</span>
+<span class="n">urx</span> <span class="o">=</span>  <span class="mf">18E5</span>
+<span class="n">ury</span> <span class="o">=</span>  <span class="mf">18E5</span>
+<span class="n">area_extent</span> <span class="o">=</span> <span class="p">(</span><span class="n">llx</span><span class="p">,</span> <span class="n">lly</span><span class="p">,</span> <span class="n">urx</span><span class="p">,</span> <span class="n">ury</span><span class="p">)</span>
+<span class="n">area_def</span> <span class="o">=</span> <span class="n">AreaDefinition</span><span class="p">(</span><span class="n">area_id</span><span class="p">,</span> <span class="n">proj_id</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">proj_dict</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">area_extent</span><span class="p">)</span>
+<span class="n">local_scn</span> <span class="o">=</span> <span class="n">scn</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">area_def</span><span class="p">)</span>
+<span class="n">local_scn</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s">"ir_overview"</span><span class="p">)</span>
+</code></pre></div>        </div>
       </li>
     </ol>
 
