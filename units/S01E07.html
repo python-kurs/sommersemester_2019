@@ -29,9 +29,9 @@
   "headline":
     "Remote Sensing II",
   "datePublished":
-    "2019-06-26T20:39:46+00:00",
+    "2019-06-27T10:18:59+00:00",
   "dateModified":
-    "2019-06-26T20:39:46+00:00",
+    "2019-06-27T10:18:59+00:00",
   "description":
     "",
   "author": {
@@ -1122,6 +1122,7 @@ initFunction(initQuery);
 </div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">satpy.multiscene</span> <span class="kn">import</span> <span class="n">timeseries</span>
+<span class="kn">from</span> <span class="nn">glob</span> <span class="kn">import</span> <span class="n">glob</span>
 
 <span class="c"># Load all files in a given folder:</span>
 <span class="n">dateien</span> <span class="o">=</span> <span class="n">glob</span><span class="p">(</span><span class="s">"../data/W_XX-EUMETSAT-Darmstadt,VIS+IR+HRV+IMAGERY,MSG1+SEVIRI_C_EUMG_*.nc"</span><span class="p">)</span>
@@ -1153,7 +1154,7 @@ initFunction(initQuery);
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">blended_scene</span><span class="p">[</span><span class="s">"IR_108"</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"x"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"y"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">"time"</span><span class="p">,</span> <span class="n">col_wrap</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;xarray.plot.facetgrid.FacetGrid at 0x7f9553412208&gt;
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;xarray.plot.facetgrid.FacetGrid at 0x7eff46a5cb00&gt;
 </code></pre></div></div>
 
 <p class="output output_png"><img src="../images/units/S01E07_16_1.png" alt="png" /></p>
@@ -1301,7 +1302,7 @@ initFunction(initQuery);
     <span class="n">facecolor</span><span class="o">=</span><span class="s">"none"</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">states_provinces</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s">"white"</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">crs</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="n">crs</span><span class="o">.</span><span class="n">bounds</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s">"upper"</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">"Natural color composite of Algeria and surroundings, recorded by MODIS at "</span> <span class="o">+</span> <span class="n">local_scn</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s">"start_time"</span><span class="p">]</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">"</span><span class="si">%</span><span class="s">Y-</span><span class="si">%</span><span class="s">m-</span><span class="si">%</span><span class="s">d </span><span class="si">%</span><span class="s">H:</span><span class="si">%</span><span class="s">M"</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">"Natural color composite of Greece and surroundings, recorded by MODIS at "</span> <span class="o">+</span> <span class="n">local_scn</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s">"start_time"</span><span class="p">]</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">"</span><span class="si">%</span><span class="s">Y-</span><span class="si">%</span><span class="s">m-</span><span class="si">%</span><span class="s">d </span><span class="si">%</span><span class="s">H:</span><span class="si">%</span><span class="s">M"</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
