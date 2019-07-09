@@ -29,9 +29,9 @@
   "headline":
     "Remote Sensing II",
   "datePublished":
-    "2019-07-03T12:12:00+00:00",
+    "2019-07-09T13:57:57+00:00",
   "dateModified":
-    "2019-07-03T12:12:00+00:00",
+    "2019-07-09T13:57:57+00:00",
   "description":
     "",
   "author": {
@@ -934,6 +934,7 @@ initFunction(initQuery);
     </ul>
   </li>
   <li><a href="#band-calculations">Band calculations</a></li>
+  <li><a href="#exercise-7">Exercise 7</a></li>
 </ul>
     </nav>
   </aside>
@@ -1018,8 +1019,9 @@ initFunction(initQuery);
 <span class="n">scn</span> <span class="o">=</span> <span class="n">Scene</span><span class="p">(</span><span class="n">filenames</span><span class="o">=</span><span class="n">files</span><span class="p">)</span>
 <span class="n">scn</span><span class="o">.</span><span class="n">load</span><span class="p">([</span><span class="s">"natural_color"</span><span class="p">])</span>
 <span class="n">scn</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">scn</span><span class="o">.</span><span class="n">all_dataset_names</span><span class="p">()[</span><span class="mi">1</span><span class="p">:])</span>
+</code></pre></div></div>
 
-<span class="n">area_id</span> <span class="o">=</span> <span class="s">"Griechenland"</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">area_id</span> <span class="o">=</span> <span class="s">"Griechenland"</span>
 <span class="n">description</span> <span class="o">=</span> <span class="s">"Griechenland und Umgebung in Mercator-Projektion"</span>
 <span class="n">proj_id</span> <span class="o">=</span> <span class="s">"Griechenland"</span>
 <span class="n">proj_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s">"proj"</span><span class="p">:</span> <span class="s">"merc"</span><span class="p">,</span> <span class="s">"lat_ts"</span><span class="p">:</span> <span class="mi">38</span><span class="p">,</span> <span class="s">'lon_0'</span><span class="p">:</span> <span class="mi">25</span><span class="p">}</span>
@@ -1035,7 +1037,7 @@ initFunction(initQuery);
 <span class="n">area_extent</span> <span class="o">=</span> <span class="p">(</span><span class="n">llx</span><span class="p">,</span><span class="n">lly</span><span class="p">,</span><span class="n">urx</span><span class="p">,</span><span class="n">ury</span><span class="p">)</span>
 <span class="n">area_def_greece</span> <span class="o">=</span> <span class="n">geometry</span><span class="o">.</span><span class="n">AreaDefinition</span><span class="p">(</span><span class="n">area_id</span><span class="p">,</span> <span class="n">proj_id</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">proj_dict</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">area_extent</span><span class="p">)</span>
 
-<span class="n">local_scn</span> <span class="o">=</span> <span class="n">scn</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">area_def_greece</span><span class="p">)</span>
+<span class="c">#local_scn = scn.resample(area_def_greece)</span>
 </code></pre></div></div>
 
 <div class="markdown_area ">
@@ -1077,7 +1079,7 @@ initFunction(initQuery);
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E07_7_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E07_8_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
   <!--<div class="">
@@ -1110,7 +1112,7 @@ initFunction(initQuery);
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E07_9_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E07_10_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
   <!--<div class="task ">
@@ -1200,12 +1202,10 @@ initFunction(initQuery);
 <span class="kn">from</span> <span class="nn">glob</span> <span class="kn">import</span> <span class="n">glob</span>
 
 <span class="c"># Load all files in a given folder:</span>
-<span class="n">dateien</span> <span class="o">=</span> <span class="n">glob</span><span class="p">(</span><span class="s">"../data/W_XX-EUMETSAT-Darmstadt,VIS+IR+HRV+IMAGERY,MSG1+SEVIRI_C_EUMG_*.nc"</span><span class="p">)</span>
-
-<span class="c"># Create a list of scenes</span>
-<span class="n">scenes</span> <span class="o">=</span> <span class="p">[</span><span class="n">Scene</span><span class="p">(</span><span class="n">reader</span><span class="o">=</span><span class="s">"seviri_l1b_nc"</span><span class="p">,</span> <span class="n">filenames</span><span class="o">=</span><span class="p">[</span><span class="n">datei</span><span class="p">])</span> <span class="k">for</span> <span class="n">datei</span> <span class="ow">in</span> <span class="n">dateien</span><span class="p">]</span>
+<span class="n">files</span> <span class="o">=</span> <span class="n">glob</span><span class="p">(</span><span class="s">"../data/W_XX-EUMETSAT-Darmstadt,VIS+IR+HRV+IMAGERY,MSG1+SEVIRI_C_EUMG_*.nc"</span><span class="p">)</span>
 
 <span class="c"># Create a MultiScene from the given list of scenes</span>
+<span class="n">scenes</span> <span class="o">=</span> <span class="p">[</span><span class="n">Scene</span><span class="p">(</span><span class="n">reader</span><span class="o">=</span><span class="s">"seviri_l1b_nc"</span><span class="p">,</span> <span class="n">filenames</span><span class="o">=</span><span class="p">[</span><span class="n">f</span><span class="p">])</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">]</span>
 <span class="n">mscn</span> <span class="o">=</span> <span class="n">MultiScene</span><span class="p">(</span><span class="n">scenes</span><span class="p">)</span>
 
 <span class="c"># Load the 10.8 micrometer band of all scenes within the MultiScene</span>
@@ -1232,7 +1232,7 @@ initFunction(initQuery);
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;xarray.plot.facetgrid.FacetGrid at 0x7eff46a5cb00&gt;
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E07_16_1.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E07_17_1.png" alt="png" /></p>
 
 <div class="markdown_area ">
   <!--<div class="">
@@ -1278,8 +1278,6 @@ initFunction(initQuery);
 <span class="n">mod02_scn</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s">"natural_color"</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E07_21_0.png" alt="png" /></p>
-
 <div class="markdown_area ">
   <!--<div class="">
 </div>-->
@@ -1304,7 +1302,7 @@ initFunction(initQuery);
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E07_23_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E07_24_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
   <!--<div class="">
@@ -1322,7 +1320,7 @@ initFunction(initQuery);
 <span class="n">local_scn</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s">"natural_color"</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E07_25_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E07_26_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
   <!--<div class="">
@@ -1354,7 +1352,7 @@ initFunction(initQuery);
 <span class="n">blended_scene</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s">"natural_color"</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E07_28_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E07_29_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
   <!--<div class="">
@@ -1381,7 +1379,7 @@ initFunction(initQuery);
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E07_30_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E07_31_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
   <!--<div class="task ">
@@ -1455,11 +1453,6 @@ initFunction(initQuery);
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">modis_l2</span><span class="p">[</span><span class="s">"Cloud_Fraction"</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">origin</span><span class="o">=</span><span class="s">"upper"</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.image.AxesImage at 0x7f1d61782128&gt;
-</code></pre></div></div>
-
-<p class="output output_png"><img src="../images/units/S01E07_37_1.png" alt="png" /></p>
-
 <div class="markdown_area ">
   <!--<div class="task ">
 </div>-->
@@ -1512,7 +1505,9 @@ initFunction(initQuery);
 
 </div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># we need to rename dimensions to x,y because satpy expects names to be that way</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="c"># we need to rename dimensions to x,y because satpy expects names to be that way</span>
 <span class="n">new_dim_names</span> <span class="o">=</span> <span class="p">{</span><span class="s">"Cell_Along_Swath_5km:mod06"</span><span class="p">:</span> <span class="s">"y"</span><span class="p">,</span> <span class="s">"Cell_Across_Swath_5km:mod06"</span><span class="p">:</span> <span class="s">"x"</span><span class="p">}</span>
 <span class="n">modis_l2</span> <span class="o">=</span> <span class="n">modis_l2</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">new_dim_names</span><span class="p">)</span>
 
@@ -1522,6 +1517,12 @@ initFunction(initQuery);
 <span class="c"># optionally similar to information found in the mod021km we can assign some more informational attributes</span>
 <span class="n">data</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s">"coordinates"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="s">"longitude"</span><span class="p">,</span> <span class="s">"latitude"</span><span class="p">)</span>
 <span class="n">data</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s">"resolution"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5000</span>
+
+<span class="c"># set the start time of the scan (we need it for plotting later)</span>
+<span class="c"># since xarray create a np.datetime datatype we convert it back to a datetime.datetime object which</span>
+<span class="c"># Satpy understands (important for saving).</span>
+<span class="n">st</span> <span class="o">=</span> <span class="n">modis_l2</span><span class="o">.</span><span class="n">Scan_Start_Time</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">data</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s">"start_time"</span><span class="p">]</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">utcfromtimestamp</span><span class="p">((</span><span class="n">st</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">datetime64</span><span class="p">(</span><span class="s">"1970-01-01T00:00:00"</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">timedelta64</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">"s"</span><span class="p">))</span>
 
 <span class="c"># create a swath area from lon/lats</span>
 <span class="n">lons</span> <span class="o">=</span> <span class="n">modis_l2</span><span class="p">[</span><span class="s">"Longitude"</span><span class="p">]</span>
@@ -1533,9 +1534,6 @@ initFunction(initQuery);
 
 <span class="c"># init an empty satpy Scene</span>
 <span class="n">mod06_scn</span> <span class="o">=</span> <span class="n">Scene</span><span class="p">()</span>
-
-<span class="c"># set the start time of the scan (we need it for plotting later)</span>
-<span class="n">mod06_scn</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s">"start_time"</span><span class="p">]</span> <span class="o">=</span> <span class="n">modis_l2</span><span class="o">.</span><span class="n">Scan_Start_Time</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 
 <span class="c"># assign a new Scene dataset</span>
 <span class="n">mod06_scn</span><span class="p">[</span><span class="s">"cloud_fraction"</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span>
@@ -1549,7 +1547,9 @@ initFunction(initQuery);
 
 </div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mod06_scn_res</span> <span class="o">=</span> <span class="n">mod06_scn</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">area_def_greece</span><span class="p">,</span><span class="n">resampler</span><span class="o">=</span><span class="s">"nearest"</span><span class="p">,</span><span class="n">radius_of_influence</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mod06_scn_res</span> <span class="o">=</span> <span class="n">mod06_scn</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">area_def_greece</span><span class="p">,</span> <span class="n">resampler</span><span class="o">=</span><span class="s">"nearest"</span><span class="p">,</span> <span class="n">radius_of_influence</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+
+<span class="n">mod06_scn_res</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s">"cloud_fraction"</span><span class="p">)</span>
 </code></pre></div></div>
 
 <div class="markdown_area ">
@@ -1576,7 +1576,7 @@ initFunction(initQuery);
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E07_45_0.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E07_46_0.png" alt="png" /></p>
 
 <div class="markdown_area ">
   <!--<div class="">
@@ -1632,7 +1632,7 @@ initFunction(initQuery);
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.image.AxesImage at 0x7fe77afe56a0&gt;
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E07_52_1.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E07_53_1.png" alt="png" /></p>
 
 <div class="markdown_area ">
   <!--<div class="">
@@ -1657,7 +1657,196 @@ initFunction(initQuery);
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.image.AxesImage at 0x7fe77af30630&gt;
 </code></pre></div></div>
 
-<p class="output output_png"><img src="../images/units/S01E07_55_1.png" alt="png" /></p>
+<p class="output output_png"><img src="../images/units/S01E07_56_1.png" alt="png" /></p>
+
+<div class="markdown_area ">
+  <!--<div class="">
+</div>-->
+
+  <h2 id="exercise-7">Exercise 7</h2>
+
+  <ul>
+    <li>Complete the seventh assignment and push your results until tuesday 14:00 next week</li>
+    <li>Assignment link: https://classroom.github.com/a/NcI1MPY4</li>
+  </ul>
+
+</div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">############################################</span>
+<span class="c"># Ab hier nur code snippets und testing</span>
+<span class="c">############################################</span>
+
+<span class="c"># Notes</span>
+
+<span class="c">#- links zu "einfachen" informationen zu Wolken tests</span>
+<span class="c">#    - https://www.intechopen.com/books/advances-in-geoscience-and-remote-sensing/automated-detection-of-clouds-in-satellite-imagery</span>
+<span class="c">#    - https://www.cfa.harvard.edu/~xliu/res/CloudRetrieval.htm</span>
+<span class="c">#    - Modis tests ab seite 14: https://modis-atmosphere.gsfc.nasa.gov/sites/default/files/ModAtmo/MOD35_ATBD_Collection6_1.pdf</span>
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">satpy_scn_from_xr</span><span class="p">(</span><span class="n">file_or_xr</span><span class="p">,</span> <span class="n">mod03_file_or_xr</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">variables</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+    <span class="s">"""Creates a satpy Scene from a non supported MODIS product
+    
+    Will try to create a Satpy Scene with all variables as specified
+    in the parameters.
+    
+    Parameters
+    ----------
+    file_or_xr : xr.Dataset or pathlib.Path or str
+        Either a filename or an xr.Dataset can be given.
+        If filename data will be read using `xr.open_dataset()`.
+    mod03_file_or_xr : xr.Dataset or pathlib.Path or str, optional
+        Either a filename or an xr.Dataset of mod03 geolocations can be given.
+        If filename data will be read using `xr.open_dataset()`.
+    variables : list of string, optional
+        Names of the variable in the MODIS file which to put in the Scene.
+        If None all v variables in file are returned.
+    
+    Returns
+    -------
+    satpy.Scene
+    
+    """</span>
+    <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+    <span class="kn">from</span> <span class="nn">satpy</span> <span class="kn">import</span> <span class="n">Scene</span>
+    <span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="n">xr</span>
+    <span class="kn">from</span> <span class="nn">pyresample</span> <span class="kn">import</span> <span class="n">geometry</span>
+    <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">file_or_xr</span><span class="p">,</span> <span class="n">Path</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">file_or_xr</span><span class="p">,</span> <span class="nb">str</span><span class="p">)):</span>
+        <span class="n">modis_l2</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">file_or_xr</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">modis_l2</span> <span class="o">=</span> <span class="n">file_or_xr</span>
+        
+    <span class="k">if</span> <span class="n">variables</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">variables</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">modis_l2</span><span class="o">.</span><span class="n">data_vars</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+        <span class="n">variables</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">variables</span> <span class="k">if</span> <span class="n">v</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s">"Latitude"</span><span class="p">,</span> <span class="s">"Longitude"</span><span class="p">]]</span>
+    
+    <span class="k">if</span> <span class="n">mod03_file_or_xr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">mod03_file_or_xr</span><span class="p">,</span> <span class="n">Path</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">mod03_file_or_xr</span><span class="p">,</span> <span class="nb">str</span><span class="p">)):</span>
+            <span class="n">mod03</span><span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">mod03_file_or_xr</span><span class="p">,</span> <span class="n">drop_variables</span><span class="o">=</span><span class="s">"Scan Type"</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">mod03</span> <span class="o">=</span> <span class="n">mod03_file_or_xr</span>
+        
+        <span class="n">mod03_new_dim_names</span> <span class="o">=</span> <span class="p">{</span><span class="s">"nscans*10:MODIS_Swath_Type_GEO"</span><span class="p">:</span> <span class="s">"y"</span><span class="p">,</span> <span class="s">"mframes:MODIS_Swath_Type_GEO"</span><span class="p">:</span> <span class="s">"x"</span><span class="p">}</span>
+        <span class="n">mod03</span> <span class="o">=</span> <span class="n">mod03</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">mod03_new_dim_names</span><span class="p">)</span>
+        
+        <span class="n">lons1km</span> <span class="o">=</span> <span class="n">mod03</span><span class="p">[</span><span class="s">"Longitude"</span><span class="p">]</span>
+        <span class="n">lats1km</span> <span class="o">=</span> <span class="n">mod03</span><span class="p">[</span><span class="s">"Latitude"</span><span class="p">]</span>
+        <span class="n">swath_def_1km</span> <span class="o">=</span> <span class="n">geometry</span><span class="o">.</span><span class="n">SwathDefinition</span><span class="p">(</span><span class="n">lons1km</span><span class="p">,</span> <span class="n">lats1km</span><span class="p">)</span>
+    
+    <span class="n">new_dim_names</span> <span class="o">=</span> <span class="p">{</span><span class="s">"Cell_Along_Swath_5km:mod06"</span><span class="p">:</span> <span class="s">"y"</span><span class="p">,</span> <span class="s">"Cell_Across_Swath_5km:mod06"</span><span class="p">:</span> <span class="s">"x"</span><span class="p">}</span>
+    
+    <span class="n">lons5km</span> <span class="o">=</span> <span class="n">modis_l2</span><span class="p">[</span><span class="s">"Longitude"</span><span class="p">]</span>
+    <span class="n">lats5km</span> <span class="o">=</span> <span class="n">modis_l2</span><span class="p">[</span><span class="s">"Latitude"</span><span class="p">]</span>
+    <span class="n">lons5km</span> <span class="o">=</span> <span class="n">lons5km</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">new_dim_names</span><span class="p">)</span>
+    <span class="n">lats5km</span> <span class="o">=</span> <span class="n">lats5km</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">new_dim_names</span><span class="p">)</span>
+    <span class="n">swath_def_5km</span> <span class="o">=</span> <span class="n">geometry</span><span class="o">.</span><span class="n">SwathDefinition</span><span class="p">(</span><span class="n">lons5km</span><span class="p">,</span> <span class="n">lats5km</span><span class="p">)</span>
+        
+    <span class="c">#init Scene</span>
+    <span class="n">out_scn</span> <span class="o">=</span> <span class="n">Scene</span><span class="p">()</span>
+    <span class="c">#create a Scene dataset for every variable</span>
+    <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">variables</span><span class="p">:</span>
+        <span class="n">ds</span> <span class="o">=</span> <span class="n">modis_l2</span><span class="p">[</span><span class="n">v</span><span class="p">]</span>
+        <span class="n">ds</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s">"name"</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+        <span class="n">st</span> <span class="o">=</span> <span class="n">modis_l2</span><span class="o">.</span><span class="n">Scan_Start_Time</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+        <span class="n">ds</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s">"start_time"</span><span class="p">]</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">utcfromtimestamp</span><span class="p">((</span><span class="n">st</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">datetime64</span><span class="p">(</span><span class="s">'1970-01-01T00:00:00'</span><span class="p">))</span>
+                     <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">timedelta64</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">'s'</span><span class="p">))</span>
+        <span class="n">ds</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s">"coordinates"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="s">"longitude"</span><span class="p">,</span> <span class="s">"latitude"</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">lons5km</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">ds</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
+            <span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">new_dim_names</span><span class="p">)</span>
+            <span class="n">ds</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s">"area"</span><span class="p">]</span> <span class="o">=</span> <span class="n">swath_def_5km</span>
+            <span class="n">ds</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s">"resolution"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5000</span>
+            <span class="n">out_scn</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">ds</span>
+        <span class="k">elif</span> <span class="p">((</span><span class="n">mod03_file_or_xr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">lons1km</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">ds</span><span class="o">.</span><span class="n">shape</span><span class="p">)):</span>
+            <span class="n">new_dim_names</span> <span class="o">=</span> <span class="p">{</span><span class="s">"Cell_Along_Swath_1km:mod06"</span><span class="p">:</span> <span class="s">"y"</span><span class="p">,</span> <span class="s">"Cell_Across_Swath_1km:mod06"</span><span class="p">:</span> <span class="s">"x"</span><span class="p">}</span>
+            <span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">new_dim_names</span><span class="p">)</span>
+            <span class="n">ds</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s">"area"</span><span class="p">]</span> <span class="o">=</span> <span class="n">swath_def_1km</span>
+            <span class="n">ds</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s">"resolution"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1000</span>
+            <span class="n">out_scn</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">ds</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+                <span class="k">print</span><span class="p">(</span><span class="s">"The resolution of the lat/lon does not match the shape</span><span class="se">\n</span><span class="s"> </span><span class="se">\
+</span><span class="s">                of the data of variable {0}. Therefore variable {0} was skipped.</span><span class="se">\n</span><span class="s"> </span><span class="se">\
+</span><span class="s">                Try with handing a mod03 file to the mod03_file_or_xr parameter."</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">out_scn</span>
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="c">#scn = satpy_scn_from_xr("../data/MODIS/MOD06_L2.A2006017.0855.061.2017271194536.hdf", "../data/MODIS/MOD03.A2006017.0855.061.2017258190054.hdf"  )#, variables=["Cloud_Fraction", "Surface_Pressure"])</span>
+<span class="n">scn</span> <span class="o">=</span> <span class="n">satpy_scn_from_xr</span><span class="p">(</span><span class="s">"../data/MODIS/MOD06_L2.A2006017.1210.006.2014353173750.hdf"</span><span class="p">,</span> <span class="s">"../data/MODIS/MOD03.A2006017.1210.006.2012262224035.hdf"</span><span class="p">,</span> <span class="n">variables</span><span class="o">=</span><span class="p">[</span><span class="s">"Cloud_Optical_Thickness"</span><span class="p">]</span>  <span class="p">)</span><span class="c">#, variables=["Cloud_Fraction", "Surface_Pressure"])</span>
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pyproj</span> <span class="kn">import</span> <span class="n">Proj</span><span class="p">,</span> <span class="n">transform</span>
+<span class="c">#get min/max of lon(lats)</span>
+<span class="n">lons</span> <span class="o">=</span> <span class="n">scn</span><span class="p">[</span><span class="s">"Cloud_Optical_Thickness"</span><span class="p">]</span><span class="o">.</span><span class="n">area</span><span class="o">.</span><span class="n">lons</span>
+<span class="n">lats</span> <span class="o">=</span> <span class="n">scn</span><span class="p">[</span><span class="s">"Cloud_Optical_Thickness"</span><span class="p">]</span><span class="o">.</span><span class="n">area</span><span class="o">.</span><span class="n">lats</span>
+<span class="n">lonmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="nb">min</span><span class="p">(</span><span class="n">lons</span><span class="p">)</span>
+<span class="n">lonmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="nb">max</span><span class="p">(</span><span class="n">lons</span><span class="p">)</span>
+<span class="n">latmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="nb">min</span><span class="p">(</span><span class="n">lats</span><span class="p">)</span>
+<span class="n">latmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="nb">max</span><span class="p">(</span><span class="n">lats</span><span class="p">)</span>
+
+<span class="c">#calculate center between min/max of lon/lat</span>
+<span class="n">lon_center</span> <span class="o">=</span> <span class="n">lonmin</span> <span class="o">+</span> <span class="p">(</span><span class="n">lonmax</span> <span class="o">-</span> <span class="n">lonmin</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+<span class="n">lat_center</span> <span class="o">=</span> <span class="n">latmin</span> <span class="o">+</span> <span class="p">(</span><span class="n">latmax</span> <span class="o">-</span> <span class="n">latmin</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+<span class="k">print</span><span class="p">(</span><span class="n">lon_center</span><span class="p">,</span> <span class="n">lat_center</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">lonmin</span><span class="p">,</span> <span class="n">latmin</span><span class="p">,</span> <span class="n">lonmax</span><span class="p">,</span> <span class="n">latmax</span><span class="p">)</span>
+
+<span class="c">#create proj4 string with center points</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">Proj</span><span class="p">(</span><span class="s">"+proj=laea +lat_0={0} +lon_0={1}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">lat_center</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">lon_center</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>
+
+<span class="c">#margin to add to  area extent</span>
+<span class="n">margin</span> <span class="o">=</span> <span class="mf">1.5</span>
+<span class="c">#create area extent in projection coordinates</span>
+<span class="n">llx</span><span class="p">,</span> <span class="n">lly</span> <span class="o">=</span> <span class="n">p2</span><span class="p">(</span><span class="n">lonmin</span> <span class="o">-</span> <span class="n">margin</span><span class="p">,</span> <span class="n">latmin</span> <span class="o">-</span> <span class="n">margin</span><span class="p">)</span>
+<span class="n">urx</span><span class="p">,</span> <span class="n">ury</span> <span class="o">=</span> <span class="n">p2</span><span class="p">(</span><span class="n">lonmax</span> <span class="o">+</span> <span class="n">margin</span><span class="p">,</span> <span class="n">latmax</span> <span class="o">+</span> <span class="n">margin</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">llx</span><span class="p">,</span> <span class="n">lly</span><span class="p">,</span> <span class="n">urx</span><span class="p">,</span> <span class="n">ury</span><span class="p">)</span>
+
+<span class="c">#calculate width/height in pixels for given resolution in meters</span>
+<span class="n">res</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="nb">round</span><span class="p">((</span><span class="n">urx</span> <span class="o">-</span> <span class="n">llx</span><span class="p">)</span> <span class="o">/</span> <span class="n">res</span><span class="p">)</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="nb">round</span><span class="p">((</span><span class="n">ury</span> <span class="o">-</span> <span class="n">lly</span><span class="p">)</span> <span class="o">/</span> <span class="n">res</span><span class="p">)</span>
+
+<span class="c">#create pyresample area definition</span>
+<span class="n">area_id</span> <span class="o">=</span> <span class="s">"NorthEastAtlantic"</span>
+<span class="n">description</span> <span class="o">=</span> <span class="s">"North East Atlantic in Lambert Azimuthal Equal Area projection"</span>
+<span class="n">proj_id</span> <span class="o">=</span> <span class="s">"NorthEastAtlantic"</span>
+<span class="n">proj_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s">"proj"</span><span class="p">:</span> <span class="s">"laea"</span><span class="p">,</span> <span class="s">"lat_0"</span><span class="p">:</span> <span class="n">lat_center</span><span class="p">,</span> <span class="s">"lon_0"</span><span class="p">:</span> <span class="n">lon_center</span><span class="p">}</span>
+<span class="n">width</span> <span class="o">=</span> <span class="n">w</span>
+<span class="n">height</span> <span class="o">=</span> <span class="n">h</span>
+
+<span class="n">area_extent</span> <span class="o">=</span> <span class="p">(</span><span class="n">llx</span><span class="p">,</span> <span class="n">lly</span><span class="p">,</span> <span class="n">urx</span><span class="p">,</span> <span class="n">ury</span><span class="p">)</span>
+<span class="n">area_def_NEA</span> <span class="o">=</span> <span class="n">geometry</span><span class="o">.</span><span class="n">AreaDefinition</span><span class="p">(</span><span class="n">area_id</span><span class="p">,</span> <span class="n">proj_id</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">proj_dict</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">area_extent</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;xarray.DataArray 'Longitude' ()&gt;
+array(-16.518818) &lt;xarray.DataArray 'Latitude' ()&gt;
+array(42.281162)
+&lt;xarray.DataArray 'Longitude' ()&gt;
+array(-33.678936, dtype=float32) &lt;xarray.DataArray 'Latitude' ()&gt;
+array(31.489632, dtype=float32) &lt;xarray.DataArray 'Longitude' ()&gt;
+array(0.641301, dtype=float32) &lt;xarray.DataArray 'Latitude' ()&gt;
+array(53.072693, dtype=float32)
+-1794161.8329425643 -1175655.1683899725 1199610.2598026013 1504002.6779336391
+
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#scn_res = scn.resample(area_def_NEA, resampler="nearest", radius_of_influence=10000)</span>
+<span class="kn">from</span> <span class="nn">pyresample.utils</span> <span class="kn">import</span> <span class="n">load_area</span>
+<span class="n">eur</span> <span class="o">=</span> <span class="n">load_area</span><span class="p">(</span><span class="s">"/home/ro/dev/phd/hyfog/hyfog/data/areas.yaml"</span><span class="p">,</span> <span class="s">"LCRS_MSG_eur_ex"</span><span class="p">)</span>
+<span class="n">scn_res</span> <span class="o">=</span> <span class="n">scn</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">area_def_NEA</span><span class="p">,</span> <span class="n">resampler</span><span class="o">=</span><span class="s">"nearest"</span><span class="p">,</span> <span class="n">radius_of_influence</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+<span class="n">scn_res</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s">"Cloud_Optical_Thickness"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p class="output output_png"><img src="../images/units/S01E07_62_0.png" alt="png" /></p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">scn</span><span class="o">.</span><span class="n">save_datasets</span><span class="p">(</span><span class="n">writer</span><span class="o">=</span><span class="s">"geotiff"</span><span class="p">,</span>
+                  <span class="n">datasets</span><span class="o">=</span><span class="p">[</span><span class="s">"Cloud_Optical_Thickness"</span><span class="p">],</span>
+                  <span class="n">filename</span><span class="o">=</span><span class="s">"{name}_{start_time:</span><span class="si">%</span><span class="s">Y</span><span class="si">%</span><span class="s">m</span><span class="si">%</span><span class="s">d_</span><span class="si">%</span><span class="s">H</span><span class="si">%</span><span class="s">M</span><span class="si">%</span><span class="s">S}.tif"</span><span class="p">,</span>
+                  <span class="c">#filename="{name}.tif",</span>
+                  <span class="n">base_dir</span><span class="o">=</span><span class="s">"/home/ro"</span><span class="p">,</span> <span class="n">enhance</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+</code></pre></div></div>
 
 
               <nav class="c-page__nav">
