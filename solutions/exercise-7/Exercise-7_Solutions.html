@@ -7,15 +7,15 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
-  <title>Allgemeine Hinweise</title>
+  <title>Exercise VII</title>
   <meta name="description" content="">
 
-  <link rel="canonical" href="https://python-kurs.github.io/sommersemester_2019//allgemeine_hinweise.html">
+  <link rel="canonical" href="https://python-kurs.github.io/sommersemester_2019//solutions/exercise-7/Exercise-7_Solutions.html">
   <link rel="alternate" type="application/rss+xml" title="Sommersemester 2019" href="https://python-kurs.github.io/sommersemester_2019//feed.xml">
 
-  <meta property="og:url"         content="https://python-kurs.github.io/sommersemester_2019//allgemeine_hinweise.html" />
+  <meta property="og:url"         content="https://python-kurs.github.io/sommersemester_2019//solutions/exercise-7/Exercise-7_Solutions.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="Allgemeine Hinweise" />
+<meta property="og:title"       content="Exercise VII" />
 <meta property="og:description" content="" />
 <meta property="og:image"       content="" />
 
@@ -25,9 +25,9 @@
   "@context": "http://schema.org",
   "@type": "NewsArticle",
   "mainEntityOfPage":
-    "https://python-kurs.github.io/sommersemester_2019//allgemeine_hinweise.html",
+    "https://python-kurs.github.io/sommersemester_2019//solutions/exercise-7/Exercise-7_Solutions.html",
   "headline":
-    "Allgemeine Hinweise",
+    "Exercise VII",
   "datePublished":
     "2019-07-17T10:16:48+00:00",
   "dateModified":
@@ -862,7 +862,7 @@ initFunction(initQuery);
               
 
               <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
+                <a class="c-sidebar__entry c-sidebar__entry--active"
                   href="/sommersemester_2019/solutions/exercise-7/Exercise-7_Solutions.html"
                 >
                   
@@ -894,7 +894,7 @@ initFunction(initQuery);
       
       
       <li class="c-sidebar__chapter">
-        <a class="c-sidebar__entry c-sidebar__entry--active"
+        <a class="c-sidebar__entry "
           href="/sommersemester_2019/allgemeine_hinweise.html"
         >
           
@@ -942,14 +942,15 @@ initFunction(initQuery);
     <nav class="onthispage">
       <header><h4 class="nav__title"><i class="fa fa-list"></i>   On this page</h4></header>
       <ul class="toc__menu">
-  <li><a href="#ziele-der-bungen">Ziele der Übungen</a></li>
-  <li><a href="#allgemeine-aufflligkeiten">Allgemeine Auffälligkeiten</a></li>
-  <li><a href="#was-gehrt-nicht-in-die-lsung">Was gehört nicht in die Lösung?</a></li>
-  <li><a href="#aufgabenstellung-richtig-lesen">Aufgabenstellung richtig lesen</a></li>
-  <li><a href="#einhalten-von-standards-style-und-lesbarkeit">Einhalten von Standards, Style und Lesbarkeit</a></li>
-  <li><a href="#untige-datentypen-konversionen">Unötige Datentypen konversionen</a></li>
-  <li><a href="#unntige-code-redundanz">Unnötige Code Redundanz</a></li>
-  <li><a href="#funktionen-return-dokumentation">Funktionen, return, Dokumentation</a></li>
+  <li><a href="#">Client</a></li>
+  <li><a href="#">Cluster</a></li>
+  <li><a href="#create-area-definition">Create area definition</a></li>
+  <li><a href="#glob-the-files-from-the-directory">Glob the files from the directory</a></li>
+  <li><a href="#create-the-multiscene">Create the MultiScene</a></li>
+  <li><a href="#load-resample-and-blend">Load, resample and blend</a></li>
+  <li><a href="#calculate-the-band-difference">Calculate the band difference</a></li>
+  <li><a href="#calculate-the-cloud-mask">Calculate the cloud mask</a></li>
+  <li><a href="#quick-plot-for-overview">Quick plot for overview</a></li>
 </ul>
     </nav>
   </aside>
@@ -973,7 +974,7 @@ initFunction(initQuery);
 
             
 <div class="buttons">
-<a href="/sommersemester_2019/content/allgemeine_hinweise.ipynb" download>
+<a href="/sommersemester_2019/content/solutions/exercise-7/Exercise-7_Solutions.ipynb" download>
 <button id="interact-button-download" class="interact-button">Download</button>
 </a>
 
@@ -991,396 +992,349 @@ initFunction(initQuery);
   <!--<div class="">
 </div>-->
 
-  <h3 id="ziele-der-bungen">Ziele der Übungen</h3>
-
-  <ul>
-    <li>Einüben der gelernten Inhalte</li>
-    <li>Entwicklung von Problemlösungsfähigkeiten beim Programmieren
-      <ul>
-        <li>Was ist zu tun -&gt; Wie kann/sollte/muss der Code dazu aussehen?</li>
-        <li>Erkennen wo Probleme/Fehler auftreten könnten und wie diese vermieden werden können? (e.g. falsche Ergebnisse)</li>
-        <li>Abstraktion, wiederverwendbarer (“sauberer”) Code</li>
-      </ul>
-    </li>
-    <li>Einhaltung von Standards und Best-Pratice Empfehlungen
-      <ul>
-        <li>Code Style und Syntax</li>
-        <li>Dokumentation</li>
-        <li>Lesbarkeit</li>
-      </ul>
-    </li>
-  </ul>
+  <h1 id="exercise-7---solution">Exercise 7 - Solution</h1>
 
 </div>
 
-<div class="markdown_area ">
-  <!--<div class="">
-</div>-->
-
-  <h3 id="allgemeine-aufflligkeiten">Allgemeine Auffälligkeiten</h3>
-
-  <p>Oft gute/funktionierende Lösungen aber es hakt häufig im Detail…</p>
-
-</div>
-
-<div class="markdown_area ">
-  <!--<div class="">
-</div>-->
-
-  <h5 id="was-sollte-in-der-lsung-enthalten-sein">Was sollte in der Lösung enthalten sein?</h5>
-
-  <ul>
-    <li>Alle für die Lösung notwendigen/geforderten Dateien und Verzeichnisse, nicht mehr und nicht weniger.
-      <ul>
-        <li>notwendig: die Lösung muss funktionieren (Bsp. wenn eine Datei “extra_funktion.py” eine in der Lösung verwendete Funktion <code class="highlighter-rouge">hallo_welt</code> enthält und nicht abgegeben wird -&gt; 💣)</li>
-        <li>gefordert: die Aufgabe erfordert die Erstellung einer Datei -&gt; Siehe folgende Folie</li>
-      </ul>
-    </li>
-    <li>Dokumentation:
-      <ul>
-        <li>inline: wenn nicht auf den ersten Blick erkennbar ist warum die Lösung so gewählt wurde/was der code tut</li>
-        <li>Funktionen</li>
-      </ul>
-    </li>
-  </ul>
-
-</div>
-
-<div class="markdown_area ">
-  <!--<div class="">
-</div>-->
-
-  <h3 id="was-gehrt-nicht-in-die-lsung">Was gehört nicht in die Lösung?</h3>
-
-  <ul>
-    <li>Test Skripte</li>
-    <li>Alternative Lösungen</li>
-    <li>verschiedene Versionen der selben Datei</li>
-  </ul>
-
-  <p>=&gt; Wie sollen wir wissen welche Lösung bewertet werden soll?</p>
-
-</div>
-
-<div class="markdown_area ">
-  <!--<div class="">
-</div>-->
-
-  <h2 id="pfade">Pfade</h2>
-
-  <h4 id="relative-pfade">Relative Pfade</h4>
-
-  <p>Ihr solltet wenn immer möglich relative Pfade verwenden.</p>
-
-  <p>Pfade ähnlich wie folgender (Heinz Mustermann mit eigenenm Namen ersetzten)</p>
-
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">datei_pfad</span> <span class="o">=</span> <span class="s">"C:/Users/Heinz_Mustermann/Documents/Python_Kurs/exercise-x/data/text_datei.txt"</span>
-</code></pre></div>  </div>
-  <p>wird in der Regel nur auf eurem eigenen Rechner existieren. Konkret heißt das eure Skripte laufen bei uns nicht =&gt; schlecht 💣</p>
-
-  <p>Im Skript haben wir euch auch schon Pfade vorbereitet diese dürft ihr auch nutzen. Sie nächster Absatz.</p>
-
-  <h4 id="pfade-konstruieren">Pfade konstruieren</h4>
-
-  <p>Folgendes war im Skript vorbereitet</p>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-
-<span class="n">data_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s">"data"</span><span class="p">)</span>
-<span class="n">output_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s">"solution"</span><span class="p">)</span>
-</code></pre></div>  </div>
-
-  <p>Einen Pfad zu einer Datei “so_ist_es_richtig.txt” welche Ich im Ordner “solution”, welcher im selben Ordner wie das Skript liegt, speichern soll kann ich dann einfach wie folgt konstruieren:</p>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pfad_zur_datei</span> <span class="o">=</span> <span class="n">output_dir</span> <span class="o">/</span> <span class="s">"so_ist_es_richtig.txt"</span>
-</code></pre></div>  </div>
-  <p>Warum geht das und warum kann ich auf einen absoluten Pfad wie im Beispiel oben verzichten?
-Vorausgesetzt Ich befinde mich im ordner vom Skript d.h. wenn Ich mein Skript mit:</p>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">python</span> <span class="n">mein_skript</span><span class="o">.</span><span class="n">py</span>
-</code></pre></div>  </div>
-  <p>aufrufe, werden alle Pfade relativ zu diesem Ordner funktionieren.</p>
-
-</div>
-
-<div class="markdown_area ">
-  <!--<div class="">
-</div>-->
-
-  <h2 id="ffnen-und-lesen-einer-datei">Öffnen und lesen einer Datei</h2>
-
-  <p>Wenn eine Datei geöffnet und gelesen werden soll gibt es zwei Möglichkeiten welche unten dargestellt sind. Empfehlenswert ist das with statement.</p>
-
-  <p>Der Grund ist das Resourcen, in diesem Fall geöffnete Dateien, wieder frei gegeben werden sollten wenn man dies nicht macht kann es im schlimmsten Fall zu memory leaks führen. Das <code class="highlighter-rouge">with</code> über nimmt das freigeben der Resourcen für euch (in diesem Fall das schließen der Datei) ist übersichtlich und gut lesbar.</p>
-
-  <p>Wenn man es ganz genau nimmt müsste im zweiten Fall wenn man die Datei manuell schließt sogar noch mit <code class="highlighter-rouge">try except</code> arbeiten da beim lesen ja etwas schief gehen kann und man troztdem sicher gehen möchte das die Datei wieder geschlossen wird. Das heißt der Code würde noch komplexer. Die erste Variante ist daher die deutlich einfachere. Falls ihr euch trotzdem für zweite Variante entscheidet solltet ihr aber mindestens die Datei schließen.</p>
-
-  <p>Für diejenigen die es ganz genau wissen wollen: <a href="https://www.python.org/dev/peps/pep-0343/">PEP 343</a> gibt mehr Auskunft.</p>
-
-  <h4 id="variante-1">Variante 1:</h4>
-
-</div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">"irgendeine_datei.txt"</span><span class="p">,</span> <span class="s">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="nb">file</span><span class="p">:</span>
-    <span class="n">inhalt</span> <span class="o">=</span> <span class="nb">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-    
-<span class="c">#mit inhalt kann jetzt weiter gearbeitet werden...</span>
-<span class="n">inhalt</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">satpy</span> <span class="kn">import</span> <span class="n">Scene</span><span class="p">,</span> <span class="n">MultiScene</span>
+<span class="kn">from</span> <span class="nn">satpy.multiscene</span> <span class="kn">import</span> <span class="n">timeseries</span>
+<span class="kn">from</span> <span class="nn">pyresample.geometry</span> <span class="kn">import</span> <span class="n">AreaDefinition</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span>
 </code></pre></div></div>
 
-<div class="markdown_area ">
-  <!--<div class="">
-</div>-->
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">Client</span>
 
-  <h4 id="variante-2">Variante 2:</h4>
-
-</div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">datei_pfad</span> <span class="o">=</span> <span class="s">"irgendeine_datei.txt"</span>
-
-<span class="nb">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">datei_pfad</span><span class="p">,</span> <span class="s">"r"</span><span class="p">)</span>
-
-<span class="n">inhalt</span> <span class="o">=</span> <span class="nb">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-
-<span class="nb">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
-<span class="c">#mit inhalt kann jetzt weiter gearbeitet werden...</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">processes</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span> 
+<span class="n">client</span>
 </code></pre></div></div>
 
-<div class="markdown_area ">
-  <!--<div class="">
-</div>-->
+<div class="output output_html">
+<table style="border: 2px solid white;">
+<tr>
+<td style="vertical-align: top; border: 0px solid white">
+<h3>Client</h3>
+<ul>
+  <li><b>Scheduler: </b>inproc://137.248.191.131/27704/1
+  <li><b>Dashboard: </b><a href="http://localhost:8787/status" target="_blank">http://localhost:8787/status</a>
+&lt;/ul&gt;
+&lt;/td&gt;
+<td style="vertical-align: top; border: 0px solid white">
+<h3>Cluster</h3>
+<ul>
+  <li><b>Workers: </b>1</li>
+  <li><b>Cores: </b>4</li>
+  <li><b>Memory: </b>24.85 GB</li>
+</ul>
+</td>
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
 
-  <h3 id="aufgabenstellung-richtig-lesen">Aufgabenstellung richtig lesen</h3>
 
-  <p>Wenn die Aufgaben wie folgt ist:</p>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#Write the counts to the file `counts.csv` in the `solution` directory in the format (first line is the header): [2P]</span>
-<span class="c">#item, count</span>
-<span class="c">#item_name_1, item_count_1</span>
-<span class="c">#item_name_2, item_count_2</span>
-</code></pre></div>  </div>
 
-  <p>Dann wünschen wir uns das die Datei mit der Lösung auch tatsächlich <strong>counts.csv</strong> heißt und im Ordner <strong>solution</strong> gespeichert ist und nicht im Ordner “solutions”, “ergebnis” oder im selben ordner wie das Skript und auch der Name nicht einer von den folgenden ist:</p>
-
-  <ul>
-    <li>count.csv / UniqueCars_Count.csv / results_counting_occurences.csv / cars_frequency.csv / …</li>
-  </ul>
-
-  <p>Das selbe gilt in diesem Beispiel für den Header der Datei: ganz formidabel wäre <strong>item, cout</strong> und nicht etwa eine folgender Varianten:</p>
-
-  <ul>
-    <li>Type;count / model,countings / kein Header</li>
-  </ul>
-
-</div>
-
-<div class="markdown_area ">
-  <!--<div class="">
-</div>-->
-
-  <h3 id="einhalten-von-standards-style-und-lesbarkeit">Einhalten von Standards, Style und Lesbarkeit</h3>
-
-  <p>Manche Dinge sind Sache der persönlichen Präferenz, wie z.B. die Wahl der Hochzeichen. Beide Varianten funktionieren.<br />
-Wichtig ist:<br />
-<strong>CHOOSE ONE AND STICK WITH IT</strong><br /></p>
-
-  <p>Siehe hierzu <a href="https://www.python.org/dev/peps/pep-0008/">Python PEP8 code style</a>.</p>
-
-  <p>Dort sind die “offiziell” von Python festgelegten coding guidelines beschrieben. Wenn Zweifel besteht wie man es machen soll kann man dort nachschauen. Mit den Empfehlungen macht man es sicher nicht falsch. Das gilt für viele der folgenden Beispiele</p>
-
-  <p><strong>NEIN:</strong></p>
-
-</div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">'datei.txt'</span><span class="p">,</span> <span class="s">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="nb">file</span><span class="p">:</span> 
-</code></pre></div></div>
+{::options parse_block_html="true" /}
 
 <div class="markdown_area ">
-  <!--<div class="">
+                <!--<div class="">
 </div>-->
 
-  <p><strong>JA:</strong></p>
+                <h2 id="steps">Steps</h2>
+                <ol>
+                  <li>Get necessary data and inspect data and data structure.</li>
+                  <li>Get information for area definition and create it.</li>
+                  <li>Load the data
+                    <ul>
+                      <li>Create MultiScene from all files</li>
+                      <li>Resample MultiScene to area definition</li>
+                      <li>Blend the MultiScene to a timeseries</li>
+                    </ul>
+                  </li>
+                </ol>
 
-</div>
+              </div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">"datei.txt"</span><span class="p">,</span> <span class="s">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="nb">file</span><span class="p">:</span> 
-</code></pre></div></div>
+{::options parse_block_html="true" /}
+
+
+
+{::options parse_block_html="true" /}
 
 <div class="markdown_area ">
-  <!--<div class="">
+                <!--<div class="">
 </div>-->
 
-  <h4 id="untige-leerzeichen">Unötige Leerzeichen</h4>
+                <h3 id="create-area-definition">Create area definition</h3>
 
-  <p><strong>NEIN:</strong></p>
+              </div>
 
-</div>
+{::options parse_block_html="true" /}
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 
-<span class="n">datei_pfad</span> <span class="o">=</span> <span class="n">Path</span> <span class="p">(</span><span class="s">"datei.txt"</span><span class="p">)</span>
 
-<span class="k">with</span> <span class="nb">open</span> <span class="p">(</span><span class="n">datei_pfad</span><span class="p">,</span> <span class="s">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="nb">file</span><span class="p">:</span>
-    <span class="n">inhalt</span> <span class="o">=</span> <span class="nb">file</span><span class="o">.</span><span class="n">read</span> <span class="p">()</span>
-</code></pre></div></div>
+
+{:.input_area}
+```python
+area_id = 'Dem. Rep. Kongo'
+description = 'Dem. Rep. Kongo in Lambert Azimuthal Equal Area projection'
+proj_id = 'Dem. Rep. Kongo'
+proj_dict = {'proj': 'laea', 'lat_0': -3, 'lon_0': 23}
+width = 500
+height = 500
+llx =  -15E5
+lly =  -15E5
+urx =  15E5
+ury =  15E5
+area_extent = (llx,lly,urx,ury)
+area_def = AreaDefinition(area_id, proj_id, description, proj_dict, width, height, area_extent)
+```
+
+
+
+{::options parse_block_html="true" /}
 
 <div class="markdown_area ">
-  <!--<div class="">
+                <!--<div class="">
 </div>-->
 
-  <p><strong>JA:</strong></p>
+                <h3 id="glob-the-files-from-the-directory">Glob the files from the directory</h3>
 
-</div>
+              </div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">datei_pfad</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s">"datei.txt"</span><span class="p">)</span>
+{::options parse_block_html="true" /}
 
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">datei_pfad</span><span class="p">,</span> <span class="s">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="nb">file</span><span class="p">:</span>
-    <span class="n">inhalt</span> <span class="o">=</span> <span class="nb">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-</code></pre></div></div>
+
+
+
+{:.input_area}
+```python
+file_dir = Path("../../data/msg")
+file_dir = Path("/media/droplet_data/python_course_data/exercise_7_data/")
+files = file_dir.glob("*20180*1200*.nc")
+```
+
+
+
+{::options parse_block_html="true" /}
 
 <div class="markdown_area ">
-  <!--<div class="">
+                <!--<div class="">
 </div>-->
 
-  <h3 id="untige-datentypen-konversionen">Unötige Datentypen konversionen</h3>
+                <h3 id="create-the-multiscene">Create the MultiScene</h3>
 
-  <p>Häufig wurden listen noch mal zu listen konvertiert:</p>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">obst</span> <span class="o">=</span> <span class="p">[</span><span class="s">"banane"</span><span class="p">,</span> <span class="s">"apfel"</span><span class="p">,</span> <span class="s">"birne"</span><span class="p">]</span>
-<span class="n">neue_liste</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">obst</span><span class="p">)</span>
-</code></pre></div>  </div>
+              </div>
 
-  <p>Bei pathlib Pfaden wurden unnötige String konversionen vorgenommen:<br />
-<strong>NEIN:</strong></p>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">datei_pfad</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s">"datei.txt"</span><span class="p">)</span>
+{::options parse_block_html="true" /}
 
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datei_pfad</span><span class="p">),</span> <span class="s">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="nb">file</span><span class="p">:</span>
-    <span class="o">...</span>
-</code></pre></div>  </div>
-  <p><strong>JA:</strong></p>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">datei_pfad</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s">"datei.txt"</span><span class="p">)</span>
 
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">datei_pfad</span><span class="p">,</span> <span class="s">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="nb">file</span><span class="p">:</span>
-    <span class="o">...</span>
-</code></pre></div>  </div>
 
-  <p>Unnötige Konversion von iterables zu listen:<br />
-<strong>NEIN:</strong></p>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">unique_obst</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">obstliste</span><span class="p">))</span>
 
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">unique_obst</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-</code></pre></div>  </div>
+{:.input_area}
+```python
+scenes = [Scene(reader="seviri_l1b_nc", filenames=[f]) for f in files]
+mscn = MultiScene(scenes)
+```
 
-  <p><strong>JA:</strong></p>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">unique_obst</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">obstliste</span><span class="p">)</span>
 
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">unique_obst</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-</code></pre></div>  </div>
 
-</div>
+
+{:.input_area}
+```python
+mscn = MultiScene.from_files(files, reader="seviri_l1b_nc", group_keys=["processing_time"])
+```
+
+
+
+{::options parse_block_html="true" /}
 
 <div class="markdown_area ">
-  <!--<div class="">
+                <!--<div class="">
 </div>-->
 
-  <h3 id="unntige-code-redundanz">Unnötige Code Redundanz</h3>
+                <h3 id="load-resample-and-blend">Load, resample and blend</h3>
 
-  <p><strong>NEIN:</strong></p>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">data_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s">"images"</span><span class="p">)</span>
+                <p>Load the needed bands. Here we only load the 10.8 and 3.9 micrometer bands since we are going to use the difference of these channels for our cloud mask.
+Since we have multiple time steps we want to create a timeseries of these bands so we use the <code class="highlighter-rouge">timeseries</code> function we imported from satpy.multiscene as the blend function (the default function is <code class="highlighter-rouge">stack</code> which would use the first Scene as a base and fill gaps with susequent Scenes).</p>
 
-<span class="k">if</span> <span class="ow">not</span> <span class="n">Path</span><span class="p">(</span><span class="s">"images"</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
-    <span class="n">Path</span><span class="p">(</span><span class="s">"images"</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">()</span>
-</code></pre></div>  </div>
+              </div>
 
-  <p><strong>JA:</strong></p>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">data_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s">"images"</span><span class="p">)</span>
+{::options parse_block_html="true" /}
 
-<span class="k">if</span> <span class="ow">not</span> <span class="n">data_dir</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
-    <span class="n">data_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">()</span>
-</code></pre></div>  </div>
 
-</div>
+
+
+{:.input_area}
+```python
+# Load the 10.8 micrometer band of all scenes within the MultiScene
+mscn.load(["IR_108", "IR_039"])
+
+# Resample the MultiScene to our Greece domain
+new_mscn = mscn.resample(area_def, cache_dir=".")
+
+# Blend the scenes to one single Scene with each dataset/channel extended by the time dimension
+bscn = new_mscn.blend(blend_function=timeseries)
+```
+
+
+
+{::options parse_block_html="true" /}
 
 <div class="markdown_area ">
-  <!--<div class="">
+                <!--<div class="">
 </div>-->
 
-  <h3 id="funktionen-return-dokumentation">Funktionen, return, Dokumentation</h3>
+                <h3 id="calculate-the-band-difference">Calculate the band difference</h3>
 
-  <p>In folgender Funktions Definition sind mehrere Sachen schief gegangen.</p>
+              </div>
 
-</div>
+{::options parse_block_html="true" /}
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">irgendeine_funktion</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="s">"""
-    Beschreibung von irgendeiner Funktion
-    
-    Parameters
-    ----------
-    x : textdatei
-        
-    Returns
-    -------
-    ergebnis
-    
-    """</span>
-    
-    <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</code></pre></div></div>
+
+
+
+{:.input_area}
+```python
+bscn["diff_108"] = bscn["IR_108"] - bscn["IR_039"]
+```
+
+
+
+{::options parse_block_html="true" /}
+
+{::options parse_block_html="true" /}
+
+
+
+{::options parse_block_html="true" /}
 
 <div class="markdown_area ">
-  <!--<div class="">
+                <!--<div class="">
 </div>-->
 
-  <ol>
-    <li>Die Funktion hat keinen return value. Wer das nicht glaubt sollte folgendes ausprobieren:
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">input_liste</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-<span class="n">ergebnis</span> <span class="o">=</span> <span class="n">irgendeine_funktion</span><span class="p">(</span><span class="n">input_liste</span><span class="p">)</span>
-</code></pre></div>      </div>
-      <p>und schauen was in der Variable Ergebnis gespeichert ist.</p>
-    </li>
-    <li>Die Dokumentation hält sich nicht an den numpy Style (welcher es sein soll) oder an irgendeinen Style der Dokumentation. Das ändert zwar nichts an der Funktionalität selbst ist aber nicht konsistent mit der Einhaltung von Standards. Außerdem stimmen die Beschreibungen der Parameter nicht (return siehe 1.). Wenn die Funktion irgendetwas mit einer Liste machen soll die Ich ihr übergebe dann ist x vom Datentyp <code class="highlighter-rouge">list</code> und keine Textdatei.</li>
-  </ol>
+                <p>When we inspected our data in the first step we saw that there were also files from other time slots than 12:00. Since we want to compute the frequencies only for 12:00 we sort out these slots.</p>
 
-  <p>Unten ist ein Beispiel wie es aussehen könnte.</p>
+              </div>
 
-  <p>Wenn man sich nicht sicher ist wie der Style aus zu sehen hat kann man z.B. unter <a href="https://numpydoc.readthedocs.io/en/latest/">numpy doc</a> nachlesen (oder ggf. in der google style doku).</p>
+{::options parse_block_html="true" /}
 
-</div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">irgendeine_funktion</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="s">"""
-    Beschreibung von irgendeiner Funktion
-    
-    Parameters
-    ----------
-    x : list
-        ggf. Beschreibung von liste
-        
-    Returns
-    -------
-    list
-        ggf. nähere Beschreibung von liste
-    
-    """</span>
-    
-    <span class="k">return</span> <span class="n">x</span>
-        
-<span class="n">ergebnis</span> <span class="o">=</span> <span class="n">irgendeine_funktion</span><span class="p">(</span><span class="n">input_liste</span><span class="p">)</span>
-</code></pre></div></div>
 
+{::options parse_block_html="true" /}
+
+{::options parse_block_html="true" /}
+
+
+
+
+{:.input_area}
+```python
+bscn["diff_108"] = bscn["diff_108"].sel(time=bscn["diff_108"].time.dt.hour == 12)
+```
+
+
+
+{::options parse_block_html="true" /}
+
+<div class="markdown_area ">
+                <!--<div class="">
+</div>-->
+
+                <h3 id="calculate-the-cloud-mask">Calculate the cloud mask</h3>
+
+                <p>Using the band difference dataset of our Scene we calculated above and applying the threshold value we create the cloud mask.</p>
+
+              </div>
+
+{::options parse_block_html="true" /}
+
+
+
+
+{:.input_area}
+```python
+bscn["mask"] = bscn["diff_108"] &lt; -20
+```
+
+
+
+{::options parse_block_html="true" /}
+
+<div class="markdown_area ">
+                <!--<div class="">
+</div>-->
+
+                <p>Now we can use xarray groupby functionallity to compute the monthly frequencies.</p>
+
+                <p>Up to now all processing steps were carried out lazy, meaning no calculation actually took place only the instructions were “recorded”. This is conveniant because due to the huge number of files we can not load all Scenes at once since they probably would not fit into memory.<br />
+To start the calculation we use the <code class="highlighter-rouge">compute()</code> method.</p>
+
+              </div>
+
+{::options parse_block_html="true" /}
+
+
+
+
+{:.input_area}
+```python
+res = bscn["mask"].groupby("time.month").mean("time").compute()
+```
+
+
+
+{::options parse_block_html="true" /}
+
+<div class="markdown_area ">
+                <!--<div class="">
+</div>-->
+
+                <h3 id="quick-plot-for-overview">Quick plot for overview</h3>
+
+              </div>
+
+{::options parse_block_html="true" /}
+
+
+
+
+{:.input_area}
+```python
+%matplotlib inline
+res.plot(x="x", y="y", col="month")
+```
+
+
+
+
+
+{:.output .output_data_text}
+```
+&lt;xarray.plot.facetgrid.FacetGrid at 0x7fbe64651550&gt;
+```
+
+
+
+
+{:.output .output_png}
+![png](../../images/solutions/exercise-7/Exercise-7_Solutions_24_1.png)
+
+
+</li></li></ul></td></tr></table></div>
 
               <nav class="c-page__nav">
   
     
-    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/sommersemester_2019/solutions/exercise-7/Exercise-7_Solutions">
-      〈 <span class="u-margin-right-tiny"></span> Exercise VII
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/sommersemester_2019/solutions/exercise-6/Exercise-6_Solutions">
+      〈 <span class="u-margin-right-tiny"></span> Exercise VI
     </a>
   
 
   
     
-    <a id="js-page__nav__next" class="c-page__nav__next" href="/sommersemester_2019/results">
-      Results <span class="u-margin-right-tiny"></span> 〉
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/sommersemester_2019/allgemeine_hinweise">
+      Allgemeine Hinweise <span class="u-margin-right-tiny"></span> 〉
     </a>
   
 </nav>
