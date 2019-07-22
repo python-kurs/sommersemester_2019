@@ -29,9 +29,9 @@
   "headline":
     "Exercise VII",
   "datePublished":
-    "2019-07-22T08:44:19+00:00",
+    "2019-07-22T09:13:53+00:00",
   "dateModified":
-    "2019-07-22T08:44:19+00:00",
+    "2019-07-22T09:13:53+00:00",
   "description":
     "",
   "author": {
@@ -944,8 +944,6 @@ initFunction(initQuery);
       <ul class="toc__menu">
   <li><a href="#steps">Steps</a>
     <ul>
-      <li><a href="#">Client</a></li>
-      <li><a href="#">Cluster</a></li>
       <li><a href="#create-area-definition">Create area definition</a></li>
       <li><a href="#glob-the-files-from-the-directory">Glob the files from the directory</a></li>
       <li><a href="#create-the-multiscene">Create the MultiScene</a></li>
@@ -1035,294 +1033,143 @@ initFunction(initQuery);
 <span class="n">client</span>
 </code></pre></div></div>
 
-<div class="output output_html">
-<table style="border: 2px solid white;">
-<tr>
-<td style="vertical-align: top; border: 0px solid white">
-<h3>Client</h3>
-<ul>
-  <li><b>Scheduler: </b>inproc://137.248.191.131/10607/1
-  <li><b>Dashboard: </b><a href="http://localhost:8787/status" target="_blank">http://localhost:8787/status</a>
-&lt;/ul&gt;
-&lt;/td&gt;
-<td style="vertical-align: top; border: 0px solid white">
-<h3>Cluster</h3>
-<ul>
-  <li><b>Workers: </b>1</li>
-  <li><b>Cores: </b>4</li>
-  <li><b>Memory: </b>24.85 GB</li>
-</ul>
-</td>
-&lt;/tr&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-
-
-
-
-{::options parse_block_html="true" /}
-
 <div class="markdown_area ">
-                <!--<div class="">
+  <!--<div class="">
 </div>-->
 
-                <h3 id="create-area-definition">Create area definition</h3>
+  <h3 id="create-area-definition">Create area definition</h3>
 
-              </div>
+</div>
 
-{::options parse_block_html="true" /}
-
-
-
-
-{:.input_area}
-```python
-area_id = 'Dem. Rep. Kongo'
-description = 'Dem. Rep. Kongo in Lambert Azimuthal Equal Area projection'
-proj_id = 'Dem. Rep. Kongo'
-proj_dict = {'proj': 'laea', 'lat_0': -3, 'lon_0': 23}
-width = 500
-height = 500
-llx =  -15E5
-lly =  -15E5
-urx =  15E5
-ury =  15E5
-area_extent = (llx,lly,urx,ury)
-area_def = AreaDefinition(area_id, proj_id, description, proj_dict, width, height, area_extent)
-```
-
-
-
-{::options parse_block_html="true" /}
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">area_id</span> <span class="o">=</span> <span class="s">'Dem. Rep. Kongo'</span>
+<span class="n">description</span> <span class="o">=</span> <span class="s">'Dem. Rep. Kongo in Lambert Azimuthal Equal Area projection'</span>
+<span class="n">proj_id</span> <span class="o">=</span> <span class="s">'Dem. Rep. Kongo'</span>
+<span class="n">proj_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s">'proj'</span><span class="p">:</span> <span class="s">'laea'</span><span class="p">,</span> <span class="s">'lat_0'</span><span class="p">:</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="s">'lon_0'</span><span class="p">:</span> <span class="mi">23</span><span class="p">}</span>
+<span class="n">width</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="n">height</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="n">llx</span> <span class="o">=</span>  <span class="o">-</span><span class="mf">15E5</span>
+<span class="n">lly</span> <span class="o">=</span>  <span class="o">-</span><span class="mf">15E5</span>
+<span class="n">urx</span> <span class="o">=</span>  <span class="mf">15E5</span>
+<span class="n">ury</span> <span class="o">=</span>  <span class="mf">15E5</span>
+<span class="n">area_extent</span> <span class="o">=</span> <span class="p">(</span><span class="n">llx</span><span class="p">,</span><span class="n">lly</span><span class="p">,</span><span class="n">urx</span><span class="p">,</span><span class="n">ury</span><span class="p">)</span>
+<span class="n">area_def</span> <span class="o">=</span> <span class="n">AreaDefinition</span><span class="p">(</span><span class="n">area_id</span><span class="p">,</span> <span class="n">proj_id</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">proj_dict</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">area_extent</span><span class="p">)</span>
+</code></pre></div></div>
 
 <div class="markdown_area ">
-                <!--<div class="">
+  <!--<div class="">
 </div>-->
 
-                <h3 id="glob-the-files-from-the-directory">Glob the files from the directory</h3>
+  <h3 id="glob-the-files-from-the-directory">Glob the files from the directory</h3>
 
-              </div>
+</div>
 
-{::options parse_block_html="true" /}
-
-
-
-
-{:.input_area}
-```python
-file_dir = Path("../../data/msg")
-file_dir = Path("/media/droplet_data/python_course_data/exercise_7_data/")
-files = file_dir.glob("*20180*1200*.nc")
-```
-
-
-
-{::options parse_block_html="true" /}
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">file_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s">"../../data/msg"</span><span class="p">)</span>
+<span class="n">file_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s">"/media/droplet_data/python_course_data/exercise_7_data/"</span><span class="p">)</span>
+<span class="n">files</span> <span class="o">=</span> <span class="n">file_dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s">"*20180*1200*.nc"</span><span class="p">)</span>
+</code></pre></div></div>
 
 <div class="markdown_area ">
-                <!--<div class="">
+  <!--<div class="">
 </div>-->
 
-                <h3 id="create-the-multiscene">Create the MultiScene</h3>
+  <h3 id="create-the-multiscene">Create the MultiScene</h3>
 
-              </div>
+</div>
 
-{::options parse_block_html="true" /}
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">scenes</span> <span class="o">=</span> <span class="p">[</span><span class="n">Scene</span><span class="p">(</span><span class="n">reader</span><span class="o">=</span><span class="s">"seviri_l1b_nc"</span><span class="p">,</span> <span class="n">filenames</span><span class="o">=</span><span class="p">[</span><span class="n">f</span><span class="p">])</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">]</span>
+<span class="n">mscn</span> <span class="o">=</span> <span class="n">MultiScene</span><span class="p">(</span><span class="n">scenes</span><span class="p">)</span>
+</code></pre></div></div>
 
-
-
-
-{:.input_area}
-```python
-scenes = [Scene(reader="seviri_l1b_nc", filenames=[f]) for f in files]
-mscn = MultiScene(scenes)
-```
-
-
-
-
-{:.input_area}
-```python
-mscn = MultiScene.from_files(files, reader="seviri_l1b_nc", group_keys=["processing_time"])
-```
-
-
-
-{::options parse_block_html="true" /}
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mscn</span> <span class="o">=</span> <span class="n">MultiScene</span><span class="o">.</span><span class="n">from_files</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="n">reader</span><span class="o">=</span><span class="s">"seviri_l1b_nc"</span><span class="p">,</span> <span class="n">group_keys</span><span class="o">=</span><span class="p">[</span><span class="s">"processing_time"</span><span class="p">])</span>
+</code></pre></div></div>
 
 <div class="markdown_area ">
-                <!--<div class="">
+  <!--<div class="">
 </div>-->
 
-                <h3 id="load-resample-and-blend">Load, resample and blend</h3>
+  <h3 id="load-resample-and-blend">Load, resample and blend</h3>
 
-                <p>Load the needed bands. Here we only load the 10.8 and 3.9 micrometer bands since we are going to use the difference of these channels for our cloud mask.
+  <p>Load the needed bands. Here we only load the 10.8 and 3.9 micrometer bands since we are going to use the difference of these channels for our cloud mask.
 Since we have multiple time steps we want to create a timeseries of these bands so we use the <code class="highlighter-rouge">timeseries</code> function we imported from satpy.multiscene as the blend function (the default function is <code class="highlighter-rouge">stack</code> which would use the first Scene as a base and fill gaps with susequent Scenes).</p>
 
-              </div>
+</div>
 
-{::options parse_block_html="true" /}
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Load the 10.8 micrometer band of all scenes within the MultiScene</span>
+<span class="n">mscn</span><span class="o">.</span><span class="n">load</span><span class="p">([</span><span class="s">"IR_108"</span><span class="p">,</span> <span class="s">"IR_039"</span><span class="p">])</span>
 
+<span class="c"># Resample the MultiScene to our Greece domain</span>
+<span class="n">new_mscn</span> <span class="o">=</span> <span class="n">mscn</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">area_def</span><span class="p">,</span> <span class="n">cache_dir</span><span class="o">=</span><span class="s">"."</span><span class="p">)</span>
 
-
-
-{:.input_area}
-```python
-# Load the 10.8 micrometer band of all scenes within the MultiScene
-mscn.load(["IR_108", "IR_039"])
-
-# Resample the MultiScene to our Greece domain
-new_mscn = mscn.resample(area_def, cache_dir=".")
-
-# Blend the scenes to one single Scene with each dataset/channel extended by the time dimension
-bscn = new_mscn.blend(blend_function=timeseries)
-```
-
-
-
-{::options parse_block_html="true" /}
+<span class="c"># Blend the scenes to one single Scene with each dataset/channel extended by the time dimension</span>
+<span class="n">bscn</span> <span class="o">=</span> <span class="n">new_mscn</span><span class="o">.</span><span class="n">blend</span><span class="p">(</span><span class="n">blend_function</span><span class="o">=</span><span class="n">timeseries</span><span class="p">)</span>
+</code></pre></div></div>
 
 <div class="markdown_area ">
-                <!--<div class="">
+  <!--<div class="">
 </div>-->
 
-                <h3 id="calculate-the-band-difference">Calculate the band difference</h3>
+  <h3 id="calculate-the-band-difference">Calculate the band difference</h3>
 
-              </div>
+</div>
 
-{::options parse_block_html="true" /}
-
-
-
-
-{:.input_area}
-```python
-bscn["diff_108"] = bscn["IR_108"] - bscn["IR_039"]
-```
-
-
-
-{::options parse_block_html="true" /}
-
-{::options parse_block_html="true" /}
-
-
-
-{::options parse_block_html="true" /}
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bscn</span><span class="p">[</span><span class="s">"diff_108"</span><span class="p">]</span> <span class="o">=</span> <span class="n">bscn</span><span class="p">[</span><span class="s">"IR_108"</span><span class="p">]</span> <span class="o">-</span> <span class="n">bscn</span><span class="p">[</span><span class="s">"IR_039"</span><span class="p">]</span>
+</code></pre></div></div>
 
 <div class="markdown_area ">
-                <!--<div class="">
+  <!--<div class="">
 </div>-->
 
-                <p>When we inspected our data in the first step we saw that there were also files from other time slots than 12:00. Since we want to compute the frequencies only for 12:00 we sort out these slots.</p>
+  <p>When we inspected our data in the first step we saw that there were also files from other time slots than 12:00. Since we want to compute the frequencies only for 12:00 we sort out these slots.</p>
 
-              </div>
+</div>
 
-{::options parse_block_html="true" /}
-
-
-
-{::options parse_block_html="true" /}
-
-{::options parse_block_html="true" /}
-
-
-
-
-{:.input_area}
-```python
-bscn["diff_108"] = bscn["diff_108"].sel(time=bscn["diff_108"].time.dt.hour == 12)
-```
-
-
-
-{::options parse_block_html="true" /}
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bscn</span><span class="p">[</span><span class="s">"diff_108"</span><span class="p">]</span> <span class="o">=</span> <span class="n">bscn</span><span class="p">[</span><span class="s">"diff_108"</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">bscn</span><span class="p">[</span><span class="s">"diff_108"</span><span class="p">]</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">hour</span> <span class="o">==</span> <span class="mi">12</span><span class="p">)</span>
+</code></pre></div></div>
 
 <div class="markdown_area ">
-                <!--<div class="">
+  <!--<div class="">
 </div>-->
 
-                <h3 id="calculate-the-cloud-mask">Calculate the cloud mask</h3>
+  <h3 id="calculate-the-cloud-mask">Calculate the cloud mask</h3>
 
-                <p>Using the band difference dataset of our Scene we calculated above and applying the threshold value we create the cloud mask.</p>
+  <p>Using the band difference dataset of our Scene we calculated above and applying the threshold value we create the cloud mask.</p>
 
-              </div>
+</div>
 
-{::options parse_block_html="true" /}
-
-
-
-
-{:.input_area}
-```python
-bscn["mask"] = bscn["diff_108"] &lt; -20
-```
-
-
-
-{::options parse_block_html="true" /}
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bscn</span><span class="p">[</span><span class="s">"mask"</span><span class="p">]</span> <span class="o">=</span> <span class="n">bscn</span><span class="p">[</span><span class="s">"diff_108"</span><span class="p">]</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">20</span>
+</code></pre></div></div>
 
 <div class="markdown_area ">
-                <!--<div class="">
+  <!--<div class="">
 </div>-->
 
-                <p>Now we can use xarray groupby functionallity to compute the monthly frequencies.</p>
+  <p>Now we can use xarray groupby functionallity to compute the monthly frequencies.</p>
 
-                <p>Up to now all processing steps were carried out lazy, meaning no calculation actually took place only the instructions were “recorded”. This is conveniant because due to the huge number of files we can not load all Scenes at once since they probably would not fit into memory.<br />
+  <p>Up to now all processing steps were carried out lazy, meaning no calculation actually took place only the instructions were “recorded”. This is conveniant because due to the huge number of files we can not load all Scenes at once since they probably would not fit into memory.<br />
 To start the calculation we use the <code class="highlighter-rouge">compute()</code> method.</p>
 
-              </div>
+</div>
 
-{::options parse_block_html="true" /}
-
-
-
-
-{:.input_area}
-```python
-res = bscn["mask"].groupby("time.month").mean("time").compute()
-```
-
-
-
-{::options parse_block_html="true" /}
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">res</span> <span class="o">=</span> <span class="n">bscn</span><span class="p">[</span><span class="s">"mask"</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">"time.month"</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s">"time"</span><span class="p">)</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+</code></pre></div></div>
 
 <div class="markdown_area ">
-                <!--<div class="">
+  <!--<div class="">
 </div>-->
 
-                <h3 id="quick-plot-for-overview">Quick plot for overview</h3>
+  <h3 id="quick-plot-for-overview">Quick plot for overview</h3>
 
-              </div>
+</div>
 
-{::options parse_block_html="true" /}
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="n">res</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"x"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"y"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">"month"</span><span class="p">)</span>
+</code></pre></div></div>
 
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;xarray.plot.facetgrid.FacetGrid at 0x7f1b9c596e48&gt;
+</code></pre></div></div>
 
+<p class="output output_png"><img src="../../images/solutions/exercise-7/Exercise-7_Solutions_24_1.png" alt="png" /></p>
 
-
-{:.input_area}
-```python
-%matplotlib inline
-res.plot(x="x", y="y", col="month")
-```
-
-
-
-
-
-{:.output .output_data_text}
-```
-&lt;xarray.plot.facetgrid.FacetGrid at 0x7f1b9c596e48&gt;
-```
-
-
-
-
-{:.output .output_png}
-![png](../../images/solutions/exercise-7/Exercise-7_Solutions_24_1.png)
-
-
-</li></li></ul></td></tr></table></div>
 
               <nav class="c-page__nav">
   
