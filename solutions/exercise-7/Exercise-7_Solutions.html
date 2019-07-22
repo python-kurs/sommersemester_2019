@@ -29,9 +29,9 @@
   "headline":
     "Exercise VII",
   "datePublished":
-    "2019-07-17T10:16:48+00:00",
+    "2019-07-22T06:22:07+00:00",
   "dateModified":
-    "2019-07-17T10:16:48+00:00",
+    "2019-07-22T06:22:07+00:00",
   "description":
     "",
   "author": {
@@ -942,15 +942,19 @@ initFunction(initQuery);
     <nav class="onthispage">
       <header><h4 class="nav__title"><i class="fa fa-list"></i>   On this page</h4></header>
       <ul class="toc__menu">
-  <li><a href="#">Client</a></li>
-  <li><a href="#">Cluster</a></li>
-  <li><a href="#create-area-definition">Create area definition</a></li>
-  <li><a href="#glob-the-files-from-the-directory">Glob the files from the directory</a></li>
-  <li><a href="#create-the-multiscene">Create the MultiScene</a></li>
-  <li><a href="#load-resample-and-blend">Load, resample and blend</a></li>
-  <li><a href="#calculate-the-band-difference">Calculate the band difference</a></li>
-  <li><a href="#calculate-the-cloud-mask">Calculate the cloud mask</a></li>
-  <li><a href="#quick-plot-for-overview">Quick plot for overview</a></li>
+  <li><a href="#steps">Steps</a>
+    <ul>
+      <li><a href="#">Client</a></li>
+      <li><a href="#">Cluster</a></li>
+      <li><a href="#create-area-definition">Create area definition</a></li>
+      <li><a href="#glob-the-files-from-the-directory">Glob the files from the directory</a></li>
+      <li><a href="#create-the-multiscene">Create the MultiScene</a></li>
+      <li><a href="#load-resample-and-blend">Load, resample and blend</a></li>
+      <li><a href="#calculate-the-band-difference">Calculate the band difference</a></li>
+      <li><a href="#calculate-the-cloud-mask">Calculate the cloud mask</a></li>
+      <li><a href="#quick-plot-for-overview">Quick plot for overview</a></li>
+    </ul>
+  </li>
 </ul>
     </nav>
   </aside>
@@ -996,6 +1000,28 @@ initFunction(initQuery);
 
 </div>
 
+<div class="markdown_area ">
+  <!--<div class="">
+</div>-->
+
+  <h2 id="steps">Steps</h2>
+  <ol>
+    <li>Get necessary data and inspect data and data structure.</li>
+    <li>Get information for area definition and create it.</li>
+    <li>Load the data
+      <ul>
+        <li>Create MultiScene from all files</li>
+        <li>Resample MultiScene to area definition</li>
+        <li>Blend the MultiScene to a timeseries</li>
+      </ul>
+    </li>
+    <li>Calculate Cloud mask for each time slot using 10.8, 3.9 band difference and researched threshold value</li>
+    <li>Calculate monthly frequencies</li>
+    <li>Visualize and analyse results</li>
+  </ol>
+
+</div>
+
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">satpy</span> <span class="kn">import</span> <span class="n">Scene</span><span class="p">,</span> <span class="n">MultiScene</span>
 <span class="kn">from</span> <span class="nn">satpy.multiscene</span> <span class="kn">import</span> <span class="n">timeseries</span>
 <span class="kn">from</span> <span class="nn">pyresample.geometry</span> <span class="kn">import</span> <span class="n">AreaDefinition</span>
@@ -1031,31 +1057,6 @@ initFunction(initQuery);
 &lt;/table&gt;
 &lt;/div&gt;
 
-
-
-
-{::options parse_block_html="true" /}
-
-<div class="markdown_area ">
-                <!--<div class="">
-</div>-->
-
-                <h2 id="steps">Steps</h2>
-                <ol>
-                  <li>Get necessary data and inspect data and data structure.</li>
-                  <li>Get information for area definition and create it.</li>
-                  <li>Load the data
-                    <ul>
-                      <li>Create MultiScene from all files</li>
-                      <li>Resample MultiScene to area definition</li>
-                      <li>Blend the MultiScene to a timeseries</li>
-                    </ul>
-                  </li>
-                </ol>
-
-              </div>
-
-{::options parse_block_html="true" /}
 
 
 
